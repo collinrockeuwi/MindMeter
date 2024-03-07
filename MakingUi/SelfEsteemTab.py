@@ -1,8 +1,32 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 class SelfEsteemTab:
+    questions = [
+        "I am a good and worthwhile person.",
+        "I am as valuable a person as anyone else.",
+        "I have good values that guide me in my life.",
+        "When I look at my eyes in the mirror, I feel good about myself.",
+        "I feel like I have done well in my life.",
+        "I can laugh at myself.",
+        "I like being me.",
+        "I like myself, even when others reject me.",
+        "Overall, I am pleased with how I am developing as a person.",
+        "I love and support myself, regardless of what happens.",
+        "I would rather be me than someone else.",
+        "I respect myself.",
+        "I continue to grow personally.",
+        "I feel confident about my abilities.",
+        "I have pride in who I am and what I do.",
+        "I am comfortable in expressing my thoughts and feelings.",
+        "I like my body.",
+        "I handle difficult situations well.",
+        "Overall, I make good decisions.",
+        "I am a good friend and people like to be with me."
+    ]
+
     def __init__(self, parent, stackedWidget):
         self.stackedWidget = stackedWidget
+        self.question_widgets = {}  # Dictionary to store question widgets
         self.setupSelfEsteemPage(parent)
 
     def setupSelfEsteemPage(self, parent):
@@ -11,51 +35,37 @@ class SelfEsteemTab:
         self._gridLayout = QtWidgets.QGridLayout(self.SelfEsteem_Page)
         self._gridLayout.setObjectName("_gridLayout")
         self.SelfEsteem_tabWidget = QtWidgets.QTabWidget(self.SelfEsteem_Page)
-        # ... (styling code for self.SelfEsteem_tabWidget)
+        self.SelfEsteem_tabWidget.setObjectName("SelfEsteem_tabWidget")
         font = QtGui.QFont()
         font.setFamily("Roboto Cn")
         font.setPointSize(11)
         self.SelfEsteem_tabWidget.setFont(font)
         self.SelfEsteem_tabWidget.setStyleSheet("QTabWidget::pane {\n"
-        "    /* The tab widget frame */\n"
-        "    border-top: 2px solid rgb(31, 149, 239);\n"
-        "    border-radius: 5px; /* Rounded corners for the pane */\n"
-        "}\n"
-        "\n"
-        "QTabWidget::tab-bar {\n"
-        "    /* The tab bar */\n"
-        "    left: 5px; /* Move the bar to the right */\n"
-        "}\n"
-        "\n"
-        "QTabBar::tab {\n"
-        "    /* The tab */\n"
-        "    background-color: rgb(31, 149, 239);\n"
-        "    color: white;\n"
-        "    padding: 5px;\n"
-        "    border: none;\n"
-        "    min-width: 80px; /* Set the minimum width of the tab */\n"
-        "    min-height: 30px; /* Set the minimum height of the tab */\n"
-        "    margin-right: 2px; /* Space between tabs */\n"
-        "    border-top-left-radius: 5px; /* Rounded top-left corner */\n"
-        "    border-top-right-radius: 5px; /* Rounded top-right corner */\n"
-        "}\n"
-        "\n"
-        "QTabBar::tab:selected {\n"
-        "    /* The selected tab */\n"
-        "    background-color: rgb(45, 45, 45);\n"
-        "    border-top-left-radius: 5px; /* Maintain rounded corner when selected */\n"
-        "    border-top-right-radius: 5px; /* Maintain rounded corner when selected */\n"
-        "}\n"
-        "\n"
-        "QTabBar::tab:hover {\n"
-        "    /* The tab when hovered over */\n"
-        "    background-color: rgb(51, 169, 259);\n"
-        "}\n"
-        "")
-
-
-
-
+                                                "    border-top: 2px solid rgb(31, 149, 239);\n"
+                                                "    border-radius: 5px;\n"
+                                                "}\n"
+                                                "QTabWidget::tab-bar {\n"
+                                                "    left: 5px;\n"
+                                                "}\n"
+                                                "QTabBar::tab {\n"
+                                                "    background-color: rgb(31, 149, 239);\n"
+                                                "    color: white;\n"
+                                                "    padding: 5px;\n"
+                                                "    border: none;\n"
+                                                "    min-width: 80px;\n"
+                                                "    min-height: 30px;\n"
+                                                "    margin-right: 2px;\n"
+                                                "    border-top-left-radius: 5px;\n"
+                                                "    border-top-right-radius: 5px;\n"
+                                                "}\n"
+                                                "QTabBar::tab:selected {\n"
+                                                "    background-color: rgb(45, 45, 45);\n"
+                                                "    border-top-left-radius: 5px;\n"
+                                                "    border-top-right-radius: 5px;\n"
+                                                "}\n"
+                                                "QTabBar::tab:hover {\n"
+                                                "    background-color: rgb(51, 169, 259);\n"
+                                                "}")
 
         # Create two pages
         for page_num in range(1, 3):  # Pages 1 and 2
@@ -76,7 +86,7 @@ class SelfEsteemTab:
     def createQuestion(self, parent, layout, question_num):
         question_layout = QtWidgets.QHBoxLayout()
         question_layout.setObjectName(f"SE_Q{question_num}_horizontal_question_lyt")
-
+       
         # Question number label
         no_label = QtWidgets.QLabel(parent)
         no_label.setMinimumSize(QtCore.QSize(60, 60))
@@ -86,12 +96,13 @@ class SelfEsteemTab:
         font.setPointSize(14)
         no_label.setFont(font)
         no_label.setStyleSheet("QLabel {\n"
-                            "     color: rgb(31, 149, 239);\n"
-                            "    qproperty-alignment: AlignCenter;\n"
-                            "    border: 3px solid rgb(31, 149, 239);\n"
-                            "    border-radius: 10px;\n"
-                            "}")
+                               "    color: rgb(31, 149, 239);\n"
+                               "    qproperty-alignment: AlignCenter;\n"
+                               "    border: 3px solid rgb(31, 149, 239);\n"
+                               "    border-radius: 10px;\n"
+                               "}")
         no_label.setObjectName(f"SE_Q{question_num}_no_Label")
+        no_label.setText(str(question_num))
         setattr(self, f"SE_Q{question_num}_no_Label", no_label)
         question_layout.addWidget(no_label)
 
@@ -108,8 +119,19 @@ class SelfEsteemTab:
         font.setPointSize(16)
         question_label.setFont(font)
         question_label.setObjectName(f"SE_Q{question_num}_question")
+        question_label.setText(self.questions[question_num - 1])
         setattr(self, f"SE_Q{question_num}_question", question_label)
         question_layout.addWidget(question_label)
+
+
+        # Add widgets to the dictionary after they have been created
+        self.question_widgets[f"SE_Q{question_num}_no_Label"] = no_label
+        self.question_widgets[f"SE_Q{question_num}_question"] = question_label
+
+        # Add widgets to the layout
+       # question_layout.addWidget(no_label)
+       # question_layout.addWidget(question_label)
+
 
         # Slider
         slider = QtWidgets.QSlider(parent)
@@ -203,5 +225,11 @@ class SelfEsteemTab:
         setattr(self, f"SE_Q{question_num}_spinBox", spin_box)
         question_layout.addWidget(spin_box)
 
-        layout.addLayout(question_layout)
+        self._gridLayout.addWidget(self.SelfEsteem_tabWidget, 0, 0, 1, 1)
 
+        # Add the SelfEsteem_Page to the stackedWidget at a specific index
+        index = 0  # Change this index to where you want to add the page in the stackedWidget
+        self.stackedWidget.insertWidget(index, self.SelfEsteem_Page)
+
+
+        layout.addLayout(question_layout)
