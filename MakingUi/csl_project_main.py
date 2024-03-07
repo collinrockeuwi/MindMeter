@@ -4228,7 +4228,7 @@ class Ui_PsycheEval_MainWindow(object):
         self.menuFile.setTitle(_translate("PsycheEval_MainWindow", "File"))
         self.actionPrint.setText(_translate("PsycheEval_MainWindow", "Print"))
 import resource_rc
-
+#pushtest
 
 if __name__ == "__main__":
     import sys
@@ -4238,3 +4238,5 @@ if __name__ == "__main__":
     ui.setupUi(PsycheEval_MainWindow)
     PsycheEval_MainWindow.show()
     sys.exit(app.exec_())
+
+
