@@ -15,361 +15,17 @@ from StressTab import StressTab # Import the class
 from GeneralTab import GeneralTab # Import the class
 from PreviewTab import PreviewTab # Import the class
 from DataBaseTab import DataBaseTab # Import the class
+from MainWindow import MainWindow # Import the class
+from MainWindow2 import MainWindow2 # Import the class
 
 
 class Ui_PsycheEval_MainWindow(object):
     def setupUi(self, PsycheEval_MainWindow):
-        PsycheEval_MainWindow.setObjectName("PsycheEval_MainWindow")
-        PsycheEval_MainWindow.resize(1920, 1080)
-        PsycheEval_MainWindow.setStyleSheet("background-color: rgb(245, 250, 254);")
-        self.MainWindow_grid_lyt = QtWidgets.QWidget(PsycheEval_MainWindow)
-        self.MainWindow_grid_lyt.setObjectName("MainWindow_grid_lyt")
-        self.MainWindow_gridLayout = QtWidgets.QGridLayout(self.MainWindow_grid_lyt)
-        self.MainWindow_gridLayout.setContentsMargins(0, -1, -1, -1)
-        self.MainWindow_gridLayout.setHorizontalSpacing(0)
-        self.MainWindow_gridLayout.setObjectName("MainWindow_gridLayout")
-        self.expanded_icon_widget = QtWidgets.QWidget(self.MainWindow_grid_lyt)
-        self.expanded_icon_widget.setMinimumSize(QtCore.QSize(281, 0))
-        self.expanded_icon_widget.setMaximumSize(QtCore.QSize(281, 16777215))
-        self.expanded_icon_widget.setStyleSheet("QWidget{\n"
-"\n"
-"background-color: rgb(31, 149, 239);\n"
-"}\n"
-"QPushButton {\n"
-"    color: white;\n"
-"    text-align: left;\n"
-"    height:70px;\n"
-"    border: 1px;\n"
-"    padding-left: 10px;\n"
-"    border-top-left-radius: 10px; /* Round top left corner */\n"
-"    border-bottom-left-radius: 10px; /* Round bottom left corner */\n"
-"    background-color: rgb(31, 149, 239); /* Normal background color */\n"
-"    font-size: 30px; /* Set the font size here */\n"
-"    /* Other styles */\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: rgb(45, 45, 45); /* Darker background color on hover */\n"
-"    color: rgb(220, 220, 220); /* Slightly lighter text color on hover */\n"
-"}\n"
-"\n"
-"QPushButton:checked {\n"
-" \n"
-"     background-color: rgb(45, 45, 45); /* Darker background color on checked */\n"
-"}\n"
-"\n"
-"QLabel {\n"
-"    color: white;\n"
-"}\n"
-"\n"
-"")
-        PsycheEval_MainWindow.showMaximized()
-        self.expanded_icon_widget.setObjectName("expanded_icon_widget")
-        self.expanded_icon_widget_gridLayout = QtWidgets.QGridLayout(self.expanded_icon_widget)
-        self.expanded_icon_widget_gridLayout.setContentsMargins(-1, -1, 0, -1)
-        self.expanded_icon_widget_gridLayout.setObjectName("expanded_icon_widget_gridLayout")
-        self.expanded_icon_verticalLayout = QtWidgets.QVBoxLayout()
-        self.expanded_icon_verticalLayout.setObjectName("expanded_icon_verticalLayout")
-        self.Logo = QtWidgets.QSplitter(self.expanded_icon_widget)
-        self.Logo.setOrientation(QtCore.Qt.Horizontal)
-        self.Logo.setObjectName("Logo")
-        self.logo_label = QtWidgets.QLabel(self.Logo)
-        self.logo_label.setMinimumSize(QtCore.QSize(40, 40))
-        self.logo_label.setMaximumSize(QtCore.QSize(50, 50))
-        self.logo_label.setText("")
-        self.logo_label.setPixmap(QtGui.QPixmap(":/icon/icon/group-48.ico"))
-        self.logo_label.setScaledContents(True)
-        self.logo_label.setObjectName("logo_label")
-        self.logo_mainlabel = QtWidgets.QLabel(self.Logo)
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(24)
-        font.setBold(False)
-        font.setWeight(50)
-        self.logo_mainlabel.setFont(font)
-        self.logo_mainlabel.setObjectName("logo_mainlabel")
-        self.expanded_icon_verticalLayout.addWidget(self.Logo)
-        spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.expanded_icon_verticalLayout.addItem(spacerItem)
-        self.expanded_icon_verticalLayout_2 = QtWidgets.QVBoxLayout()
-        self.expanded_icon_verticalLayout_2.setSpacing(40)
-        self.expanded_icon_verticalLayout_2.setObjectName("expanded_icon_verticalLayout_2")
-        self.expanded_icon_General_pushButton = QtWidgets.QPushButton(self.expanded_icon_widget)
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(-1)
-        font.setBold(True)
-        font.setWeight(75)
-        self.expanded_icon_General_pushButton.setFont(font)
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/icon/icon/home-4-48.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.expanded_icon_General_pushButton.setIcon(icon)
-        self.expanded_icon_General_pushButton.setIconSize(QtCore.QSize(50, 50))
-        self.expanded_icon_General_pushButton.setCheckable(True)
-        self.expanded_icon_General_pushButton.setAutoExclusive(True)
-        self.expanded_icon_General_pushButton.setObjectName("expanded_icon_General_pushButton")
-        self.expanded_icon_verticalLayout_2.addWidget(self.expanded_icon_General_pushButton)
-        self.expanded_icon_Stress_pushButton = QtWidgets.QPushButton(self.expanded_icon_widget)
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(-1)
-        font.setBold(True)
-        font.setWeight(75)
-        self.expanded_icon_Stress_pushButton.setFont(font)
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(":/icon/icon/dashboard-5-48.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.expanded_icon_Stress_pushButton.setIcon(icon1)
-        self.expanded_icon_Stress_pushButton.setIconSize(QtCore.QSize(50, 50))
-        self.expanded_icon_Stress_pushButton.setCheckable(True)
-        self.expanded_icon_Stress_pushButton.setAutoExclusive(True)
-        self.expanded_icon_Stress_pushButton.setObjectName("expanded_icon_Stress_pushButton")
-        self.expanded_icon_verticalLayout_2.addWidget(self.expanded_icon_Stress_pushButton)
-        self.expanded_icon_Depression_pushButton = QtWidgets.QPushButton(self.expanded_icon_widget)
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(-1)
-        font.setBold(True)
-        font.setWeight(75)
-        self.expanded_icon_Depression_pushButton.setFont(font)
-        icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap(":/icon/icon/product-48.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.expanded_icon_Depression_pushButton.setIcon(icon2)
-        self.expanded_icon_Depression_pushButton.setIconSize(QtCore.QSize(50, 50))
-        self.expanded_icon_Depression_pushButton.setCheckable(True)
-        self.expanded_icon_Depression_pushButton.setAutoExclusive(True)
-        self.expanded_icon_Depression_pushButton.setObjectName("expanded_icon_Depression_pushButton")
-        self.expanded_icon_verticalLayout_2.addWidget(self.expanded_icon_Depression_pushButton)
-        self.expanded_icon_SelfEsteem_pushButton = QtWidgets.QPushButton(self.expanded_icon_widget)
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(-1)
-        font.setBold(True)
-        font.setWeight(75)
-        self.expanded_icon_SelfEsteem_pushButton.setFont(font)
-        icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap(":/icon/icon/user-48-white.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.expanded_icon_SelfEsteem_pushButton.setIcon(icon3)
-        self.expanded_icon_SelfEsteem_pushButton.setIconSize(QtCore.QSize(50, 50))
-        self.expanded_icon_SelfEsteem_pushButton.setCheckable(True)
-        self.expanded_icon_SelfEsteem_pushButton.setAutoExclusive(True)
-        self.expanded_icon_SelfEsteem_pushButton.setObjectName("expanded_icon_SelfEsteem_pushButton")
-        self.expanded_icon_verticalLayout_2.addWidget(self.expanded_icon_SelfEsteem_pushButton)
-        self.expanded_icon_Preview_pushButton = QtWidgets.QPushButton(self.expanded_icon_widget)
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(-1)
-        font.setBold(True)
-        font.setWeight(75)
-        self.expanded_icon_Preview_pushButton.setFont(font)
-        icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap(":/icon/icon/activity-feed-48.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.expanded_icon_Preview_pushButton.setIcon(icon4)
-        self.expanded_icon_Preview_pushButton.setIconSize(QtCore.QSize(50, 50))
-        self.expanded_icon_Preview_pushButton.setCheckable(True)
-        self.expanded_icon_Preview_pushButton.setAutoExclusive(True)
-        self.expanded_icon_Preview_pushButton.setObjectName("expanded_icon_Preview_pushButton")
-        self.expanded_icon_verticalLayout_2.addWidget(self.expanded_icon_Preview_pushButton)
-        self.expanded_icon_Database_pushButton = QtWidgets.QPushButton(self.expanded_icon_widget)
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(-1)
-        font.setBold(True)
-        font.setWeight(75)
-        self.expanded_icon_Database_pushButton.setFont(font)
-        icon5 = QtGui.QIcon()
-        icon5.addPixmap(QtGui.QPixmap(":/icon/icon/search-13.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.expanded_icon_Database_pushButton.setIcon(icon5)
-        self.expanded_icon_Database_pushButton.setIconSize(QtCore.QSize(50, 50))
-        self.expanded_icon_Database_pushButton.setCheckable(True)
-        self.expanded_icon_Database_pushButton.setAutoExclusive(True)
-        self.expanded_icon_Database_pushButton.setObjectName("expanded_icon_Database_pushButton")
-        self.expanded_icon_verticalLayout_2.addWidget(self.expanded_icon_Database_pushButton)
-        spacerItem1 = QtWidgets.QSpacerItem(20, 100, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.expanded_icon_verticalLayout_2.addItem(spacerItem1)
-        self.expanded_icon_Exit_pushButton = QtWidgets.QPushButton(self.expanded_icon_widget)
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(-1)
-        font.setBold(True)
-        font.setWeight(75)
-        self.expanded_icon_Exit_pushButton.setFont(font)
-        icon6 = QtGui.QIcon()
-        icon6.addPixmap(QtGui.QPixmap(":/icon/icon/close-window-64-white.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.expanded_icon_Exit_pushButton.setIcon(icon6)
-        self.expanded_icon_Exit_pushButton.setIconSize(QtCore.QSize(50, 50))
-        self.expanded_icon_Exit_pushButton.setObjectName("expanded_icon_Exit_pushButton")
-        self.expanded_icon_verticalLayout_2.addWidget(self.expanded_icon_Exit_pushButton)
-        self.expanded_icon_verticalLayout.addLayout(self.expanded_icon_verticalLayout_2)
-        self.expanded_icon_widget_gridLayout.addLayout(self.expanded_icon_verticalLayout, 0, 0, 1, 1)
-        self.MainWindow_gridLayout.addWidget(self.expanded_icon_widget, 0, 1, 1, 1)
-        self.small_icon_widget = QtWidgets.QWidget(self.MainWindow_grid_lyt)
-        self.small_icon_widget.setMinimumSize(QtCore.QSize(131, 0))
-        self.small_icon_widget.setMaximumSize(QtCore.QSize(131, 16777215))
-        self.small_icon_widget.setStyleSheet("QWidget{\n"
-"\n"
-"background-color: rgb(31, 149, 239);\n"
-"}\n"
-"\n"
-"QPushButton {\n"
-"    color: white;\n"
-"    text-align: centre;\n"
-"    height: 100px;\n"
-"    border: none;\n"
-"    \n"
-"    border-radius: 10px; \n"
-"    \n"
-"    background-color: rgb(31, 149, 239); /* Normal background color */\n"
-"    font-size: 14px; /* Set the font size here */\n"
-"    /* Other styles */\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: rgb(45, 45, 45); /* Darker background color on hover */\n"
-"    color: rgb(220, 220, 220); /* Slightly lighter text color on hover */\n"
-"}\n"
-"\n"
-"\n"
-"QPushButton:checked {\n"
-" \n"
-"    \n"
-"     background-color: rgb(45, 45, 45); /* Darker background color on checked */\n"
-"}\n"
-"\n"
-"\n"
-"QLabel {\n"
-"    color: white;\n"
-"    qproperty-alignment: AlignCenter; /* This will center the text */\n"
-"}\n"
-"\n"
-"\n"
-"")
-        self.small_icon_widget.setObjectName("small_icon_widget")
-        self.small_icon_widget_verticalLayout = QtWidgets.QVBoxLayout(self.small_icon_widget)
-        self.small_icon_widget_verticalLayout.setObjectName("small_icon_widget_verticalLayout")
-        spacerItem2 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.small_icon_widget_verticalLayout.addItem(spacerItem2)
-        self.General_pushButton = QtWidgets.QPushButton(self.small_icon_widget)
-        self.General_pushButton.setText("")
-        self.General_pushButton.setIcon(icon)
-        self.General_pushButton.setIconSize(QtCore.QSize(100, 100))
-        self.General_pushButton.setCheckable(True)
-        self.General_pushButton.setAutoExclusive(True)
-        self.General_pushButton.setObjectName("General_pushButton")
-        self.small_icon_widget_verticalLayout.addWidget(self.General_pushButton)
-        self.Stress_pushButton = QtWidgets.QPushButton(self.small_icon_widget)
-        self.Stress_pushButton.setText("")
-        self.Stress_pushButton.setIcon(icon1)
-        self.Stress_pushButton.setIconSize(QtCore.QSize(100, 100))
-        self.Stress_pushButton.setCheckable(True)
-        self.Stress_pushButton.setAutoExclusive(True)
-        self.Stress_pushButton.setObjectName("Stress_pushButton")
-        self.small_icon_widget_verticalLayout.addWidget(self.Stress_pushButton)
-        self.Depression_pushButton = QtWidgets.QPushButton(self.small_icon_widget)
-        self.Depression_pushButton.setText("")
-        self.Depression_pushButton.setIcon(icon2)
-        self.Depression_pushButton.setIconSize(QtCore.QSize(100, 100))
-        self.Depression_pushButton.setCheckable(True)
-        self.Depression_pushButton.setAutoExclusive(True)
-        self.Depression_pushButton.setObjectName("Depression_pushButton")
-        self.small_icon_widget_verticalLayout.addWidget(self.Depression_pushButton)
-        self.SelfEsteem_pushButton = QtWidgets.QPushButton(self.small_icon_widget)
-        self.SelfEsteem_pushButton.setText("")
-        self.SelfEsteem_pushButton.setIcon(icon3)
-        self.SelfEsteem_pushButton.setIconSize(QtCore.QSize(100, 100))
-        self.SelfEsteem_pushButton.setCheckable(True)
-        self.SelfEsteem_pushButton.setAutoExclusive(True)
-        self.SelfEsteem_pushButton.setObjectName("SelfEsteem_pushButton")
-        self.small_icon_widget_verticalLayout.addWidget(self.SelfEsteem_pushButton)
-        self.Preview_pushButton = QtWidgets.QPushButton(self.small_icon_widget)
-        self.Preview_pushButton.setText("")
-        self.Preview_pushButton.setIcon(icon4)
-        self.Preview_pushButton.setIconSize(QtCore.QSize(100, 100))
-        self.Preview_pushButton.setCheckable(True)
-        self.Preview_pushButton.setAutoExclusive(True)
-        self.Preview_pushButton.setObjectName("Preview_pushButton")
-        self.small_icon_widget_verticalLayout.addWidget(self.Preview_pushButton)
-        self.Database_pushButton = QtWidgets.QPushButton(self.small_icon_widget)
-        self.Database_pushButton.setText("")
-        self.Database_pushButton.setIcon(icon5)
-        self.Database_pushButton.setIconSize(QtCore.QSize(100, 100))
-        self.Database_pushButton.setCheckable(True)
-        self.Database_pushButton.setAutoExclusive(True)
-        self.Database_pushButton.setObjectName("Database_pushButton")
-        self.small_icon_widget_verticalLayout.addWidget(self.Database_pushButton)
-        self.Exit_pushButton = QtWidgets.QPushButton(self.small_icon_widget)
-        self.Exit_pushButton.setText("")
-        self.Exit_pushButton.setIcon(icon6)
-        self.Exit_pushButton.setIconSize(QtCore.QSize(100, 100))
-        self.Exit_pushButton.setObjectName("Exit_pushButton")
-        self.small_icon_widget_verticalLayout.addWidget(self.Exit_pushButton)
-        self.MainWindow_gridLayout.addWidget(self.small_icon_widget, 0, 0, 1, 1)
-        self.MainWindow_2 = QtWidgets.QWidget(self.MainWindow_grid_lyt)
-        self.MainWindow_2.setObjectName("MainWindow_2")
-        self.MainWindow_2_verticalLayout = QtWidgets.QVBoxLayout(self.MainWindow_2)
-        self.MainWindow_2_verticalLayout.setContentsMargins(0, 0, -1, -1)
-        self.MainWindow_2_verticalLayout.setObjectName("MainWindow_2_verticalLayout")
-        self.topbar_widget = QtWidgets.QWidget(self.MainWindow_2)
-        self.topbar_widget.setMinimumSize(QtCore.QSize(0, 61))
-        self.topbar_widget.setMaximumSize(QtCore.QSize(16777215, 61))
-        self.topbar_widget.setStyleSheet("QWidget{\n"
-"\n"
-"background-color: rgb(31, 149, 239);\n"
-"}\n"
-"\n"
-"QPushButton {\n"
-"    color: white;\n"
-"    text-align: centre;\n"
-"    height: 30px;\n"
-"    border: none;\n"
-"    \n"
-"    border-radius: 5px; \n"
-"    \n"
-"    background-color: rgb(31, 149, 239); /* Normal background color */\n"
-"    font-size: 14px; /* Set the font size here */\n"
-"    /* Other styles */\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: rgb(45, 45, 45); /* Darker background color on hover */\n"
-"    color: rgb(220, 220, 220); /* Slightly lighter text color on hover */\n"
-"}\n"
-"\n"
-"QPushButton:checked {\n"
-" \n"
-"     background-color: rgb(45, 45, 45); /* Darker background color on checked */\n"
-"}\n"
-"\n"
-"QLabel {\n"
-"    color: white;\n"
-"    qproperty-alignment: AlignCenter; /* This will center the text */\n"
-"}\n"
-"\n"
-"\n"
-"")
-        self.topbar_widget.setObjectName("topbar_widget")
-        self.topbar_widget_gridLayout = QtWidgets.QGridLayout(self.topbar_widget)
-        self.topbar_widget_gridLayout.setContentsMargins(3, 3, 3, 3)
-        self.topbar_widget_gridLayout.setObjectName("topbar_widget_gridLayout")
-        self.topbar_horizontalLayout = QtWidgets.QHBoxLayout()
-        self.topbar_horizontalLayout.setObjectName("topbar_horizontalLayout")
-        self.topbar_menu_button = QtWidgets.QPushButton(self.topbar_widget)
-        self.topbar_menu_button.setMinimumSize(QtCore.QSize(50, 50))
-        self.topbar_menu_button.setMaximumSize(QtCore.QSize(50, 50))
-        self.topbar_menu_button.setText("")
-        icon7 = QtGui.QIcon()
-        icon7.addPixmap(QtGui.QPixmap(":/icon/icon/menu-4-32-white.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.topbar_menu_button.setIcon(icon7)
-        self.topbar_menu_button.setIconSize(QtCore.QSize(30, 30))
-        self.topbar_menu_button.setCheckable(True)
-        self.topbar_menu_button.setObjectName("topbar_menu_button")
-        self.topbar_horizontalLayout.addWidget(self.topbar_menu_button)
-        self.topbar_menu_button.setChecked(True)
+       
 
-      
-        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.topbar_horizontalLayout.addItem(spacerItem3)
-        self.topbar_widget_gridLayout.addLayout(self.topbar_horizontalLayout, 0, 0, 1, 1)
-        self.MainWindow_2_verticalLayout.addWidget(self.topbar_widget)
+        self.MainWindow = MainWindow(PsycheEval_MainWindow)
+        self.MainWindow2 = MainWindow2(PsycheEval_MainWindow, self.MainWindow)
+        
 
 #stack widget           #stack widget           #stack widget           #stack widget              
 #stack widget           #stack widget           #stack widget           #stack widget  
@@ -381,7 +37,7 @@ class Ui_PsycheEval_MainWindow(object):
 
 
 
-        self.Active_widget = QtWidgets.QWidget(self.MainWindow_2)
+        self.Active_widget = QtWidgets.QWidget(self.MainWindow2.MainWindow_2)
         self.Active_widget.setObjectName("Active_widget")
         self.Active_widget_vertical_lyt = QtWidgets.QVBoxLayout(self.Active_widget)
         self.Active_widget_vertical_lyt.setObjectName("Active_widget_vertical_lyt")
@@ -399,19 +55,19 @@ class Ui_PsycheEval_MainWindow(object):
 #Button Connection              #Button Connection              #Button Connection              #Button Connection
 #Button Connection              #Button Connection              #Button Connection              #Button Connection
 #Button Connection              #Button Connection              #Button Connection              #Button Connection
-        self.General_pushButton.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(3))
-        self.Stress_pushButton.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(2))
-        self.Depression_pushButton.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(1))
-        self.SelfEsteem_pushButton.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
-        self.Preview_pushButton.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(4))
-        self.Database_pushButton.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(5))
+        self.MainWindow.General_pushButton.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(3))
+        self.MainWindow.Stress_pushButton.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(2))
+        self.MainWindow.Depression_pushButton.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(1))
+        self.MainWindow.SelfEsteem_pushButton.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
+        self.MainWindow.Preview_pushButton.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(4))
+        self.MainWindow.Database_pushButton.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(5))
 
-        self.expanded_icon_General_pushButton.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(3))
-        self.expanded_icon_Stress_pushButton.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(2))
-        self.expanded_icon_Depression_pushButton.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(1))
-        self.expanded_icon_SelfEsteem_pushButton.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
-        self.expanded_icon_Preview_pushButton.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(4))
-        self.expanded_icon_Database_pushButton.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(5))
+        self.MainWindow.expanded_icon_General_pushButton.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(3))
+        self.MainWindow.expanded_icon_Stress_pushButton.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(2))
+        self.MainWindow.expanded_icon_Depression_pushButton.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(1))
+        self.MainWindow.expanded_icon_SelfEsteem_pushButton.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
+        self.MainWindow.expanded_icon_Preview_pushButton.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(4))
+        self.MainWindow.expanded_icon_Database_pushButton.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(5))
 
 
 
@@ -428,7 +84,7 @@ class Ui_PsycheEval_MainWindow(object):
         self.selfEsteemTab = SelfEsteemTab(PsycheEval_MainWindow, self.stackedWidget)
 
          # Connect the SelfEsteem_pushButton to switch to the SelfEsteemTab in the stackedWidget
-        self.SelfEsteem_pushButton.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
+        self.MainWindow.SelfEsteem_pushButton.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
 
 
 
@@ -489,9 +145,9 @@ class Ui_PsycheEval_MainWindow(object):
 
 
         self.Active_widget_vertical_lyt.addWidget(self.stackedWidget)
-        self.MainWindow_2_verticalLayout.addWidget(self.Active_widget)
-        self.MainWindow_gridLayout.addWidget(self.MainWindow_2, 0, 2, 1, 1)
-        self.verticalScrollBar = QtWidgets.QScrollBar(self.MainWindow_grid_lyt)
+        self.MainWindow2.MainWindow_2_verticalLayout.addWidget(self.Active_widget)
+        self.MainWindow.MainWindow_gridLayout.addWidget(self.MainWindow2.MainWindow_2, 0, 2, 1, 1)
+        self.verticalScrollBar = QtWidgets.QScrollBar(self.MainWindow.MainWindow_grid_lyt)
         self.verticalScrollBar.setMinimumSize(QtCore.QSize(21, 1001))
         self.verticalScrollBar.setMaximumSize(QtCore.QSize(21, 1001))
         self.verticalScrollBar.setStyleSheet("QScrollBar:vertical {\n"
@@ -540,8 +196,8 @@ class Ui_PsycheEval_MainWindow(object):
 "")
         self.verticalScrollBar.setOrientation(QtCore.Qt.Vertical)
         self.verticalScrollBar.setObjectName("verticalScrollBar")
-        self.MainWindow_gridLayout.addWidget(self.verticalScrollBar, 0, 3, 1, 1)
-        PsycheEval_MainWindow.setCentralWidget(self.MainWindow_grid_lyt)
+        self.MainWindow.MainWindow_gridLayout.addWidget(self.verticalScrollBar, 0, 3, 1, 1)
+        PsycheEval_MainWindow.setCentralWidget(self.MainWindow.MainWindow_grid_lyt)
         self.menubar = QtWidgets.QMenuBar(PsycheEval_MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1920, 26))
         self.menubar.setObjectName("menubar")
@@ -563,29 +219,29 @@ class Ui_PsycheEval_MainWindow(object):
         self.StressTab.Stress_tabWidget.setCurrentIndex(0)
 
         #topbar menu
-        self.topbar_menu_button.toggled['bool'].connect(self.small_icon_widget.setHidden) # type: ignore
-        self.topbar_menu_button.toggled['bool'].connect(self.expanded_icon_widget.setVisible) # type: ignore
+        self.MainWindow2.topbar_menu_button.toggled['bool'].connect(self.MainWindow.small_icon_widget.setHidden) # type: ignore
+        self.MainWindow2.topbar_menu_button.toggled['bool'].connect(self.MainWindow.expanded_icon_widget.setVisible) # type: ignore
 
         # Set the initial visibility of the bars based on the button's checked state
-        self.small_icon_widget.setHidden(self.topbar_menu_button.isChecked())
-        self.expanded_icon_widget.setVisible(self.topbar_menu_button.isChecked())
+        self.MainWindow.small_icon_widget.setHidden(self.MainWindow2.topbar_menu_button.isChecked())
+        self.MainWindow.expanded_icon_widget.setVisible(self.MainWindow2.topbar_menu_button.isChecked())
 
 
 
-        self.General_pushButton.toggled['bool'].connect(self.expanded_icon_General_pushButton.setChecked) # type: ignore
-        self.Stress_pushButton.toggled['bool'].connect(self.expanded_icon_Stress_pushButton.setChecked) # type: ignore
-        self.expanded_icon_General_pushButton.toggled['bool'].connect(self.General_pushButton.setChecked) # type: ignore
-        self.expanded_icon_Stress_pushButton.toggled['bool'].connect(self.Stress_pushButton.setChecked) # type: ignore
-        self.Depression_pushButton.toggled['bool'].connect(self.expanded_icon_Depression_pushButton.setChecked) # type: ignore
-        self.expanded_icon_Depression_pushButton.toggled['bool'].connect(self.Depression_pushButton.setChecked) # type: ignore
-        self.SelfEsteem_pushButton.toggled['bool'].connect(self.expanded_icon_SelfEsteem_pushButton.setChecked) # type: ignore
-        self.expanded_icon_SelfEsteem_pushButton.toggled['bool'].connect(self.SelfEsteem_pushButton.setChecked) # type: ignore
-        self.Preview_pushButton.toggled['bool'].connect(self.expanded_icon_Preview_pushButton.setChecked) # type: ignore
-        self.expanded_icon_Preview_pushButton.toggled['bool'].connect(self.Preview_pushButton.setChecked) # type: ignore
-        self.Database_pushButton.toggled['bool'].connect(self.expanded_icon_Database_pushButton.setChecked) # type: ignore
-        self.expanded_icon_Database_pushButton.toggled['bool'].connect(self.Database_pushButton.setChecked) # type: ignore
-        self.Exit_pushButton.toggled['bool'].connect(self.expanded_icon_Exit_pushButton.setChecked) # type: ignore
-        self.expanded_icon_Exit_pushButton.toggled['bool'].connect(self.Exit_pushButton.setChecked) # type: ignore
+        self.MainWindow.General_pushButton.toggled['bool'].connect(self.MainWindow.expanded_icon_General_pushButton.setChecked) # type: ignore
+        self.MainWindow.Stress_pushButton.toggled['bool'].connect(self.MainWindow.expanded_icon_Stress_pushButton.setChecked) # type: ignore
+        self.MainWindow.expanded_icon_General_pushButton.toggled['bool'].connect(self.MainWindow.General_pushButton.setChecked) # type: ignore
+        self.MainWindow.expanded_icon_Stress_pushButton.toggled['bool'].connect(self.MainWindow.Stress_pushButton.setChecked) # type: ignore
+        self.MainWindow.Depression_pushButton.toggled['bool'].connect(self.MainWindow.expanded_icon_Depression_pushButton.setChecked) # type: ignore
+        self.MainWindow.expanded_icon_Depression_pushButton.toggled['bool'].connect(self.MainWindow.Depression_pushButton.setChecked) # type: ignore
+        self.MainWindow.SelfEsteem_pushButton.toggled['bool'].connect(self.MainWindow.expanded_icon_SelfEsteem_pushButton.setChecked) # type: ignore
+        self.MainWindow.expanded_icon_SelfEsteem_pushButton.toggled['bool'].connect(self.MainWindow.SelfEsteem_pushButton.setChecked) # type: ignore
+        self.MainWindow.Preview_pushButton.toggled['bool'].connect(self.MainWindow.expanded_icon_Preview_pushButton.setChecked) # type: ignore
+        self.MainWindow.expanded_icon_Preview_pushButton.toggled['bool'].connect(self.MainWindow.Preview_pushButton.setChecked) # type: ignore
+        self.MainWindow.Database_pushButton.toggled['bool'].connect(self.MainWindow.expanded_icon_Database_pushButton.setChecked) # type: ignore
+        self.MainWindow.expanded_icon_Database_pushButton.toggled['bool'].connect(self.MainWindow.Database_pushButton.setChecked) # type: ignore
+        self.MainWindow.Exit_pushButton.toggled['bool'].connect(self.MainWindow.expanded_icon_Exit_pushButton.setChecked) # type: ignore
+        self.MainWindow.expanded_icon_Exit_pushButton.toggled['bool'].connect(self.MainWindow.Exit_pushButton.setChecked) # type: ignore
         # Connect sliders and spin boxes dynamically
         for question_num in range(1, len(SelfEsteemTab.questions) + 1):
                 slider = getattr(self.selfEsteemTab, f"SE_Q{question_num}_horizontalSlider")
@@ -599,14 +255,14 @@ class Ui_PsycheEval_MainWindow(object):
     def retranslateUi(self, PsycheEval_MainWindow):
         _translate = QtCore.QCoreApplication.translate
         PsycheEval_MainWindow.setWindowTitle(_translate("PsycheEval_MainWindow", "MainWindow"))
-        self.logo_mainlabel.setText(_translate("PsycheEval_MainWindow", "PsycheEval"))
-        self.expanded_icon_General_pushButton.setText(_translate("PsycheEval_MainWindow", "   General"))
-        self.expanded_icon_Stress_pushButton.setText(_translate("PsycheEval_MainWindow", "   Stress "))
-        self.expanded_icon_Depression_pushButton.setText(_translate("PsycheEval_MainWindow", "   Depression"))
-        self.expanded_icon_SelfEsteem_pushButton.setText(_translate("PsycheEval_MainWindow", "   Self-Esteem"))
-        self.expanded_icon_Preview_pushButton.setText(_translate("PsycheEval_MainWindow", "   Preview"))
-        self.expanded_icon_Database_pushButton.setText(_translate("PsycheEval_MainWindow", "   Database"))
-        self.expanded_icon_Exit_pushButton.setText(_translate("PsycheEval_MainWindow", "   Exit"))
+        self.MainWindow.logo_mainlabel.setText(_translate("PsycheEval_MainWindow", "PsycheEval"))
+        self.MainWindow.expanded_icon_General_pushButton.setText(_translate("PsycheEval_MainWindow", "   General"))
+        self.MainWindow.expanded_icon_Stress_pushButton.setText(_translate("PsycheEval_MainWindow", "   Stress "))
+        self.MainWindow.expanded_icon_Depression_pushButton.setText(_translate("PsycheEval_MainWindow", "   Depression"))
+        self.MainWindow.expanded_icon_SelfEsteem_pushButton.setText(_translate("PsycheEval_MainWindow", "   Self-Esteem"))
+        self.MainWindow.expanded_icon_Preview_pushButton.setText(_translate("PsycheEval_MainWindow", "   Preview"))
+        self.MainWindow.expanded_icon_Database_pushButton.setText(_translate("PsycheEval_MainWindow", "   Database"))
+        self.MainWindow.expanded_icon_Exit_pushButton.setText(_translate("PsycheEval_MainWindow", "   Exit"))
         
         # Set text for self-esteem questions
         for question_num, question_text in enumerate(SelfEsteemTab.questions, start=1):
@@ -615,203 +271,42 @@ class Ui_PsycheEval_MainWindow(object):
                 no_label.setText(_translate("PsycheEval_MainWindow", str(question_num)))
                 question_label.setText(_translate("PsycheEval_MainWindow", question_text))
 
-        self.DepressionTab.DT_Q1.setText(_translate("PsycheEval_MainWindow", "1"))
-        self.DepressionTab.DT_Q1_A1_Label.setText(_translate("PsycheEval_MainWindow", "Low energy"))
-        self.DepressionTab.DT_1_pushButton_1.setText(_translate("PsycheEval_MainWindow", "1"))
-        self.DepressionTab.DT_1_pushButton_2.setText(_translate("PsycheEval_MainWindow", "2"))
-        self.DepressionTab.DT_1_pushButton_3.setText(_translate("PsycheEval_MainWindow", "3"))
-        self.DepressionTab.DT_1_pushButton_4.setText(_translate("PsycheEval_MainWindow", "4"))
-        self.DepressionTab.DT_1_pushButton_5.setText(_translate("PsycheEval_MainWindow", "5"))
-        self.DepressionTab.DT_Q1_A2_Label.setText(_translate("PsycheEval_MainWindow", "High Energy"))
-        self.DepressionTab.DT_Q2.setText(_translate("PsycheEval_MainWindow", "2"))
-        self.DepressionTab.DT_Q2_A1_Label.setText(_translate("PsycheEval_MainWindow", "Difficulty sleeping or sleep all the time"))
-        self.DepressionTab.DT_2_pushButton_1.setText(_translate("PsycheEval_MainWindow", "1"))
-        self.DepressionTab.DT_2_pushButton_2.setText(_translate("PsycheEval_MainWindow", "2"))
-        self.DepressionTab.DT_2_pushButton_3.setText(_translate("PsycheEval_MainWindow", "3"))
-        self.DepressionTab.DT_2_pushButton_4.setText(_translate("PsycheEval_MainWindow", "4"))
-        self.DepressionTab.DT_2_pushButton_5.setText(_translate("PsycheEval_MainWindow", "5"))
-        self.DepressionTab.DT_Q2_A2_Label.setText(_translate("PsycheEval_MainWindow", "Uninterrupted sleeping patterns"))
-        self.DepressionTab.DT_Q3.setText(_translate("PsycheEval_MainWindow", "3"))
-        self.DepressionTab.DT_Q3_A1_Label.setText(_translate("PsycheEval_MainWindow", "No desire to be involved in activities"))
-        self.DepressionTab.DT_3_pushButton_1.setText(_translate("PsycheEval_MainWindow", "1"))
-        self.DepressionTab.DT_3_pushButton_2.setText(_translate("PsycheEval_MainWindow", "2"))
-        self.DepressionTab.DT_3_pushButton_3.setText(_translate("PsycheEval_MainWindow", "3"))
-        self.DepressionTab.DT_3_pushButton_4.setText(_translate("PsycheEval_MainWindow", "4"))
-        self.DepressionTab.DT_3_pushButton_5.setText(_translate("PsycheEval_MainWindow", "5"))
-        self.DepressionTab.DT_Q3_A2_Label.setText(_translate("PsycheEval_MainWindow", "Very involved in activities"))
-        self.DepressionTab.DT_Q4.setText(_translate("PsycheEval_MainWindow", "4"))
-        self.DepressionTab.DT_Q4_A1_Label.setText(_translate("PsycheEval_MainWindow", "No desire for sex"))
-        self.DepressionTab.DT_4_pushButton_1.setText(_translate("PsycheEval_MainWindow", "1"))
-        self.DepressionTab.DT_4_pushButton_2.setText(_translate("PsycheEval_MainWindow", "2"))
-        self.DepressionTab.DT_4_pushButton_3.setText(_translate("PsycheEval_MainWindow", "3"))
-        self.DepressionTab.DT_4_pushButton_4.setText(_translate("PsycheEval_MainWindow", "4"))
-        self.DepressionTab.DT_4_pushButton_5.setText(_translate("PsycheEval_MainWindow", "5"))
-        self.DepressionTab.DT_Q4_A2_Label.setText(_translate("PsycheEval_MainWindow", "Healthy sex drive"))
-        self.DepressionTab.DT_Q5.setText(_translate("PsycheEval_MainWindow", "5"))
-        self.DepressionTab.DT_Q5_A1_Label.setText(_translate("PsycheEval_MainWindow", "Aches and pain"))
-        self.DepressionTab.DT_5_pushButton_1.setText(_translate("PsycheEval_MainWindow", "1"))
-        self.DepressionTab.DT_5_pushButton_2.setText(_translate("PsycheEval_MainWindow", "2"))
-        self.DepressionTab.DT_5_pushButton_3.setText(_translate("PsycheEval_MainWindow", "3"))
-        self.DepressionTab.DT_5_pushButton_4.setText(_translate("PsycheEval_MainWindow", "4"))
-        self.DepressionTab.DT_5_pushButton_5.setText(_translate("PsycheEval_MainWindow", "5"))
-        self.DepressionTab.DT_Q5_A2_Label.setText(_translate("PsycheEval_MainWindow", "Feel great"))
-        self.DepressionTab.DT_Q6.setText(_translate("PsycheEval_MainWindow", "6"))
-        self.DepressionTab.DT_Q6_A1_Label.setText(_translate("PsycheEval_MainWindow", "Loss of appetite"))
-        self.DepressionTab.DT_6_pushButton_1.setText(_translate("PsycheEval_MainWindow", "1"))
-        self.DepressionTab.DT_6_pushButton_2.setText(_translate("PsycheEval_MainWindow", "2"))
-        self.DepressionTab.DT_6_pushButton_3.setText(_translate("PsycheEval_MainWindow", "3"))
-        self.DepressionTab.DT_6_pushButton_4.setText(_translate("PsycheEval_MainWindow", "4"))
-        self.DepressionTab.DT_6_pushButton_5.setText(_translate("PsycheEval_MainWindow", "5"))
-        self.DepressionTab.DT_Q6_A2_Label.setText(_translate("PsycheEval_MainWindow", "Enjoy eating"))
-        self.DepressionTab.DT_Q7.setText(_translate("PsycheEval_MainWindow", "7"))
-        self.DepressionTab.DT_Q7_A1_Label.setText(_translate("PsycheEval_MainWindow", "Sad (tearful)"))
-        self.DepressionTab.DT_7_pushButton_1.setText(_translate("PsycheEval_MainWindow", "1"))
-        self.DepressionTab.DT_7_pushButton_2.setText(_translate("PsycheEval_MainWindow", "2"))
-        self.DepressionTab.DT_7_pushButton_3.setText(_translate("PsycheEval_MainWindow", "3"))
-        self.DepressionTab.DT_7_pushButton_4.setText(_translate("PsycheEval_MainWindow", "4"))
-        self.DepressionTab.DT_7_pushButton_5.setText(_translate("PsycheEval_MainWindow", "5"))
-        self.DepressionTab.DT_Q7_A2_Label.setText(_translate("PsycheEval_MainWindow", "Joyful"))
-        self.DepressionTab.DT_Q8.setText(_translate("PsycheEval_MainWindow", "8"))
-        self.DepressionTab.DT_Q8_A1_Label.setText(_translate("PsycheEval_MainWindow", "Despairing and hopeless"))
-        self.DepressionTab.DT_8_pushButton_1.setText(_translate("PsycheEval_MainWindow", "1"))
-        self.DepressionTab.DT_8_pushButton_2.setText(_translate("PsycheEval_MainWindow", "2"))
-        self.DepressionTab.DT_8_pushButton_3.setText(_translate("PsycheEval_MainWindow", "3"))
-        self.DepressionTab.DT_8_pushButton_4.setText(_translate("PsycheEval_MainWindow", "4"))
-        self.DepressionTab.DT_8_pushButton_5.setText(_translate("PsycheEval_MainWindow", "5"))
-        self.DepressionTab.DT_Q8_A2_Label.setText(_translate("PsycheEval_MainWindow", "Despairing and hopeless"))
-        self.DepressionTab.DT_Q9.setText(_translate("PsycheEval_MainWindow", "9"))
-        self.DepressionTab.DT_Q9_A1_Label.setText(_translate("PsycheEval_MainWindow", "Irritable (low frustration tolerance) "))
-        self.DepressionTab.DT_9_pushButton_1.setText(_translate("PsycheEval_MainWindow", "1"))
-        self.DepressionTab.DT_9_pushButton_2.setText(_translate("PsycheEval_MainWindow", "2"))
-        self.DepressionTab.DT_9_pushButton_3.setText(_translate("PsycheEval_MainWindow", "3"))
-        self.DepressionTab.DT_9_pushButton_4.setText(_translate("PsycheEval_MainWindow", "4"))
-        self.DepressionTab.DT_9_pushButton_5.setText(_translate("PsycheEval_MainWindow", "5"))
-        self.DepressionTab.DT_Q9_A2_Label.setText(_translate("PsycheEval_MainWindow", "Patient-high frustration tolerance"))
-        self.DepressionTab.DT_Q10.setText(_translate("PsycheEval_MainWindow", "10"))
-        self.DepressionTab.DT_Q10_A1_Label.setText(_translate("PsycheEval_MainWindow", "Withdrawn"))
-        self.DepressionTab.DT_10_pushButton_1.setText(_translate("PsycheEval_MainWindow", "1"))
-        self.DepressionTab.DT_10_pushButton_2.setText(_translate("PsycheEval_MainWindow", "2"))
-        self.DepressionTab.DT_10_pushButton_3.setText(_translate("PsycheEval_MainWindow", "3"))
-        self.DepressionTab.DT_10_pushButton_4.setText(_translate("PsycheEval_MainWindow", "4"))
-        self.DepressionTab.DT_10_pushButton_5.setText(_translate("PsycheEval_MainWindow", "5"))
-        self.DepressionTab.DT_Q10_A2_Label_2.setText(_translate("PsycheEval_MainWindow", " Involved"))
-        self.DepressionTab.Depression_Page_tabWidget.setTabText(self.DepressionTab.Depression_Page_tabWidget.indexOf(self.DepressionTab.DT_page_1), _translate("PsycheEval_MainWindow", "Page 1"))
-        self.DepressionTab.DT_Q11.setText(_translate("PsycheEval_MainWindow", "11"))
-        self.DepressionTab.DT_Q11_A1_Label.setText(_translate("PsycheEval_MainWindow", "Mental anguish"))
-        self.DepressionTab.DT_11_pushButton_1.setText(_translate("PsycheEval_MainWindow", "1"))
-        self.DepressionTab.DT_11_pushButton_2.setText(_translate("PsycheEval_MainWindow", "2"))
-        self.DepressionTab.DT_11_pushButton_3.setText(_translate("PsycheEval_MainWindow", "3"))
-        self.DepressionTab.DT_11_pushButton_4.setText(_translate("PsycheEval_MainWindow", "4"))
-        self.DepressionTab.DT_11_pushButton_5.setText(_translate("PsycheEval_MainWindow", "5"))
-        self.DepressionTab.DT_Q11_A2_Label.setText(_translate("PsycheEval_MainWindow", "Peace of mind"))
-        self.DepressionTab.DT_Q12.setText(_translate("PsycheEval_MainWindow", "12"))
-        self.DepressionTab.DT_Q12_A1_Label.setText(_translate("PsycheEval_MainWindow", "Low sense of self-worth"))
-        self.DepressionTab.DT_12_pushButton_1.setText(_translate("PsycheEval_MainWindow", "1"))
-        self.DepressionTab.DT_12_pushButton_2.setText(_translate("PsycheEval_MainWindow", "2"))
-        self.DepressionTab.DT_12_pushButton_3.setText(_translate("PsycheEval_MainWindow", "3"))
-        self.DepressionTab.DT_12_pushButton_4.setText(_translate("PsycheEval_MainWindow", "4"))
-        self.DepressionTab.DT_12_pushButton_5.setText(_translate("PsycheEval_MainWindow", "5"))
-        self.DepressionTab.DT_Q12_A2_Label.setText(_translate("PsycheEval_MainWindow", "High sense of self-worth"))
-        self.DepressionTab.DT_Q13.setText(_translate("PsycheEval_MainWindow", "13"))
-        self.DepressionTab.DT_Q13_A1_Label.setText(_translate("PsycheEval_MainWindow", "Pessimistic about the future"))
-        self.DepressionTab.DT_13_pushButton_1.setText(_translate("PsycheEval_MainWindow", "1"))
-        self.DepressionTab.DT_13_pushButton_2.setText(_translate("PsycheEval_MainWindow", "2"))
-        self.DepressionTab.DT_13_pushButton_3.setText(_translate("PsycheEval_MainWindow", "3"))
-        self.DepressionTab.DT_13_pushButton_4.setText(_translate("PsycheEval_MainWindow", "4"))
-        self.DepressionTab.DT_13_pushButton_5.setText(_translate("PsycheEval_MainWindow", "5"))
-        self.DepressionTab.DT_Q13_A2_Label.setText(_translate("PsycheEval_MainWindow", "Optimistic about the future"))
-        self.DepressionTab.DT_Q14.setText(_translate("PsycheEval_MainWindow", "14"))
-        self.DepressionTab.DT_Q14_A1_Label.setText(_translate("PsycheEval_MainWindow", "Perceive most circumstances as"))
-        self.DepressionTab.DT_Q14_A1_Label_2.setText(_translate("PsycheEval_MainWindow", "negative and harmful to self"))
-        self.DepressionTab.DT_14_pushButton_1.setText(_translate("PsycheEval_MainWindow", "1"))
-        self.DepressionTab.DT_14_pushButton_2.setText(_translate("PsycheEval_MainWindow", "2"))
-        self.DepressionTab.DT_14_pushButton_3.setText(_translate("PsycheEval_MainWindow", "3"))
-        self.DepressionTab.DT_14_pushButton_4.setText(_translate("PsycheEval_MainWindow", "4"))
-        self.DepressionTab.DT_14_pushButton_5.setText(_translate("PsycheEval_MainWindow", "5"))
-        self.DepressionTab.DT_Q14_A2_Label.setText(_translate("PsycheEval_MainWindow", "Perceive most circumstances "))
-        self.DepressionTab.DT_Q14_A2_Label_2.setText(_translate("PsycheEval_MainWindow", "as opportunities for growth"))
-        self.DepressionTab.DT_Q15.setText(_translate("PsycheEval_MainWindow", "15"))
-        self.DepressionTab.DT_Q15_A1_Label.setText(_translate("PsycheEval_MainWindow", "Self-destructive (I and others would"))
-        self.DepressionTab.DT_Q15_A1_Label_2.setText(_translate("PsycheEval_MainWindow", "be better off if I weren’t here"))
-        self.DepressionTab.DT_15_pushButton_1.setText(_translate("PsycheEval_MainWindow", "1"))
-        self.DepressionTab.DT_15_pushButton_2.setText(_translate("PsycheEval_MainWindow", "2"))
-        self.DepressionTab.DT_15_pushButton_3.setText(_translate("PsycheEval_MainWindow", "3"))
-        self.DepressionTab.DT_15_pushButton_4.setText(_translate("PsycheEval_MainWindow", "4"))
-        self.DepressionTab.DT_15_pushButton_5.setText(_translate("PsycheEval_MainWindow", "5"))
-        self.DepressionTab.DT_Q15_A2_Label.setText(_translate("PsycheEval_MainWindow", "Self-preserving (I’m glad "))
-        self.DepressionTab.DT_Q15_A2_Label_2.setText(_translate("PsycheEval_MainWindow", "I’m here)"))
-        self.DepressionTab.Depression_Page_tabWidget.setTabText(self.DepressionTab.Depression_Page_tabWidget.indexOf(self.DepressionTab.DT_page_2), _translate("PsycheEval_MainWindow", "Page 2"))
-        self.StressTab.ST_Q1.setText(_translate("PsycheEval_MainWindow", "1"))
-        self.StressTab.ST_Q1_Label.setText(_translate("PsycheEval_MainWindow", "Been upset because of something that happened unexpectedly?"))
-        self.StressTab.ST_1_pushButton_1.setText(_translate("PsycheEval_MainWindow", "1"))
-        self.StressTab.ST_1_pushButton_2.setText(_translate("PsycheEval_MainWindow", "2"))
-        self.StressTab.ST_1_pushButton_3.setText(_translate("PsycheEval_MainWindow", "3"))
-        self.StressTab.ST_1_pushButton_4.setText(_translate("PsycheEval_MainWindow", "4"))
-        self.StressTab.ST_1_pushButton_5.setText(_translate("PsycheEval_MainWindow", "5"))
-        self.StressTab.ST_Q2.setText(_translate("PsycheEval_MainWindow", "2"))
-        self.StressTab.ST_Q2_Label.setText(_translate("PsycheEval_MainWindow", "Felt that you were unable to control the important things in your life?"))
-        self.StressTab.ST_2_pushButton_1.setText(_translate("PsycheEval_MainWindow", "1"))
-        self.StressTab.ST_2_pushButton_2.setText(_translate("PsycheEval_MainWindow", "2"))
-        self.StressTab.ST_2_pushButton_3.setText(_translate("PsycheEval_MainWindow", "3"))
-        self.StressTab.ST_2_pushButton_4.setText(_translate("PsycheEval_MainWindow", "4"))
-        self.StressTab.ST_2_pushButton_5.setText(_translate("PsycheEval_MainWindow", "5"))
-        self.StressTab.ST_Q3.setText(_translate("PsycheEval_MainWindow", "3"))
-        self.StressTab.ST_Q3_Label.setText(_translate("PsycheEval_MainWindow", "Felt nervous and \"stressed\"?"))
-        self.StressTab.ST_3_pushButton_1.setText(_translate("PsycheEval_MainWindow", "1"))
-        self.StressTab.ST_3_pushButton_2.setText(_translate("PsycheEval_MainWindow", "2"))
-        self.StressTab.ST_3_pushButton_3.setText(_translate("PsycheEval_MainWindow", "3"))
-        self.StressTab.ST_3_pushButton_4.setText(_translate("PsycheEval_MainWindow", "4"))
-        self.StressTab.ST_3_pushButton_5.setText(_translate("PsycheEval_MainWindow", "5"))
-        self.StressTab.ST_Q4.setText(_translate("PsycheEval_MainWindow", "4"))
-        self.StressTab.ST_Q4_Label.setText(_translate("PsycheEval_MainWindow", "Felt unsure about your ability to handle your personal problems?"))
-        self.StressTab.ST_4_pushButton_1.setText(_translate("PsycheEval_MainWindow", "1"))
-        self.StressTab.ST_4_pushButton_2.setText(_translate("PsycheEval_MainWindow", "2"))
-        self.StressTab.ST_4_pushButton_3.setText(_translate("PsycheEval_MainWindow", "3"))
-        self.StressTab.ST_4_pushButton_4.setText(_translate("PsycheEval_MainWindow", "4"))
-        self.StressTab.ST_4_pushButton_5.setText(_translate("PsycheEval_MainWindow", "5"))
-        self.StressTab.ST_Q5.setText(_translate("PsycheEval_MainWindow", "5"))
-        self.StressTab.ST_Q5_Label.setText(_translate("PsycheEval_MainWindow", "Felt that things weren\'t going your way?"))
-        self.StressTab.ST_5_pushButton_1.setText(_translate("PsycheEval_MainWindow", "1"))
-        self.StressTab.ST_5_pushButton_2.setText(_translate("PsycheEval_MainWindow", "2"))
-        self.StressTab.ST_5_pushButton_3.setText(_translate("PsycheEval_MainWindow", "3"))
-        self.StressTab.ST_5_pushButton_4.setText(_translate("PsycheEval_MainWindow", "4"))
-        self.StressTab.ST_5_pushButton_5.setText(_translate("PsycheEval_MainWindow", "5"))
-        self.StressTab.ST_Q6.setText(_translate("PsycheEval_MainWindow", "6"))
-        self.StressTab.ST_Q6_Label.setText(_translate("PsycheEval_MainWindow", "Found that you could not cope with all the things that you had to do?"))
-        self.StressTab.ST_6_pushButton_1.setText(_translate("PsycheEval_MainWindow", "1"))
-        self.StressTab.ST_6_pushButton_2.setText(_translate("PsycheEval_MainWindow", "2"))
-        self.StressTab.ST_6_pushButton_3.setText(_translate("PsycheEval_MainWindow", "3"))
-        self.StressTab.ST_6_pushButton_4.setText(_translate("PsycheEval_MainWindow", "4"))
-        self.StressTab.ST_6_pushButton_5.setText(_translate("PsycheEval_MainWindow", "5"))
-        self.StressTab.ST_Q7.setText(_translate("PsycheEval_MainWindow", "7"))
-        self.StressTab.ST_Q7_Label.setText(_translate("PsycheEval_MainWindow", "Been unable to control irritations in your life?"))
-        self.StressTab.ST_7_pushButton_1.setText(_translate("PsycheEval_MainWindow", "1"))
-        self.StressTab.ST_7_pushButton_2.setText(_translate("PsycheEval_MainWindow", "2"))
-        self.StressTab.ST_7_pushButton_3.setText(_translate("PsycheEval_MainWindow", "3"))
-        self.StressTab.ST_7_pushButton_4.setText(_translate("PsycheEval_MainWindow", "4"))
-        self.StressTab.ST_7_pushButton_5.setText(_translate("PsycheEval_MainWindow", "5"))
-        self.StressTab.ST_Q8.setText(_translate("PsycheEval_MainWindow", "8"))
-        self.StressTab.ST_Q8_Label.setText(_translate("PsycheEval_MainWindow", "Felt that you weren\'t on top of things?"))
-        self.StressTab.ST_8_pushButton_1.setText(_translate("PsycheEval_MainWindow", "1"))
-        self.StressTab.ST_8_pushButton_2.setText(_translate("PsycheEval_MainWindow", "2"))
-        self.StressTab.ST_8_pushButton_3.setText(_translate("PsycheEval_MainWindow", "3"))
-        self.StressTab.ST_8_pushButton_4.setText(_translate("PsycheEval_MainWindow", "4"))
-        self.StressTab.ST_8_pushButton_5.setText(_translate("PsycheEval_MainWindow", "5"))
-        self.StressTab.ST_Q9.setText(_translate("PsycheEval_MainWindow", "9"))
-        self.StressTab.ST_Q9_Label.setText(_translate("PsycheEval_MainWindow", "Been angered because of things that were outside of your control?"))
-        self.StressTab.ST_9_pushButton_1.setText(_translate("PsycheEval_MainWindow", "1"))
-        self.StressTab.ST_9_pushButton_2.setText(_translate("PsycheEval_MainWindow", "2"))
-        self.StressTab.ST_9_pushButton_3.setText(_translate("PsycheEval_MainWindow", "3"))
-        self.StressTab.ST_9_pushButton_4.setText(_translate("PsycheEval_MainWindow", "4"))
-        self.StressTab.ST_9_pushButton_5.setText(_translate("PsycheEval_MainWindow", "5"))
-        self.StressTab.ST_Q10.setText(_translate("PsycheEval_MainWindow", "10"))
-        self.StressTab.ST_Q10_Label.setText(_translate("PsycheEval_MainWindow", "Felt difficulties were piling up so high that you could not overcome them?"))
-        self.StressTab.ST_10_pushButton_1.setText(_translate("PsycheEval_MainWindow", "1"))
-        self.StressTab.ST_10_pushButton_2.setText(_translate("PsycheEval_MainWindow", "2"))
-        self.StressTab.ST_10_pushButton_3.setText(_translate("PsycheEval_MainWindow", "3"))
-        self.StressTab.ST_10_pushButton_4.setText(_translate("PsycheEval_MainWindow", "4"))
-        self.StressTab.ST_10_pushButton_5.setText(_translate("PsycheEval_MainWindow", "5"))
-        self.StressTab.Stress_tabWidget.setTabText(self.StressTab.Stress_tabWidget.indexOf(self.StressTab.ST_Tab), _translate("PsycheEval_MainWindow", "Page 1"))
+                # Set text for depression questions
+        for question_num, (a1_text, a2_text) in enumerate(self.DepressionTab.questions, start=1):
+                no_label = self.DepressionTab.question_labels[f"DT_Q{question_num}"]
+                a1_label = self.DepressionTab.a1_labels[f"DT_Q{question_num}_A1_Label"]
+                a2_label = self.DepressionTab.a2_labels[f"DT_Q{question_num}_A2_Label"]
+
+                no_label.setText(_translate("PsycheEval_MainWindow", str(question_num)))
+                a1_label.setText(_translate("PsycheEval_MainWindow", a1_text))
+                a2_label.setText(_translate("PsycheEval_MainWindow", a2_text))
+
+                if question_num == 14:
+                        a1_label_2 = self.DepressionTab.a1_labels[f"DT_Q{question_num}_A1_Label_2"]
+                        a2_label_2 = self.DepressionTab.a2_labels[f"DT_Q{question_num}_A2_Label_2"]
+                        a1_label_2.setText(_translate("PsycheEval_MainWindow", "negative and harmful to self"))
+                        a2_label_2.setText(_translate("PsycheEval_MainWindow", "as opportunities for growth"))
+                elif question_num == 15:
+                        a1_label_2 = self.DepressionTab.a1_labels[f"DT_Q{question_num}_A1_Label_2"]
+                        a2_label_2 = self.DepressionTab.a2_labels[f"DT_Q{question_num}_A2_Label_2"]
+                        a1_label_2.setText(_translate("PsycheEval_MainWindow", "be better off if I weren’t here"))
+                        a2_label_2.setText(_translate("PsycheEval_MainWindow", "I’m here)"))
+                
+                # Set the text for the buttons (1-5)
+        for question_num in range(1, 16):  # Assuming there are 15 questions
+                for btn_num in range(1, 6):
+                        button = self.DepressionTab.buttons[f"DT_{question_num}_pushButton_{btn_num}"]
+                        button.setText(_translate("PsycheEval_MainWindow", str(btn_num)))
+
+
+        # Update the stress questions
+        for question_num, question_text in enumerate(self.StressTab.questions, start=1):
+            q_num_label = self.StressTab.question_widgets[f"ST_Q{question_num}_no_Label"]
+            q_text_label = self.StressTab.question_widgets[f"ST_Q{question_num}_question"]
+            q_num_label.setText(_translate("PsycheEval_MainWindow", str(question_num)))
+            q_text_label.setText(_translate("PsycheEval_MainWindow", question_text))
+
+
         self.GeneralTab.GE_Student_Label.setText(_translate("PsycheEval_MainWindow", "Student Name:"))
         self.GeneralTab.GE_Age_Label.setText(_translate("PsycheEval_MainWindow", " Age:"))
         self.GeneralTab.GE_Sex_Label.setText(_translate("PsycheEval_MainWindow", "Sex:"))

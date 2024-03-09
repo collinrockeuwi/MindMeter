@@ -1,15 +1,34 @@
-from PyQt5 import QtCore, QtGui, QtWidgets        
-
-
+from PyQt5 import QtCore, QtGui, QtWidgets
 
 class DepressionTab:
+    questions = [
+        ("Low energy", "High Energy"),
+        ("Difficulty sleeping or sleep all the time", "Uninterrupted sleeping patterns"),
+        ("No desire to be involved in activities", "Very involved in activities"),
+        ("No desire for sex", "Healthy sex drive"),
+        ("Aches and pain", "Feel great"),
+        ("Loss of appetite", "Enjoy eating"),
+        ("Sad (tearful)", "Joyful"),
+        ("Despairing and hopeless", "Hopeful about the future"),
+        ("Irritable (low frustration tolerance)", "Patient-high frustration tolerance"),
+        ("Withdrawn", "Involved"),
+        ("Mental anguish", "Peace of mind"),
+        ("Low sense of self-worth", "High sense of self-worth"),
+        ("Pessimistic about the future", "Optimistic about the future"),
+        ("Perceive most circumstances as", "Perceive most circumstances"),
+        ("Self-destructive (I and others would", "Self-preserving (I’m glad")
+    ]
+
     def __init__(self, parent, stackedWidget):
         self.stackedWidget = stackedWidget
+        self.question_labels = {}
+        self.a1_labels = {}  # Add this line
+        self.a2_labels = {}  # Add this line
+        self.buttons = {}    # Initialize the buttons dictionary
         self.setupDepressionPage(parent)
-        
+                
 
     def setupDepressionPage(self, parent):
-                
         self.Depression_Page = QtWidgets.QWidget()
         self.Depression_Page.setObjectName("Depression_Page")
         self.Depression_Page_gridLayout = QtWidgets.QGridLayout(self.Depression_Page)
@@ -20,1425 +39,330 @@ class DepressionTab:
         font.setPointSize(11)
         self.Depression_Page_tabWidget.setFont(font)
         self.Depression_Page_tabWidget.setStyleSheet("QTabWidget::pane {\n"
-"    /* The tab widget frame */\n"
-"    border-top: 2px solid rgb(31, 149, 239);\n"
-"    border-radius: 5px; /* Rounded corners for the pane */\n"
-"}\n"
-"\n"
-"QTabWidget::tab-bar {\n"
-"    /* The tab bar */\n"
-"    left: 5px; /* Move the bar to the right */\n"
-"}\n"
-"\n"
-"QTabBar::tab {\n"
-"    /* The tab */\n"
-"    background-color: rgb(31, 149, 239);\n"
-"    color: white;\n"
-"    padding: 5px;\n"
-"    border: none;\n"
-"    min-width: 80px; /* Set the minimum width of the tab */\n"
-"    min-height: 30px; /* Set the minimum height of the tab */\n"
-"    margin-right: 2px; /* Space between tabs */\n"
-"    border-top-left-radius: 5px; /* Rounded top-left corner */\n"
-"    border-top-right-radius: 5px; /* Rounded top-right corner */\n"
-"}\n"
-"\n"
-"QTabBar::tab:selected {\n"
-"    /* The selected tab */\n"
-"    background-color: rgb(45, 45, 45);\n"
-"    border-top-left-radius: 5px; /* Maintain rounded corner when selected */\n"
-"    border-top-right-radius: 5px; /* Maintain rounded corner when selected */\n"
-"}\n"
-"\n"
-"QTabBar::tab:hover {\n"
-"    /* The tab when hovered over */\n"
-"    background-color: rgb(51, 169, 259);\n"
-"}\n"
-"")
+                                                     "    border-top: 2px solid rgb(31, 149, 239);\n"
+                                                     "    border-radius: 5px;\n"
+                                                     "}\n"
+                                                     "QTabWidget::tab-bar {\n"
+                                                     "    left: 5px;\n"
+                                                     "}\n"
+                                                     "QTabBar::tab {\n"
+                                                     "    background-color: rgb(31, 149, 239);\n"
+                                                     "    color: white;\n"
+                                                     "    padding: 5px;\n"
+                                                     "    border: none;\n"
+                                                     "    min-width: 80px;\n"
+                                                     "    min-height: 30px;\n"
+                                                     "    margin-right: 2px;\n"
+                                                     "    border-top-left-radius: 5px;\n"
+                                                     "    border-top-right-radius: 5px;\n"
+                                                     "}\n"
+                                                     "QTabBar::tab:selected {\n"
+                                                     "    background-color: rgb(45, 45, 45);\n"
+                                                     "    border-top-left-radius: 5px;\n"
+                                                     "    border-top-right-radius: 5px;\n"
+                                                     "}\n"
+                                                     "QTabBar::tab:hover {\n"
+                                                     "    background-color: rgb(51, 169, 259);\n"
+                                                     "}")
         self.Depression_Page_tabWidget.setObjectName("Depression_Page_tabWidget")
-        self.DT_page_1 = QtWidgets.QWidget()
-        self.DT_page_1.setStyleSheet("QLabel {\n"
-"\n"
-" \n"
-"   \n"
-"    \n"
-"}\n"
-"")
-        self.DT_page_1.setObjectName("DT_page_1")
-        self.DT_page_1_gridLayout = QtWidgets.QGridLayout(self.DT_page_1)
-        self.DT_page_1_gridLayout.setContentsMargins(-1, -1, 0, -1)
-        self.DT_page_1_gridLayout.setObjectName("DT_page_1_gridLayout")
-        self.DT_main_widget_1 = QtWidgets.QWidget(self.DT_page_1)
-        self.DT_main_widget_1.setStyleSheet("QPushButton {\n"
-"    color: white;\n"
-"    text-align:center;\n"
-"    height:70px;\n"
-"    border: 1px;\n"
-"  \n"
-"    border-radius: 8px; /* Round top left corner */\n"
-"    \n"
-"    background-color: rgb(31, 149, 239); /* Normal background color */\n"
-"    font-size: 35px; /* Set the font size here */\n"
-"    /* Other styles */\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: rgb(45, 45, 45); /* Darker background color on hover */\n"
-"    color: rgb(220, 220, 220); /* Slightly lighter text color on hover */\n"
-"}\n"
-"\n"
-"QPushButton:checked {\n"
-" \n"
-"     background-color: rgb(45, 45, 45); /* Darker background color on checked */\n"
-"}")
-        self.DT_main_widget_1.setObjectName("DT_main_widget_1")
-        self.DT_main_widget_verticalLayout = QtWidgets.QVBoxLayout(self.DT_main_widget_1)
-        self.DT_main_widget_verticalLayout.setContentsMargins(-1, -1, 0, -1)
-        self.DT_main_widget_verticalLayout.setObjectName("DT_main_widget_verticalLayout")
-        self.DT_Q1_horizontal_question_lyt = QtWidgets.QHBoxLayout()
-        self.DT_Q1_horizontal_question_lyt.setObjectName("DT_Q1_horizontal_question_lyt")
-        self.DT_Q1 = QtWidgets.QLabel(self.DT_main_widget_1)
-        self.DT_Q1.setMinimumSize(QtCore.QSize(60, 60))
-        self.DT_Q1.setMaximumSize(QtCore.QSize(60, 60))
-        font = QtGui.QFont()
-        font.setFamily("Roboto Bk")
-        font.setPointSize(14)
-        self.DT_Q1.setFont(font)
-        self.DT_Q1.setStyleSheet("QLabel {\n"
-"     color: rgb(31, 149, 239);\n"
-"    qproperty-alignment: AlignCenter;\n"
-"   \n"
-"    border: 3px solid rgb(31, 149, 239); /* This adds a 1px solid white border around the QLabel */\n"
-"    border-radius: 10px; /* Optional: if you want rounded corners */\n"
-"}\n"
-"")
-        self.DT_Q1.setObjectName("DT_Q1")
-        self.DT_Q1_horizontal_question_lyt.addWidget(self.DT_Q1)
-        spacerItem24 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.DT_Q1_horizontal_question_lyt.addItem(spacerItem24)
-        self.DT_Q1_A1_Label = QtWidgets.QLabel(self.DT_main_widget_1)
-        self.DT_Q1_A1_Label.setMinimumSize(QtCore.QSize(475, 50))
-        self.DT_Q1_A1_Label.setMaximumSize(QtCore.QSize(400, 50))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(16)
-        self.DT_Q1_A1_Label.setFont(font)
-        self.DT_Q1_A1_Label.setObjectName("DT_Q1_A1_Label")
-        self.DT_Q1_horizontal_question_lyt.addWidget(self.DT_Q1_A1_Label)
-        spacerItem25 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.DT_Q1_horizontal_question_lyt.addItem(spacerItem25)
-        self.DT_Q1_horizontal_selection_lyt = QtWidgets.QHBoxLayout()
-        self.DT_Q1_horizontal_selection_lyt.setSizeConstraint(QtWidgets.QLayout.SetFixedSize)
-        self.DT_Q1_horizontal_selection_lyt.setSpacing(20)
-        self.DT_Q1_horizontal_selection_lyt.setObjectName("DT_Q1_horizontal_selection_lyt")
-        self.DT_1_pushButton_1 = QtWidgets.QPushButton(self.DT_main_widget_1)
-        self.DT_1_pushButton_1.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_1_pushButton_1.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_1_pushButton_1.setCheckable(True)
-        self.DT_1_pushButton_1.setAutoExclusive(True)
-        self.DT_1_pushButton_1.setObjectName("DT_1_pushButton_1")
-        self.DT_Q1_horizontal_selection_lyt.addWidget(self.DT_1_pushButton_1)
-        self.DT_1_pushButton_2 = QtWidgets.QPushButton(self.DT_main_widget_1)
-        self.DT_1_pushButton_2.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_1_pushButton_2.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_1_pushButton_2.setCheckable(True)
-        self.DT_1_pushButton_2.setAutoExclusive(True)
-        self.DT_1_pushButton_2.setObjectName("DT_1_pushButton_2")
-        self.DT_Q1_horizontal_selection_lyt.addWidget(self.DT_1_pushButton_2)
-        self.DT_1_pushButton_3 = QtWidgets.QPushButton(self.DT_main_widget_1)
-        self.DT_1_pushButton_3.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_1_pushButton_3.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_1_pushButton_3.setCheckable(True)
-        self.DT_1_pushButton_3.setAutoExclusive(True)
-        self.DT_1_pushButton_3.setObjectName("DT_1_pushButton_3")
-        self.DT_Q1_horizontal_selection_lyt.addWidget(self.DT_1_pushButton_3)
-        self.DT_1_pushButton_4 = QtWidgets.QPushButton(self.DT_main_widget_1)
-        self.DT_1_pushButton_4.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_1_pushButton_4.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_1_pushButton_4.setCheckable(True)
-        self.DT_1_pushButton_4.setAutoExclusive(True)
-        self.DT_1_pushButton_4.setObjectName("DT_1_pushButton_4")
-        self.DT_Q1_horizontal_selection_lyt.addWidget(self.DT_1_pushButton_4)
-        self.DT_1_pushButton_5 = QtWidgets.QPushButton(self.DT_main_widget_1)
-        self.DT_1_pushButton_5.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_1_pushButton_5.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_1_pushButton_5.setCheckable(True)
-        self.DT_1_pushButton_5.setAutoExclusive(True)
-        self.DT_1_pushButton_5.setObjectName("DT_1_pushButton_5")
-        self.DT_Q1_horizontal_selection_lyt.addWidget(self.DT_1_pushButton_5)
-        self.DT_Q1_horizontal_question_lyt.addLayout(self.DT_Q1_horizontal_selection_lyt)
-        spacerItem26 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.DT_Q1_horizontal_question_lyt.addItem(spacerItem26)
-        self.DT_Q1_A2_Label = QtWidgets.QLabel(self.DT_main_widget_1)
-        self.DT_Q1_A2_Label.setMinimumSize(QtCore.QSize(400, 50))
-        self.DT_Q1_A2_Label.setMaximumSize(QtCore.QSize(800, 50))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(16)
-        self.DT_Q1_A2_Label.setFont(font)
-        self.DT_Q1_A2_Label.setObjectName("DT_Q1_A2_Label")
-        self.DT_Q1_horizontal_question_lyt.addWidget(self.DT_Q1_A2_Label)
-        self.DT_main_widget_verticalLayout.addLayout(self.DT_Q1_horizontal_question_lyt)
-        self.DT_Q2_horizontal_question_lyt = QtWidgets.QHBoxLayout()
-        self.DT_Q2_horizontal_question_lyt.setObjectName("DT_Q2_horizontal_question_lyt")
-        self.DT_Q2 = QtWidgets.QLabel(self.DT_main_widget_1)
-        self.DT_Q2.setMinimumSize(QtCore.QSize(60, 60))
-        self.DT_Q2.setMaximumSize(QtCore.QSize(60, 60))
-        font = QtGui.QFont()
-        font.setFamily("Roboto Bk")
-        font.setPointSize(14)
-        self.DT_Q2.setFont(font)
-        self.DT_Q2.setStyleSheet("QLabel {\n"
-"     color: rgb(31, 149, 239);\n"
-"    qproperty-alignment: AlignCenter;\n"
-"   \n"
-"    border: 3px solid rgb(31, 149, 239); /* This adds a 1px solid white border around the QLabel */\n"
-"    border-radius: 10px; /* Optional: if you want rounded corners */\n"
-"}\n"
-"")
-        self.DT_Q2.setObjectName("DT_Q2")
-        self.DT_Q2_horizontal_question_lyt.addWidget(self.DT_Q2)
-        spacerItem27 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.DT_Q2_horizontal_question_lyt.addItem(spacerItem27)
-        self.DT_Q2_A1_Label = QtWidgets.QLabel(self.DT_main_widget_1)
-        self.DT_Q2_A1_Label.setMinimumSize(QtCore.QSize(475, 50))
-        self.DT_Q2_A1_Label.setMaximumSize(QtCore.QSize(475, 50))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(16)
-        self.DT_Q2_A1_Label.setFont(font)
-        self.DT_Q2_A1_Label.setObjectName("DT_Q2_A1_Label")
-        self.DT_Q2_horizontal_question_lyt.addWidget(self.DT_Q2_A1_Label)
-        spacerItem28 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.DT_Q2_horizontal_question_lyt.addItem(spacerItem28)
-        self.DT_Q2_horizontal_selection_lyt = QtWidgets.QHBoxLayout()
-        self.DT_Q2_horizontal_selection_lyt.setSizeConstraint(QtWidgets.QLayout.SetFixedSize)
-        self.DT_Q2_horizontal_selection_lyt.setSpacing(20)
-        self.DT_Q2_horizontal_selection_lyt.setObjectName("DT_Q2_horizontal_selection_lyt")
-        self.DT_2_pushButton_1 = QtWidgets.QPushButton(self.DT_main_widget_1)
-        self.DT_2_pushButton_1.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_2_pushButton_1.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_2_pushButton_1.setCheckable(True)
-        self.DT_2_pushButton_1.setAutoExclusive(True)
-        self.DT_2_pushButton_1.setObjectName("DT_2_pushButton_1")
-        self.DT_Q2_horizontal_selection_lyt.addWidget(self.DT_2_pushButton_1)
-        self.DT_2_pushButton_2 = QtWidgets.QPushButton(self.DT_main_widget_1)
-        self.DT_2_pushButton_2.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_2_pushButton_2.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_2_pushButton_2.setCheckable(True)
-        self.DT_2_pushButton_2.setAutoExclusive(True)
-        self.DT_2_pushButton_2.setObjectName("DT_2_pushButton_2")
-        self.DT_Q2_horizontal_selection_lyt.addWidget(self.DT_2_pushButton_2)
-        self.DT_2_pushButton_3 = QtWidgets.QPushButton(self.DT_main_widget_1)
-        self.DT_2_pushButton_3.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_2_pushButton_3.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_2_pushButton_3.setCheckable(True)
-        self.DT_2_pushButton_3.setAutoExclusive(True)
-        self.DT_2_pushButton_3.setObjectName("DT_2_pushButton_3")
-        self.DT_Q2_horizontal_selection_lyt.addWidget(self.DT_2_pushButton_3)
-        self.DT_2_pushButton_4 = QtWidgets.QPushButton(self.DT_main_widget_1)
-        self.DT_2_pushButton_4.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_2_pushButton_4.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_2_pushButton_4.setCheckable(True)
-        self.DT_2_pushButton_4.setAutoExclusive(True)
-        self.DT_2_pushButton_4.setObjectName("DT_2_pushButton_4")
-        self.DT_Q2_horizontal_selection_lyt.addWidget(self.DT_2_pushButton_4)
-        self.DT_2_pushButton_5 = QtWidgets.QPushButton(self.DT_main_widget_1)
-        self.DT_2_pushButton_5.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_2_pushButton_5.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_2_pushButton_5.setCheckable(True)
-        self.DT_2_pushButton_5.setAutoExclusive(True)
-        self.DT_2_pushButton_5.setObjectName("DT_2_pushButton_5")
-        self.DT_Q2_horizontal_selection_lyt.addWidget(self.DT_2_pushButton_5)
-        self.DT_Q2_horizontal_question_lyt.addLayout(self.DT_Q2_horizontal_selection_lyt)
-        spacerItem29 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.DT_Q2_horizontal_question_lyt.addItem(spacerItem29)
-        self.DT_Q2_A2_Label = QtWidgets.QLabel(self.DT_main_widget_1)
-        self.DT_Q2_A2_Label.setMinimumSize(QtCore.QSize(400, 50))
-        self.DT_Q2_A2_Label.setMaximumSize(QtCore.QSize(800, 50))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(16)
-        self.DT_Q2_A2_Label.setFont(font)
-        self.DT_Q2_A2_Label.setObjectName("DT_Q2_A2_Label")
-        self.DT_Q2_horizontal_question_lyt.addWidget(self.DT_Q2_A2_Label)
-        self.DT_main_widget_verticalLayout.addLayout(self.DT_Q2_horizontal_question_lyt)
-        self.DT_Q3_horizontal_question_lyt = QtWidgets.QHBoxLayout()
-        self.DT_Q3_horizontal_question_lyt.setObjectName("DT_Q3_horizontal_question_lyt")
-        self.DT_Q3 = QtWidgets.QLabel(self.DT_main_widget_1)
-        self.DT_Q3.setMinimumSize(QtCore.QSize(60, 60))
-        self.DT_Q3.setMaximumSize(QtCore.QSize(60, 60))
-        font = QtGui.QFont()
-        font.setFamily("Roboto Bk")
-        font.setPointSize(14)
-        self.DT_Q3.setFont(font)
-        self.DT_Q3.setStyleSheet("QLabel {\n"
-"     color: rgb(31, 149, 239);\n"
-"    qproperty-alignment: AlignCenter;\n"
-"   \n"
-"    border: 3px solid rgb(31, 149, 239); /* This adds a 1px solid white border around the QLabel */\n"
-"    border-radius: 10px; /* Optional: if you want rounded corners */\n"
-"}\n"
-"")
-        self.DT_Q3.setObjectName("DT_Q3")
-        self.DT_Q3_horizontal_question_lyt.addWidget(self.DT_Q3)
-        spacerItem30 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.DT_Q3_horizontal_question_lyt.addItem(spacerItem30)
-        self.DT_Q3_A1_Label = QtWidgets.QLabel(self.DT_main_widget_1)
-        self.DT_Q3_A1_Label.setMinimumSize(QtCore.QSize(475, 50))
-        self.DT_Q3_A1_Label.setMaximumSize(QtCore.QSize(475, 50))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(16)
-        self.DT_Q3_A1_Label.setFont(font)
-        self.DT_Q3_A1_Label.setObjectName("DT_Q3_A1_Label")
-        self.DT_Q3_horizontal_question_lyt.addWidget(self.DT_Q3_A1_Label)
-        spacerItem31 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.DT_Q3_horizontal_question_lyt.addItem(spacerItem31)
-        self.DT_Q3_horizontal_selection_lyt = QtWidgets.QHBoxLayout()
-        self.DT_Q3_horizontal_selection_lyt.setSizeConstraint(QtWidgets.QLayout.SetFixedSize)
-        self.DT_Q3_horizontal_selection_lyt.setSpacing(20)
-        self.DT_Q3_horizontal_selection_lyt.setObjectName("DT_Q3_horizontal_selection_lyt")
-        self.DT_3_pushButton_1 = QtWidgets.QPushButton(self.DT_main_widget_1)
-        self.DT_3_pushButton_1.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_3_pushButton_1.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_3_pushButton_1.setCheckable(True)
-        self.DT_3_pushButton_1.setAutoExclusive(True)
-        self.DT_3_pushButton_1.setObjectName("DT_3_pushButton_1")
-        self.DT_Q3_horizontal_selection_lyt.addWidget(self.DT_3_pushButton_1)
-        self.DT_3_pushButton_2 = QtWidgets.QPushButton(self.DT_main_widget_1)
-        self.DT_3_pushButton_2.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_3_pushButton_2.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_3_pushButton_2.setCheckable(True)
-        self.DT_3_pushButton_2.setAutoExclusive(True)
-        self.DT_3_pushButton_2.setObjectName("DT_3_pushButton_2")
-        self.DT_Q3_horizontal_selection_lyt.addWidget(self.DT_3_pushButton_2)
-        self.DT_3_pushButton_3 = QtWidgets.QPushButton(self.DT_main_widget_1)
-        self.DT_3_pushButton_3.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_3_pushButton_3.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_3_pushButton_3.setCheckable(True)
-        self.DT_3_pushButton_3.setAutoExclusive(True)
-        self.DT_3_pushButton_3.setObjectName("DT_3_pushButton_3")
-        self.DT_Q3_horizontal_selection_lyt.addWidget(self.DT_3_pushButton_3)
-        self.DT_3_pushButton_4 = QtWidgets.QPushButton(self.DT_main_widget_1)
-        self.DT_3_pushButton_4.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_3_pushButton_4.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_3_pushButton_4.setCheckable(True)
-        self.DT_3_pushButton_4.setAutoExclusive(True)
-        self.DT_3_pushButton_4.setObjectName("DT_3_pushButton_4")
-        self.DT_Q3_horizontal_selection_lyt.addWidget(self.DT_3_pushButton_4)
-        self.DT_3_pushButton_5 = QtWidgets.QPushButton(self.DT_main_widget_1)
-        self.DT_3_pushButton_5.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_3_pushButton_5.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_3_pushButton_5.setCheckable(True)
-        self.DT_3_pushButton_5.setAutoExclusive(True)
-        self.DT_3_pushButton_5.setObjectName("DT_3_pushButton_5")
-        self.DT_Q3_horizontal_selection_lyt.addWidget(self.DT_3_pushButton_5)
-        self.DT_Q3_horizontal_question_lyt.addLayout(self.DT_Q3_horizontal_selection_lyt)
-        spacerItem32 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.DT_Q3_horizontal_question_lyt.addItem(spacerItem32)
-        self.DT_Q3_A2_Label = QtWidgets.QLabel(self.DT_main_widget_1)
-        self.DT_Q3_A2_Label.setMinimumSize(QtCore.QSize(400, 50))
-        self.DT_Q3_A2_Label.setMaximumSize(QtCore.QSize(800, 50))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(16)
-        self.DT_Q3_A2_Label.setFont(font)
-        self.DT_Q3_A2_Label.setObjectName("DT_Q3_A2_Label")
-        self.DT_Q3_horizontal_question_lyt.addWidget(self.DT_Q3_A2_Label)
-        self.DT_main_widget_verticalLayout.addLayout(self.DT_Q3_horizontal_question_lyt)
-        self.DT_Q4_horizontal_question_lyt = QtWidgets.QHBoxLayout()
-        self.DT_Q4_horizontal_question_lyt.setObjectName("DT_Q4_horizontal_question_lyt")
-        self.DT_Q4 = QtWidgets.QLabel(self.DT_main_widget_1)
-        self.DT_Q4.setMinimumSize(QtCore.QSize(60, 60))
-        self.DT_Q4.setMaximumSize(QtCore.QSize(60, 60))
-        font = QtGui.QFont()
-        font.setFamily("Roboto Bk")
-        font.setPointSize(14)
-        self.DT_Q4.setFont(font)
-        self.DT_Q4.setStyleSheet("QLabel {\n"
-"     color: rgb(31, 149, 239);\n"
-"    qproperty-alignment: AlignCenter;\n"
-"   \n"
-"    border: 3px solid rgb(31, 149, 239); /* This adds a 1px solid white border around the QLabel */\n"
-"    border-radius: 10px; /* Optional: if you want rounded corners */\n"
-"}\n"
-"")
-        self.DT_Q4.setObjectName("DT_Q4")
-        self.DT_Q4_horizontal_question_lyt.addWidget(self.DT_Q4)
-        spacerItem33 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.DT_Q4_horizontal_question_lyt.addItem(spacerItem33)
-        self.DT_Q4_A1_Label = QtWidgets.QLabel(self.DT_main_widget_1)
-        self.DT_Q4_A1_Label.setMinimumSize(QtCore.QSize(475, 50))
-        self.DT_Q4_A1_Label.setMaximumSize(QtCore.QSize(475, 50))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(16)
-        self.DT_Q4_A1_Label.setFont(font)
-        self.DT_Q4_A1_Label.setObjectName("DT_Q4_A1_Label")
-        self.DT_Q4_horizontal_question_lyt.addWidget(self.DT_Q4_A1_Label)
-        spacerItem34 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.DT_Q4_horizontal_question_lyt.addItem(spacerItem34)
-        self.DT_Q4_horizontal_selection_lyt = QtWidgets.QHBoxLayout()
-        self.DT_Q4_horizontal_selection_lyt.setSizeConstraint(QtWidgets.QLayout.SetFixedSize)
-        self.DT_Q4_horizontal_selection_lyt.setSpacing(20)
-        self.DT_Q4_horizontal_selection_lyt.setObjectName("DT_Q4_horizontal_selection_lyt")
-        self.DT_4_pushButton_1 = QtWidgets.QPushButton(self.DT_main_widget_1)
-        self.DT_4_pushButton_1.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_4_pushButton_1.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_4_pushButton_1.setCheckable(True)
-        self.DT_4_pushButton_1.setAutoExclusive(True)
-        self.DT_4_pushButton_1.setObjectName("DT_4_pushButton_1")
-        self.DT_Q4_horizontal_selection_lyt.addWidget(self.DT_4_pushButton_1)
-        self.DT_4_pushButton_2 = QtWidgets.QPushButton(self.DT_main_widget_1)
-        self.DT_4_pushButton_2.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_4_pushButton_2.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_4_pushButton_2.setCheckable(True)
-        self.DT_4_pushButton_2.setAutoExclusive(True)
-        self.DT_4_pushButton_2.setObjectName("DT_4_pushButton_2")
-        self.DT_Q4_horizontal_selection_lyt.addWidget(self.DT_4_pushButton_2)
-        self.DT_4_pushButton_3 = QtWidgets.QPushButton(self.DT_main_widget_1)
-        self.DT_4_pushButton_3.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_4_pushButton_3.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_4_pushButton_3.setCheckable(True)
-        self.DT_4_pushButton_3.setAutoExclusive(True)
-        self.DT_4_pushButton_3.setObjectName("DT_4_pushButton_3")
-        self.DT_Q4_horizontal_selection_lyt.addWidget(self.DT_4_pushButton_3)
-        self.DT_4_pushButton_4 = QtWidgets.QPushButton(self.DT_main_widget_1)
-        self.DT_4_pushButton_4.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_4_pushButton_4.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_4_pushButton_4.setCheckable(True)
-        self.DT_4_pushButton_4.setAutoExclusive(True)
-        self.DT_4_pushButton_4.setObjectName("DT_4_pushButton_4")
-        self.DT_Q4_horizontal_selection_lyt.addWidget(self.DT_4_pushButton_4)
-        self.DT_4_pushButton_5 = QtWidgets.QPushButton(self.DT_main_widget_1)
-        self.DT_4_pushButton_5.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_4_pushButton_5.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_4_pushButton_5.setCheckable(True)
-        self.DT_4_pushButton_5.setAutoExclusive(True)
-        self.DT_4_pushButton_5.setObjectName("DT_4_pushButton_5")
-        self.DT_Q4_horizontal_selection_lyt.addWidget(self.DT_4_pushButton_5)
-        self.DT_Q4_horizontal_question_lyt.addLayout(self.DT_Q4_horizontal_selection_lyt)
-        spacerItem35 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.DT_Q4_horizontal_question_lyt.addItem(spacerItem35)
-        self.DT_Q4_A2_Label = QtWidgets.QLabel(self.DT_main_widget_1)
-        self.DT_Q4_A2_Label.setMinimumSize(QtCore.QSize(400, 50))
-        self.DT_Q4_A2_Label.setMaximumSize(QtCore.QSize(800, 50))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(16)
-        self.DT_Q4_A2_Label.setFont(font)
-        self.DT_Q4_A2_Label.setObjectName("DT_Q4_A2_Label")
-        self.DT_Q4_horizontal_question_lyt.addWidget(self.DT_Q4_A2_Label)
-        self.DT_main_widget_verticalLayout.addLayout(self.DT_Q4_horizontal_question_lyt)
-        self.DT_Q5_horizontal_question_lyt = QtWidgets.QHBoxLayout()
-        self.DT_Q5_horizontal_question_lyt.setObjectName("DT_Q5_horizontal_question_lyt")
-        self.DT_Q5 = QtWidgets.QLabel(self.DT_main_widget_1)
-        self.DT_Q5.setMinimumSize(QtCore.QSize(60, 60))
-        self.DT_Q5.setMaximumSize(QtCore.QSize(60, 60))
-        font = QtGui.QFont()
-        font.setFamily("Roboto Bk")
-        font.setPointSize(14)
-        self.DT_Q5.setFont(font)
-        self.DT_Q5.setStyleSheet("QLabel {\n"
-"     color: rgb(31, 149, 239);\n"
-"    qproperty-alignment: AlignCenter;\n"
-"   \n"
-"    border: 3px solid rgb(31, 149, 239); /* This adds a 1px solid white border around the QLabel */\n"
-"    border-radius: 10px; /* Optional: if you want rounded corners */\n"
-"}\n"
-"")
-        self.DT_Q5.setObjectName("DT_Q5")
-        self.DT_Q5_horizontal_question_lyt.addWidget(self.DT_Q5)
-        spacerItem36 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.DT_Q5_horizontal_question_lyt.addItem(spacerItem36)
-        self.DT_Q5_A1_Label = QtWidgets.QLabel(self.DT_main_widget_1)
-        self.DT_Q5_A1_Label.setMinimumSize(QtCore.QSize(475, 50))
-        self.DT_Q5_A1_Label.setMaximumSize(QtCore.QSize(475, 50))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(16)
-        self.DT_Q5_A1_Label.setFont(font)
-        self.DT_Q5_A1_Label.setObjectName("DT_Q5_A1_Label")
-        self.DT_Q5_horizontal_question_lyt.addWidget(self.DT_Q5_A1_Label)
-        spacerItem37 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.DT_Q5_horizontal_question_lyt.addItem(spacerItem37)
-        self.DT_Q5_horizontal_selection_lyt = QtWidgets.QHBoxLayout()
-        self.DT_Q5_horizontal_selection_lyt.setSizeConstraint(QtWidgets.QLayout.SetFixedSize)
-        self.DT_Q5_horizontal_selection_lyt.setSpacing(20)
-        self.DT_Q5_horizontal_selection_lyt.setObjectName("DT_Q5_horizontal_selection_lyt")
-        self.DT_5_pushButton_1 = QtWidgets.QPushButton(self.DT_main_widget_1)
-        self.DT_5_pushButton_1.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_5_pushButton_1.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_5_pushButton_1.setCheckable(True)
-        self.DT_5_pushButton_1.setAutoExclusive(True)
-        self.DT_5_pushButton_1.setObjectName("DT_5_pushButton_1")
-        self.DT_Q5_horizontal_selection_lyt.addWidget(self.DT_5_pushButton_1)
-        self.DT_5_pushButton_2 = QtWidgets.QPushButton(self.DT_main_widget_1)
-        self.DT_5_pushButton_2.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_5_pushButton_2.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_5_pushButton_2.setCheckable(True)
-        self.DT_5_pushButton_2.setAutoExclusive(True)
-        self.DT_5_pushButton_2.setObjectName("DT_5_pushButton_2")
-        self.DT_Q5_horizontal_selection_lyt.addWidget(self.DT_5_pushButton_2)
-        self.DT_5_pushButton_3 = QtWidgets.QPushButton(self.DT_main_widget_1)
-        self.DT_5_pushButton_3.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_5_pushButton_3.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_5_pushButton_3.setCheckable(True)
-        self.DT_5_pushButton_3.setAutoExclusive(True)
-        self.DT_5_pushButton_3.setObjectName("DT_5_pushButton_3")
-        self.DT_Q5_horizontal_selection_lyt.addWidget(self.DT_5_pushButton_3)
-        self.DT_5_pushButton_4 = QtWidgets.QPushButton(self.DT_main_widget_1)
-        self.DT_5_pushButton_4.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_5_pushButton_4.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_5_pushButton_4.setCheckable(True)
-        self.DT_5_pushButton_4.setAutoExclusive(True)
-        self.DT_5_pushButton_4.setObjectName("DT_5_pushButton_4")
-        self.DT_Q5_horizontal_selection_lyt.addWidget(self.DT_5_pushButton_4)
-        self.DT_5_pushButton_5 = QtWidgets.QPushButton(self.DT_main_widget_1)
-        self.DT_5_pushButton_5.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_5_pushButton_5.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_5_pushButton_5.setCheckable(True)
-        self.DT_5_pushButton_5.setAutoExclusive(True)
-        self.DT_5_pushButton_5.setObjectName("DT_5_pushButton_5")
-        self.DT_Q5_horizontal_selection_lyt.addWidget(self.DT_5_pushButton_5)
-        self.DT_Q5_horizontal_question_lyt.addLayout(self.DT_Q5_horizontal_selection_lyt)
-        spacerItem38 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.DT_Q5_horizontal_question_lyt.addItem(spacerItem38)
-        self.DT_Q5_A2_Label = QtWidgets.QLabel(self.DT_main_widget_1)
-        self.DT_Q5_A2_Label.setMinimumSize(QtCore.QSize(400, 50))
-        self.DT_Q5_A2_Label.setMaximumSize(QtCore.QSize(800, 50))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(16)
-        self.DT_Q5_A2_Label.setFont(font)
-        self.DT_Q5_A2_Label.setObjectName("DT_Q5_A2_Label")
-        self.DT_Q5_horizontal_question_lyt.addWidget(self.DT_Q5_A2_Label)
-        self.DT_main_widget_verticalLayout.addLayout(self.DT_Q5_horizontal_question_lyt)
-        self.DT_Q6_horizontal_question_lyt = QtWidgets.QHBoxLayout()
-        self.DT_Q6_horizontal_question_lyt.setObjectName("DT_Q6_horizontal_question_lyt")
-        self.DT_Q6 = QtWidgets.QLabel(self.DT_main_widget_1)
-        self.DT_Q6.setMinimumSize(QtCore.QSize(60, 60))
-        self.DT_Q6.setMaximumSize(QtCore.QSize(60, 60))
-        font = QtGui.QFont()
-        font.setFamily("Roboto Bk")
-        font.setPointSize(14)
-        self.DT_Q6.setFont(font)
-        self.DT_Q6.setStyleSheet("QLabel {\n"
-"     color: rgb(31, 149, 239);\n"
-"    qproperty-alignment: AlignCenter;\n"
-"   \n"
-"    border: 3px solid rgb(31, 149, 239); /* This adds a 1px solid white border around the QLabel */\n"
-"    border-radius: 10px; /* Optional: if you want rounded corners */\n"
-"}\n"
-"")
-        self.DT_Q6.setObjectName("DT_Q6")
-        self.DT_Q6_horizontal_question_lyt.addWidget(self.DT_Q6)
-        spacerItem39 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.DT_Q6_horizontal_question_lyt.addItem(spacerItem39)
-        self.DT_Q6_A1_Label = QtWidgets.QLabel(self.DT_main_widget_1)
-        self.DT_Q6_A1_Label.setMinimumSize(QtCore.QSize(475, 50))
-        self.DT_Q6_A1_Label.setMaximumSize(QtCore.QSize(475, 50))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(16)
-        self.DT_Q6_A1_Label.setFont(font)
-        self.DT_Q6_A1_Label.setObjectName("DT_Q6_A1_Label")
-        self.DT_Q6_horizontal_question_lyt.addWidget(self.DT_Q6_A1_Label)
-        spacerItem40 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.DT_Q6_horizontal_question_lyt.addItem(spacerItem40)
-        self.DT_Q6_horizontal_selection_lyt = QtWidgets.QHBoxLayout()
-        self.DT_Q6_horizontal_selection_lyt.setSizeConstraint(QtWidgets.QLayout.SetFixedSize)
-        self.DT_Q6_horizontal_selection_lyt.setSpacing(20)
-        self.DT_Q6_horizontal_selection_lyt.setObjectName("DT_Q6_horizontal_selection_lyt")
-        self.DT_6_pushButton_1 = QtWidgets.QPushButton(self.DT_main_widget_1)
-        self.DT_6_pushButton_1.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_6_pushButton_1.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_6_pushButton_1.setCheckable(True)
-        self.DT_6_pushButton_1.setAutoExclusive(True)
-        self.DT_6_pushButton_1.setObjectName("DT_6_pushButton_1")
-        self.DT_Q6_horizontal_selection_lyt.addWidget(self.DT_6_pushButton_1)
-        self.DT_6_pushButton_2 = QtWidgets.QPushButton(self.DT_main_widget_1)
-        self.DT_6_pushButton_2.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_6_pushButton_2.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_6_pushButton_2.setCheckable(True)
-        self.DT_6_pushButton_2.setAutoExclusive(True)
-        self.DT_6_pushButton_2.setObjectName("DT_6_pushButton_2")
-        self.DT_Q6_horizontal_selection_lyt.addWidget(self.DT_6_pushButton_2)
-        self.DT_6_pushButton_3 = QtWidgets.QPushButton(self.DT_main_widget_1)
-        self.DT_6_pushButton_3.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_6_pushButton_3.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_6_pushButton_3.setCheckable(True)
-        self.DT_6_pushButton_3.setAutoExclusive(True)
-        self.DT_6_pushButton_3.setObjectName("DT_6_pushButton_3")
-        self.DT_Q6_horizontal_selection_lyt.addWidget(self.DT_6_pushButton_3)
-        self.DT_6_pushButton_4 = QtWidgets.QPushButton(self.DT_main_widget_1)
-        self.DT_6_pushButton_4.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_6_pushButton_4.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_6_pushButton_4.setCheckable(True)
-        self.DT_6_pushButton_4.setAutoExclusive(True)
-        self.DT_6_pushButton_4.setObjectName("DT_6_pushButton_4")
-        self.DT_Q6_horizontal_selection_lyt.addWidget(self.DT_6_pushButton_4)
-        self.DT_6_pushButton_5 = QtWidgets.QPushButton(self.DT_main_widget_1)
-        self.DT_6_pushButton_5.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_6_pushButton_5.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_6_pushButton_5.setCheckable(True)
-        self.DT_6_pushButton_5.setAutoExclusive(True)
-        self.DT_6_pushButton_5.setObjectName("DT_6_pushButton_5")
-        self.DT_Q6_horizontal_selection_lyt.addWidget(self.DT_6_pushButton_5)
-        self.DT_Q6_horizontal_question_lyt.addLayout(self.DT_Q6_horizontal_selection_lyt)
-        spacerItem41 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.DT_Q6_horizontal_question_lyt.addItem(spacerItem41)
-        self.DT_Q6_A2_Label = QtWidgets.QLabel(self.DT_main_widget_1)
-        self.DT_Q6_A2_Label.setMinimumSize(QtCore.QSize(400, 50))
-        self.DT_Q6_A2_Label.setMaximumSize(QtCore.QSize(800, 50))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(16)
-        self.DT_Q6_A2_Label.setFont(font)
-        self.DT_Q6_A2_Label.setObjectName("DT_Q6_A2_Label")
-        self.DT_Q6_horizontal_question_lyt.addWidget(self.DT_Q6_A2_Label)
-        self.DT_main_widget_verticalLayout.addLayout(self.DT_Q6_horizontal_question_lyt)
-        self.DT_Q7_horizontal_question_lyt = QtWidgets.QHBoxLayout()
-        self.DT_Q7_horizontal_question_lyt.setObjectName("DT_Q7_horizontal_question_lyt")
-        self.DT_Q7 = QtWidgets.QLabel(self.DT_main_widget_1)
-        self.DT_Q7.setMinimumSize(QtCore.QSize(60, 60))
-        self.DT_Q7.setMaximumSize(QtCore.QSize(60, 60))
-        font = QtGui.QFont()
-        font.setFamily("Roboto Bk")
-        font.setPointSize(14)
-        self.DT_Q7.setFont(font)
-        self.DT_Q7.setStyleSheet("QLabel {\n"
-"     color: rgb(31, 149, 239);\n"
-"    qproperty-alignment: AlignCenter;\n"
-"   \n"
-"    border: 3px solid rgb(31, 149, 239); /* This adds a 1px solid white border around the QLabel */\n"
-"    border-radius: 10px; /* Optional: if you want rounded corners */\n"
-"}\n"
-"")
-        self.DT_Q7.setObjectName("DT_Q7")
-        self.DT_Q7_horizontal_question_lyt.addWidget(self.DT_Q7)
-        spacerItem42 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.DT_Q7_horizontal_question_lyt.addItem(spacerItem42)
-        self.DT_Q7_A1_Label = QtWidgets.QLabel(self.DT_main_widget_1)
-        self.DT_Q7_A1_Label.setMinimumSize(QtCore.QSize(475, 50))
-        self.DT_Q7_A1_Label.setMaximumSize(QtCore.QSize(475, 50))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(16)
-        self.DT_Q7_A1_Label.setFont(font)
-        self.DT_Q7_A1_Label.setObjectName("DT_Q7_A1_Label")
-        self.DT_Q7_horizontal_question_lyt.addWidget(self.DT_Q7_A1_Label)
-        spacerItem43 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.DT_Q7_horizontal_question_lyt.addItem(spacerItem43)
-        self.DT_Q7_horizontal_selection_lyt = QtWidgets.QHBoxLayout()
-        self.DT_Q7_horizontal_selection_lyt.setSizeConstraint(QtWidgets.QLayout.SetFixedSize)
-        self.DT_Q7_horizontal_selection_lyt.setSpacing(20)
-        self.DT_Q7_horizontal_selection_lyt.setObjectName("DT_Q7_horizontal_selection_lyt")
-        self.DT_7_pushButton_1 = QtWidgets.QPushButton(self.DT_main_widget_1)
-        self.DT_7_pushButton_1.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_7_pushButton_1.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_7_pushButton_1.setCheckable(True)
-        self.DT_7_pushButton_1.setAutoExclusive(True)
-        self.DT_7_pushButton_1.setObjectName("DT_7_pushButton_1")
-        self.DT_Q7_horizontal_selection_lyt.addWidget(self.DT_7_pushButton_1)
-        self.DT_7_pushButton_2 = QtWidgets.QPushButton(self.DT_main_widget_1)
-        self.DT_7_pushButton_2.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_7_pushButton_2.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_7_pushButton_2.setCheckable(True)
-        self.DT_7_pushButton_2.setAutoExclusive(True)
-        self.DT_7_pushButton_2.setObjectName("DT_7_pushButton_2")
-        self.DT_Q7_horizontal_selection_lyt.addWidget(self.DT_7_pushButton_2)
-        self.DT_7_pushButton_3 = QtWidgets.QPushButton(self.DT_main_widget_1)
-        self.DT_7_pushButton_3.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_7_pushButton_3.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_7_pushButton_3.setCheckable(True)
-        self.DT_7_pushButton_3.setAutoExclusive(True)
-        self.DT_7_pushButton_3.setObjectName("DT_7_pushButton_3")
-        self.DT_Q7_horizontal_selection_lyt.addWidget(self.DT_7_pushButton_3)
-        self.DT_7_pushButton_4 = QtWidgets.QPushButton(self.DT_main_widget_1)
-        self.DT_7_pushButton_4.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_7_pushButton_4.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_7_pushButton_4.setCheckable(True)
-        self.DT_7_pushButton_4.setAutoExclusive(True)
-        self.DT_7_pushButton_4.setObjectName("DT_7_pushButton_4")
-        self.DT_Q7_horizontal_selection_lyt.addWidget(self.DT_7_pushButton_4)
-        self.DT_7_pushButton_5 = QtWidgets.QPushButton(self.DT_main_widget_1)
-        self.DT_7_pushButton_5.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_7_pushButton_5.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_7_pushButton_5.setCheckable(True)
-        self.DT_7_pushButton_5.setAutoExclusive(True)
-        self.DT_7_pushButton_5.setObjectName("DT_7_pushButton_5")
-        self.DT_Q7_horizontal_selection_lyt.addWidget(self.DT_7_pushButton_5)
-        self.DT_Q7_horizontal_question_lyt.addLayout(self.DT_Q7_horizontal_selection_lyt)
-        spacerItem44 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.DT_Q7_horizontal_question_lyt.addItem(spacerItem44)
-        self.DT_Q7_A2_Label = QtWidgets.QLabel(self.DT_main_widget_1)
-        self.DT_Q7_A2_Label.setMinimumSize(QtCore.QSize(400, 50))
-        self.DT_Q7_A2_Label.setMaximumSize(QtCore.QSize(800, 50))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(16)
-        self.DT_Q7_A2_Label.setFont(font)
-        self.DT_Q7_A2_Label.setObjectName("DT_Q7_A2_Label")
-        self.DT_Q7_horizontal_question_lyt.addWidget(self.DT_Q7_A2_Label)
-        self.DT_main_widget_verticalLayout.addLayout(self.DT_Q7_horizontal_question_lyt)
-        self.DT_Q8_horizontal_question_lyt = QtWidgets.QHBoxLayout()
-        self.DT_Q8_horizontal_question_lyt.setObjectName("DT_Q8_horizontal_question_lyt")
-        self.DT_Q8 = QtWidgets.QLabel(self.DT_main_widget_1)
-        self.DT_Q8.setMinimumSize(QtCore.QSize(60, 60))
-        self.DT_Q8.setMaximumSize(QtCore.QSize(60, 60))
-        font = QtGui.QFont()
-        font.setFamily("Roboto Bk")
-        font.setPointSize(14)
-        self.DT_Q8.setFont(font)
-        self.DT_Q8.setStyleSheet("QLabel {\n"
-"     color: rgb(31, 149, 239);\n"
-"    qproperty-alignment: AlignCenter;\n"
-"   \n"
-"    border: 3px solid rgb(31, 149, 239); /* This adds a 1px solid white border around the QLabel */\n"
-"    border-radius: 10px; /* Optional: if you want rounded corners */\n"
-"}\n"
-"")
-        self.DT_Q8.setObjectName("DT_Q8")
-        self.DT_Q8_horizontal_question_lyt.addWidget(self.DT_Q8)
-        spacerItem45 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.DT_Q8_horizontal_question_lyt.addItem(spacerItem45)
-        self.DT_Q8_A1_Label = QtWidgets.QLabel(self.DT_main_widget_1)
-        self.DT_Q8_A1_Label.setMinimumSize(QtCore.QSize(475, 50))
-        self.DT_Q8_A1_Label.setMaximumSize(QtCore.QSize(475, 50))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(16)
-        self.DT_Q8_A1_Label.setFont(font)
-        self.DT_Q8_A1_Label.setObjectName("DT_Q8_A1_Label")
-        self.DT_Q8_horizontal_question_lyt.addWidget(self.DT_Q8_A1_Label)
-        spacerItem46 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.DT_Q8_horizontal_question_lyt.addItem(spacerItem46)
-        self.DT_Q8_horizontal_selection_lyt = QtWidgets.QHBoxLayout()
-        self.DT_Q8_horizontal_selection_lyt.setSizeConstraint(QtWidgets.QLayout.SetFixedSize)
-        self.DT_Q8_horizontal_selection_lyt.setSpacing(20)
-        self.DT_Q8_horizontal_selection_lyt.setObjectName("DT_Q8_horizontal_selection_lyt")
-        self.DT_8_pushButton_1 = QtWidgets.QPushButton(self.DT_main_widget_1)
-        self.DT_8_pushButton_1.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_8_pushButton_1.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_8_pushButton_1.setCheckable(True)
-        self.DT_8_pushButton_1.setAutoExclusive(True)
-        self.DT_8_pushButton_1.setObjectName("DT_8_pushButton_1")
-        self.DT_Q8_horizontal_selection_lyt.addWidget(self.DT_8_pushButton_1)
-        self.DT_8_pushButton_2 = QtWidgets.QPushButton(self.DT_main_widget_1)
-        self.DT_8_pushButton_2.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_8_pushButton_2.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_8_pushButton_2.setCheckable(True)
-        self.DT_8_pushButton_2.setAutoExclusive(True)
-        self.DT_8_pushButton_2.setObjectName("DT_8_pushButton_2")
-        self.DT_Q8_horizontal_selection_lyt.addWidget(self.DT_8_pushButton_2)
-        self.DT_8_pushButton_3 = QtWidgets.QPushButton(self.DT_main_widget_1)
-        self.DT_8_pushButton_3.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_8_pushButton_3.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_8_pushButton_3.setCheckable(True)
-        self.DT_8_pushButton_3.setAutoExclusive(True)
-        self.DT_8_pushButton_3.setObjectName("DT_8_pushButton_3")
-        self.DT_Q8_horizontal_selection_lyt.addWidget(self.DT_8_pushButton_3)
-        self.DT_8_pushButton_4 = QtWidgets.QPushButton(self.DT_main_widget_1)
-        self.DT_8_pushButton_4.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_8_pushButton_4.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_8_pushButton_4.setCheckable(True)
-        self.DT_8_pushButton_4.setAutoExclusive(True)
-        self.DT_8_pushButton_4.setObjectName("DT_8_pushButton_4")
-        self.DT_Q8_horizontal_selection_lyt.addWidget(self.DT_8_pushButton_4)
-        self.DT_8_pushButton_5 = QtWidgets.QPushButton(self.DT_main_widget_1)
-        self.DT_8_pushButton_5.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_8_pushButton_5.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_8_pushButton_5.setCheckable(True)
-        self.DT_8_pushButton_5.setAutoExclusive(True)
-        self.DT_8_pushButton_5.setObjectName("DT_8_pushButton_5")
-        self.DT_Q8_horizontal_selection_lyt.addWidget(self.DT_8_pushButton_5)
-        self.DT_Q8_horizontal_question_lyt.addLayout(self.DT_Q8_horizontal_selection_lyt)
-        spacerItem47 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.DT_Q8_horizontal_question_lyt.addItem(spacerItem47)
-        self.DT_Q8_A2_Label = QtWidgets.QLabel(self.DT_main_widget_1)
-        self.DT_Q8_A2_Label.setMinimumSize(QtCore.QSize(400, 50))
-        self.DT_Q8_A2_Label.setMaximumSize(QtCore.QSize(800, 50))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(16)
-        self.DT_Q8_A2_Label.setFont(font)
-        self.DT_Q8_A2_Label.setObjectName("DT_Q8_A2_Label")
-        self.DT_Q8_horizontal_question_lyt.addWidget(self.DT_Q8_A2_Label)
-        self.DT_main_widget_verticalLayout.addLayout(self.DT_Q8_horizontal_question_lyt)
-        self.DT_Q9_horizontal_question_lyt = QtWidgets.QHBoxLayout()
-        self.DT_Q9_horizontal_question_lyt.setObjectName("DT_Q9_horizontal_question_lyt")
-        self.DT_Q9 = QtWidgets.QLabel(self.DT_main_widget_1)
-        self.DT_Q9.setMinimumSize(QtCore.QSize(60, 60))
-        self.DT_Q9.setMaximumSize(QtCore.QSize(60, 60))
-        font = QtGui.QFont()
-        font.setFamily("Roboto Bk")
-        font.setPointSize(14)
-        self.DT_Q9.setFont(font)
-        self.DT_Q9.setStyleSheet("QLabel {\n"
-"     color: rgb(31, 149, 239);\n"
-"    qproperty-alignment: AlignCenter;\n"
-"   \n"
-"    border: 3px solid rgb(31, 149, 239); /* This adds a 1px solid white border around the QLabel */\n"
-"    border-radius: 10px; /* Optional: if you want rounded corners */\n"
-"}\n"
-"")
-        self.DT_Q9.setObjectName("DT_Q9")
-        self.DT_Q9_horizontal_question_lyt.addWidget(self.DT_Q9)
-        spacerItem48 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.DT_Q9_horizontal_question_lyt.addItem(spacerItem48)
-        self.DT_Q9_A1_Label = QtWidgets.QLabel(self.DT_main_widget_1)
-        self.DT_Q9_A1_Label.setMinimumSize(QtCore.QSize(475, 50))
-        self.DT_Q9_A1_Label.setMaximumSize(QtCore.QSize(475, 50))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(16)
-        self.DT_Q9_A1_Label.setFont(font)
-        self.DT_Q9_A1_Label.setObjectName("DT_Q9_A1_Label")
-        self.DT_Q9_horizontal_question_lyt.addWidget(self.DT_Q9_A1_Label)
-        spacerItem49 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.DT_Q9_horizontal_question_lyt.addItem(spacerItem49)
-        self.DT_Q9_horizontal_selection_lyt = QtWidgets.QHBoxLayout()
-        self.DT_Q9_horizontal_selection_lyt.setSizeConstraint(QtWidgets.QLayout.SetFixedSize)
-        self.DT_Q9_horizontal_selection_lyt.setSpacing(20)
-        self.DT_Q9_horizontal_selection_lyt.setObjectName("DT_Q9_horizontal_selection_lyt")
-        self.DT_9_pushButton_1 = QtWidgets.QPushButton(self.DT_main_widget_1)
-        self.DT_9_pushButton_1.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_9_pushButton_1.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_9_pushButton_1.setCheckable(True)
-        self.DT_9_pushButton_1.setAutoExclusive(True)
-        self.DT_9_pushButton_1.setObjectName("DT_9_pushButton_1")
-        self.DT_Q9_horizontal_selection_lyt.addWidget(self.DT_9_pushButton_1)
-        self.DT_9_pushButton_2 = QtWidgets.QPushButton(self.DT_main_widget_1)
-        self.DT_9_pushButton_2.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_9_pushButton_2.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_9_pushButton_2.setCheckable(True)
-        self.DT_9_pushButton_2.setAutoExclusive(True)
-        self.DT_9_pushButton_2.setObjectName("DT_9_pushButton_2")
-        self.DT_Q9_horizontal_selection_lyt.addWidget(self.DT_9_pushButton_2)
-        self.DT_9_pushButton_3 = QtWidgets.QPushButton(self.DT_main_widget_1)
-        self.DT_9_pushButton_3.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_9_pushButton_3.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_9_pushButton_3.setCheckable(True)
-        self.DT_9_pushButton_3.setAutoExclusive(True)
-        self.DT_9_pushButton_3.setObjectName("DT_9_pushButton_3")
-        self.DT_Q9_horizontal_selection_lyt.addWidget(self.DT_9_pushButton_3)
-        self.DT_9_pushButton_4 = QtWidgets.QPushButton(self.DT_main_widget_1)
-        self.DT_9_pushButton_4.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_9_pushButton_4.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_9_pushButton_4.setCheckable(True)
-        self.DT_9_pushButton_4.setAutoExclusive(True)
-        self.DT_9_pushButton_4.setObjectName("DT_9_pushButton_4")
-        self.DT_Q9_horizontal_selection_lyt.addWidget(self.DT_9_pushButton_4)
-        self.DT_9_pushButton_5 = QtWidgets.QPushButton(self.DT_main_widget_1)
-        self.DT_9_pushButton_5.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_9_pushButton_5.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_9_pushButton_5.setCheckable(True)
-        self.DT_9_pushButton_5.setAutoExclusive(True)
-        self.DT_9_pushButton_5.setObjectName("DT_9_pushButton_5")
-        self.DT_Q9_horizontal_selection_lyt.addWidget(self.DT_9_pushButton_5)
-        self.DT_Q9_horizontal_question_lyt.addLayout(self.DT_Q9_horizontal_selection_lyt)
-        spacerItem50 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.DT_Q9_horizontal_question_lyt.addItem(spacerItem50)
-        self.DT_Q9_A2_Label = QtWidgets.QLabel(self.DT_main_widget_1)
-        self.DT_Q9_A2_Label.setMinimumSize(QtCore.QSize(400, 50))
-        self.DT_Q9_A2_Label.setMaximumSize(QtCore.QSize(800, 50))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(16)
-        self.DT_Q9_A2_Label.setFont(font)
-        self.DT_Q9_A2_Label.setObjectName("DT_Q9_A2_Label")
-        self.DT_Q9_horizontal_question_lyt.addWidget(self.DT_Q9_A2_Label)
-        self.DT_main_widget_verticalLayout.addLayout(self.DT_Q9_horizontal_question_lyt)
-        self.DT_Q10_horizontal_question_lyt = QtWidgets.QHBoxLayout()
-        self.DT_Q10_horizontal_question_lyt.setObjectName("DT_Q10_horizontal_question_lyt")
-        self.DT_Q10 = QtWidgets.QLabel(self.DT_main_widget_1)
-        self.DT_Q10.setMinimumSize(QtCore.QSize(60, 60))
-        self.DT_Q10.setMaximumSize(QtCore.QSize(60, 60))
-        font = QtGui.QFont()
-        font.setFamily("Roboto Bk")
-        font.setPointSize(14)
-        self.DT_Q10.setFont(font)
-        self.DT_Q10.setStyleSheet("QLabel {\n"
-"     color: rgb(31, 149, 239);\n"
-"    qproperty-alignment: AlignCenter;\n"
-"   \n"
-"    border: 3px solid rgb(31, 149, 239); /* This adds a 1px solid white border around the QLabel */\n"
-"    border-radius: 10px; /* Optional: if you want rounded corners */\n"
-"}\n"
-"")
-        self.DT_Q10.setObjectName("DT_Q10")
-        self.DT_Q10_horizontal_question_lyt.addWidget(self.DT_Q10)
-        spacerItem51 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.DT_Q10_horizontal_question_lyt.addItem(spacerItem51)
-        self.DT_Q10_A1_Label = QtWidgets.QLabel(self.DT_main_widget_1)
-        self.DT_Q10_A1_Label.setMinimumSize(QtCore.QSize(475, 50))
-        self.DT_Q10_A1_Label.setMaximumSize(QtCore.QSize(475, 50))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(16)
-        self.DT_Q10_A1_Label.setFont(font)
-        self.DT_Q10_A1_Label.setObjectName("DT_Q10_A1_Label")
-        self.DT_Q10_horizontal_question_lyt.addWidget(self.DT_Q10_A1_Label)
-        spacerItem52 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.DT_Q10_horizontal_question_lyt.addItem(spacerItem52)
-        self.DT_Q10_horizontal_selection_lyt = QtWidgets.QHBoxLayout()
-        self.DT_Q10_horizontal_selection_lyt.setSizeConstraint(QtWidgets.QLayout.SetFixedSize)
-        self.DT_Q10_horizontal_selection_lyt.setSpacing(20)
-        self.DT_Q10_horizontal_selection_lyt.setObjectName("DT_Q10_horizontal_selection_lyt")
-        self.DT_10_pushButton_1 = QtWidgets.QPushButton(self.DT_main_widget_1)
-        self.DT_10_pushButton_1.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_10_pushButton_1.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_10_pushButton_1.setCheckable(True)
-        self.DT_10_pushButton_1.setAutoExclusive(True)
-        self.DT_10_pushButton_1.setObjectName("DT_10_pushButton_1")
-        self.DT_Q10_horizontal_selection_lyt.addWidget(self.DT_10_pushButton_1)
-        self.DT_10_pushButton_2 = QtWidgets.QPushButton(self.DT_main_widget_1)
-        self.DT_10_pushButton_2.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_10_pushButton_2.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_10_pushButton_2.setCheckable(True)
-        self.DT_10_pushButton_2.setAutoExclusive(True)
-        self.DT_10_pushButton_2.setObjectName("DT_10_pushButton_2")
-        self.DT_Q10_horizontal_selection_lyt.addWidget(self.DT_10_pushButton_2)
-        self.DT_10_pushButton_3 = QtWidgets.QPushButton(self.DT_main_widget_1)
-        self.DT_10_pushButton_3.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_10_pushButton_3.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_10_pushButton_3.setCheckable(True)
-        self.DT_10_pushButton_3.setAutoExclusive(True)
-        self.DT_10_pushButton_3.setObjectName("DT_10_pushButton_3")
-        self.DT_Q10_horizontal_selection_lyt.addWidget(self.DT_10_pushButton_3)
-        self.DT_10_pushButton_4 = QtWidgets.QPushButton(self.DT_main_widget_1)
-        self.DT_10_pushButton_4.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_10_pushButton_4.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_10_pushButton_4.setCheckable(True)
-        self.DT_10_pushButton_4.setAutoExclusive(True)
-        self.DT_10_pushButton_4.setObjectName("DT_10_pushButton_4")
-        self.DT_Q10_horizontal_selection_lyt.addWidget(self.DT_10_pushButton_4)
-        self.DT_10_pushButton_5 = QtWidgets.QPushButton(self.DT_main_widget_1)
-        self.DT_10_pushButton_5.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_10_pushButton_5.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_10_pushButton_5.setCheckable(True)
-        self.DT_10_pushButton_5.setAutoExclusive(True)
-        self.DT_10_pushButton_5.setObjectName("DT_10_pushButton_5")
-        self.DT_Q10_horizontal_selection_lyt.addWidget(self.DT_10_pushButton_5)
-        self.DT_Q10_horizontal_question_lyt.addLayout(self.DT_Q10_horizontal_selection_lyt)
-        spacerItem53 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.DT_Q10_horizontal_question_lyt.addItem(spacerItem53)
-        self.DT_Q10_A2_Label_2 = QtWidgets.QLabel(self.DT_main_widget_1)
-        self.DT_Q10_A2_Label_2.setMinimumSize(QtCore.QSize(400, 50))
-        self.DT_Q10_A2_Label_2.setMaximumSize(QtCore.QSize(800, 50))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(16)
-        self.DT_Q10_A2_Label_2.setFont(font)
-        self.DT_Q10_A2_Label_2.setObjectName("DT_Q10_A2_Label_2")
-        self.DT_Q10_horizontal_question_lyt.addWidget(self.DT_Q10_A2_Label_2)
-        self.DT_main_widget_verticalLayout.addLayout(self.DT_Q10_horizontal_question_lyt)
-        self.DT_page_1_gridLayout.addWidget(self.DT_main_widget_1, 0, 0, 1, 1)
-        self.Depression_Page_tabWidget.addTab(self.DT_page_1, "")
-        self.DT_page_2 = QtWidgets.QWidget()
-        self.DT_page_2.setObjectName("DT_page_2")
-        self.DT_page_2_verticalLayout = QtWidgets.QVBoxLayout(self.DT_page_2)
-        self.DT_page_2_verticalLayout.setContentsMargins(-1, 11, -1, 325)
-        self.DT_page_2_verticalLayout.setObjectName("DT_page_2_verticalLayout")
-        self.DT_main_widget_2 = QtWidgets.QWidget(self.DT_page_2)
-        self.DT_main_widget_2.setStyleSheet("QPushButton {\n"
-"    color: white;\n"
-"    text-align:center;\n"
-"    height:70px;\n"
-"    border: 1px;\n"
-"  \n"
-"    border-radius: 8px; /* Round top left corner */\n"
-"    \n"
-"    background-color: rgb(31, 149, 239); /* Normal background color */\n"
-"    font-size: 35px; /* Set the font size here */\n"
-"    /* Other styles */\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: rgb(45, 45, 45); /* Darker background color on hover */\n"
-"    color: rgb(220, 220, 220); /* Slightly lighter text color on hover */\n"
-"}\n"
-"\n"
-"QPushButton:checked {\n"
-" \n"
-"     background-color: rgb(45, 45, 45); /* Darker background color on checked */\n"
-"}")
-        self.DT_main_widget_2.setObjectName("DT_main_widget_2")
-        self.DT_main_widget_2_verticalLayout = QtWidgets.QVBoxLayout(self.DT_main_widget_2)
-        self.DT_main_widget_2_verticalLayout.setObjectName("DT_main_widget_2_verticalLayout")
-        self.DT_Q11_horizontal_question_lyt = QtWidgets.QHBoxLayout()
-        self.DT_Q11_horizontal_question_lyt.setObjectName("DT_Q11_horizontal_question_lyt")
-        self.DT_Q11 = QtWidgets.QLabel(self.DT_main_widget_2)
-        self.DT_Q11.setMinimumSize(QtCore.QSize(60, 60))
-        self.DT_Q11.setMaximumSize(QtCore.QSize(60, 60))
-        font = QtGui.QFont()
-        font.setFamily("Roboto Bk")
-        font.setPointSize(14)
-        self.DT_Q11.setFont(font)
-        self.DT_Q11.setStyleSheet("QLabel {\n"
-"     color: rgb(31, 149, 239);\n"
-"    qproperty-alignment: AlignCenter;\n"
-"   \n"
-"    border: 3px solid rgb(31, 149, 239); /* This adds a 1px solid white border around the QLabel */\n"
-"    border-radius: 10px; /* Optional: if you want rounded corners */\n"
-"}\n"
-"")
-        self.DT_Q11.setObjectName("DT_Q11")
-        self.DT_Q11_horizontal_question_lyt.addWidget(self.DT_Q11)
-        spacerItem54 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.DT_Q11_horizontal_question_lyt.addItem(spacerItem54)
-        self.DT_Q11_A1_Label = QtWidgets.QLabel(self.DT_main_widget_2)
-        self.DT_Q11_A1_Label.setMinimumSize(QtCore.QSize(475, 50))
-        self.DT_Q11_A1_Label.setMaximumSize(QtCore.QSize(400, 50))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(16)
-        self.DT_Q11_A1_Label.setFont(font)
-        self.DT_Q11_A1_Label.setObjectName("DT_Q11_A1_Label")
-        self.DT_Q11_horizontal_question_lyt.addWidget(self.DT_Q11_A1_Label)
-        spacerItem55 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.DT_Q11_horizontal_question_lyt.addItem(spacerItem55)
-        self.DT_Q11_horizontal_selection_lyt = QtWidgets.QHBoxLayout()
-        self.DT_Q11_horizontal_selection_lyt.setSizeConstraint(QtWidgets.QLayout.SetFixedSize)
-        self.DT_Q11_horizontal_selection_lyt.setSpacing(20)
-        self.DT_Q11_horizontal_selection_lyt.setObjectName("DT_Q11_horizontal_selection_lyt")
-        self.DT_11_pushButton_1 = QtWidgets.QPushButton(self.DT_main_widget_2)
-        self.DT_11_pushButton_1.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_11_pushButton_1.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_11_pushButton_1.setCheckable(True)
-        self.DT_11_pushButton_1.setAutoExclusive(True)
-        self.DT_11_pushButton_1.setObjectName("DT_11_pushButton_1")
-        self.DT_Q11_horizontal_selection_lyt.addWidget(self.DT_11_pushButton_1)
-        self.DT_11_pushButton_2 = QtWidgets.QPushButton(self.DT_main_widget_2)
-        self.DT_11_pushButton_2.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_11_pushButton_2.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_11_pushButton_2.setCheckable(True)
-        self.DT_11_pushButton_2.setAutoExclusive(True)
-        self.DT_11_pushButton_2.setObjectName("DT_11_pushButton_2")
-        self.DT_Q11_horizontal_selection_lyt.addWidget(self.DT_11_pushButton_2)
-        self.DT_11_pushButton_3 = QtWidgets.QPushButton(self.DT_main_widget_2)
-        self.DT_11_pushButton_3.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_11_pushButton_3.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_11_pushButton_3.setCheckable(True)
-        self.DT_11_pushButton_3.setAutoExclusive(True)
-        self.DT_11_pushButton_3.setObjectName("DT_11_pushButton_3")
-        self.DT_Q11_horizontal_selection_lyt.addWidget(self.DT_11_pushButton_3)
-        self.DT_11_pushButton_4 = QtWidgets.QPushButton(self.DT_main_widget_2)
-        self.DT_11_pushButton_4.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_11_pushButton_4.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_11_pushButton_4.setCheckable(True)
-        self.DT_11_pushButton_4.setAutoExclusive(True)
-        self.DT_11_pushButton_4.setObjectName("DT_11_pushButton_4")
-        self.DT_Q11_horizontal_selection_lyt.addWidget(self.DT_11_pushButton_4)
-        self.DT_11_pushButton_5 = QtWidgets.QPushButton(self.DT_main_widget_2)
-        self.DT_11_pushButton_5.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_11_pushButton_5.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_11_pushButton_5.setCheckable(True)
-        self.DT_11_pushButton_5.setAutoExclusive(True)
-        self.DT_11_pushButton_5.setObjectName("DT_11_pushButton_5")
-        self.DT_Q11_horizontal_selection_lyt.addWidget(self.DT_11_pushButton_5)
-        self.DT_Q11_horizontal_question_lyt.addLayout(self.DT_Q11_horizontal_selection_lyt)
-        spacerItem56 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.DT_Q11_horizontal_question_lyt.addItem(spacerItem56)
-        self.DT_Q11_A2_Label = QtWidgets.QLabel(self.DT_main_widget_2)
-        self.DT_Q11_A2_Label.setMinimumSize(QtCore.QSize(400, 50))
-        self.DT_Q11_A2_Label.setMaximumSize(QtCore.QSize(800, 50))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(16)
-        self.DT_Q11_A2_Label.setFont(font)
-        self.DT_Q11_A2_Label.setObjectName("DT_Q11_A2_Label")
-        self.DT_Q11_horizontal_question_lyt.addWidget(self.DT_Q11_A2_Label)
-        self.DT_main_widget_2_verticalLayout.addLayout(self.DT_Q11_horizontal_question_lyt)
-        self.DT_Q12_horizontal_question_lyt = QtWidgets.QHBoxLayout()
-        self.DT_Q12_horizontal_question_lyt.setObjectName("DT_Q12_horizontal_question_lyt")
-        self.DT_Q12 = QtWidgets.QLabel(self.DT_main_widget_2)
-        self.DT_Q12.setMinimumSize(QtCore.QSize(60, 60))
-        self.DT_Q12.setMaximumSize(QtCore.QSize(60, 60))
-        font = QtGui.QFont()
-        font.setFamily("Roboto Bk")
-        font.setPointSize(14)
-        self.DT_Q12.setFont(font)
-        self.DT_Q12.setStyleSheet("QLabel {\n"
-"     color: rgb(31, 149, 239);\n"
-"    qproperty-alignment: AlignCenter;\n"
-"   \n"
-"    border: 3px solid rgb(31, 149, 239); /* This adds a 1px solid white border around the QLabel */\n"
-"    border-radius: 10px; /* Optional: if you want rounded corners */\n"
-"}\n"
-"")
-        self.DT_Q12.setObjectName("DT_Q12")
-        self.DT_Q12_horizontal_question_lyt.addWidget(self.DT_Q12)
-        spacerItem57 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.DT_Q12_horizontal_question_lyt.addItem(spacerItem57)
-        self.DT_Q12_A1_Label = QtWidgets.QLabel(self.DT_main_widget_2)
-        self.DT_Q12_A1_Label.setMinimumSize(QtCore.QSize(475, 50))
-        self.DT_Q12_A1_Label.setMaximumSize(QtCore.QSize(400, 50))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(16)
-        self.DT_Q12_A1_Label.setFont(font)
-        self.DT_Q12_A1_Label.setObjectName("DT_Q12_A1_Label")
-        self.DT_Q12_horizontal_question_lyt.addWidget(self.DT_Q12_A1_Label)
-        spacerItem58 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.DT_Q12_horizontal_question_lyt.addItem(spacerItem58)
-        self.DT_Q12_horizontal_selection_lyt = QtWidgets.QHBoxLayout()
-        self.DT_Q12_horizontal_selection_lyt.setSizeConstraint(QtWidgets.QLayout.SetFixedSize)
-        self.DT_Q12_horizontal_selection_lyt.setSpacing(20)
-        self.DT_Q12_horizontal_selection_lyt.setObjectName("DT_Q12_horizontal_selection_lyt")
-        self.DT_12_pushButton_1 = QtWidgets.QPushButton(self.DT_main_widget_2)
-        self.DT_12_pushButton_1.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_12_pushButton_1.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_12_pushButton_1.setCheckable(True)
-        self.DT_12_pushButton_1.setAutoExclusive(True)
-        self.DT_12_pushButton_1.setObjectName("DT_12_pushButton_1")
-        self.DT_Q12_horizontal_selection_lyt.addWidget(self.DT_12_pushButton_1)
-        self.DT_12_pushButton_2 = QtWidgets.QPushButton(self.DT_main_widget_2)
-        self.DT_12_pushButton_2.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_12_pushButton_2.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_12_pushButton_2.setCheckable(True)
-        self.DT_12_pushButton_2.setAutoExclusive(True)
-        self.DT_12_pushButton_2.setObjectName("DT_12_pushButton_2")
-        self.DT_Q12_horizontal_selection_lyt.addWidget(self.DT_12_pushButton_2)
-        self.DT_12_pushButton_3 = QtWidgets.QPushButton(self.DT_main_widget_2)
-        self.DT_12_pushButton_3.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_12_pushButton_3.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_12_pushButton_3.setCheckable(True)
-        self.DT_12_pushButton_3.setAutoExclusive(True)
-        self.DT_12_pushButton_3.setObjectName("DT_12_pushButton_3")
-        self.DT_Q12_horizontal_selection_lyt.addWidget(self.DT_12_pushButton_3)
-        self.DT_12_pushButton_4 = QtWidgets.QPushButton(self.DT_main_widget_2)
-        self.DT_12_pushButton_4.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_12_pushButton_4.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_12_pushButton_4.setCheckable(True)
-        self.DT_12_pushButton_4.setAutoExclusive(True)
-        self.DT_12_pushButton_4.setObjectName("DT_12_pushButton_4")
-        self.DT_Q12_horizontal_selection_lyt.addWidget(self.DT_12_pushButton_4)
-        self.DT_12_pushButton_5 = QtWidgets.QPushButton(self.DT_main_widget_2)
-        self.DT_12_pushButton_5.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_12_pushButton_5.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_12_pushButton_5.setCheckable(True)
-        self.DT_12_pushButton_5.setAutoExclusive(True)
-        self.DT_12_pushButton_5.setObjectName("DT_12_pushButton_5")
-        self.DT_Q12_horizontal_selection_lyt.addWidget(self.DT_12_pushButton_5)
-        self.DT_Q12_horizontal_question_lyt.addLayout(self.DT_Q12_horizontal_selection_lyt)
-        spacerItem59 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.DT_Q12_horizontal_question_lyt.addItem(spacerItem59)
-        self.DT_Q12_A2_Label = QtWidgets.QLabel(self.DT_main_widget_2)
-        self.DT_Q12_A2_Label.setMinimumSize(QtCore.QSize(400, 50))
-        self.DT_Q12_A2_Label.setMaximumSize(QtCore.QSize(800, 50))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(16)
-        self.DT_Q12_A2_Label.setFont(font)
-        self.DT_Q12_A2_Label.setObjectName("DT_Q12_A2_Label")
-        self.DT_Q12_horizontal_question_lyt.addWidget(self.DT_Q12_A2_Label)
-        self.DT_main_widget_2_verticalLayout.addLayout(self.DT_Q12_horizontal_question_lyt)
-        self.DT_Q13_horizontal_question_lyt = QtWidgets.QHBoxLayout()
-        self.DT_Q13_horizontal_question_lyt.setObjectName("DT_Q13_horizontal_question_lyt")
-        self.DT_Q13 = QtWidgets.QLabel(self.DT_main_widget_2)
-        self.DT_Q13.setMinimumSize(QtCore.QSize(60, 60))
-        self.DT_Q13.setMaximumSize(QtCore.QSize(60, 60))
-        font = QtGui.QFont()
-        font.setFamily("Roboto Bk")
-        font.setPointSize(14)
-        self.DT_Q13.setFont(font)
-        self.DT_Q13.setStyleSheet("QLabel {\n"
-"     color: rgb(31, 149, 239);\n"
-"    qproperty-alignment: AlignCenter;\n"
-"   \n"
-"    border: 3px solid rgb(31, 149, 239); /* This adds a 1px solid white border around the QLabel */\n"
-"    border-radius: 10px; /* Optional: if you want rounded corners */\n"
-"}\n"
-"")
-        self.DT_Q13.setObjectName("DT_Q13")
-        self.DT_Q13_horizontal_question_lyt.addWidget(self.DT_Q13)
-        spacerItem60 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.DT_Q13_horizontal_question_lyt.addItem(spacerItem60)
-        self.DT_Q13_A1_Label = QtWidgets.QLabel(self.DT_main_widget_2)
-        self.DT_Q13_A1_Label.setMinimumSize(QtCore.QSize(475, 50))
-        self.DT_Q13_A1_Label.setMaximumSize(QtCore.QSize(400, 50))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(16)
-        self.DT_Q13_A1_Label.setFont(font)
-        self.DT_Q13_A1_Label.setObjectName("DT_Q13_A1_Label")
-        self.DT_Q13_horizontal_question_lyt.addWidget(self.DT_Q13_A1_Label)
-        spacerItem61 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.DT_Q13_horizontal_question_lyt.addItem(spacerItem61)
-        self.DT_Q13_horizontal_selection_lyt = QtWidgets.QHBoxLayout()
-        self.DT_Q13_horizontal_selection_lyt.setSizeConstraint(QtWidgets.QLayout.SetFixedSize)
-        self.DT_Q13_horizontal_selection_lyt.setSpacing(20)
-        self.DT_Q13_horizontal_selection_lyt.setObjectName("DT_Q13_horizontal_selection_lyt")
-        self.DT_13_pushButton_1 = QtWidgets.QPushButton(self.DT_main_widget_2)
-        self.DT_13_pushButton_1.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_13_pushButton_1.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_13_pushButton_1.setCheckable(True)
-        self.DT_13_pushButton_1.setAutoExclusive(True)
-        self.DT_13_pushButton_1.setObjectName("DT_13_pushButton_1")
-        self.DT_Q13_horizontal_selection_lyt.addWidget(self.DT_13_pushButton_1)
-        self.DT_13_pushButton_2 = QtWidgets.QPushButton(self.DT_main_widget_2)
-        self.DT_13_pushButton_2.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_13_pushButton_2.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_13_pushButton_2.setCheckable(True)
-        self.DT_13_pushButton_2.setAutoExclusive(True)
-        self.DT_13_pushButton_2.setObjectName("DT_13_pushButton_2")
-        self.DT_Q13_horizontal_selection_lyt.addWidget(self.DT_13_pushButton_2)
-        self.DT_13_pushButton_3 = QtWidgets.QPushButton(self.DT_main_widget_2)
-        self.DT_13_pushButton_3.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_13_pushButton_3.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_13_pushButton_3.setCheckable(True)
-        self.DT_13_pushButton_3.setAutoExclusive(True)
-        self.DT_13_pushButton_3.setObjectName("DT_13_pushButton_3")
-        self.DT_Q13_horizontal_selection_lyt.addWidget(self.DT_13_pushButton_3)
-        self.DT_13_pushButton_4 = QtWidgets.QPushButton(self.DT_main_widget_2)
-        self.DT_13_pushButton_4.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_13_pushButton_4.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_13_pushButton_4.setCheckable(True)
-        self.DT_13_pushButton_4.setAutoExclusive(True)
-        self.DT_13_pushButton_4.setObjectName("DT_13_pushButton_4")
-        self.DT_Q13_horizontal_selection_lyt.addWidget(self.DT_13_pushButton_4)
-        self.DT_13_pushButton_5 = QtWidgets.QPushButton(self.DT_main_widget_2)
-        self.DT_13_pushButton_5.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_13_pushButton_5.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_13_pushButton_5.setCheckable(True)
-        self.DT_13_pushButton_5.setAutoExclusive(True)
-        self.DT_13_pushButton_5.setObjectName("DT_13_pushButton_5")
-        self.DT_Q13_horizontal_selection_lyt.addWidget(self.DT_13_pushButton_5)
-        self.DT_Q13_horizontal_question_lyt.addLayout(self.DT_Q13_horizontal_selection_lyt)
-        spacerItem62 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.DT_Q13_horizontal_question_lyt.addItem(spacerItem62)
-        self.DT_Q13_A2_Label = QtWidgets.QLabel(self.DT_main_widget_2)
-        self.DT_Q13_A2_Label.setMinimumSize(QtCore.QSize(400, 50))
-        self.DT_Q13_A2_Label.setMaximumSize(QtCore.QSize(800, 50))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(16)
-        self.DT_Q13_A2_Label.setFont(font)
-        self.DT_Q13_A2_Label.setObjectName("DT_Q13_A2_Label")
-        self.DT_Q13_horizontal_question_lyt.addWidget(self.DT_Q13_A2_Label)
-        self.DT_main_widget_2_verticalLayout.addLayout(self.DT_Q13_horizontal_question_lyt)
-        self.DT_Q14_horizontal_question_lyt = QtWidgets.QHBoxLayout()
-        self.DT_Q14_horizontal_question_lyt.setObjectName("DT_Q14_horizontal_question_lyt")
-        self.DT_Q14 = QtWidgets.QLabel(self.DT_main_widget_2)
-        self.DT_Q14.setMinimumSize(QtCore.QSize(60, 60))
-        self.DT_Q14.setMaximumSize(QtCore.QSize(60, 60))
-        font = QtGui.QFont()
-        font.setFamily("Roboto Bk")
-        font.setPointSize(14)
-        self.DT_Q14.setFont(font)
-        self.DT_Q14.setStyleSheet("QLabel {\n"
-"     color: rgb(31, 149, 239);\n"
-"    qproperty-alignment: AlignCenter;\n"
-"   \n"
-"    border: 3px solid rgb(31, 149, 239); /* This adds a 1px solid white border around the QLabel */\n"
-"    border-radius: 10px; /* Optional: if you want rounded corners */\n"
-"}\n"
-"")
-        self.DT_Q14.setObjectName("DT_Q14")
-        self.DT_Q14_horizontal_question_lyt.addWidget(self.DT_Q14)
-        spacerItem63 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.DT_Q14_horizontal_question_lyt.addItem(spacerItem63)
-        self.DT_Q14_A1_gridLayout = QtWidgets.QGridLayout()
-        self.DT_Q14_A1_gridLayout.setVerticalSpacing(0)
-        self.DT_Q14_A1_gridLayout.setObjectName("DT_Q14_A1_gridLayout")
-        self.DT_Q14_A1_Label = QtWidgets.QLabel(self.DT_main_widget_2)
-        self.DT_Q14_A1_Label.setMinimumSize(QtCore.QSize(475, 40))
-        self.DT_Q14_A1_Label.setMaximumSize(QtCore.QSize(475, 40))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(16)
-        self.DT_Q14_A1_Label.setFont(font)
-        self.DT_Q14_A1_Label.setObjectName("DT_Q14_A1_Label")
-        self.DT_Q14_A1_gridLayout.addWidget(self.DT_Q14_A1_Label, 0, 0, 1, 1)
-        self.DT_Q14_A1_Label_2 = QtWidgets.QLabel(self.DT_main_widget_2)
-        self.DT_Q14_A1_Label_2.setMinimumSize(QtCore.QSize(475, 40))
-        self.DT_Q14_A1_Label_2.setMaximumSize(QtCore.QSize(475, 40))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(16)
-        self.DT_Q14_A1_Label_2.setFont(font)
-        self.DT_Q14_A1_Label_2.setObjectName("DT_Q14_A1_Label_2")
-        self.DT_Q14_A1_gridLayout.addWidget(self.DT_Q14_A1_Label_2, 1, 0, 1, 1)
-        self.DT_Q14_horizontal_question_lyt.addLayout(self.DT_Q14_A1_gridLayout)
-        spacerItem64 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.DT_Q14_horizontal_question_lyt.addItem(spacerItem64)
-        self.DT_Q14_horizontal_selection_lyt = QtWidgets.QHBoxLayout()
-        self.DT_Q14_horizontal_selection_lyt.setSizeConstraint(QtWidgets.QLayout.SetFixedSize)
-        self.DT_Q14_horizontal_selection_lyt.setSpacing(20)
-        self.DT_Q14_horizontal_selection_lyt.setObjectName("DT_Q14_horizontal_selection_lyt")
-        self.DT_14_pushButton_1 = QtWidgets.QPushButton(self.DT_main_widget_2)
-        self.DT_14_pushButton_1.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_14_pushButton_1.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_14_pushButton_1.setCheckable(True)
-        self.DT_14_pushButton_1.setAutoExclusive(True)
-        self.DT_14_pushButton_1.setObjectName("DT_14_pushButton_1")
-        self.DT_Q14_horizontal_selection_lyt.addWidget(self.DT_14_pushButton_1)
-        self.DT_14_pushButton_2 = QtWidgets.QPushButton(self.DT_main_widget_2)
-        self.DT_14_pushButton_2.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_14_pushButton_2.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_14_pushButton_2.setCheckable(True)
-        self.DT_14_pushButton_2.setAutoExclusive(True)
-        self.DT_14_pushButton_2.setObjectName("DT_14_pushButton_2")
-        self.DT_Q14_horizontal_selection_lyt.addWidget(self.DT_14_pushButton_2)
-        self.DT_14_pushButton_3 = QtWidgets.QPushButton(self.DT_main_widget_2)
-        self.DT_14_pushButton_3.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_14_pushButton_3.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_14_pushButton_3.setCheckable(True)
-        self.DT_14_pushButton_3.setAutoExclusive(True)
-        self.DT_14_pushButton_3.setObjectName("DT_14_pushButton_3")
-        self.DT_Q14_horizontal_selection_lyt.addWidget(self.DT_14_pushButton_3)
-        self.DT_14_pushButton_4 = QtWidgets.QPushButton(self.DT_main_widget_2)
-        self.DT_14_pushButton_4.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_14_pushButton_4.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_14_pushButton_4.setCheckable(True)
-        self.DT_14_pushButton_4.setAutoExclusive(True)
-        self.DT_14_pushButton_4.setObjectName("DT_14_pushButton_4")
-        self.DT_Q14_horizontal_selection_lyt.addWidget(self.DT_14_pushButton_4)
-        self.DT_14_pushButton_5 = QtWidgets.QPushButton(self.DT_main_widget_2)
-        self.DT_14_pushButton_5.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_14_pushButton_5.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_14_pushButton_5.setCheckable(True)
-        self.DT_14_pushButton_5.setAutoExclusive(True)
-        self.DT_14_pushButton_5.setObjectName("DT_14_pushButton_5")
-        self.DT_Q14_horizontal_selection_lyt.addWidget(self.DT_14_pushButton_5)
-        self.DT_Q14_horizontal_question_lyt.addLayout(self.DT_Q14_horizontal_selection_lyt)
-        spacerItem65 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.DT_Q14_horizontal_question_lyt.addItem(spacerItem65)
-        self.DT_Q14_A2_gridLayout = QtWidgets.QGridLayout()
-        self.DT_Q14_A2_gridLayout.setObjectName("DT_Q14_A2_gridLayout")
-        self.DT_Q14_A2_Label = QtWidgets.QLabel(self.DT_main_widget_2)
-        self.DT_Q14_A2_Label.setMinimumSize(QtCore.QSize(475, 40))
-        self.DT_Q14_A2_Label.setMaximumSize(QtCore.QSize(475, 40))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(16)
-        self.DT_Q14_A2_Label.setFont(font)
-        self.DT_Q14_A2_Label.setObjectName("DT_Q14_A2_Label")
-        self.DT_Q14_A2_gridLayout.addWidget(self.DT_Q14_A2_Label, 0, 0, 1, 1)
-        self.DT_Q14_A2_Label_2 = QtWidgets.QLabel(self.DT_main_widget_2)
-        self.DT_Q14_A2_Label_2.setMinimumSize(QtCore.QSize(475, 40))
-        self.DT_Q14_A2_Label_2.setMaximumSize(QtCore.QSize(475, 40))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(16)
-        self.DT_Q14_A2_Label_2.setFont(font)
-        self.DT_Q14_A2_Label_2.setObjectName("DT_Q14_A2_Label_2")
-        self.DT_Q14_A2_gridLayout.addWidget(self.DT_Q14_A2_Label_2, 1, 0, 1, 1)
-        self.DT_Q14_horizontal_question_lyt.addLayout(self.DT_Q14_A2_gridLayout)
-        self.DT_main_widget_2_verticalLayout.addLayout(self.DT_Q14_horizontal_question_lyt)
-        self.DT_Q15_horizontal_question_lyt = QtWidgets.QHBoxLayout()
-        self.DT_Q15_horizontal_question_lyt.setObjectName("DT_Q15_horizontal_question_lyt")
-        self.DT_Q15 = QtWidgets.QLabel(self.DT_main_widget_2)
-        self.DT_Q15.setMinimumSize(QtCore.QSize(60, 60))
-        self.DT_Q15.setMaximumSize(QtCore.QSize(60, 60))
-        font = QtGui.QFont()
-        font.setFamily("Roboto Bk")
-        font.setPointSize(14)
-        self.DT_Q15.setFont(font)
-        self.DT_Q15.setStyleSheet("QLabel {\n"
-"     color: rgb(31, 149, 239);\n"
-"    qproperty-alignment: AlignCenter;\n"
-"   \n"
-"    border: 3px solid rgb(31, 149, 239); /* This adds a 1px solid white border around the QLabel */\n"
-"    border-radius: 10px; /* Optional: if you want rounded corners */\n"
-"}\n"
-"")
-        self.DT_Q15.setObjectName("DT_Q15")
-        self.DT_Q15_horizontal_question_lyt.addWidget(self.DT_Q15)
-        spacerItem66 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.DT_Q15_horizontal_question_lyt.addItem(spacerItem66)
-        self.DT_Q15_A1_gridLayout = QtWidgets.QGridLayout()
-        self.DT_Q15_A1_gridLayout.setVerticalSpacing(0)
-        self.DT_Q15_A1_gridLayout.setObjectName("DT_Q15_A1_gridLayout")
-        self.DT_Q15_A1_Label = QtWidgets.QLabel(self.DT_main_widget_2)
-        self.DT_Q15_A1_Label.setMinimumSize(QtCore.QSize(475, 40))
-        self.DT_Q15_A1_Label.setMaximumSize(QtCore.QSize(475, 40))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(16)
-        self.DT_Q15_A1_Label.setFont(font)
-        self.DT_Q15_A1_Label.setObjectName("DT_Q15_A1_Label")
-        self.DT_Q15_A1_gridLayout.addWidget(self.DT_Q15_A1_Label, 0, 0, 1, 1)
-        self.DT_Q15_A1_Label_2 = QtWidgets.QLabel(self.DT_main_widget_2)
-        self.DT_Q15_A1_Label_2.setMinimumSize(QtCore.QSize(475, 40))
-        self.DT_Q15_A1_Label_2.setMaximumSize(QtCore.QSize(475, 40))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(16)
-        self.DT_Q15_A1_Label_2.setFont(font)
-        self.DT_Q15_A1_Label_2.setObjectName("DT_Q15_A1_Label_2")
-        self.DT_Q15_A1_gridLayout.addWidget(self.DT_Q15_A1_Label_2, 1, 0, 1, 1)
-        self.DT_Q15_horizontal_question_lyt.addLayout(self.DT_Q15_A1_gridLayout)
-        spacerItem67 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.DT_Q15_horizontal_question_lyt.addItem(spacerItem67)
-        self.DT_Q15_horizontal_selection_lyt = QtWidgets.QHBoxLayout()
-        self.DT_Q15_horizontal_selection_lyt.setSizeConstraint(QtWidgets.QLayout.SetFixedSize)
-        self.DT_Q15_horizontal_selection_lyt.setSpacing(20)
-        self.DT_Q15_horizontal_selection_lyt.setObjectName("DT_Q15_horizontal_selection_lyt")
-        self.DT_15_pushButton_1 = QtWidgets.QPushButton(self.DT_main_widget_2)
-        self.DT_15_pushButton_1.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_15_pushButton_1.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_15_pushButton_1.setCheckable(True)
-        self.DT_15_pushButton_1.setAutoExclusive(True)
-        self.DT_15_pushButton_1.setObjectName("DT_15_pushButton_1")
-        self.DT_Q15_horizontal_selection_lyt.addWidget(self.DT_15_pushButton_1)
-        self.DT_15_pushButton_2 = QtWidgets.QPushButton(self.DT_main_widget_2)
-        self.DT_15_pushButton_2.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_15_pushButton_2.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_15_pushButton_2.setCheckable(True)
-        self.DT_15_pushButton_2.setAutoExclusive(True)
-        self.DT_15_pushButton_2.setObjectName("DT_15_pushButton_2")
-        self.DT_Q15_horizontal_selection_lyt.addWidget(self.DT_15_pushButton_2)
-        self.DT_15_pushButton_3 = QtWidgets.QPushButton(self.DT_main_widget_2)
-        self.DT_15_pushButton_3.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_15_pushButton_3.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_15_pushButton_3.setCheckable(True)
-        self.DT_15_pushButton_3.setAutoExclusive(True)
-        self.DT_15_pushButton_3.setObjectName("DT_15_pushButton_3")
-        self.DT_Q15_horizontal_selection_lyt.addWidget(self.DT_15_pushButton_3)
-        self.DT_15_pushButton_4 = QtWidgets.QPushButton(self.DT_main_widget_2)
-        self.DT_15_pushButton_4.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_15_pushButton_4.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_15_pushButton_4.setCheckable(True)
-        self.DT_15_pushButton_4.setAutoExclusive(True)
-        self.DT_15_pushButton_4.setObjectName("DT_15_pushButton_4")
-        self.DT_Q15_horizontal_selection_lyt.addWidget(self.DT_15_pushButton_4)
-        self.DT_15_pushButton_5 = QtWidgets.QPushButton(self.DT_main_widget_2)
-        self.DT_15_pushButton_5.setMinimumSize(QtCore.QSize(60, 55))
-        self.DT_15_pushButton_5.setMaximumSize(QtCore.QSize(60, 55))
-        self.DT_15_pushButton_5.setCheckable(True)
-        self.DT_15_pushButton_5.setAutoExclusive(True)
-        self.DT_15_pushButton_5.setObjectName("DT_15_pushButton_5")
-        self.DT_Q15_horizontal_selection_lyt.addWidget(self.DT_15_pushButton_5)
-        self.DT_Q15_horizontal_question_lyt.addLayout(self.DT_Q15_horizontal_selection_lyt)
-        spacerItem68 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.DT_Q15_horizontal_question_lyt.addItem(spacerItem68)
-        self.DT_Q15_A2_gridLayout = QtWidgets.QGridLayout()
-        self.DT_Q15_A2_gridLayout.setObjectName("DT_Q15_A2_gridLayout")
-        self.DT_Q15_A2_Label = QtWidgets.QLabel(self.DT_main_widget_2)
-        self.DT_Q15_A2_Label.setMinimumSize(QtCore.QSize(475, 40))
-        self.DT_Q15_A2_Label.setMaximumSize(QtCore.QSize(475, 40))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(16)
-        self.DT_Q15_A2_Label.setFont(font)
-        self.DT_Q15_A2_Label.setObjectName("DT_Q15_A2_Label")
-        self.DT_Q15_A2_gridLayout.addWidget(self.DT_Q15_A2_Label, 0, 0, 1, 1)
-        self.DT_Q15_A2_Label_2 = QtWidgets.QLabel(self.DT_main_widget_2)
-        self.DT_Q15_A2_Label_2.setMinimumSize(QtCore.QSize(475, 40))
-        self.DT_Q15_A2_Label_2.setMaximumSize(QtCore.QSize(475, 40))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(16)
-        self.DT_Q15_A2_Label_2.setFont(font)
-        self.DT_Q15_A2_Label_2.setObjectName("DT_Q15_A2_Label_2")
-        self.DT_Q15_A2_gridLayout.addWidget(self.DT_Q15_A2_Label_2, 1, 0, 1, 1)
-        self.DT_Q15_horizontal_question_lyt.addLayout(self.DT_Q15_A2_gridLayout)
-        self.DT_main_widget_2_verticalLayout.addLayout(self.DT_Q15_horizontal_question_lyt)
-        self.DT_page_2_verticalLayout.addWidget(self.DT_main_widget_2)
-        self.Depression_Page_tabWidget.addTab(self.DT_page_2, "")
+
+        # Create two pages (page 1 and page 2)
+        for page_num in range(1, 3):
+            page = QtWidgets.QWidget()
+            page.setObjectName(f"DT_page_{page_num}")
+            # Here, apply the layout properties to each page's QVBoxLayout
+            page_layout = QtWidgets.QVBoxLayout(page)
+            page_layout.setContentsMargins(11, 11, 11, 11)  # Set all margins to 11
+            page_layout.setSpacing(7)  # Set the spacing between widgets in the layout to 7
+            page_layout.setObjectName(f"DT_page_{page_num}_verticalLayout")
+
+            # Determine the number of questions for the current page
+            num_questions = 10 if page_num == 1 else 5
+
+            # Create questions for the current page
+            for question_num in range(1, num_questions + 1):
+                total_question_num = (page_num - 1) * 10 + question_num
+
+                # Special handling for questions 14 and 15
+                if total_question_num in [14, 15]:
+                    self.createSpecialQuestion(page, page_layout, total_question_num)
+                else:
+                    self.createQuestion(page, page_layout, total_question_num)
+
+            self.Depression_Page_tabWidget.addTab(page, f"Page {page_num}")
+
         self.Depression_Page_gridLayout.addWidget(self.Depression_Page_tabWidget, 0, 0, 1, 1)
-        self.stackedWidget.addWidget(self.Depression_Page)
+                # Add the Depression_Page to the stackedWidget at a specific index
+        index = 1  # Change this index to where you want to add the page in the stackedWidget
+        self.stackedWidget.insertWidget(index, self.Depression_Page)
+
+    def createQuestion(self, parent, layout, question_num):
+                # Create a horizontal layout for the question
+                question_layout = QtWidgets.QHBoxLayout()
+                question_layout.setContentsMargins(0, 0, 0, 0)  # Set all margins to 0
+                question_layout.setSpacing(7)  # Set the spacing between widgets in the layout to 7
+                question_layout.setObjectName(f"DT_Q{question_num}_horizontal_question_lyt")
+
+                # Create the question number label
+                question_number = QtWidgets.QLabel(parent)
+                question_number.setMinimumSize(QtCore.QSize(60, 60))
+                question_number.setMaximumSize(QtCore.QSize(60, 60))
+                font = QtGui.QFont()
+                font.setFamily("Roboto Bk")
+                font.setPointSize(14)
+                question_number.setFont(font)
+                question_number.setStyleSheet("QLabel {\n"
+                                                "    color: rgb(31, 149, 239);\n"
+                                                "    qproperty-alignment: AlignCenter;\n"
+                                                "    border: 3px solid rgb(31, 149, 239);\n"
+                                                "    border-radius: 10px;\n"
+                                                "}")
+                question_number.setObjectName(f"DT_Q{question_num}")
+                question_number.setText(str(question_num))
+                question_layout.addWidget(question_number)
+
+                # Spacer
+                spacer1 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+                question_layout.addItem(spacer1)
+
+                # Create the question label
+                question_label = QtWidgets.QLabel(parent)
+                question_label.setMinimumSize(QtCore.QSize(475, 50))
+                question_label.setMaximumSize(QtCore.QSize(400, 50))
+                font = QtGui.QFont()
+                font.setFamily("Roboto")
+                font.setPointSize(16)
+                question_label.setFont(font)
+                question_label.setObjectName(f"DT_Q{question_num}_A1_Label")
+                question_label.setText(self.questions[question_num - 1][0])  # Set the text from the questions list
+                question_layout.addWidget(question_label)
+
+                # Spacer
+                spacer2 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+                question_layout.addItem(spacer2)
+
+                # Create the selection layout for the answer options
+                selection_layout = QtWidgets.QHBoxLayout()
+                selection_layout.setSizeConstraint(QtWidgets.QLayout.SetFixedSize)
+                selection_layout.setSpacing(20)
+                selection_layout.setObjectName(f"DT_Q{question_num}_horizontal_selection_lyt")
+
+                # Create answer option buttons
+                for i in range(1, 6):
+                        button = QtWidgets.QPushButton(parent)
+                        button.setMinimumSize(QtCore.QSize(60, 55))
+                        button.setMaximumSize(QtCore.QSize(60, 55))
+                        button.setCheckable(True)
+                        button.setAutoExclusive(True)
+                        button.setObjectName(f"DT_{question_num}_pushButton_{i}")
+                        button.setText(str(i))
+                        button.setStyleSheet("""
+                                QPushButton {
+                                color: white;
+                                text-align: center;
+                                height: 70px;
+                                border: 1px;
+                                border-radius: 8px;
+                                background-color: rgb(31, 149, 239);
+                                font-size: 35px;
+                                }
+                                QPushButton:hover {
+                                background-color: rgb(45, 45, 45);
+                                color: rgb(220, 220, 220);
+                                }
+                                QPushButton:checked {
+                                background-color: rgb(45, 45, 45);
+                                }
+                        """)
+                        selection_layout.addWidget(button)
+
+                        # Add the button to the dictionary
+                        self.buttons[f"DT_{question_num}_pushButton_{i}"] = button
+
+                        question_layout.addLayout(selection_layout)
+
+                # Spacer
+                spacer3 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+                question_layout.addItem(spacer3)
+
+                # Create the second question label (for the opposite end of the scale)
+                question_label_2 = QtWidgets.QLabel(parent)
+                question_label_2.setMinimumSize(QtCore.QSize(400, 50))
+                question_label_2.setMaximumSize(QtCore.QSize(800, 50))
+                font = QtGui.QFont()
+                font.setFamily("Roboto")
+                font.setPointSize(16)
+                question_label_2.setFont(font)
+                question_label_2.setObjectName(f"DT_Q{question_num}_A2_Label")
+                question_label_2.setText(self.questions[question_num - 1][1])  # Set the text from the questions list
+                question_layout.addWidget(question_label_2)
+
+                # Add the question layout to the parent layout
+                layout.addLayout(question_layout)
+
+                # Add the label to the dictionary
+                self.question_labels[f"DT_Q{question_num}"] = question_number
+                self.a1_labels[f"DT_Q{question_num}_A1_Label"] = question_label
+                self.a2_labels[f"DT_Q{question_num}_A2_Label"] = question_label_2
+
+                                # Refresh the layout
+                layout.update()
+                layout.activate()
+
+
+
+    def createSpecialQuestion(self, parent, layout, question_num):
+        # Create a horizontal layout for the question
+        question_layout = QtWidgets.QHBoxLayout()
+        question_layout.setContentsMargins(0, 0, 0, 0)  # Set all margins to 0
+        question_layout.setSpacing(7)  # Set the spacing between widgets in the layout to 7
+        question_layout.setObjectName(f"DT_Q{question_num}_horizontal_question_lyt")
+
+        # Create the question number label
+        question_number = QtWidgets.QLabel(parent)
+        question_number.setMinimumSize(QtCore.QSize(60, 60))
+        question_number.setMaximumSize(QtCore.QSize(60, 60))
+        font = QtGui.QFont()
+        font.setFamily("Roboto Bk")
+        font.setPointSize(14)
+        question_number.setFont(font)
+        question_number.setStyleSheet("QLabel {\n"
+                                        "     color: rgb(31, 149, 239);\n"
+                                        "    qproperty-alignment: AlignCenter;\n"
+                                        "    border: 3px solid rgb(31, 149, 239);\n"
+                                        "    border-radius: 10px;\n"
+                                        "}")
+        question_number.setObjectName(f"DT_Q{question_num}")
+        question_number.setText(str(question_num))
+        question_layout.addWidget(question_number)
+
+        # Spacer
+        spacer1 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        question_layout.addItem(spacer1)
+
+        # Create a grid layout for the two-part question label
+        question_label_grid = QtWidgets.QGridLayout()
+        question_label_grid.setVerticalSpacing(0)
+        question_label_grid.setObjectName(f"DT_Q{question_num}_A1_gridLayout")
+
+        # Create the first part of the question label
+        question_label_1 = QtWidgets.QLabel(parent)
+        question_label_1.setMinimumSize(QtCore.QSize(475, 40))
+        question_label_1.setMaximumSize(QtCore.QSize(475, 40))
+        font = QtGui.QFont()
+        font.setFamily("Roboto")
+        font.setPointSize(16)
+        question_label_1.setFont(font)
+        question_label_1.setObjectName(f"DT_Q{question_num}_A1_Label")
+        question_label_1.setText(self.questions[question_num - 1][0].split(" (")[0])  # Split the text to get the first part
+        question_label_grid.addWidget(question_label_1, 0, 0, 1, 1)
+
+        # Create the second part of the question label
+        question_label_2 = QtWidgets.QLabel(parent)
+        question_label_2.setMinimumSize(QtCore.QSize(475, 40))
+        question_label_2.setMaximumSize(QtCore.QSize(475, 40))
+        font = QtGui.QFont()
+        font.setFamily("Roboto")
+        font.setPointSize(16)
+        question_label_2.setFont(font)
+        question_label_2.setObjectName(f"DT_Q{question_num}_A1_Label_2")
+        question_label_2_parts = self.questions[question_num - 1][0].split(" (")
+        question_label_2_text = question_label_2_parts[1][:-1] if len(question_label_2_parts) > 1 else ""
+        question_label_2.setText(question_label_2_text)  # Split the text to get the second part, or set empty if not present
+        question_label_grid.addWidget(question_label_2, 1, 0, 1, 1)
+
+        question_layout.addLayout(question_label_grid)
+
+        # Spacer
+        spacer2 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        question_layout.addItem(spacer2)
+
+        # Create the selection layout for the answer options
+        selection_layout = QtWidgets.QHBoxLayout()
+        selection_layout.setSizeConstraint(QtWidgets.QLayout.SetFixedSize)
+        selection_layout.setSpacing(20)
+        selection_layout.setObjectName(f"DT_Q{question_num}_horizontal_selection_lyt")
+
+        # Create answer option buttons
+        for i in range(1, 6):
+                button = QtWidgets.QPushButton(parent)
+                button.setMinimumSize(QtCore.QSize(60, 55))
+                button.setMaximumSize(QtCore.QSize(60, 55))
+                button.setCheckable(True)
+                button.setAutoExclusive(True)
+                button.setObjectName(f"DT_{question_num}_pushButton_{i}")
+                button.setText(str(i))
+                selection_layout.addWidget(button)
+                button.setStyleSheet("""
+                                QPushButton {
+                                color: white;
+                                text-align: center;
+                                height: 70px;
+                                border: 1px;
+                                border-radius: 8px;
+                                background-color: rgb(31, 149, 239);
+                                font-size: 35px;
+                                }
+                                QPushButton:hover {
+                                background-color: rgb(45, 45, 45);
+                                color: rgb(220, 220, 220);
+                                }
+                                QPushButton:checked {
+                                background-color: rgb(45, 45, 45);
+                                }
+                        """)
+
+                # Add the button to the dictionary
+                self.buttons[f"DT_{question_num}_pushButton_{i}"] = button
+
+        question_layout.addLayout(selection_layout)
+
+        # Spacer
+        spacer3 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        question_layout.addItem(spacer3)
+
+        # Create a grid layout for the two-part opposite question label
+        opposite_question_label_grid = QtWidgets.QGridLayout()
+        opposite_question_label_grid.setObjectName(f"DT_Q{question_num}_A2_gridLayout")
+
+        # Create the first part of the opposite question label
+        opposite_question_label_1 = QtWidgets.QLabel(parent)
+        opposite_question_label_1.setMinimumSize(QtCore.QSize(475, 40))
+        opposite_question_label_1.setMaximumSize(QtCore.QSize(475, 40))
+        font = QtGui.QFont()
+        font.setFamily("Roboto")
+        font.setPointSize(16)
+        opposite_question_label_1.setFont(font)
+        opposite_question_label_1.setObjectName(f"DT_Q{question_num}_A2_Label")
+        opposite_question_label_1.setText(self.questions[question_num - 1][1].split(" (")[0])  # Split the text to get the first part
+        opposite_question_label_grid.addWidget(opposite_question_label_1, 0, 0, 1, 1)
+
+        # Create the second part of the opposite question label
+        opposite_question_label_2 = QtWidgets.QLabel(parent)
+        opposite_question_label_2.setMinimumSize(QtCore.QSize(475, 40))
+        opposite_question_label_2.setMaximumSize(QtCore.QSize(475, 40))
+        font = QtGui.QFont()
+        font.setFamily("Roboto")
+        font.setPointSize(16)
+        opposite_question_label_2.setFont(font)
+        opposite_question_label_2.setObjectName(f"DT_Q{question_num}_A2_Label_2")
+        opposite_question_label_2_parts = self.questions[question_num - 1][1].split(" (")
+        opposite_question_label_2_text = opposite_question_label_2_parts[1][:-1] if len(opposite_question_label_2_parts) > 1 else ""
+        opposite_question_label_2.setText(opposite_question_label_2_text)  # Split the text to get the second part, or set empty if not present
+        opposite_question_label_grid.addWidget(opposite_question_label_2, 1, 0, 1, 1)
+
+        question_layout.addLayout(opposite_question_label_grid)
+
+        # Add the question layout to the parent layout
+        layout.addLayout(question_layout)
+
+        # Add the label to the dictionary
+        self.question_labels[f"DT_Q{question_num}"] = question_number
+        self.a1_labels[f"DT_Q{question_num}_A1_Label"] = question_label_1
+        self.a2_labels[f"DT_Q{question_num}_A2_Label"] = opposite_question_label_1
+        self.a1_labels[f"DT_Q{question_num}_A1_Label_2"] = question_label_2
+        self.a2_labels[f"DT_Q{question_num}_A2_Label_2"] = opposite_question_label_2
+
+            # Refresh the layout
+        layout.update()
+        layout.activate()
