@@ -1,7 +1,5 @@
 from PyQt5 import QtCore, QtGui, QtWidgets        
 
-
-
 class DataBaseTab:
     def __init__(self, parent, stackedWidget):
         self.stackedWidget = stackedWidget
@@ -120,7 +118,3 @@ class DataBaseTab:
         self.DatabaseTab.setHorizontalHeaderItem(6, item)
         self.Database_gridLayout.addWidget(self.DatabaseTab, 0, 0, 1, 1)
         self.stackedWidget.addWidget(self.Database)
-
-
-
-
