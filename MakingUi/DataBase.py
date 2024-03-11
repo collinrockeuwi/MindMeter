@@ -5,6 +5,14 @@ class DatabaseManager:
         self.db_file = db_file
         self.conn = self.create_connection()
         self.create_tables()
+    
+    def fetch_all_students(self):
+        self.conn.cursor().execute("SELECT * FROM Students")
+        return self.conn.cursor().fetchall()
+
+    def fetch_all_tests(self):
+        self.conn.cursor().execute("SELECT * FROM Tests")
+        return self.conn.cursor().fetchall()
 
     def create_connection(self):
         try:
@@ -32,7 +40,6 @@ class DatabaseManager:
                             StressTestScore INTEGER,
                             DepressionTestScore INTEGER,
                             SelfEsteemTestScore INTEGER,
-                            TotalScore INTEGER,
                             DetailsFilePath TEXT,
                             DateTaken TEXT,
                             FOREIGN KEY (StudentID) REFERENCES Students(StudentID)
@@ -52,11 +59,10 @@ class DatabaseManager:
             return None
 
     def insert_test_results(self, student_id, stress_test_score, depression_test_score, self_esteem_test_score, details_file_path, date_taken):
-        total_score = stress_test_score + depression_test_score + self_esteem_test_score
         try:
             c = self.conn.cursor()
-            c.execute('INSERT INTO Tests (StudentID, StressTestScore, DepressionTestScore, SelfEsteemTestScore, TotalScore, DetailsFilePath, DateTaken) VALUES (?, ?, ?, ?, ?, ?, ?)',
-                      (student_id, stress_test_score, depression_test_score, self_esteem_test_score, total_score, details_file_path, date_taken))
+            c.execute('INSERT INTO Tests (StudentID, StressTestScore, DepressionTestScore, SelfEsteemTestScore, DetailsFilePath, DateTaken) VALUES (?, ?, ?, ?, ?, ?)',
+                      (student_id, stress_test_score, depression_test_score, self_esteem_test_score, details_file_path, date_taken))
             self.conn.commit()
         except sqlite3.Error as e:
             print(f"Error inserting test results: {e}")
@@ -64,7 +70,7 @@ class DatabaseManager:
     def query_test_results(self, student_id):
         try:
             c = self.conn.cursor()
-            c.execute('''SELECT TestID, StudentID, StressTestScore, DepressionTestScore, SelfEsteemTestScore, TotalScore, DetailsFilePath, DateTaken FROM Tests WHERE StudentID = ?''', (student_id,))
+            c.execute('''SELECT TestID, StudentID, StressTestScore, DepressionTestScore, SelfEsteemTestScore, DetailsFilePath, DateTaken FROM Tests WHERE StudentID = ?''', (student_id,))
             return c.fetchall()
         except sqlite3.Error as e:
             print(f"Error querying test results: {e}")
@@ -79,7 +85,7 @@ class DatabaseManager:
 def print_student_results(db, student_id):
     results = db.query_test_results(student_id)
     for result in results:
-        print(f"TestID: {result[0]}, StudentID: {result[1]}, Stress: {result[2]}, Depression: {result[3]}, Self-Esteem: {result[4]}, Total: {result[5]}, File: {result[6]}, Date: {result[7]}")
+        print(f"TestID: {result[0]}, StudentID: {result[1]}, Stress: {result[2]}, Depression: {result[3]}, Self-Esteem: {result[4]}, File: {result[5]}, Date: {result[6]}")
 
 if __name__ == "__main__":
     db = DatabaseManager('student_tests.db')
