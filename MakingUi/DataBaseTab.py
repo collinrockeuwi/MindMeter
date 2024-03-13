@@ -93,34 +93,29 @@ class DataBaseTab:
 "")
         self.DatabaseTab.setObjectName("DatabaseTab")
         self.DatabaseTab.setColumnCount(7)
-        self.DatabaseTab.setRowCount(5)
-        item = QtWidgets.QTableWidgetItem()
-        self.DatabaseTab.setVerticalHeaderItem(0, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.DatabaseTab.setVerticalHeaderItem(1, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.DatabaseTab.setVerticalHeaderItem(2, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.DatabaseTab.setVerticalHeaderItem(3, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.DatabaseTab.setVerticalHeaderItem(4, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.DatabaseTab.setHorizontalHeaderItem(0, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.DatabaseTab.setHorizontalHeaderItem(1, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.DatabaseTab.setHorizontalHeaderItem(2, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.DatabaseTab.setHorizontalHeaderItem(3, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.DatabaseTab.setHorizontalHeaderItem(4, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.DatabaseTab.setHorizontalHeaderItem(5, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.DatabaseTab.setHorizontalHeaderItem(6, item)
+        
+        self.DatabaseTab.setObjectName("DatabaseTab")
+        self.DatabaseTab.setColumnCount(7)
+        self.DatabaseTab.setHorizontalHeaderLabels([
+            "Name", "Age", "Sex", "School", 
+            "Stress Test", "Depression Test", "Self-Esteem Test"
+        ])
+
+        # Set column widths
+        self.DatabaseTab.setColumnWidth(5, 150)  # Set width for "Depression Test" column
+        self.DatabaseTab.setColumnWidth(6, 180)  # Set width for "Self-Esteem Test" column
+
+
+
         self.Database_gridLayout.addWidget(self.DatabaseTab, 0, 0, 1, 1)
         self.stackedWidget.addWidget(self.Database)
 
-
+    def updateTable(self, data):
+        print("Updating table with data:", data)  # Table Update Check
+        self.DatabaseTab.setRowCount(len(data))
+        for row, entry in enumerate(data):
+            for col, value in enumerate(entry):
+                item = QtWidgets.QTableWidgetItem(str(value))
+                self.DatabaseTab.setItem(row, col, item)
 
 

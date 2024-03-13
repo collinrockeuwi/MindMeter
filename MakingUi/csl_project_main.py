@@ -15,6 +15,7 @@ from StressTab import StressTab # Import the class
 from GeneralTab import GeneralTab # Import the class
 from PreviewTab import PreviewTab # Import the class
 from DataBaseTab import DataBaseTab # Import the class
+from DatabaseManager import DatabaseManager # Import the class
 from MainWindow import MainWindow # Import the class
 from MainWindow2 import MainWindow2 # Import the class
 
@@ -135,6 +136,11 @@ class Ui_PsycheEval_MainWindow(object):
 #DatabasePage           #DatabasePage           #DatabasePage           #DatabasePage           #DatabasePage  
 
         self.DataBaseTab = DataBaseTab(PsycheEval_MainWindow, self.stackedWidget)
+        # Fetch student test summary and update the table
+        db = DatabaseManager('student_tests.db')
+        student_test_summary = db.fetch_student_test_summary()
+        #print("Student Test Summary:", student_test_summary)  # Data Fetching Check
+        self.DataBaseTab.updateTable(student_test_summary)
 
 #Other          #Other          #Other          #Other
 #Other          #Other          #Other          #Other
@@ -322,30 +328,6 @@ class Ui_PsycheEval_MainWindow(object):
         self.PreviewTab.GE_StressTest_Preview.setText(_translate("PsycheEval_MainWindow", "Stress Test"))
         self.PreviewTab.GE_DepressionTest_Preview.setText(_translate("PsycheEval_MainWindow", "Depression Test"))
         self.PreviewTab.GE_SelfEsteemTest_Preview.setText(_translate("PsycheEval_MainWindow", "Self-Esteem Test"))
-        item = self.DataBaseTab.DatabaseTab.verticalHeaderItem(0)
-        item.setText(_translate("PsycheEval_MainWindow", "1"))
-        item = self.DataBaseTab.DatabaseTab.verticalHeaderItem(1)
-        item.setText(_translate("PsycheEval_MainWindow", "2"))
-        item = self.DataBaseTab.DatabaseTab.verticalHeaderItem(2)
-        item.setText(_translate("PsycheEval_MainWindow", "3"))
-        item = self.DataBaseTab.DatabaseTab.verticalHeaderItem(3)
-        item.setText(_translate("PsycheEval_MainWindow", "4"))
-        item = self.DataBaseTab.DatabaseTab.verticalHeaderItem(4)
-        item.setText(_translate("PsycheEval_MainWindow", "5"))
-        item = self.DataBaseTab.DatabaseTab.horizontalHeaderItem(0)
-        item.setText(_translate("PsycheEval_MainWindow", "Name"))
-        item = self.DataBaseTab.DatabaseTab.horizontalHeaderItem(1)
-        item.setText(_translate("PsycheEval_MainWindow", "Age"))
-        item = self.DataBaseTab.DatabaseTab.horizontalHeaderItem(2)
-        item.setText(_translate("PsycheEval_MainWindow", "School"))
-        item = self.DataBaseTab.DatabaseTab.horizontalHeaderItem(3)
-        item.setText(_translate("PsycheEval_MainWindow", "Sex"))
-        item = self.DataBaseTab.DatabaseTab.horizontalHeaderItem(4)
-        item.setText(_translate("PsycheEval_MainWindow", "Depression"))
-        item = self.DataBaseTab.DatabaseTab.horizontalHeaderItem(5)
-        item.setText(_translate("PsycheEval_MainWindow", "Stress Test"))
-        item = self.DataBaseTab.DatabaseTab.horizontalHeaderItem(6)
-        item.setText(_translate("PsycheEval_MainWindow", "Self Esteem Test"))
         self.menuFile.setTitle(_translate("PsycheEval_MainWindow", "File"))
         self.actionPrint.setText(_translate("PsycheEval_MainWindow", "Print"))
 import resource_rc
