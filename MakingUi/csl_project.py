@@ -10,7 +10,6 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-
 class Ui_PsycheEval_MainWindow(object):
     def setupUi(self, PsycheEval_MainWindow):
         PsycheEval_MainWindow.setObjectName("PsycheEval_MainWindow")
