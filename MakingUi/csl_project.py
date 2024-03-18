@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'makingui3.ui'
+# Form implementation generated from reading ui file 'makingui4.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.9
 #
@@ -10,10 +10,11 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+
 class Ui_PsycheEval_MainWindow(object):
     def setupUi(self, PsycheEval_MainWindow):
         PsycheEval_MainWindow.setObjectName("PsycheEval_MainWindow")
-        PsycheEval_MainWindow.resize(2059, 1080)
+        PsycheEval_MainWindow.resize(2038, 1116)
         PsycheEval_MainWindow.setStyleSheet("background-color: rgb(245, 250, 254);")
         self.MainWindow_grid_lyt = QtWidgets.QWidget(PsycheEval_MainWindow)
         self.MainWindow_grid_lyt.setObjectName("MainWindow_grid_lyt")
@@ -194,107 +195,6 @@ class Ui_PsycheEval_MainWindow(object):
         self.expanded_icon_verticalLayout.addLayout(self.expanded_icon_verticalLayout_2)
         self.expanded_icon_widget_gridLayout.addLayout(self.expanded_icon_verticalLayout, 0, 0, 1, 1)
         self.MainWindow_gridLayout.addWidget(self.expanded_icon_widget, 0, 1, 1, 1)
-        self.small_icon_widget = QtWidgets.QWidget(self.MainWindow_grid_lyt)
-        self.small_icon_widget.setMinimumSize(QtCore.QSize(131, 0))
-        self.small_icon_widget.setMaximumSize(QtCore.QSize(131, 16777215))
-        self.small_icon_widget.setStyleSheet("QWidget{\n"
-"\n"
-"background-color: rgb(31, 149, 239);\n"
-"}\n"
-"\n"
-"QPushButton {\n"
-"    color: white;\n"
-"    text-align: centre;\n"
-"    height: 100px;\n"
-"    border: none;\n"
-"    \n"
-"    border-radius: 10px; \n"
-"    \n"
-"    background-color: rgb(31, 149, 239); /* Normal background color */\n"
-"    font-size: 14px; /* Set the font size here */\n"
-"    /* Other styles */\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: rgb(45, 45, 45); /* Darker background color on hover */\n"
-"    color: rgb(220, 220, 220); /* Slightly lighter text color on hover */\n"
-"}\n"
-"\n"
-"\n"
-"QPushButton:checked {\n"
-" \n"
-"    \n"
-"     background-color: rgb(45, 45, 45); /* Darker background color on checked */\n"
-"}\n"
-"\n"
-"\n"
-"QLabel {\n"
-"    color: white;\n"
-"    qproperty-alignment: AlignCenter; /* This will center the text */\n"
-"}\n"
-"\n"
-"\n"
-"")
-        self.small_icon_widget.setObjectName("small_icon_widget")
-        self.small_icon_widget_verticalLayout = QtWidgets.QVBoxLayout(self.small_icon_widget)
-        self.small_icon_widget_verticalLayout.setObjectName("small_icon_widget_verticalLayout")
-        spacerItem2 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.small_icon_widget_verticalLayout.addItem(spacerItem2)
-        self.General_pushButton = QtWidgets.QPushButton(self.small_icon_widget)
-        self.General_pushButton.setText("")
-        self.General_pushButton.setIcon(icon)
-        self.General_pushButton.setIconSize(QtCore.QSize(100, 100))
-        self.General_pushButton.setCheckable(True)
-        self.General_pushButton.setAutoExclusive(True)
-        self.General_pushButton.setObjectName("General_pushButton")
-        self.small_icon_widget_verticalLayout.addWidget(self.General_pushButton)
-        self.Stress_pushButton = QtWidgets.QPushButton(self.small_icon_widget)
-        self.Stress_pushButton.setText("")
-        self.Stress_pushButton.setIcon(icon1)
-        self.Stress_pushButton.setIconSize(QtCore.QSize(100, 100))
-        self.Stress_pushButton.setCheckable(True)
-        self.Stress_pushButton.setAutoExclusive(True)
-        self.Stress_pushButton.setObjectName("Stress_pushButton")
-        self.small_icon_widget_verticalLayout.addWidget(self.Stress_pushButton)
-        self.Depression_pushButton = QtWidgets.QPushButton(self.small_icon_widget)
-        self.Depression_pushButton.setText("")
-        self.Depression_pushButton.setIcon(icon2)
-        self.Depression_pushButton.setIconSize(QtCore.QSize(100, 100))
-        self.Depression_pushButton.setCheckable(True)
-        self.Depression_pushButton.setAutoExclusive(True)
-        self.Depression_pushButton.setObjectName("Depression_pushButton")
-        self.small_icon_widget_verticalLayout.addWidget(self.Depression_pushButton)
-        self.SelfEsteem_pushButton = QtWidgets.QPushButton(self.small_icon_widget)
-        self.SelfEsteem_pushButton.setText("")
-        self.SelfEsteem_pushButton.setIcon(icon3)
-        self.SelfEsteem_pushButton.setIconSize(QtCore.QSize(100, 100))
-        self.SelfEsteem_pushButton.setCheckable(True)
-        self.SelfEsteem_pushButton.setAutoExclusive(True)
-        self.SelfEsteem_pushButton.setObjectName("SelfEsteem_pushButton")
-        self.small_icon_widget_verticalLayout.addWidget(self.SelfEsteem_pushButton)
-        self.Preview_pushButton = QtWidgets.QPushButton(self.small_icon_widget)
-        self.Preview_pushButton.setText("")
-        self.Preview_pushButton.setIcon(icon4)
-        self.Preview_pushButton.setIconSize(QtCore.QSize(100, 100))
-        self.Preview_pushButton.setCheckable(True)
-        self.Preview_pushButton.setAutoExclusive(True)
-        self.Preview_pushButton.setObjectName("Preview_pushButton")
-        self.small_icon_widget_verticalLayout.addWidget(self.Preview_pushButton)
-        self.Database_pushButton = QtWidgets.QPushButton(self.small_icon_widget)
-        self.Database_pushButton.setText("")
-        self.Database_pushButton.setIcon(icon5)
-        self.Database_pushButton.setIconSize(QtCore.QSize(100, 100))
-        self.Database_pushButton.setCheckable(True)
-        self.Database_pushButton.setAutoExclusive(True)
-        self.Database_pushButton.setObjectName("Database_pushButton")
-        self.small_icon_widget_verticalLayout.addWidget(self.Database_pushButton)
-        self.Exit_pushButton = QtWidgets.QPushButton(self.small_icon_widget)
-        self.Exit_pushButton.setText("")
-        self.Exit_pushButton.setIcon(icon6)
-        self.Exit_pushButton.setIconSize(QtCore.QSize(100, 100))
-        self.Exit_pushButton.setObjectName("Exit_pushButton")
-        self.small_icon_widget_verticalLayout.addWidget(self.Exit_pushButton)
-        self.MainWindow_gridLayout.addWidget(self.small_icon_widget, 0, 0, 1, 1)
         self.MainWindow_2 = QtWidgets.QWidget(self.MainWindow_grid_lyt)
         self.MainWindow_2.setObjectName("MainWindow_2")
         self.MainWindow_2_verticalLayout = QtWidgets.QVBoxLayout(self.MainWindow_2)
@@ -356,8 +256,8 @@ class Ui_PsycheEval_MainWindow(object):
         self.topbar_menu_button.setAutoExclusive(True)
         self.topbar_menu_button.setObjectName("topbar_menu_button")
         self.topbar_horizontalLayout.addWidget(self.topbar_menu_button)
-        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.topbar_horizontalLayout.addItem(spacerItem3)
+        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.topbar_horizontalLayout.addItem(spacerItem2)
         self.topbar_widget_gridLayout.addLayout(self.topbar_horizontalLayout, 0, 0, 1, 1)
         self.MainWindow_2_verticalLayout.addWidget(self.topbar_widget)
         self.Active_widget = QtWidgets.QWidget(self.MainWindow_2)
@@ -373,6 +273,49 @@ class Ui_PsycheEval_MainWindow(object):
 "")
         self.stackedWidget.setObjectName("stackedWidget")
         self.SelfEsteem_Page = QtWidgets.QWidget()
+        self.SelfEsteem_Page.setStyleSheet("#selfEsteem_instructions {\n"
+"    font-family: \'Roboto \';\n"
+"    font-size: 20px;\n"
+"    font-weight: bold;\n"
+"    color: rgb(24, 45, 83 ); /* Set the font color to white */\n"
+"    background-color: transparent; /* Make the background transparent */\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"#selfEsteem_savebutton {\n"
+"    /* General styling for the checkbox */\n"
+"    font-family: \'Roboto\';\n"
+"    color: rgb(24, 45, 83); /* Text color */\n"
+"    font-size: 16px; /* Font size */\n"
+"    spacing: 5px; /* Space between the indicator and the text */\n"
+"    background-color: transparent; /* Make the background transparent */\n"
+"}\n"
+"\n"
+"#selfEsteem_savebutton::indicator {\n"
+"    /* Styling for the indicator (the square part) */\n"
+"    width: 150px; /* Width of the indicator */\n"
+"    height: 150px; /* Height of the indicator */\n"
+"}\n"
+"\n"
+"#selfEsteem_savebutton::indicator::unchecked {\n"
+"    /* Styling for the indicator when the checkbox is unchecked */\n"
+"    background-color: transparent; /* Background color */\n"
+"    border: transparent; /* Border color and width */\n"
+"    border-radius: 4px; /* Optional: if you want rounded corners for the square */\n"
+"     image: url(:/icon/icon/notsaved.png); /* Absolute path to the checkmark image */\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"#selfEsteem_savebutton::indicator::checked {\n"
+"    /* Styling for the indicator when the checkbox is checked */\n"
+"    background-color: transparent; /* Background color */\n"
+"    border: transparent; /* Border color and width */\n"
+"    border-radius: 4px; /* Optional: if you want rounded corners for the square */\n"
+"    image: url(:/icon/icon/saved.png); /* Absolute path to the checkmark image */\n"
+"    \n"
+"}")
         self.SelfEsteem_Page.setObjectName("SelfEsteem_Page")
         self._gridLayout = QtWidgets.QGridLayout(self.SelfEsteem_Page)
         self._gridLayout.setObjectName("_gridLayout")
@@ -429,6 +372,22 @@ class Ui_PsycheEval_MainWindow(object):
         self.SE_Tab_Page_1.setObjectName("SE_Tab_Page_1")
         self.SE_Tab_Page_verticalLayout = QtWidgets.QVBoxLayout(self.SE_Tab_Page_1)
         self.SE_Tab_Page_verticalLayout.setObjectName("SE_Tab_Page_verticalLayout")
+        self.SE_Q1_horizontal_question_lyt_2 = QtWidgets.QHBoxLayout()
+        self.SE_Q1_horizontal_question_lyt_2.setObjectName("SE_Q1_horizontal_question_lyt_2")
+        self.selfEsteem_instructions = QtWidgets.QLabel(self.SE_Tab_Page_1)
+        self.selfEsteem_instructions.setMinimumSize(QtCore.QSize(500, 50))
+        self.selfEsteem_instructions.setMaximumSize(QtCore.QSize(500, 50))
+        font = QtGui.QFont()
+        font.setFamily("Roboto ")
+        font.setPointSize(-1)
+        font.setBold(True)
+        font.setWeight(75)
+        self.selfEsteem_instructions.setFont(font)
+        self.selfEsteem_instructions.setObjectName("selfEsteem_instructions")
+        self.SE_Q1_horizontal_question_lyt_2.addWidget(self.selfEsteem_instructions)
+        spacerItem3 = QtWidgets.QSpacerItem(1000, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.SE_Q1_horizontal_question_lyt_2.addItem(spacerItem3)
+        self.SE_Tab_Page_verticalLayout.addLayout(self.SE_Q1_horizontal_question_lyt_2)
         self.SE_Q1_horizontal_question_lyt = QtWidgets.QHBoxLayout()
         self.SE_Q1_horizontal_question_lyt.setObjectName("SE_Q1_horizontal_question_lyt")
         self.SE_Q1_no_Label = QtWidgets.QLabel(self.SE_Tab_Page_1)
@@ -3581,14 +3540,59 @@ class Ui_PsycheEval_MainWindow(object):
         self.SE_Q20_horizontal_question_lyt.addWidget(self.SE_20_spinBox)
         self.verticalLayout_13.addLayout(self.SE_Q20_horizontal_question_lyt)
         self.verticalLayout_8.addWidget(self.SE_widget)
+        self.selfEsteem_savebutton = QtWidgets.QCheckBox(self.SE_Tab_Page_2)
+        self.selfEsteem_savebutton.setMinimumSize(QtCore.QSize(1168, 50))
+        self.selfEsteem_savebutton.setMaximumSize(QtCore.QSize(1168, 50))
+        self.selfEsteem_savebutton.setText("")
+        self.selfEsteem_savebutton.setObjectName("selfEsteem_savebutton")
+        self.verticalLayout_8.addWidget(self.selfEsteem_savebutton)
         self.SelfEsteem_tabWidget.addTab(self.SE_Tab_Page_2, "")
         self._gridLayout.addWidget(self.SelfEsteem_tabWidget, 1, 0, 1, 1)
         self.stackedWidget.addWidget(self.SelfEsteem_Page)
-
-#ald
-
-
         self.Depression_Page = QtWidgets.QWidget()
+        self.Depression_Page.setStyleSheet("#depression_instructions {\n"
+"    font-family: \'Roboto \';\n"
+"    font-size: 20px;\n"
+"    font-weight: bold;\n"
+"    color: rgb(24, 45, 83 ); /* Set the font color to white */\n"
+"    background-color: transparent; /* Make the background transparent */\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"#depression_savebutton {\n"
+"    /* General styling for the checkbox */\n"
+"    font-family: \'Roboto\';\n"
+"    color: rgb(24, 45, 83); /* Text color */\n"
+"    font-size: 16px; /* Font size */\n"
+"    spacing: 5px; /* Space between the indicator and the text */\n"
+"    background-color: transparent; /* Make the background transparent */\n"
+"}\n"
+"\n"
+"#depression_savebutton::indicator {\n"
+"    /* Styling for the indicator (the square part) */\n"
+"    width: 150px; /* Width of the indicator */\n"
+"    height: 150px; /* Height of the indicator */\n"
+"}\n"
+"\n"
+"#depression_savebutton::indicator::unchecked {\n"
+"    /* Styling for the indicator when the checkbox is unchecked */\n"
+"    background-color: transparent; /* Background color */\n"
+"    border: transparent; /* Border color and width */\n"
+"    border-radius: 4px; /* Optional: if you want rounded corners for the square */\n"
+"     image: url(:/icon/icon/notsaved.png); /* Absolute path to the checkmark image */\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"#depression_savebutton::indicator::checked {\n"
+"    /* Styling for the indicator when the checkbox is checked */\n"
+"    background-color: transparent; /* Background color */\n"
+"    border: transparent; /* Border color and width */\n"
+"    border-radius: 4px; /* Optional: if you want rounded corners for the square */\n"
+"    image: url(:/icon/icon/saved.png); /* Absolute path to the checkmark image */\n"
+"    \n"
+"}")
         self.Depression_Page.setObjectName("Depression_Page")
         self.Depression_Page_gridLayout = QtWidgets.QGridLayout(self.Depression_Page)
         self.Depression_Page_gridLayout.setObjectName("Depression_Page_gridLayout")
@@ -3673,6 +3677,11 @@ class Ui_PsycheEval_MainWindow(object):
         self.DT_main_widget_verticalLayout = QtWidgets.QVBoxLayout(self.DT_main_widget_1)
         self.DT_main_widget_verticalLayout.setContentsMargins(-1, -1, 0, -1)
         self.DT_main_widget_verticalLayout.setObjectName("DT_main_widget_verticalLayout")
+        self.depression_instructions = QtWidgets.QLabel(self.DT_main_widget_1)
+        self.depression_instructions.setMinimumSize(QtCore.QSize(1168, 50))
+        self.depression_instructions.setMaximumSize(QtCore.QSize(1168, 50))
+        self.depression_instructions.setObjectName("depression_instructions")
+        self.DT_main_widget_verticalLayout.addWidget(self.depression_instructions)
         self.DT_Q1_horizontal_question_lyt = QtWidgets.QHBoxLayout()
         self.DT_Q1_horizontal_question_lyt.setObjectName("DT_Q1_horizontal_question_lyt")
         self.DT_Q1 = QtWidgets.QLabel(self.DT_main_widget_1)
@@ -4545,6 +4554,7 @@ class Ui_PsycheEval_MainWindow(object):
 "}")
         self.DT_main_widget_2.setObjectName("DT_main_widget_2")
         self.DT_main_widget_2_verticalLayout = QtWidgets.QVBoxLayout(self.DT_main_widget_2)
+        self.DT_main_widget_2_verticalLayout.setSpacing(7)
         self.DT_main_widget_2_verticalLayout.setObjectName("DT_main_widget_2_verticalLayout")
         self.DT_Q11_horizontal_question_lyt = QtWidgets.QHBoxLayout()
         self.DT_Q11_horizontal_question_lyt.setObjectName("DT_Q11_horizontal_question_lyt")
@@ -4631,6 +4641,7 @@ class Ui_PsycheEval_MainWindow(object):
         self.DT_Q11_horizontal_question_lyt.addWidget(self.DT_Q11_A2_Label)
         self.DT_main_widget_2_verticalLayout.addLayout(self.DT_Q11_horizontal_question_lyt)
         self.DT_Q12_horizontal_question_lyt = QtWidgets.QHBoxLayout()
+        self.DT_Q12_horizontal_question_lyt.setSpacing(7)
         self.DT_Q12_horizontal_question_lyt.setObjectName("DT_Q12_horizontal_question_lyt")
         self.DT_Q12 = QtWidgets.QLabel(self.DT_main_widget_2)
         self.DT_Q12.setMinimumSize(QtCore.QSize(60, 60))
@@ -5016,23 +5027,18 @@ class Ui_PsycheEval_MainWindow(object):
         self.DT_Q15_A2_gridLayout.addWidget(self.DT_Q15_A2_Label_2, 1, 0, 1, 1)
         self.DT_Q15_horizontal_question_lyt.addLayout(self.DT_Q15_A2_gridLayout)
         self.DT_main_widget_2_verticalLayout.addLayout(self.DT_Q15_horizontal_question_lyt)
+        self.depression_savebutton = QtWidgets.QCheckBox(self.DT_main_widget_2)
+        self.depression_savebutton.setMinimumSize(QtCore.QSize(1168, 50))
+        self.depression_savebutton.setMaximumSize(QtCore.QSize(1168, 50))
+        self.depression_savebutton.setText("")
+        self.depression_savebutton.setObjectName("depression_savebutton")
+        self.DT_main_widget_2_verticalLayout.addWidget(self.depression_savebutton)
         self.DT_page_2_verticalLayout.addWidget(self.DT_main_widget_2)
         self.Depression_Page_tabWidget.addTab(self.DT_page_2, "")
         self.Depression_Page_gridLayout.addWidget(self.Depression_Page_tabWidget, 0, 0, 1, 1)
         self.stackedWidget.addWidget(self.Depression_Page)
-#ald
 
-
-
-
-
-
-
-
-
-
-
-
+        
         self.Stress_Page = QtWidgets.QWidget()
         self.Stress_Page.setObjectName("Stress_Page")
         self.Stress_Page_gridLayout = QtWidgets.QGridLayout(self.Stress_Page)
@@ -5113,10 +5119,110 @@ class Ui_PsycheEval_MainWindow(object):
 "QPushButton:checked {\n"
 " \n"
 "     background-color: rgb(45, 45, 45); /* Darker background color on checked */\n"
-"}")
+"}\n"
+"\n"
+"#stress_instructions {\n"
+"    font-family: \'Roboto \';\n"
+"    font-size: 20px;\n"
+"    font-weight: bold;\n"
+"    color: rgb(24, 45, 83 ); /* Set the font color to white */\n"
+"    background-color: transparent; /* Make the background transparent */\n"
+"}\n"
+"")
         self.ST_widget.setObjectName("ST_widget")
-        self.verticalLayout_11 = QtWidgets.QVBoxLayout(self.ST_widget)
-        self.verticalLayout_11.setObjectName("verticalLayout_11")
+        self.verticalLayout = QtWidgets.QVBoxLayout(self.ST_widget)
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.instructions = QtWidgets.QHBoxLayout()
+        self.instructions.setObjectName("instructions")
+
+        self.stress_instructions = QtWidgets.QLabel(self.ST_widget)
+        self.stress_instructions.setMinimumSize(QtCore.QSize(340, 50))
+        self.stress_instructions.setMaximumSize(QtCore.QSize(340, 50))
+        font = QtGui.QFont()
+        font.setFamily("Roboto ")
+        font.setPointSize(-1)
+        font.setBold(True)
+        font.setWeight(75)
+        self.stress_instructions.setFont(font)
+        self.stress_instructions.setObjectName("stress_instructions")
+        self.instructions.addWidget(self.stress_instructions)
+        spacerItem69 = QtWidgets.QSpacerItem(600, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.instructions.addItem(spacerItem69)
+
+
+        self.ST_instruction_lyt = QtWidgets.QHBoxLayout()
+        self.ST_instruction_lyt.setSizeConstraint(QtWidgets.QLayout.SetFixedSize)
+        self.ST_instruction_lyt.setSpacing(0)
+        self.ST_instruction_lyt.setObjectName("ST_instruction_lyt")
+        spacerItem70 = QtWidgets.QSpacerItem(35, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.ST_instruction_lyt.addItem(spacerItem70)
+        self.Never_Label = QtWidgets.QLabel(self.ST_widget)
+        self.Never_Label.setMinimumSize(QtCore.QSize(40, 30))
+        self.Never_Label.setMaximumSize(QtCore.QSize(40, 30))
+        font = QtGui.QFont()
+        font.setFamily("Roboto")
+        font.setPointSize(8)
+        font.setBold(False)
+        font.setWeight(50)
+        self.Never_Label.setFont(font)
+        self.Never_Label.setObjectName("Never_Label")
+        self.ST_instruction_lyt.addWidget(self.Never_Label)
+        spacerItem71 = QtWidgets.QSpacerItem(15, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.ST_instruction_lyt.addItem(spacerItem71)
+        self.AlmostNever_label = QtWidgets.QLabel(self.ST_widget)
+        self.AlmostNever_label.setMinimumSize(QtCore.QSize(80, 30))
+        self.AlmostNever_label.setMaximumSize(QtCore.QSize(80, 30))
+        font = QtGui.QFont()
+        font.setFamily("Roboto")
+        font.setPointSize(8)
+        font.setBold(False)
+        font.setWeight(50)
+        self.AlmostNever_label.setFont(font)
+        self.AlmostNever_label.setObjectName("AlmostNever_label")
+        self.ST_instruction_lyt.addWidget(self.AlmostNever_label)
+        spacerItem72 = QtWidgets.QSpacerItem(10, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.ST_instruction_lyt.addItem(spacerItem72)
+        self.Someyimes_label = QtWidgets.QLabel(self.ST_widget)
+        self.Someyimes_label.setMinimumSize(QtCore.QSize(70, 30))
+        self.Someyimes_label.setMaximumSize(QtCore.QSize(70, 30))
+        font = QtGui.QFont()
+        font.setFamily("Roboto")
+        font.setPointSize(8)
+        font.setBold(False)
+        font.setWeight(50)
+        self.Someyimes_label.setFont(font)
+        self.Someyimes_label.setObjectName("Someyimes_label")
+        self.ST_instruction_lyt.addWidget(self.Someyimes_label)
+        spacerItem73 = QtWidgets.QSpacerItem(2, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.ST_instruction_lyt.addItem(spacerItem73)
+        self.FairlyOften_label = QtWidgets.QLabel(self.ST_widget)
+        self.FairlyOften_label.setMinimumSize(QtCore.QSize(80, 30))
+        self.FairlyOften_label.setMaximumSize(QtCore.QSize(80, 30))
+        font = QtGui.QFont()
+        font.setFamily("Roboto")
+        font.setPointSize(8)
+        font.setBold(False)
+        font.setWeight(50)
+        self.FairlyOften_label.setFont(font)
+        self.FairlyOften_label.setObjectName("FairlyOften_label")
+        self.ST_instruction_lyt.addWidget(self.FairlyOften_label)
+        spacerItem74 = QtWidgets.QSpacerItem(2, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.ST_instruction_lyt.addItem(spacerItem74)
+        self.VeryOften_label = QtWidgets.QLabel(self.ST_widget)
+        self.VeryOften_label.setMinimumSize(QtCore.QSize(70, 30))
+        self.VeryOften_label.setMaximumSize(QtCore.QSize(70, 30))
+        font = QtGui.QFont()
+        font.setFamily("Roboto")
+        font.setPointSize(8)
+        font.setBold(False)
+        font.setWeight(50)
+        self.VeryOften_label.setFont(font)
+        self.VeryOften_label.setObjectName("VeryOften_label")
+        self.ST_instruction_lyt.addWidget(self.VeryOften_label)
+        spacerItem75 = QtWidgets.QSpacerItem(2, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.ST_instruction_lyt.addItem(spacerItem75)
+        self.instructions.addLayout(self.ST_instruction_lyt)
+        self.verticalLayout.addLayout(self.instructions)
         self.ST_Q1_horizontal_question_lyt = QtWidgets.QHBoxLayout()
         self.ST_Q1_horizontal_question_lyt.setObjectName("ST_Q1_horizontal_question_lyt")
         self.ST_Q1 = QtWidgets.QLabel(self.ST_widget)
@@ -5136,8 +5242,8 @@ class Ui_PsycheEval_MainWindow(object):
 "")
         self.ST_Q1.setObjectName("ST_Q1")
         self.ST_Q1_horizontal_question_lyt.addWidget(self.ST_Q1)
-        spacerItem69 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.ST_Q1_horizontal_question_lyt.addItem(spacerItem69)
+        spacerItem76 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.ST_Q1_horizontal_question_lyt.addItem(spacerItem76)
         self.ST_Q1_Label = QtWidgets.QLabel(self.ST_widget)
         self.ST_Q1_Label.setMinimumSize(QtCore.QSize(825, 50))
         self.ST_Q1_Label.setMaximumSize(QtCore.QSize(825, 50))
@@ -5147,8 +5253,8 @@ class Ui_PsycheEval_MainWindow(object):
         self.ST_Q1_Label.setFont(font)
         self.ST_Q1_Label.setObjectName("ST_Q1_Label")
         self.ST_Q1_horizontal_question_lyt.addWidget(self.ST_Q1_Label)
-        spacerItem70 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.ST_Q1_horizontal_question_lyt.addItem(spacerItem70)
+        spacerItem77 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.ST_Q1_horizontal_question_lyt.addItem(spacerItem77)
         self.ST_Q1_horizontal_selection_lyt = QtWidgets.QHBoxLayout()
         self.ST_Q1_horizontal_selection_lyt.setSizeConstraint(QtWidgets.QLayout.SetFixedSize)
         self.ST_Q1_horizontal_selection_lyt.setSpacing(20)
@@ -5189,7 +5295,7 @@ class Ui_PsycheEval_MainWindow(object):
         self.ST_1_pushButton_5.setObjectName("ST_1_pushButton_5")
         self.ST_Q1_horizontal_selection_lyt.addWidget(self.ST_1_pushButton_5)
         self.ST_Q1_horizontal_question_lyt.addLayout(self.ST_Q1_horizontal_selection_lyt)
-        self.verticalLayout_11.addLayout(self.ST_Q1_horizontal_question_lyt)
+        self.verticalLayout.addLayout(self.ST_Q1_horizontal_question_lyt)
         self.ST_Q2_horizontal_question_lyt = QtWidgets.QHBoxLayout()
         self.ST_Q2_horizontal_question_lyt.setObjectName("ST_Q2_horizontal_question_lyt")
         self.ST_Q2 = QtWidgets.QLabel(self.ST_widget)
@@ -5209,8 +5315,8 @@ class Ui_PsycheEval_MainWindow(object):
 "")
         self.ST_Q2.setObjectName("ST_Q2")
         self.ST_Q2_horizontal_question_lyt.addWidget(self.ST_Q2)
-        spacerItem71 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.ST_Q2_horizontal_question_lyt.addItem(spacerItem71)
+        spacerItem78 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.ST_Q2_horizontal_question_lyt.addItem(spacerItem78)
         self.ST_Q2_Label = QtWidgets.QLabel(self.ST_widget)
         self.ST_Q2_Label.setMinimumSize(QtCore.QSize(825, 50))
         self.ST_Q2_Label.setMaximumSize(QtCore.QSize(825, 50))
@@ -5220,8 +5326,8 @@ class Ui_PsycheEval_MainWindow(object):
         self.ST_Q2_Label.setFont(font)
         self.ST_Q2_Label.setObjectName("ST_Q2_Label")
         self.ST_Q2_horizontal_question_lyt.addWidget(self.ST_Q2_Label)
-        spacerItem72 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.ST_Q2_horizontal_question_lyt.addItem(spacerItem72)
+        spacerItem79 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.ST_Q2_horizontal_question_lyt.addItem(spacerItem79)
         self.ST_Q2_horizontal_selection_lyt = QtWidgets.QHBoxLayout()
         self.ST_Q2_horizontal_selection_lyt.setSizeConstraint(QtWidgets.QLayout.SetFixedSize)
         self.ST_Q2_horizontal_selection_lyt.setSpacing(20)
@@ -5262,7 +5368,7 @@ class Ui_PsycheEval_MainWindow(object):
         self.ST_2_pushButton_5.setObjectName("ST_2_pushButton_5")
         self.ST_Q2_horizontal_selection_lyt.addWidget(self.ST_2_pushButton_5)
         self.ST_Q2_horizontal_question_lyt.addLayout(self.ST_Q2_horizontal_selection_lyt)
-        self.verticalLayout_11.addLayout(self.ST_Q2_horizontal_question_lyt)
+        self.verticalLayout.addLayout(self.ST_Q2_horizontal_question_lyt)
         self.ST_Q3_horizontal_question_lyt = QtWidgets.QHBoxLayout()
         self.ST_Q3_horizontal_question_lyt.setObjectName("ST_Q3_horizontal_question_lyt")
         self.ST_Q3 = QtWidgets.QLabel(self.ST_widget)
@@ -5282,8 +5388,8 @@ class Ui_PsycheEval_MainWindow(object):
 "")
         self.ST_Q3.setObjectName("ST_Q3")
         self.ST_Q3_horizontal_question_lyt.addWidget(self.ST_Q3)
-        spacerItem73 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.ST_Q3_horizontal_question_lyt.addItem(spacerItem73)
+        spacerItem80 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.ST_Q3_horizontal_question_lyt.addItem(spacerItem80)
         self.ST_Q3_Label = QtWidgets.QLabel(self.ST_widget)
         self.ST_Q3_Label.setMinimumSize(QtCore.QSize(825, 50))
         self.ST_Q3_Label.setMaximumSize(QtCore.QSize(825, 50))
@@ -5293,8 +5399,8 @@ class Ui_PsycheEval_MainWindow(object):
         self.ST_Q3_Label.setFont(font)
         self.ST_Q3_Label.setObjectName("ST_Q3_Label")
         self.ST_Q3_horizontal_question_lyt.addWidget(self.ST_Q3_Label)
-        spacerItem74 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.ST_Q3_horizontal_question_lyt.addItem(spacerItem74)
+        spacerItem81 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.ST_Q3_horizontal_question_lyt.addItem(spacerItem81)
         self.ST_Q3_horizontal_selection_lyt = QtWidgets.QHBoxLayout()
         self.ST_Q3_horizontal_selection_lyt.setSizeConstraint(QtWidgets.QLayout.SetFixedSize)
         self.ST_Q3_horizontal_selection_lyt.setSpacing(20)
@@ -5335,7 +5441,7 @@ class Ui_PsycheEval_MainWindow(object):
         self.ST_3_pushButton_5.setObjectName("ST_3_pushButton_5")
         self.ST_Q3_horizontal_selection_lyt.addWidget(self.ST_3_pushButton_5)
         self.ST_Q3_horizontal_question_lyt.addLayout(self.ST_Q3_horizontal_selection_lyt)
-        self.verticalLayout_11.addLayout(self.ST_Q3_horizontal_question_lyt)
+        self.verticalLayout.addLayout(self.ST_Q3_horizontal_question_lyt)
         self.ST_Q4_horizontal_question_lyt = QtWidgets.QHBoxLayout()
         self.ST_Q4_horizontal_question_lyt.setObjectName("ST_Q4_horizontal_question_lyt")
         self.ST_Q4 = QtWidgets.QLabel(self.ST_widget)
@@ -5355,8 +5461,8 @@ class Ui_PsycheEval_MainWindow(object):
 "")
         self.ST_Q4.setObjectName("ST_Q4")
         self.ST_Q4_horizontal_question_lyt.addWidget(self.ST_Q4)
-        spacerItem75 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.ST_Q4_horizontal_question_lyt.addItem(spacerItem75)
+        spacerItem82 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.ST_Q4_horizontal_question_lyt.addItem(spacerItem82)
         self.ST_Q4_Label = QtWidgets.QLabel(self.ST_widget)
         self.ST_Q4_Label.setMinimumSize(QtCore.QSize(825, 50))
         self.ST_Q4_Label.setMaximumSize(QtCore.QSize(825, 50))
@@ -5366,8 +5472,8 @@ class Ui_PsycheEval_MainWindow(object):
         self.ST_Q4_Label.setFont(font)
         self.ST_Q4_Label.setObjectName("ST_Q4_Label")
         self.ST_Q4_horizontal_question_lyt.addWidget(self.ST_Q4_Label)
-        spacerItem76 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.ST_Q4_horizontal_question_lyt.addItem(spacerItem76)
+        spacerItem83 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.ST_Q4_horizontal_question_lyt.addItem(spacerItem83)
         self.ST_Q4_horizontal_selection_lyt = QtWidgets.QHBoxLayout()
         self.ST_Q4_horizontal_selection_lyt.setSizeConstraint(QtWidgets.QLayout.SetFixedSize)
         self.ST_Q4_horizontal_selection_lyt.setSpacing(20)
@@ -5408,7 +5514,7 @@ class Ui_PsycheEval_MainWindow(object):
         self.ST_4_pushButton_5.setObjectName("ST_4_pushButton_5")
         self.ST_Q4_horizontal_selection_lyt.addWidget(self.ST_4_pushButton_5)
         self.ST_Q4_horizontal_question_lyt.addLayout(self.ST_Q4_horizontal_selection_lyt)
-        self.verticalLayout_11.addLayout(self.ST_Q4_horizontal_question_lyt)
+        self.verticalLayout.addLayout(self.ST_Q4_horizontal_question_lyt)
         self.ST_Q5_horizontal_question_lyt = QtWidgets.QHBoxLayout()
         self.ST_Q5_horizontal_question_lyt.setObjectName("ST_Q5_horizontal_question_lyt")
         self.ST_Q5 = QtWidgets.QLabel(self.ST_widget)
@@ -5428,8 +5534,8 @@ class Ui_PsycheEval_MainWindow(object):
 "")
         self.ST_Q5.setObjectName("ST_Q5")
         self.ST_Q5_horizontal_question_lyt.addWidget(self.ST_Q5)
-        spacerItem77 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.ST_Q5_horizontal_question_lyt.addItem(spacerItem77)
+        spacerItem84 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.ST_Q5_horizontal_question_lyt.addItem(spacerItem84)
         self.ST_Q5_Label = QtWidgets.QLabel(self.ST_widget)
         self.ST_Q5_Label.setMinimumSize(QtCore.QSize(825, 50))
         self.ST_Q5_Label.setMaximumSize(QtCore.QSize(825, 50))
@@ -5439,8 +5545,8 @@ class Ui_PsycheEval_MainWindow(object):
         self.ST_Q5_Label.setFont(font)
         self.ST_Q5_Label.setObjectName("ST_Q5_Label")
         self.ST_Q5_horizontal_question_lyt.addWidget(self.ST_Q5_Label)
-        spacerItem78 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.ST_Q5_horizontal_question_lyt.addItem(spacerItem78)
+        spacerItem85 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.ST_Q5_horizontal_question_lyt.addItem(spacerItem85)
         self.ST_Q5_horizontal_selection_lyt = QtWidgets.QHBoxLayout()
         self.ST_Q5_horizontal_selection_lyt.setSizeConstraint(QtWidgets.QLayout.SetFixedSize)
         self.ST_Q5_horizontal_selection_lyt.setSpacing(20)
@@ -5481,7 +5587,7 @@ class Ui_PsycheEval_MainWindow(object):
         self.ST_5_pushButton_5.setObjectName("ST_5_pushButton_5")
         self.ST_Q5_horizontal_selection_lyt.addWidget(self.ST_5_pushButton_5)
         self.ST_Q5_horizontal_question_lyt.addLayout(self.ST_Q5_horizontal_selection_lyt)
-        self.verticalLayout_11.addLayout(self.ST_Q5_horizontal_question_lyt)
+        self.verticalLayout.addLayout(self.ST_Q5_horizontal_question_lyt)
         self.ST_Q6_horizontal_question_lyt = QtWidgets.QHBoxLayout()
         self.ST_Q6_horizontal_question_lyt.setObjectName("ST_Q6_horizontal_question_lyt")
         self.ST_Q6 = QtWidgets.QLabel(self.ST_widget)
@@ -5501,8 +5607,8 @@ class Ui_PsycheEval_MainWindow(object):
 "")
         self.ST_Q6.setObjectName("ST_Q6")
         self.ST_Q6_horizontal_question_lyt.addWidget(self.ST_Q6)
-        spacerItem79 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.ST_Q6_horizontal_question_lyt.addItem(spacerItem79)
+        spacerItem86 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.ST_Q6_horizontal_question_lyt.addItem(spacerItem86)
         self.ST_Q6_Label = QtWidgets.QLabel(self.ST_widget)
         self.ST_Q6_Label.setMinimumSize(QtCore.QSize(825, 50))
         self.ST_Q6_Label.setMaximumSize(QtCore.QSize(825, 50))
@@ -5512,8 +5618,8 @@ class Ui_PsycheEval_MainWindow(object):
         self.ST_Q6_Label.setFont(font)
         self.ST_Q6_Label.setObjectName("ST_Q6_Label")
         self.ST_Q6_horizontal_question_lyt.addWidget(self.ST_Q6_Label)
-        spacerItem80 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.ST_Q6_horizontal_question_lyt.addItem(spacerItem80)
+        spacerItem87 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.ST_Q6_horizontal_question_lyt.addItem(spacerItem87)
         self.ST_Q6_horizontal_selection_lyt = QtWidgets.QHBoxLayout()
         self.ST_Q6_horizontal_selection_lyt.setSizeConstraint(QtWidgets.QLayout.SetFixedSize)
         self.ST_Q6_horizontal_selection_lyt.setSpacing(20)
@@ -5554,7 +5660,7 @@ class Ui_PsycheEval_MainWindow(object):
         self.ST_6_pushButton_5.setObjectName("ST_6_pushButton_5")
         self.ST_Q6_horizontal_selection_lyt.addWidget(self.ST_6_pushButton_5)
         self.ST_Q6_horizontal_question_lyt.addLayout(self.ST_Q6_horizontal_selection_lyt)
-        self.verticalLayout_11.addLayout(self.ST_Q6_horizontal_question_lyt)
+        self.verticalLayout.addLayout(self.ST_Q6_horizontal_question_lyt)
         self.ST_Q7_horizontal_question_lyt = QtWidgets.QHBoxLayout()
         self.ST_Q7_horizontal_question_lyt.setObjectName("ST_Q7_horizontal_question_lyt")
         self.ST_Q7 = QtWidgets.QLabel(self.ST_widget)
@@ -5574,8 +5680,8 @@ class Ui_PsycheEval_MainWindow(object):
 "")
         self.ST_Q7.setObjectName("ST_Q7")
         self.ST_Q7_horizontal_question_lyt.addWidget(self.ST_Q7)
-        spacerItem81 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.ST_Q7_horizontal_question_lyt.addItem(spacerItem81)
+        spacerItem88 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.ST_Q7_horizontal_question_lyt.addItem(spacerItem88)
         self.ST_Q7_Label = QtWidgets.QLabel(self.ST_widget)
         self.ST_Q7_Label.setMinimumSize(QtCore.QSize(825, 50))
         self.ST_Q7_Label.setMaximumSize(QtCore.QSize(825, 50))
@@ -5585,8 +5691,8 @@ class Ui_PsycheEval_MainWindow(object):
         self.ST_Q7_Label.setFont(font)
         self.ST_Q7_Label.setObjectName("ST_Q7_Label")
         self.ST_Q7_horizontal_question_lyt.addWidget(self.ST_Q7_Label)
-        spacerItem82 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.ST_Q7_horizontal_question_lyt.addItem(spacerItem82)
+        spacerItem89 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.ST_Q7_horizontal_question_lyt.addItem(spacerItem89)
         self.ST_Q7_horizontal_selection_lyt = QtWidgets.QHBoxLayout()
         self.ST_Q7_horizontal_selection_lyt.setSizeConstraint(QtWidgets.QLayout.SetFixedSize)
         self.ST_Q7_horizontal_selection_lyt.setSpacing(20)
@@ -5627,7 +5733,7 @@ class Ui_PsycheEval_MainWindow(object):
         self.ST_7_pushButton_5.setObjectName("ST_7_pushButton_5")
         self.ST_Q7_horizontal_selection_lyt.addWidget(self.ST_7_pushButton_5)
         self.ST_Q7_horizontal_question_lyt.addLayout(self.ST_Q7_horizontal_selection_lyt)
-        self.verticalLayout_11.addLayout(self.ST_Q7_horizontal_question_lyt)
+        self.verticalLayout.addLayout(self.ST_Q7_horizontal_question_lyt)
         self.ST_Q8_horizontal_question_lyt = QtWidgets.QHBoxLayout()
         self.ST_Q8_horizontal_question_lyt.setObjectName("ST_Q8_horizontal_question_lyt")
         self.ST_Q8 = QtWidgets.QLabel(self.ST_widget)
@@ -5647,8 +5753,8 @@ class Ui_PsycheEval_MainWindow(object):
 "")
         self.ST_Q8.setObjectName("ST_Q8")
         self.ST_Q8_horizontal_question_lyt.addWidget(self.ST_Q8)
-        spacerItem83 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.ST_Q8_horizontal_question_lyt.addItem(spacerItem83)
+        spacerItem90 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.ST_Q8_horizontal_question_lyt.addItem(spacerItem90)
         self.ST_Q8_Label = QtWidgets.QLabel(self.ST_widget)
         self.ST_Q8_Label.setMinimumSize(QtCore.QSize(825, 50))
         self.ST_Q8_Label.setMaximumSize(QtCore.QSize(825, 50))
@@ -5658,8 +5764,8 @@ class Ui_PsycheEval_MainWindow(object):
         self.ST_Q8_Label.setFont(font)
         self.ST_Q8_Label.setObjectName("ST_Q8_Label")
         self.ST_Q8_horizontal_question_lyt.addWidget(self.ST_Q8_Label)
-        spacerItem84 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.ST_Q8_horizontal_question_lyt.addItem(spacerItem84)
+        spacerItem91 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.ST_Q8_horizontal_question_lyt.addItem(spacerItem91)
         self.ST_Q8_horizontal_selection_lyt = QtWidgets.QHBoxLayout()
         self.ST_Q8_horizontal_selection_lyt.setSizeConstraint(QtWidgets.QLayout.SetFixedSize)
         self.ST_Q8_horizontal_selection_lyt.setSpacing(20)
@@ -5700,7 +5806,7 @@ class Ui_PsycheEval_MainWindow(object):
         self.ST_8_pushButton_5.setObjectName("ST_8_pushButton_5")
         self.ST_Q8_horizontal_selection_lyt.addWidget(self.ST_8_pushButton_5)
         self.ST_Q8_horizontal_question_lyt.addLayout(self.ST_Q8_horizontal_selection_lyt)
-        self.verticalLayout_11.addLayout(self.ST_Q8_horizontal_question_lyt)
+        self.verticalLayout.addLayout(self.ST_Q8_horizontal_question_lyt)
         self.ST_Q9_horizontal_question_lyt = QtWidgets.QHBoxLayout()
         self.ST_Q9_horizontal_question_lyt.setObjectName("ST_Q9_horizontal_question_lyt")
         self.ST_Q9 = QtWidgets.QLabel(self.ST_widget)
@@ -5720,8 +5826,8 @@ class Ui_PsycheEval_MainWindow(object):
 "")
         self.ST_Q9.setObjectName("ST_Q9")
         self.ST_Q9_horizontal_question_lyt.addWidget(self.ST_Q9)
-        spacerItem85 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.ST_Q9_horizontal_question_lyt.addItem(spacerItem85)
+        spacerItem92 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.ST_Q9_horizontal_question_lyt.addItem(spacerItem92)
         self.ST_Q9_Label = QtWidgets.QLabel(self.ST_widget)
         self.ST_Q9_Label.setMinimumSize(QtCore.QSize(825, 50))
         self.ST_Q9_Label.setMaximumSize(QtCore.QSize(825, 50))
@@ -5731,8 +5837,8 @@ class Ui_PsycheEval_MainWindow(object):
         self.ST_Q9_Label.setFont(font)
         self.ST_Q9_Label.setObjectName("ST_Q9_Label")
         self.ST_Q9_horizontal_question_lyt.addWidget(self.ST_Q9_Label)
-        spacerItem86 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.ST_Q9_horizontal_question_lyt.addItem(spacerItem86)
+        spacerItem93 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.ST_Q9_horizontal_question_lyt.addItem(spacerItem93)
         self.ST_Q9_horizontal_selection_lyt = QtWidgets.QHBoxLayout()
         self.ST_Q9_horizontal_selection_lyt.setSizeConstraint(QtWidgets.QLayout.SetFixedSize)
         self.ST_Q9_horizontal_selection_lyt.setSpacing(20)
@@ -5773,7 +5879,7 @@ class Ui_PsycheEval_MainWindow(object):
         self.ST_9_pushButton_5.setObjectName("ST_9_pushButton_5")
         self.ST_Q9_horizontal_selection_lyt.addWidget(self.ST_9_pushButton_5)
         self.ST_Q9_horizontal_question_lyt.addLayout(self.ST_Q9_horizontal_selection_lyt)
-        self.verticalLayout_11.addLayout(self.ST_Q9_horizontal_question_lyt)
+        self.verticalLayout.addLayout(self.ST_Q9_horizontal_question_lyt)
         self.ST_Q10_horizontal_question_lyt = QtWidgets.QHBoxLayout()
         self.ST_Q10_horizontal_question_lyt.setObjectName("ST_Q10_horizontal_question_lyt")
         self.ST_Q10 = QtWidgets.QLabel(self.ST_widget)
@@ -5793,8 +5899,8 @@ class Ui_PsycheEval_MainWindow(object):
 "")
         self.ST_Q10.setObjectName("ST_Q10")
         self.ST_Q10_horizontal_question_lyt.addWidget(self.ST_Q10)
-        spacerItem87 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.ST_Q10_horizontal_question_lyt.addItem(spacerItem87)
+        spacerItem94 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.ST_Q10_horizontal_question_lyt.addItem(spacerItem94)
         self.ST_Q10_Label = QtWidgets.QLabel(self.ST_widget)
         self.ST_Q10_Label.setMinimumSize(QtCore.QSize(825, 50))
         self.ST_Q10_Label.setMaximumSize(QtCore.QSize(825, 50))
@@ -5804,8 +5910,8 @@ class Ui_PsycheEval_MainWindow(object):
         self.ST_Q10_Label.setFont(font)
         self.ST_Q10_Label.setObjectName("ST_Q10_Label")
         self.ST_Q10_horizontal_question_lyt.addWidget(self.ST_Q10_Label)
-        spacerItem88 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.ST_Q10_horizontal_question_lyt.addItem(spacerItem88)
+        spacerItem95 = QtWidgets.QSpacerItem(25, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.ST_Q10_horizontal_question_lyt.addItem(spacerItem95)
         self.ST_Q10_horizontal_selection_lyt = QtWidgets.QHBoxLayout()
         self.ST_Q10_horizontal_selection_lyt.setSizeConstraint(QtWidgets.QLayout.SetFixedSize)
         self.ST_Q10_horizontal_selection_lyt.setSpacing(20)
@@ -5846,354 +5952,161 @@ class Ui_PsycheEval_MainWindow(object):
         self.ST_10_pushButton_5.setObjectName("ST_10_pushButton_5")
         self.ST_Q10_horizontal_selection_lyt.addWidget(self.ST_10_pushButton_5)
         self.ST_Q10_horizontal_question_lyt.addLayout(self.ST_Q10_horizontal_selection_lyt)
-        self.verticalLayout_11.addLayout(self.ST_Q10_horizontal_question_lyt)
+        self.verticalLayout.addLayout(self.ST_Q10_horizontal_question_lyt)
+        self.ST_Q10_horizontal_question_lyt_2 = QtWidgets.QHBoxLayout()
+        self.ST_Q10_horizontal_question_lyt_2.setObjectName("ST_Q10_horizontal_question_lyt_2")
+        self.stress_savebutton = QtWidgets.QCheckBox(self.ST_widget)
+        self.stress_savebutton.setMinimumSize(QtCore.QSize(150, 40))
+        self.stress_savebutton.setMaximumSize(QtCore.QSize(40, 100))
+        self.stress_savebutton.setStyleSheet("#stress_savebutton {\n"
+"    /* General styling for the checkbox */\n"
+"    font-family: \'Roboto\';\n"
+"    color: rgb(24, 45, 83); /* Text color */\n"
+"    font-size: 16px; /* Font size */\n"
+"    spacing: 5px; /* Space between the indicator and the text */\n"
+"    background-color: transparent; /* Make the background transparent */\n"
+"}\n"
+"\n"
+"#stress_savebutton::indicator {\n"
+"    /* Styling for the indicator (the square part) */\n"
+"    width: 150px; /* Width of the indicator */\n"
+"    height: 150px; /* Height of the indicator */\n"
+"}\n"
+"\n"
+"#stress_savebutton::indicator::unchecked {\n"
+"    /* Styling for the indicator when the checkbox is unchecked */\n"
+"    background-color: transparent; /* Background color */\n"
+"    border: transparent; /* Border color and width */\n"
+"    border-radius: 4px; /* Optional: if you want rounded corners for the square */\n"
+"     image: url(:/icon/icon/notsaved.png); /* Absolute path to the checkmark image */\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"#stress_savebutton::indicator::checked {\n"
+"    /* Styling for the indicator when the checkbox is checked */\n"
+"    background-color: transparent; /* Background color */\n"
+"    border: transparent; /* Border color and width */\n"
+"    border-radius: 4px; /* Optional: if you want rounded corners for the square */\n"
+"    image: url(:/icon/icon/saved.png); /* Absolute path to the checkmark image */\n"
+"    \n"
+"}")
+        self.stress_savebutton.setText("")
+        self.stress_savebutton.setObjectName("stress_savebutton")
+        self.ST_Q10_horizontal_question_lyt_2.addWidget(self.stress_savebutton)
+        self.verticalLayout.addLayout(self.ST_Q10_horizontal_question_lyt_2)
         self.ST_Tab_gridLayout.addWidget(self.ST_widget, 0, 0, 1, 1)
         self.Stress_tabWidget.addTab(self.ST_Tab, "")
         self.Stress_Page_gridLayout.addWidget(self.Stress_tabWidget, 0, 0, 1, 1)
         self.stackedWidget.addWidget(self.Stress_Page)
+
+
+
         self.General_Page = QtWidgets.QWidget()
         self.General_Page.setObjectName("General_Page")
         self.General_Page_gridLayout = QtWidgets.QGridLayout(self.General_Page)
         self.General_Page_gridLayout.setObjectName("General_Page_gridLayout")
         self.GE_widget = QtWidgets.QWidget(self.General_Page)
-        self.GE_widget.setObjectName("GE_widget")
-        self.GE_widget_gridLayout = QtWidgets.QGridLayout(self.GE_widget)
-        self.GE_widget_gridLayout.setContentsMargins(0, -1, -1, -1)
-        self.GE_widget_gridLayout.setSpacing(100)
-        self.GE_widget_gridLayout.setObjectName("GE_widget_gridLayout")
-        self.GE_gridLayout = QtWidgets.QGridLayout()
-        self.GE_gridLayout.setObjectName("GE_gridLayout")
-        self.GE_Student_Label = QtWidgets.QLabel(self.GE_widget)
-        self.GE_Student_Label.setMinimumSize(QtCore.QSize(240, 80))
-        self.GE_Student_Label.setMaximumSize(QtCore.QSize(240, 70))
         font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(20)
         font.setBold(True)
         font.setWeight(75)
-        self.GE_Student_Label.setFont(font)
-        self.GE_Student_Label.setStyleSheet("QLabel {\n"
-"     color: rgb(31, 149, 239);\n"
+        self.GE_widget.setFont(font)
+        self.GE_widget.setStyleSheet("QLabel {\n"
+"    font-family: \'Roboto \';\n"
+"    font-size: 30px;\n"
+"    font-weight: bold;\n"
+"    color: white; /* Set the font color to white */\n"
+"    background-color: transparent; /* Make the background transparent */\n"
+"}\n"
+"\n"
+"#general_instructions, #date_instructions {\n"
+"    font-family: \'Roboto \';\n"
+"    font-size: 20px;\n"
+"    font-weight: bold;\n"
+"    color: rgb(24, 45, 83 ); /* Set the font color to white */\n"
+"    background-color: transparent; /* Make the background transparent */\n"
+"}\n"
+"\n"
+"#GeneralTabTitle_label {\n"
+"    font-family: \'Roboto Cn\'; /* Specify the font family */\n"
+"    font-size: 100px; /* Specify the font size */\n"
+"    font-weight: bold; /* Make the font bold */\n"
+"    color: white; /* Set the font color */\n"
+"   border: 3px solid  rgb(24, 45, 83 ); /* This adds a 3px solid blue border around the name_widget */\n"
+"    background-color: rgb(24, 45, 83 );\n"
+"    border-radius: 20px; /* Optional: if you want rounded corners */\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"#name_widget, #school_widget, #gender_widget, #dates_widget   {\n"
+"    color: rgb(31, 149, 239);\n"
 "    qproperty-alignment: AlignCenter;\n"
+"    border: 3px solid rgb(24, 45, 83); /* This adds a 3px solid blue border */\n"
+"    background-color: rgb(31, 149, 239);\n"
+"    border-radius: 40px; /* Optional: if you want rounded corners */\n"
+"}\n"
+"\n"
+"Line { /* This applies to all Line objects within the name_widget */\n"
+"    background-color: rgb(24, 45, 83 ); /* Change the color of the line */\n"
 "   \n"
-"    border: 3px solid rgb(31, 149, 239); /* This adds a 1px solid white border around the QLabel */\n"
-"    border-radius: 25px; /* Optional: if you want rounded corners */\n"
-"}\n"
-"")
-        self.GE_Student_Label.setObjectName("GE_Student_Label")
-        self.GE_gridLayout.addWidget(self.GE_Student_Label, 0, 0, 1, 1)
-        self.GE_Student_Edit = QtWidgets.QLineEdit(self.GE_widget)
-        self.GE_Student_Edit.setMinimumSize(QtCore.QSize(400, 60))
-        self.GE_Student_Edit.setMaximumSize(QtCore.QSize(400, 60))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(-1)
-        self.GE_Student_Edit.setFont(font)
-        self.GE_Student_Edit.setStyleSheet("QLineEdit {\n"
-"    /* General styling */\n"
-"    background-color: white; /* Background color of the line edit */\n"
-"    color: black; /* Text color */\n"
-"    border: 3px solid rgb(31, 149, 239); /* Border color and width */\n"
-"    border-radius: 25px; /* Rounded corners */\n"
-"    padding: 5px; /* Space between the text and the border */\n"
-"    font-size: 16px; /* Font size */\n"
 "}\n"
 "\n"
-"QLineEdit:focus {\n"
-"    /* Styling when the line edit has focus */\n"
-"    border-color: rgb(41, 159, 249); /* Change border color */\n"
+"/*background-color: rgb(31, 149, 239);*/\n"
+"\n"
+"QLineEdit {\n"
+"    /* General styling for the checkbox */\n"
+"    font-family: \'Roboto Cn\';\n"
+"    color: rgb(24, 45, 83 ); /* Text color */\n"
+"    font-size: 25px; /* Font size */\n"
+"    border: 2px solid  rgb(24, 45, 83 ); /* This adds a 3px solid blue border around the name_widget */\n"
+"    background-color: white;\n"
+"    border-radius: 10px; /* Optional: if you want rounded corners */\n"
+"    padding-left: 125px; /* Space between the text and the left margin */\n"
 "}\n"
 "\n"
-"QLineEdit:disabled {\n"
-"    /* Styling when the line edit is disabled */\n"
-"    background-color: rgb(220, 220, 220); /* Lighter background */\n"
-"    color: rgb(150, 150, 150); /* Lighter text color */\n"
-"}\n"
-"")
-        self.GE_Student_Edit.setObjectName("GE_Student_Edit")
-        self.GE_gridLayout.addWidget(self.GE_Student_Edit, 0, 1, 1, 1)
-        self.GE_Age_Label = QtWidgets.QLabel(self.GE_widget)
-        self.GE_Age_Label.setMinimumSize(QtCore.QSize(240, 60))
-        self.GE_Age_Label.setMaximumSize(QtCore.QSize(240, 60))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(20)
-        font.setBold(True)
-        font.setWeight(75)
-        self.GE_Age_Label.setFont(font)
-        self.GE_Age_Label.setStyleSheet("QLabel {\n"
-"     color: rgb(31, 149, 239);\n"
-"    qproperty-alignment: AlignCenter;\n"
-"   \n"
-"    border: 3px solid rgb(31, 149, 239); /* This adds a 1px solid white border around the QLabel */\n"
-"    border-radius: 25px; /* Optional: if you want rounded corners */\n"
-"}\n"
-"")
-        self.GE_Age_Label.setObjectName("GE_Age_Label")
-        self.GE_gridLayout.addWidget(self.GE_Age_Label, 1, 0, 1, 1)
-        self.GE_Age_Edit = QtWidgets.QLineEdit(self.GE_widget)
-        self.GE_Age_Edit.setMinimumSize(QtCore.QSize(400, 60))
-        self.GE_Age_Edit.setMaximumSize(QtCore.QSize(400, 60))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(-1)
-        self.GE_Age_Edit.setFont(font)
-        self.GE_Age_Edit.setStyleSheet("QLineEdit {\n"
-"    /* General styling */\n"
-"    background-color: white; /* Background color of the line edit */\n"
-"    color: black; /* Text color */\n"
-"    border: 3px solid rgb(31, 149, 239); /* Border color and width */\n"
-"    border-radius: 25px; /* Rounded corners */\n"
-"    padding: 5px; /* Space between the text and the border */\n"
-"    font-size: 16px; /* Font size */\n"
-"}\n"
 "\n"
-"QLineEdit:focus {\n"
-"    /* Styling when the line edit has focus */\n"
-"    border-color: rgb(41, 159, 249); /* Change border color */\n"
-"}\n"
 "\n"
-"QLineEdit:disabled {\n"
-"    /* Styling when the line edit is disabled */\n"
-"    background-color: rgb(220, 220, 220); /* Lighter background */\n"
-"    color: rgb(150, 150, 150); /* Lighter text color */\n"
-"}\n"
-"")
-        self.GE_Age_Edit.setObjectName("GE_Age_Edit")
-        self.GE_gridLayout.addWidget(self.GE_Age_Edit, 1, 1, 1, 1)
-        self.GE_Sex_Label = QtWidgets.QLabel(self.GE_widget)
-        self.GE_Sex_Label.setMinimumSize(QtCore.QSize(240, 60))
-        self.GE_Sex_Label.setMaximumSize(QtCore.QSize(240, 60))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(20)
-        font.setBold(True)
-        font.setWeight(75)
-        self.GE_Sex_Label.setFont(font)
-        self.GE_Sex_Label.setStyleSheet("QLabel {\n"
-"     color: rgb(31, 149, 239);\n"
-"    qproperty-alignment: AlignCenter;\n"
-"   \n"
-"    border: 3px solid rgb(31, 149, 239); /* This adds a 1px solid white border around the QLabel */\n"
-"    border-radius: 25px; /* Optional: if you want rounded corners */\n"
-"}\n"
-"")
-        self.GE_Sex_Label.setObjectName("GE_Sex_Label")
-        self.GE_gridLayout.addWidget(self.GE_Sex_Label, 2, 0, 1, 1)
-        self.GE_Age_Edit_2 = QtWidgets.QWidget(self.GE_widget)
-        self.GE_Age_Edit_2.setMinimumSize(QtCore.QSize(400, 75))
-        self.GE_Age_Edit_2.setMaximumSize(QtCore.QSize(400, 75))
-        self.GE_Age_Edit_2.setStyleSheet("QRadioButton {\n"
-"    /* General styling for the radio button */\n"
-"    color: black;\n"
-"; /* Text color */\n"
+"QCheckBox {\n"
+"    /* General styling for the checkbox */\n"
+"    font-family: \'Roboto\';\n"
+"    color: rgb(24, 45, 83); /* Text color */\n"
 "    font-size: 16px; /* Font size */\n"
 "    spacing: 5px; /* Space between the indicator and the text */\n"
+"    background-color: transparent; /* Make the background transparent */\n"
 "}\n"
 "\n"
-"QRadioButton::indicator {\n"
-"    /* Styling for the indicator (the circular part) */\n"
-"    width: 20px; /* Width of the indicator */\n"
-"    height: 20px; /* Height of the indicator */\n"
+"QCheckBox::indicator {\n"
+"    /* Styling for the indicator (the square part) */\n"
+"    width: 100px; /* Width of the indicator */\n"
+"    height: 100px; /* Height of the indicator */\n"
 "}\n"
 "\n"
-"QRadioButton::indicator::unchecked {\n"
-"    /* Styling for the indicator when the radio button is unchecked */\n"
-"    background-color: white; /* Background color */\n"
-"    border: 2px solid rgb(31, 149, 239); /* Border color and width */\n"
-"    border-radius: 10px; /* Makes the indicator circular */\n"
+"QCheckBox::indicator::unchecked {\n"
+"    /* Styling for the indicator when the checkbox is unchecked */\n"
+"    background-color: transparent; /* Background color */\n"
+"    border: transparent; /* Border color and width */\n"
+"    border-radius: 4px; /* Optional: if you want rounded corners for the square */\n"
+"     image: url(:/icon/icon/tickhere.png); /* Absolute path to the checkmark image */\n"
 "}\n"
-"\n"
-"QRadioButton::indicator::checked {\n"
-"    /* Styling for the indicator when the radio button is checked */\n"
-"    background-color: rgb(31, 149, 239); /* Background color */\n"
-"    border: 2px solid rgb(31, 149, 239); /* Border color and width */\n"
-"    border-radius: 10px; /* Makes the indicator circular */\n"
-"}\n"
-"\n"
-"QWidget {\n"
-"    background-color: rgb(245, 250, 254); /* Set the background color */\n"
 "\n"
 "\n"
 "\n"
-"    border: 2px solid rgb(0, 0, 0); /* Set the border color and width */\n"
-"    border-radius: 20px; /* Set the border radius for rounded corners */\n"
-"    padding: 10px; /* Set the padding inside the widget */\n"
-"    margin: 5px; /* Set the margin outside the widget */\n"
+"QCheckBox::indicator::checked {\n"
+"    /* Styling for the indicator when the checkbox is checked */\n"
+"    background-color: transparent; /* Background color */\n"
+"    border: transparent; /* Border color and width */\n"
+"    border-radius: 4px; /* Optional: if you want rounded corners for the square */\n"
+"    image: url(:/icon/icon/tickmark.png); /* Absolute path to the checkmark image */\n"
+"    \n"
 "}\n"
 "\n"
-"")
-        self.GE_Age_Edit_2.setObjectName("GE_Age_Edit_2")
-        self.gridLayout_12 = QtWidgets.QGridLayout(self.GE_Age_Edit_2)
-        self.gridLayout_12.setObjectName("gridLayout_12")
-        self.mf_horizontalLayout = QtWidgets.QHBoxLayout()
-        self.mf_horizontalLayout.setObjectName("mf_horizontalLayout")
-        self.GE_Sex_Male = QtWidgets.QRadioButton(self.GE_Age_Edit_2)
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(-1)
-        font.setBold(True)
-        font.setWeight(75)
-        self.GE_Sex_Male.setFont(font)
-        self.GE_Sex_Male.setStyleSheet("QRadioButton {\n"
-"    /* General styling for the radio button */\n"
-"    color: black;\n"
-"; /* Text color */\n"
-"    font-size: 16px; /* Font size */\n"
-"    spacing: 5px; /* Space between the indicator and the text */\n"
-"}\n"
-"\n"
-"QRadioButton::indicator {\n"
-"    /* Styling for the indicator (the circular part) */\n"
-"    width: 20px; /* Width of the indicator */\n"
-"    height: 20px; /* Height of the indicator */\n"
-"}\n"
-"\n"
-"QRadioButton::indicator::unchecked {\n"
-"    /* Styling for the indicator when the radio button is unchecked */\n"
-"    background-color: white; /* Background color */\n"
-"    border: 2px solid rgb(31, 149, 239); /* Border color and width */\n"
-"    border-radius: 10px; /* Makes the indicator circular */\n"
-"}\n"
-"\n"
-"QRadioButton::indicator::checked {\n"
-"    /* Styling for the indicator when the radio button is checked */\n"
-"    background-color: rgb(31, 149, 239); /* Background color */\n"
-"    border: 2px solid rgb(31, 149, 239); /* Border color and width */\n"
-"    border-radius: 10px; /* Makes the indicator circular */\n"
-"}\n"
-"\n"
-"QWidget {\n"
-"    background-color: rgb(245, 250, 254);; /* Set the background color */\n"
-"    border: 2px solid rgb(0, 0, 0); /* Set the border color and width */\n"
-"    border-radius: 10px; /* Set the border radius for rounded corners */\n"
-"    padding: 10px; /* Set the padding inside the widget */\n"
-"    margin: 5px; /* Set the margin outside the widget */\n"
-"}\n"
-"\n"
-"")
-        self.GE_Sex_Male.setObjectName("GE_Sex_Male")
-        self.mf_horizontalLayout.addWidget(self.GE_Sex_Male)
-        self.GE_Female_Edit = QtWidgets.QRadioButton(self.GE_Age_Edit_2)
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(-1)
-        font.setBold(True)
-        font.setWeight(75)
-        self.GE_Female_Edit.setFont(font)
-        self.GE_Female_Edit.setStyleSheet("QRadioButton {\n"
-"    /* General styling for the radio button */\n"
-"    color: black;\n"
-"; /* Text color */\n"
-"    font-size: 16px; /* Font size */\n"
-"    spacing: 5px; /* Space between the indicator and the text */\n"
-"}\n"
-"\n"
-"QRadioButton::indicator {\n"
-"    /* Styling for the indicator (the circular part) */\n"
-"    width: 20px; /* Width of the indicator */\n"
-"    height: 20px; /* Height of the indicator */\n"
-"}\n"
-"\n"
-"QRadioButton::indicator::unchecked {\n"
-"    /* Styling for the indicator when the radio button is unchecked */\n"
-"    background-color: white; /* Background color */\n"
-"    border: 2px solid rgb(31, 149, 239); /* Border color and width */\n"
-"    border-radius: 10px; /* Makes the indicator circular */\n"
-"}\n"
-"\n"
-"QRadioButton::indicator::checked {\n"
-"    /* Styling for the indicator when the radio button is checked */\n"
-"    background-color: rgb(31, 149, 239); /* Background color */\n"
-"    border: 2px solid rgb(31, 149, 239); /* Border color and width */\n"
-"    border-radius: 10px; /* Makes the indicator circular */\n"
-"}\n"
-"\n"
-"QWidget {\n"
-"   background-color: rgb(245, 250, 254); /* Set the background color */\n"
-"    border: 2px solid rgb(0, 0, 0); /* Set the border color and width */\n"
-"    border-radius: 10px; /* Set the border radius for rounded corners */\n"
-"    padding: 10px; /* Set the padding inside the widget */\n"
-"    margin: 5px; /* Set the margin outside the widget */\n"
-"}\n"
-"\n"
-"")
-        self.GE_Female_Edit.setObjectName("GE_Female_Edit")
-        self.mf_horizontalLayout.addWidget(self.GE_Female_Edit)
-        self.gridLayout_12.addLayout(self.mf_horizontalLayout, 0, 0, 1, 1)
-        self.GE_gridLayout.addWidget(self.GE_Age_Edit_2, 2, 1, 1, 1)
-        self.GE_School_Label = QtWidgets.QLabel(self.GE_widget)
-        self.GE_School_Label.setMinimumSize(QtCore.QSize(240, 60))
-        self.GE_School_Label.setMaximumSize(QtCore.QSize(240, 60))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(20)
-        font.setBold(True)
-        font.setWeight(75)
-        self.GE_School_Label.setFont(font)
-        self.GE_School_Label.setStyleSheet("QLabel {\n"
-"     color: rgb(31, 149, 239);\n"
-"    qproperty-alignment: AlignCenter;\n"
-"   \n"
-"    border: 3px solid rgb(31, 149, 239); /* This adds a 1px solid white border around the QLabel */\n"
-"    border-radius: 25px; /* Optional: if you want rounded corners */\n"
-"}\n"
-"")
-        self.GE_School_Label.setObjectName("GE_School_Label")
-        self.GE_gridLayout.addWidget(self.GE_School_Label, 3, 0, 1, 1)
-        self.GE_School_Edit = QtWidgets.QLineEdit(self.GE_widget)
-        self.GE_School_Edit.setMinimumSize(QtCore.QSize(400, 60))
-        self.GE_School_Edit.setMaximumSize(QtCore.QSize(400, 60))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(-1)
-        self.GE_School_Edit.setFont(font)
-        self.GE_School_Edit.setStyleSheet("QLineEdit {\n"
-"    /* General styling */\n"
-"    background-color: white; /* Background color of the line edit */\n"
-"    color: black; /* Text color */\n"
-"    border: 3px solid rgb(31, 149, 239); /* Border color and width */\n"
-"    border-radius: 25px; /* Rounded corners */\n"
-"    padding: 5px; /* Space between the text and the border */\n"
-"    font-size: 16px; /* Font size */\n"
-"}\n"
-"\n"
-"QLineEdit:focus {\n"
-"    /* Styling when the line edit has focus */\n"
-"    border-color: rgb(41, 159, 249); /* Change border color */\n"
-"}\n"
-"\n"
-"QLineEdit:disabled {\n"
-"    /* Styling when the line edit is disabled */\n"
-"    background-color: rgb(220, 220, 220); /* Lighter background */\n"
-"    color: rgb(150, 150, 150); /* Lighter text color */\n"
-"}\n"
-"")
-        self.GE_School_Edit.setObjectName("GE_School_Edit")
-        self.GE_gridLayout.addWidget(self.GE_School_Edit, 3, 1, 1, 1)
-        self.GE_Date_Label = QtWidgets.QLabel(self.GE_widget)
-        self.GE_Date_Label.setMinimumSize(QtCore.QSize(240, 60))
-        self.GE_Date_Label.setMaximumSize(QtCore.QSize(240, 60))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(20)
-        font.setBold(True)
-        font.setWeight(75)
-        self.GE_Date_Label.setFont(font)
-        self.GE_Date_Label.setStyleSheet("QLabel {\n"
-"     color: rgb(31, 149, 239);\n"
-"    qproperty-alignment: AlignCenter;\n"
-"   \n"
-"    border: 3px solid rgb(31, 149, 239); /* This adds a 1px solid white border around the QLabel */\n"
-"    border-radius: 25px; /* Optional: if you want rounded corners */\n"
-"}\n"
-"")
-        self.GE_Date_Label.setObjectName("GE_Date_Label")
-        self.GE_gridLayout.addWidget(self.GE_Date_Label, 4, 0, 1, 1)
-        self.GE_Date_Edit = QtWidgets.QDateEdit(self.GE_widget)
-        self.GE_Date_Edit.setMinimumSize(QtCore.QSize(400, 60))
-        self.GE_Date_Edit.setMaximumSize(QtCore.QSize(400, 60))
-        self.GE_Date_Edit.setStyleSheet("QDateEdit {\n"
+"QDateEdit {\n"
+"/* General styling for the checkbox */\n"
+"    font-family: \'Roboto Cn\';\n"
+"    color: rgb(24, 45, 83 ); /* Text color */\n"
+"    font-size: 25px; /* Font size */\n"
 "    background-color: white;\n"
 "    color: black;\n"
 "    border: 2px solid black;\n"
@@ -6230,619 +6143,924 @@ class Ui_PsycheEval_MainWindow(object):
 "QDateEdit::up-button:hover, QDateEdit::down-button:hover {\n"
 "    background-color: #e0e0e0;\n"
 "}\n"
+"\n"
+"\n"
+"#general_savebutton {\n"
+"    /* General styling for the checkbox */\n"
+"    font-family: \'Roboto\';\n"
+"    color: rgb(24, 45, 83); /* Text color */\n"
+"    font-size: 16px; /* Font size */\n"
+"    spacing: 5px; /* Space between the indicator and the text */\n"
+"    background-color: transparent; /* Make the background transparent */\n"
+"}\n"
+"\n"
+"#general_savebutton::indicator {\n"
+"    /* Styling for the indicator (the square part) */\n"
+"    width: 150px; /* Width of the indicator */\n"
+"    height: 150px; /* Height of the indicator */\n"
+"}\n"
+"\n"
+"#general_savebutton::indicator::unchecked {\n"
+"    /* Styling for the indicator when the checkbox is unchecked */\n"
+"    background-color: transparent; /* Background color */\n"
+"    border: transparent; /* Border color and width */\n"
+"    border-radius: 4px; /* Optional: if you want rounded corners for the square */\n"
+"     image: url(:/icon/icon/notsaved.png); /* Absolute path to the checkmark image */\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"#general_savebutton::indicator::checked {\n"
+"    /* Styling for the indicator when the checkbox is checked */\n"
+"    background-color: transparent; /* Background color */\n"
+"    border: transparent; /* Border color and width */\n"
+"    border-radius: 4px; /* Optional: if you want rounded corners for the square */\n"
+"    image: url(:/icon/icon/saved.png); /* Absolute path to the checkmark image */\n"
+"    \n"
+"}\n"
+"\n"
+"\n"
 "")
-        self.GE_Date_Edit.setObjectName("GE_Date_Edit")
-        self.GE_gridLayout.addWidget(self.GE_Date_Edit, 4, 1, 1, 1)
-        self.GE_widget_gridLayout.addLayout(self.GE_gridLayout, 0, 0, 1, 1)
-        self.General_Page_gridLayout.addWidget(self.GE_widget, 0, 0, 1, 1)
+        self.GE_widget.setObjectName("GE_widget")
+        self.gridLayout_9 = QtWidgets.QGridLayout(self.GE_widget)
+        self.gridLayout_9.setObjectName("gridLayout_9")
+        self.TitleLayout = QtWidgets.QHBoxLayout()
+        self.TitleLayout.setObjectName("TitleLayout")
+        spacerItem96 = QtWidgets.QSpacerItem(50, 97, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.TitleLayout.addItem(spacerItem96)
+        self.GeneralTabTitle_label = QtWidgets.QLabel(self.GE_widget)
+        self.GeneralTabTitle_label.setMinimumSize(QtCore.QSize(830, 100))
+        self.GeneralTabTitle_label.setMaximumSize(QtCore.QSize(830, 100))
+        self.GeneralTabTitle_label.setObjectName("GeneralTabTitle_label")
+        self.TitleLayout.addWidget(self.GeneralTabTitle_label)
+        spacerItem97 = QtWidgets.QSpacerItem(50, 97, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.TitleLayout.addItem(spacerItem97)
+        self.gridLayout_9.addLayout(self.TitleLayout, 0, 0, 1, 1)
+        self.input_area_verical_lyt = QtWidgets.QVBoxLayout()
+        self.input_area_verical_lyt.setSpacing(30)
+        self.input_area_verical_lyt.setObjectName("input_area_verical_lyt")
+        self.name_widget = QtWidgets.QWidget(self.GE_widget)
+        self.name_widget.setMinimumSize(QtCore.QSize(1168, 112))
+        self.name_widget.setMaximumSize(QtCore.QSize(1168, 112))
+        self.name_widget.setStyleSheet("")
+        self.name_widget.setObjectName("name_widget")
+        self.gridLayout = QtWidgets.QGridLayout(self.name_widget)
+        self.gridLayout.setContentsMargins(5, 5, 5, 5)
+        self.gridLayout.setSpacing(5)
+        self.gridLayout.setObjectName("gridLayout")
+        self.horizontalLayout = QtWidgets.QHBoxLayout()
+        self.horizontalLayout.setSpacing(3)
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        spacerItem98 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem98)
+        self.general_name_label = QtWidgets.QLabel(self.name_widget)
+        self.general_name_label.setMinimumSize(QtCore.QSize(260, 50))
+        self.general_name_label.setMaximumSize(QtCore.QSize(260, 50))
+        font = QtGui.QFont()
+        font.setFamily("Roboto ")
+        font.setPointSize(-1)
+        font.setBold(True)
+        font.setWeight(75)
+        self.general_name_label.setFont(font)
+        self.general_name_label.setStyleSheet("")
+        self.general_name_label.setObjectName("general_name_label")
+        self.horizontalLayout.addWidget(self.general_name_label)
+        spacerItem99 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem99)
+        self.name_Insert = QtWidgets.QLineEdit(self.name_widget)
+        self.name_Insert.setMinimumSize(QtCore.QSize(550, 50))
+        self.name_Insert.setMaximumSize(QtCore.QSize(390, 50))
+        self.name_Insert.setText("")
+        self.name_Insert.setObjectName("name_Insert")
+        self.horizontalLayout.addWidget(self.name_Insert)
+        spacerItem100 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem100)
+        self.name_vertical_line = QtWidgets.QFrame(self.name_widget)
+        self.name_vertical_line.setMinimumSize(QtCore.QSize(0, 100))
+        self.name_vertical_line.setMaximumSize(QtCore.QSize(16777215, 100))
+        self.name_vertical_line.setFrameShape(QtWidgets.QFrame.VLine)
+        self.name_vertical_line.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.name_vertical_line.setObjectName("name_vertical_line")
+        self.horizontalLayout.addWidget(self.name_vertical_line)
+        spacerItem101 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem101)
+        self.name_checkBox = QtWidgets.QCheckBox(self.name_widget)
+        self.name_checkBox.setMinimumSize(QtCore.QSize(100, 100))
+        self.name_checkBox.setMaximumSize(QtCore.QSize(100, 100))
+        self.name_checkBox.setText("")
+        self.name_checkBox.setIconSize(QtCore.QSize(120, 120))
+        self.name_checkBox.setObjectName("name_checkBox")
+        self.horizontalLayout.addWidget(self.name_checkBox)
+        spacerItem102 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem102)
+        self.gridLayout.addLayout(self.horizontalLayout, 0, 0, 1, 1)
+        self.input_area_verical_lyt.addWidget(self.name_widget)
+        self.school_widget = QtWidgets.QWidget(self.GE_widget)
+        self.school_widget.setMinimumSize(QtCore.QSize(1168, 112))
+        self.school_widget.setMaximumSize(QtCore.QSize(1168, 112))
+        self.school_widget.setStyleSheet("")
+        self.school_widget.setObjectName("school_widget")
+        self.gridLayout_2 = QtWidgets.QGridLayout(self.school_widget)
+        self.gridLayout_2.setContentsMargins(5, 5, 5, 5)
+        self.gridLayout_2.setSpacing(5)
+        self.gridLayout_2.setObjectName("gridLayout_2")
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_2.setSpacing(3)
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        spacerItem103 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_2.addItem(spacerItem103)
+        self.general_school_label = QtWidgets.QLabel(self.school_widget)
+        self.general_school_label.setMinimumSize(QtCore.QSize(260, 50))
+        self.general_school_label.setMaximumSize(QtCore.QSize(260, 50))
+        font = QtGui.QFont()
+        font.setFamily("Roboto ")
+        font.setPointSize(-1)
+        font.setBold(True)
+        font.setWeight(75)
+        self.general_school_label.setFont(font)
+        self.general_school_label.setStyleSheet("")
+        self.general_school_label.setObjectName("general_school_label")
+        self.horizontalLayout_2.addWidget(self.general_school_label)
+        spacerItem104 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_2.addItem(spacerItem104)
+        self.name_Insert_3 = QtWidgets.QLineEdit(self.school_widget)
+        self.name_Insert_3.setMinimumSize(QtCore.QSize(550, 50))
+        self.name_Insert_3.setMaximumSize(QtCore.QSize(390, 50))
+        self.name_Insert_3.setText("")
+        self.name_Insert_3.setObjectName("name_Insert_3")
+        self.horizontalLayout_2.addWidget(self.name_Insert_3)
+        spacerItem105 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_2.addItem(spacerItem105)
+        self.name_vertical_line_2 = QtWidgets.QFrame(self.school_widget)
+        self.name_vertical_line_2.setMinimumSize(QtCore.QSize(0, 100))
+        self.name_vertical_line_2.setMaximumSize(QtCore.QSize(16777215, 100))
+        self.name_vertical_line_2.setFrameShape(QtWidgets.QFrame.VLine)
+        self.name_vertical_line_2.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.name_vertical_line_2.setObjectName("name_vertical_line_2")
+        self.horizontalLayout_2.addWidget(self.name_vertical_line_2)
+        spacerItem106 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_2.addItem(spacerItem106)
+        self.school_checkBox = QtWidgets.QCheckBox(self.school_widget)
+        self.school_checkBox.setMinimumSize(QtCore.QSize(100, 100))
+        self.school_checkBox.setMaximumSize(QtCore.QSize(100, 100))
+        self.school_checkBox.setText("")
+        self.school_checkBox.setIconSize(QtCore.QSize(120, 120))
+        self.school_checkBox.setObjectName("school_checkBox")
+        self.horizontalLayout_2.addWidget(self.school_checkBox)
+        spacerItem107 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_2.addItem(spacerItem107)
+        self.gridLayout_2.addLayout(self.horizontalLayout_2, 0, 0, 1, 1)
+        self.input_area_verical_lyt.addWidget(self.school_widget)
+        self.gender_widget = QtWidgets.QWidget(self.GE_widget)
+        self.gender_widget.setMinimumSize(QtCore.QSize(1168, 112))
+        self.gender_widget.setMaximumSize(QtCore.QSize(1168, 112))
+        self.gender_widget.setStyleSheet("")
+        self.gender_widget.setObjectName("gender_widget")
+        self.gridLayout_3 = QtWidgets.QGridLayout(self.gender_widget)
+        self.gridLayout_3.setContentsMargins(5, 5, 5, 5)
+        self.gridLayout_3.setSpacing(5)
+        self.gridLayout_3.setObjectName("gridLayout_3")
+        self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_3.setSpacing(10)
+        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
+        spacerItem108 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem108)
+        self.general_gender_label = QtWidgets.QLabel(self.gender_widget)
+        self.general_gender_label.setMinimumSize(QtCore.QSize(110, 50))
+        self.general_gender_label.setMaximumSize(QtCore.QSize(110, 50))
+        font = QtGui.QFont()
+        font.setFamily("Roboto ")
+        font.setPointSize(-1)
+        font.setBold(True)
+        font.setWeight(75)
+        self.general_gender_label.setFont(font)
+        self.general_gender_label.setStyleSheet("")
+        self.general_gender_label.setObjectName("general_gender_label")
+        self.horizontalLayout_3.addWidget(self.general_gender_label)
+        spacerItem109 = QtWidgets.QSpacerItem(300, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem109)
+        self.name_vertical_line_4 = QtWidgets.QFrame(self.gender_widget)
+        self.name_vertical_line_4.setMinimumSize(QtCore.QSize(0, 100))
+        self.name_vertical_line_4.setMaximumSize(QtCore.QSize(16777215, 100))
+        self.name_vertical_line_4.setFrameShape(QtWidgets.QFrame.VLine)
+        self.name_vertical_line_4.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.name_vertical_line_4.setObjectName("name_vertical_line_4")
+        self.horizontalLayout_3.addWidget(self.name_vertical_line_4)
+        spacerItem110 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem110)
+        self.general_male_label = QtWidgets.QLabel(self.gender_widget)
+        self.general_male_label.setMinimumSize(QtCore.QSize(70, 50))
+        self.general_male_label.setMaximumSize(QtCore.QSize(70, 50))
+        font = QtGui.QFont()
+        font.setFamily("Roboto ")
+        font.setPointSize(-1)
+        font.setBold(True)
+        font.setWeight(75)
+        self.general_male_label.setFont(font)
+        self.general_male_label.setStyleSheet("")
+        self.general_male_label.setObjectName("general_male_label")
+        self.horizontalLayout_3.addWidget(self.general_male_label)
+        spacerItem111 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem111)
+        self.male_checkBox = QtWidgets.QCheckBox(self.gender_widget)
+        self.male_checkBox.setMinimumSize(QtCore.QSize(100, 100))
+        self.male_checkBox.setMaximumSize(QtCore.QSize(100, 100))
+        self.male_checkBox.setText("")
+        self.male_checkBox.setIconSize(QtCore.QSize(120, 120))
+        self.male_checkBox.setObjectName("male_checkBox")
+        self.horizontalLayout_3.addWidget(self.male_checkBox)
+        spacerItem112 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem112)
+        self.name_vertical_line_3 = QtWidgets.QFrame(self.gender_widget)
+        self.name_vertical_line_3.setMinimumSize(QtCore.QSize(0, 100))
+        self.name_vertical_line_3.setMaximumSize(QtCore.QSize(16777215, 100))
+        self.name_vertical_line_3.setFrameShape(QtWidgets.QFrame.VLine)
+        self.name_vertical_line_3.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.name_vertical_line_3.setObjectName("name_vertical_line_3")
+        self.horizontalLayout_3.addWidget(self.name_vertical_line_3)
+        self.general_female_label = QtWidgets.QLabel(self.gender_widget)
+        self.general_female_label.setMinimumSize(QtCore.QSize(100, 50))
+        self.general_female_label.setMaximumSize(QtCore.QSize(100, 50))
+        font = QtGui.QFont()
+        font.setFamily("Roboto ")
+        font.setPointSize(-1)
+        font.setBold(True)
+        font.setWeight(75)
+        self.general_female_label.setFont(font)
+        self.general_female_label.setStyleSheet("")
+        self.general_female_label.setObjectName("general_female_label")
+        self.horizontalLayout_3.addWidget(self.general_female_label)
+        spacerItem113 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem113)
+        self.female_checkBox = QtWidgets.QCheckBox(self.gender_widget)
+        self.female_checkBox.setMinimumSize(QtCore.QSize(100, 100))
+        self.female_checkBox.setMaximumSize(QtCore.QSize(100, 100))
+        self.female_checkBox.setText("")
+        self.female_checkBox.setIconSize(QtCore.QSize(120, 120))
+        self.female_checkBox.setObjectName("female_checkBox")
+        self.horizontalLayout_3.addWidget(self.female_checkBox)
+        spacerItem114 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem114)
+        self.gridLayout_3.addLayout(self.horizontalLayout_3, 0, 0, 1, 1)
+        self.input_area_verical_lyt.addWidget(self.gender_widget)
+        self.general_date_instructions = QtWidgets.QLabel(self.GE_widget)
+        self.general_date_instructions.setMinimumSize(QtCore.QSize(1168, 30))
+        self.general_date_instructions.setMaximumSize(QtCore.QSize(1168, 30))
+        self.general_date_instructions.setObjectName("general_date_instructions")
+        self.input_area_verical_lyt.addWidget(self.general_date_instructions)
+        self.dates_widget = QtWidgets.QWidget(self.GE_widget)
+        self.dates_widget.setMinimumSize(QtCore.QSize(1168, 112))
+        self.dates_widget.setMaximumSize(QtCore.QSize(1168, 112))
+        self.dates_widget.setStyleSheet("")
+        self.dates_widget.setObjectName("dates_widget")
+        self.gridLayout_4 = QtWidgets.QGridLayout(self.dates_widget)
+        self.gridLayout_4.setContentsMargins(5, 5, 5, 5)
+        self.gridLayout_4.setSpacing(5)
+        self.gridLayout_4.setObjectName("gridLayout_4")
+        self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_4.setSpacing(20)
+        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
+        self.general_dateofBirth_label = QtWidgets.QLabel(self.dates_widget)
+        self.general_dateofBirth_label.setMinimumSize(QtCore.QSize(175, 50))
+        self.general_dateofBirth_label.setMaximumSize(QtCore.QSize(175, 50))
+        font = QtGui.QFont()
+        font.setFamily("Roboto ")
+        font.setPointSize(-1)
+        font.setBold(True)
+        font.setWeight(75)
+        self.general_dateofBirth_label.setFont(font)
+        self.general_dateofBirth_label.setStyleSheet("")
+        self.general_dateofBirth_label.setObjectName("general_dateofBirth_label")
+        self.horizontalLayout_4.addWidget(self.general_dateofBirth_label)
+        self.general_dateofBrith_Edit = QtWidgets.QDateEdit(self.dates_widget)
+        self.general_dateofBrith_Edit.setMinimumSize(QtCore.QSize(180, 60))
+        self.general_dateofBrith_Edit.setMaximumSize(QtCore.QSize(180, 60))
+        self.general_dateofBrith_Edit.setStyleSheet("\n"
+"")
+        self.general_dateofBrith_Edit.setDate(QtCore.QDate(2008, 1, 1))
+        self.general_dateofBrith_Edit.setObjectName("general_dateofBrith_Edit")
+        self.horizontalLayout_4.addWidget(self.general_dateofBrith_Edit)
+        self.dateofBirth_checkBox = QtWidgets.QCheckBox(self.dates_widget)
+        self.dateofBirth_checkBox.setMinimumSize(QtCore.QSize(100, 100))
+        self.dateofBirth_checkBox.setMaximumSize(QtCore.QSize(100, 100))
+        self.dateofBirth_checkBox.setText("")
+        self.dateofBirth_checkBox.setIconSize(QtCore.QSize(120, 120))
+        self.dateofBirth_checkBox.setObjectName("dateofBirth_checkBox")
+        self.horizontalLayout_4.addWidget(self.dateofBirth_checkBox)
+        self.name_vertical_line_5 = QtWidgets.QFrame(self.dates_widget)
+        self.name_vertical_line_5.setMinimumSize(QtCore.QSize(0, 100))
+        self.name_vertical_line_5.setMaximumSize(QtCore.QSize(16777215, 100))
+        self.name_vertical_line_5.setFrameShape(QtWidgets.QFrame.VLine)
+        self.name_vertical_line_5.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.name_vertical_line_5.setObjectName("name_vertical_line_5")
+        self.horizontalLayout_4.addWidget(self.name_vertical_line_5)
+        spacerItem115 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_4.addItem(spacerItem115)
+        self.general_todaysdate_label = QtWidgets.QLabel(self.dates_widget)
+        self.general_todaysdate_label.setMinimumSize(QtCore.QSize(177, 50))
+        self.general_todaysdate_label.setMaximumSize(QtCore.QSize(177, 50))
+        font = QtGui.QFont()
+        font.setFamily("Roboto ")
+        font.setPointSize(-1)
+        font.setBold(True)
+        font.setWeight(75)
+        self.general_todaysdate_label.setFont(font)
+        self.general_todaysdate_label.setStyleSheet("")
+        self.general_todaysdate_label.setObjectName("general_todaysdate_label")
+        self.horizontalLayout_4.addWidget(self.general_todaysdate_label)
+        self.general_todaysDate_Edit = QtWidgets.QDateEdit(self.dates_widget)
+        self.general_todaysDate_Edit.setMinimumSize(QtCore.QSize(180, 60))
+        self.general_todaysDate_Edit.setMaximumSize(QtCore.QSize(180, 60))
+        self.general_todaysDate_Edit.setStyleSheet("\n"
+"")
+        self.general_todaysDate_Edit.setDate(QtCore.QDate(2024, 2, 3))
+        self.general_todaysDate_Edit.setObjectName("general_todaysDate_Edit")
+        self.horizontalLayout_4.addWidget(self.general_todaysDate_Edit)
+        self.todaysDate_checkBox = QtWidgets.QCheckBox(self.dates_widget)
+        self.todaysDate_checkBox.setMinimumSize(QtCore.QSize(100, 100))
+        self.todaysDate_checkBox.setMaximumSize(QtCore.QSize(100, 100))
+        self.todaysDate_checkBox.setText("")
+        self.todaysDate_checkBox.setIconSize(QtCore.QSize(120, 120))
+        self.todaysDate_checkBox.setObjectName("todaysDate_checkBox")
+        self.horizontalLayout_4.addWidget(self.todaysDate_checkBox)
+        self.gridLayout_4.addLayout(self.horizontalLayout_4, 0, 0, 1, 1)
+        self.input_area_verical_lyt.addWidget(self.dates_widget)
+        self.gridLayout_9.addLayout(self.input_area_verical_lyt, 2, 0, 1, 1)
+        self.general_savebutton = QtWidgets.QCheckBox(self.GE_widget)
+        self.general_savebutton.setMinimumSize(QtCore.QSize(150, 80))
+        self.general_savebutton.setMaximumSize(QtCore.QSize(150, 80))
+        self.general_savebutton.setText("")
+        self.general_savebutton.setIconSize(QtCore.QSize(100, 100))
+        self.general_savebutton.setObjectName("general_savebutton")
+        self.gridLayout_9.addWidget(self.general_savebutton, 3, 0, 1, 1)
+        self.general_instructions = QtWidgets.QLabel(self.GE_widget)
+        self.general_instructions.setMinimumSize(QtCore.QSize(1168, 60))
+        self.general_instructions.setMaximumSize(QtCore.QSize(1168, 60))
+        self.general_instructions.setObjectName("general_instructions")
+        self.gridLayout_9.addWidget(self.general_instructions, 1, 0, 1, 1)
+        self.General_Page_gridLayout.addWidget(self.GE_widget, 0, 1, 1, 1)
         self.stackedWidget.addWidget(self.General_Page)
+
+
+
+
+
         self.GE_Preview_Page = QtWidgets.QWidget()
         self.GE_Preview_Page.setObjectName("GE_Preview_Page")
         self.GE_Preview_Page_gridLayout = QtWidgets.QGridLayout(self.GE_Preview_Page)
         self.GE_Preview_Page_gridLayout.setObjectName("GE_Preview_Page_gridLayout")
         self.GE_Preview_Page_widget = QtWidgets.QWidget(self.GE_Preview_Page)
+        self.GE_Preview_Page_widget.setStyleSheet("QLabel {\n"
+"    font-family: \'Roboto \';\n"
+"    font-size: 30px;\n"
+"    font-weight: bold;\n"
+"    color: white; /* Set the font color to white */\n"
+"    background-color: transparent; /* Make the background transparent */\n"
+"}\n"
+"\n"
+"#preview_instructions, #preview_date_instructions {\n"
+"    font-family: \'Roboto \';\n"
+"    font-size: 20px;\n"
+"    font-weight: bold;\n"
+"    color: rgb(24, 45, 83 ); /* Set the font color to white */\n"
+"    background-color: transparent; /* Make the background transparent */\n"
+"}\n"
+"\n"
+"#PreviewTabTitle_label {\n"
+"    font-family: \'Roboto Cn\'; /* Specify the font family */\n"
+"    font-size: 100px; /* Specify the font size */\n"
+"    font-weight: bold; /* Make the font bold */\n"
+"    color: white; /* Set the font color */\n"
+"   border: 3px solid  rgb(24, 45, 83 ); /* This adds a 3px solid blue border around the name_widget */\n"
+"    background-color: rgb(24, 45, 83 );\n"
+"    border-radius: 20px; /* Optional: if you want rounded corners */\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"#preview_name_widget, #preview_school_widget, #preview_gender_widget, #preview_dates_widget   {\n"
+"    color: rgb(31, 149, 239);\n"
+"    qproperty-alignment: AlignCenter;\n"
+"    border: 3px solid rgb(24, 45, 83); /* This adds a 3px solid blue border */\n"
+"    background-color: rgb(31, 149, 239);\n"
+"    border-radius: 40px; /* Optional: if you want rounded corners */\n"
+"}\n"
+"\n"
+"Line { /* This applies to all Line objects within the name_widget */\n"
+"    background-color: rgb(24, 45, 83 ); /* Change the color of the line */\n"
+"   \n"
+"}\n"
+"\n"
+"/*background-color: rgb(31, 149, 239);*/\n"
+"\n"
+"QLineEdit {\n"
+"    /* General styling for the checkbox */\n"
+"    font-family: \'Roboto Cn\';\n"
+"    color: rgb(24, 45, 83 ); /* Text color */\n"
+"    font-size: 25px; /* Font size */\n"
+"    border: 2px solid  rgb(24, 45, 83 ); /* This adds a 3px solid blue border around the name_widget */\n"
+"    background-color: white;\n"
+"    border-radius: 10px; /* Optional: if you want rounded corners */\n"
+"    padding-left: 15px; /* Space between the text and the left margin */\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"QCheckBox {\n"
+"    /* General styling for the checkbox */\n"
+"    font-family: \'Roboto\';\n"
+"    color: rgb(24, 45, 83); /* Text color */\n"
+"    font-size: 16px; /* Font size */\n"
+"    spacing: 5px; /* Space between the indicator and the text */\n"
+"    background-color: transparent; /* Make the background transparent */\n"
+"}\n"
+"\n"
+"QCheckBox::indicator {\n"
+"    /* Styling for the indicator (the square part) */\n"
+"    width: 100px; /* Width of the indicator */\n"
+"    height: 100px; /* Height of the indicator */\n"
+"}\n"
+"\n"
+"QCheckBox::indicator::unchecked {\n"
+"    /* Styling for the indicator when the checkbox is unchecked */\n"
+"    background-color: transparent; /* Background color */\n"
+"    border: transparent; /* Border color and width */\n"
+"    border-radius: 4px; /* Optional: if you want rounded corners for the square */\n"
+"     image: url(:/icon/icon/tickhere.png); /* Absolute path to the checkmark image */\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"QCheckBox::indicator::checked {\n"
+"    /* Styling for the indicator when the checkbox is checked */\n"
+"    background-color: transparent; /* Background color */\n"
+"    border: transparent; /* Border color and width */\n"
+"    border-radius: 4px; /* Optional: if you want rounded corners for the square */\n"
+"    image: url(:/icon/icon/tickmark.png); /* Absolute path to the checkmark image */\n"
+"    \n"
+"}\n"
+"\n"
+"QDateEdit {\n"
+"/* General styling for the checkbox */\n"
+"    font-family: \'Roboto Cn\';\n"
+"    color: rgb(24, 45, 83 ); /* Text color */\n"
+"    font-size: 25px; /* Font size */\n"
+"    background-color: white;\n"
+"    color: black;\n"
+"    border: 2px solid black;\n"
+"    border-radius: 15px;\n"
+"    padding-left: 20px; /* Adjust left padding to center text */\n"
+"    margin: 2px;\n"
+"}\n"
+"\n"
+"QDateEdit::up-button, QDateEdit::down-button {\n"
+"    subcontrol-origin: border;\n"
+"    width: 15px;\n"
+"    border-left: 1px solid black;\n"
+"}\n"
+"\n"
+"QDateEdit::up-button {\n"
+"    subcontrol-position: top right;\n"
+"    border-bottom: 1px solid black; /* Add border between the up-button and down-button */\n"
+"}\n"
+"\n"
+"QDateEdit::down-button {\n"
+"    subcontrol-position: bottom right;\n"
+"}\n"
+"\n"
+"QDateEdit::up-arrow, QDateEdit::down-arrow {\n"
+"    width: 7px;\n"
+"    height: 7px;\n"
+"    image: url(:/icon/icon/menu-4-32.ico);\n"
+"}\n"
+"\n"
+"QDateEdit::up-button:pressed, QDateEdit::down-button:pressed {\n"
+"    background-color: lightgray;\n"
+"}\n"
+"\n"
+"QDateEdit::up-button:hover, QDateEdit::down-button:hover {\n"
+"    background-color: #e0e0e0;\n"
+"}\n"
+"\n"
+"\n"
+"#preview_savebutton {\n"
+"    /* General styling for the checkbox */\n"
+"    font-family: \'Roboto\';\n"
+"    color: rgb(24, 45, 83); /* Text color */\n"
+"    font-size: 16px; /* Font size */\n"
+"    spacing: 5px; /* Space between the indicator and the text */\n"
+"    background-color: transparent; /* Make the background transparent */\n"
+"}\n"
+"\n"
+"#preview_savebutton::indicator {\n"
+"    /* Styling for the indicator (the square part) */\n"
+"    width: 150px; /* Width of the indicator */\n"
+"    height: 150px; /* Height of the indicator */\n"
+"}\n"
+"\n"
+"#preview_savebutton::indicator::unchecked {\n"
+"    /* Styling for the indicator when the checkbox is unchecked */\n"
+"    background-color: transparent; /* Background color */\n"
+"    border: transparent; /* Border color and width */\n"
+"    border-radius: 4px; /* Optional: if you want rounded corners for the square */\n"
+"     image: url(:/icon/icon/notsaved.png); /* Absolute path to the checkmark image */\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"#preview_savebutton::indicator::checked {\n"
+"    /* Styling for the indicator when the checkbox is checked */\n"
+"    background-color: transparent; /* Background color */\n"
+"    border: transparent; /* Border color and width */\n"
+"    border-radius: 4px; /* Optional: if you want rounded corners for the square */\n"
+"    image: url(:/icon/icon/saved.png); /* Absolute path to the checkmark image */\n"
+"    \n"
+"}\n"
+"\n"
+"\n"
+"")
         self.GE_Preview_Page_widget.setObjectName("GE_Preview_Page_widget")
-        self.GE_Preview_Page_widget_gridLayout_2 = QtWidgets.QGridLayout(self.GE_Preview_Page_widget)
-        self.GE_Preview_Page_widget_gridLayout_2.setObjectName("GE_Preview_Page_widget_gridLayout_2")
-        self.GE_StudentName_Preview = QtWidgets.QLabel(self.GE_Preview_Page_widget)
-        self.GE_StudentName_Preview.setMinimumSize(QtCore.QSize(240, 80))
-        self.GE_StudentName_Preview.setMaximumSize(QtCore.QSize(240, 70))
+        self.gridLayout_14 = QtWidgets.QGridLayout(self.GE_Preview_Page_widget)
+        self.gridLayout_14.setObjectName("gridLayout_14")
+        self.TitleLayout_2 = QtWidgets.QHBoxLayout()
+        self.TitleLayout_2.setObjectName("TitleLayout_2")
+        spacerItem116 = QtWidgets.QSpacerItem(50, 97, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.TitleLayout_2.addItem(spacerItem116)
+        self.PreviewTabTitle_label = QtWidgets.QLabel(self.GE_Preview_Page_widget)
+        self.PreviewTabTitle_label.setMinimumSize(QtCore.QSize(830, 100))
+        self.PreviewTabTitle_label.setMaximumSize(QtCore.QSize(830, 100))
+        self.PreviewTabTitle_label.setObjectName("PreviewTabTitle_label")
+        self.TitleLayout_2.addWidget(self.PreviewTabTitle_label)
+        spacerItem117 = QtWidgets.QSpacerItem(50, 97, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.TitleLayout_2.addItem(spacerItem117)
+        self.gridLayout_14.addLayout(self.TitleLayout_2, 0, 0, 1, 1)
+        self.preview_instructions = QtWidgets.QLabel(self.GE_Preview_Page_widget)
+        self.preview_instructions.setMinimumSize(QtCore.QSize(1168, 60))
+        self.preview_instructions.setMaximumSize(QtCore.QSize(1168, 60))
+        self.preview_instructions.setObjectName("preview_instructions")
+        self.gridLayout_14.addWidget(self.preview_instructions, 1, 0, 1, 1)
+        self.input_area_verical_lyt_2 = QtWidgets.QVBoxLayout()
+        self.input_area_verical_lyt_2.setSpacing(30)
+        self.input_area_verical_lyt_2.setObjectName("input_area_verical_lyt_2")
+        self.preview_name_widget = QtWidgets.QWidget(self.GE_Preview_Page_widget)
+        self.preview_name_widget.setMinimumSize(QtCore.QSize(1168, 112))
+        self.preview_name_widget.setMaximumSize(QtCore.QSize(1168, 112))
+        self.preview_name_widget.setStyleSheet("")
+        self.preview_name_widget.setObjectName("preview_name_widget")
+        self.gridLayout_10 = QtWidgets.QGridLayout(self.preview_name_widget)
+        self.gridLayout_10.setContentsMargins(5, 5, 5, 5)
+        self.gridLayout_10.setSpacing(5)
+        self.gridLayout_10.setObjectName("gridLayout_10")
+        self.horizontalLayout_9 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_9.setSpacing(3)
+        self.horizontalLayout_9.setObjectName("horizontalLayout_9")
+        spacerItem118 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_9.addItem(spacerItem118)
+        self.preview_name_label = QtWidgets.QLabel(self.preview_name_widget)
+        self.preview_name_label.setMinimumSize(QtCore.QSize(260, 50))
+        self.preview_name_label.setMaximumSize(QtCore.QSize(260, 50))
         font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(20)
-        font.setBold(True)
-        font.setWeight(75)
-        self.GE_StudentName_Preview.setFont(font)
-        self.GE_StudentName_Preview.setStyleSheet("QLabel {\n"
-"     color: rgb(31, 149, 239);\n"
-"    qproperty-alignment: AlignCenter;\n"
-"   \n"
-"    border: 3px solid rgb(31, 149, 239); /* This adds a 1px solid white border around the QLabel */\n"
-"    border-radius: 25px; /* Optional: if you want rounded corners */\n"
-"}\n"
-"")
-        self.GE_StudentName_Preview.setObjectName("GE_StudentName_Preview")
-        self.GE_Preview_Page_widget_gridLayout_2.addWidget(self.GE_StudentName_Preview, 0, 0, 1, 1)
-        self.GE_StudentName_Preview_Edit = QtWidgets.QLineEdit(self.GE_Preview_Page_widget)
-        self.GE_StudentName_Preview_Edit.setMinimumSize(QtCore.QSize(400, 60))
-        self.GE_StudentName_Preview_Edit.setMaximumSize(QtCore.QSize(400, 60))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
+        font.setFamily("Roboto ")
         font.setPointSize(-1)
-        self.GE_StudentName_Preview_Edit.setFont(font)
-        self.GE_StudentName_Preview_Edit.setStyleSheet("QLineEdit {\n"
-"    /* General styling */\n"
-"    background-color: white; /* Background color of the line edit */\n"
-"    color: black; /* Text color */\n"
-"    border: 3px solid rgb(31, 149, 239); /* Border color and width */\n"
-"    border-radius: 25px; /* Rounded corners */\n"
-"    padding: 5px; /* Space between the text and the border */\n"
-"    font-size: 16px; /* Font size */\n"
-"}\n"
-"\n"
-"QLineEdit:focus {\n"
-"    /* Styling when the line edit has focus */\n"
-"    border-color: rgb(41, 159, 249); /* Change border color */\n"
-"}\n"
-"\n"
-"QLineEdit:disabled {\n"
-"    /* Styling when the line edit is disabled */\n"
-"    background-color: rgb(220, 220, 220); /* Lighter background */\n"
-"    color: rgb(150, 150, 150); /* Lighter text color */\n"
-"}\n"
-"")
-        self.GE_StudentName_Preview_Edit.setObjectName("GE_StudentName_Preview_Edit")
-        self.GE_Preview_Page_widget_gridLayout_2.addWidget(self.GE_StudentName_Preview_Edit, 0, 1, 1, 1)
-        self.GE_Age_Preview = QtWidgets.QLabel(self.GE_Preview_Page_widget)
-        self.GE_Age_Preview.setMinimumSize(QtCore.QSize(240, 60))
-        self.GE_Age_Preview.setMaximumSize(QtCore.QSize(240, 60))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(20)
         font.setBold(True)
         font.setWeight(75)
-        self.GE_Age_Preview.setFont(font)
-        self.GE_Age_Preview.setStyleSheet("QLabel {\n"
-"     color: rgb(31, 149, 239);\n"
-"    qproperty-alignment: AlignCenter;\n"
-"   \n"
-"    border: 3px solid rgb(31, 149, 239); /* This adds a 1px solid white border around the QLabel */\n"
-"    border-radius: 25px; /* Optional: if you want rounded corners */\n"
-"}\n"
-"")
-        self.GE_Age_Preview.setObjectName("GE_Age_Preview")
-        self.GE_Preview_Page_widget_gridLayout_2.addWidget(self.GE_Age_Preview, 1, 0, 1, 1)
-        self.GE_Age_Preview_Edit = QtWidgets.QSpinBox(self.GE_Preview_Page_widget)
-        self.GE_Age_Preview_Edit.setMinimumSize(QtCore.QSize(90, 60))
-        self.GE_Age_Preview_Edit.setMaximumSize(QtCore.QSize(90, 60))
+        self.preview_name_label.setFont(font)
+        self.preview_name_label.setStyleSheet("")
+        self.preview_name_label.setObjectName("preview_name_label")
+        self.horizontalLayout_9.addWidget(self.preview_name_label)
+        spacerItem119 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_9.addItem(spacerItem119)
+        self.preview_name_display = QtWidgets.QLineEdit(self.preview_name_widget)
+        self.preview_name_display.setMinimumSize(QtCore.QSize(300, 50))
+        self.preview_name_display.setMaximumSize(QtCore.QSize(300, 50))
+        self.preview_name_display.setText("")
+        self.preview_name_display.setObjectName("preview_name_display")
+        self.horizontalLayout_9.addWidget(self.preview_name_display)
+        spacerItem120 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_9.addItem(spacerItem120)
+        self.name_vertical_line_6 = QtWidgets.QFrame(self.preview_name_widget)
+        self.name_vertical_line_6.setMinimumSize(QtCore.QSize(0, 100))
+        self.name_vertical_line_6.setMaximumSize(QtCore.QSize(16777215, 100))
+        self.name_vertical_line_6.setFrameShape(QtWidgets.QFrame.VLine)
+        self.name_vertical_line_6.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.name_vertical_line_6.setObjectName("name_vertical_line_6")
+        self.horizontalLayout_9.addWidget(self.name_vertical_line_6)
+        spacerItem121 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_9.addItem(spacerItem121)
+        self.preview_school_label = QtWidgets.QLabel(self.preview_name_widget)
+        self.preview_school_label.setMinimumSize(QtCore.QSize(100, 50))
+        self.preview_school_label.setMaximumSize(QtCore.QSize(100, 50))
         font = QtGui.QFont()
-        font.setFamily("Roboto Bk")
-        font.setPointSize(20)
-        self.GE_Age_Preview_Edit.setFont(font)
-        self.GE_Age_Preview_Edit.setStyleSheet("QSpinBox {\n"
-"    background-color: white;\n"
-"    color: black;\n"
-"    border: 2px solid black;\n"
-"    border-radius: 5px;\n"
-"\n"
-"    padding-left: 20px; /* Adjust left padding to center text */\n"
-"  \n"
-"    margin: 2px;\n"
-"}\n"
-"\n"
-"QSpinBox::up-button {\n"
-"    /* Styling for the up-button */\n"
-"    subcontrol-origin: border; /* Position within the border */\n"
-"    subcontrol-position: top right; /* Position at the top right */\n"
-"    width: 15px; /* Width of the up-button */\n"
-"    border-left: 1px solid black; /* Border between the up-button and the spin box */\n"
-"}\n"
-"\n"
-"QSpinBox::down-button {\n"
-"    /* Styling for the down-button */\n"
-"    subcontrol-origin: border;\n"
-"    subcontrol-position: bottom right;\n"
-"    width: 15px;\n"
-"    border-left: 1px solid black;\n"
-"}\n"
-"\n"
-"QSpinBox::up-arrow {\n"
-"    /* Arrow styling within the up-button */\n"
-"    width: 7px; /* Width of the arrow */\n"
-"    height: 7px; /* Height of the arrow */\n"
-"    image: url(:/icon/icon/menu-4-32.ico);\n"
-"}\n"
-"\n"
-"QSpinBox::down-arrow {\n"
-"    /* Arrow styling within the down-button */\n"
-"    width: 7px;\n"
-"    height: 7px;\n"
-"    image: url(:/icon/icon/menu-4-32.ico);\n"
-"}\n"
-"\n"
-"\n"
-"QSpinBox::up-button {\n"
-"    subcontrol-origin: border;\n"
-"    subcontrol-position: top right;\n"
-"    width: 15px;\n"
-"    border-bottom: 1px solid black; /* Add border between the up-button and down-button */\n"
-"}\n"
-"\n"
-"QSpinBox::down-button {\n"
-"    subcontrol-origin: border;\n"
-"    subcontrol-position: bottom right;\n"
-"    width: 15px;\n"
-"}\n"
-"\n"
-"\n"
-"QSpinBox::up-button:pressed {\n"
-"    /* Styling for the up-button when pressed */\n"
-"    background-color: lightgray;\n"
-"}\n"
-"\n"
-"QSpinBox::down-button:pressed {\n"
-"    /* Styling for the down-button when pressed */\n"
-"    background-color: lightgray;\n"
-"}\n"
-"\n"
-"QSpinBox::up-button:hover, QSpinBox::down-button:hover {\n"
-"    /* Styling for the buttons when hovered */\n"
-"    background-color: #e0e0e0;\n"
-"}")
-        self.GE_Age_Preview_Edit.setButtonSymbols(QtWidgets.QAbstractSpinBox.UpDownArrows)
-        self.GE_Age_Preview_Edit.setMaximum(20)
-        self.GE_Age_Preview_Edit.setObjectName("GE_Age_Preview_Edit")
-        self.GE_Preview_Page_widget_gridLayout_2.addWidget(self.GE_Age_Preview_Edit, 1, 1, 1, 1)
-        self.GE_Sex_Preview = QtWidgets.QLabel(self.GE_Preview_Page_widget)
-        self.GE_Sex_Preview.setMinimumSize(QtCore.QSize(240, 60))
-        self.GE_Sex_Preview.setMaximumSize(QtCore.QSize(240, 60))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(20)
-        font.setBold(True)
-        font.setWeight(75)
-        self.GE_Sex_Preview.setFont(font)
-        self.GE_Sex_Preview.setStyleSheet("QLabel {\n"
-"     color: rgb(31, 149, 239);\n"
-"    qproperty-alignment: AlignCenter;\n"
-"   \n"
-"    border: 3px solid rgb(31, 149, 239); /* This adds a 1px solid white border around the QLabel */\n"
-"    border-radius: 25px; /* Optional: if you want rounded corners */\n"
-"}\n"
-"")
-        self.GE_Sex_Preview.setObjectName("GE_Sex_Preview")
-        self.GE_Preview_Page_widget_gridLayout_2.addWidget(self.GE_Sex_Preview, 2, 0, 1, 1)
-        self.GE_Sex_Preview_Edit = QtWidgets.QLineEdit(self.GE_Preview_Page_widget)
-        self.GE_Sex_Preview_Edit.setMinimumSize(QtCore.QSize(200, 60))
-        self.GE_Sex_Preview_Edit.setMaximumSize(QtCore.QSize(200, 60))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
+        font.setFamily("Roboto ")
         font.setPointSize(-1)
-        self.GE_Sex_Preview_Edit.setFont(font)
-        self.GE_Sex_Preview_Edit.setStyleSheet("QLineEdit {\n"
-"    /* General styling */\n"
-"    background-color: white; /* Background color of the line edit */\n"
-"    color: black; /* Text color */\n"
-"    border: 3px solid rgb(31, 149, 239); /* Border color and width */\n"
-"    border-radius: 25px; /* Rounded corners */\n"
-"    padding: 5px; /* Space between the text and the border */\n"
-"    font-size: 16px; /* Font size */\n"
-"}\n"
-"\n"
-"QLineEdit:focus {\n"
-"    /* Styling when the line edit has focus */\n"
-"    border-color: rgb(41, 159, 249); /* Change border color */\n"
-"}\n"
-"\n"
-"QLineEdit:disabled {\n"
-"    /* Styling when the line edit is disabled */\n"
-"    background-color: rgb(220, 220, 220); /* Lighter background */\n"
-"    color: rgb(150, 150, 150); /* Lighter text color */\n"
-"}\n"
-"")
-        self.GE_Sex_Preview_Edit.setObjectName("GE_Sex_Preview_Edit")
-        self.GE_Preview_Page_widget_gridLayout_2.addWidget(self.GE_Sex_Preview_Edit, 2, 1, 1, 1)
-        self.GE_School_Preview = QtWidgets.QLabel(self.GE_Preview_Page_widget)
-        self.GE_School_Preview.setMinimumSize(QtCore.QSize(240, 60))
-        self.GE_School_Preview.setMaximumSize(QtCore.QSize(240, 60))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(20)
         font.setBold(True)
         font.setWeight(75)
-        self.GE_School_Preview.setFont(font)
-        self.GE_School_Preview.setStyleSheet("QLabel {\n"
-"     color: rgb(31, 149, 239);\n"
-"    qproperty-alignment: AlignCenter;\n"
-"   \n"
-"    border: 3px solid rgb(31, 149, 239); /* This adds a 1px solid white border around the QLabel */\n"
-"    border-radius: 25px; /* Optional: if you want rounded corners */\n"
-"}\n"
-"")
-        self.GE_School_Preview.setObjectName("GE_School_Preview")
-        self.GE_Preview_Page_widget_gridLayout_2.addWidget(self.GE_School_Preview, 3, 0, 1, 1)
-        self.GE_School_Preview_Edit = QtWidgets.QLineEdit(self.GE_Preview_Page_widget)
-        self.GE_School_Preview_Edit.setMinimumSize(QtCore.QSize(400, 60))
-        self.GE_School_Preview_Edit.setMaximumSize(QtCore.QSize(400, 60))
+        self.preview_school_label.setFont(font)
+        self.preview_school_label.setStyleSheet("")
+        self.preview_school_label.setObjectName("preview_school_label")
+        self.horizontalLayout_9.addWidget(self.preview_school_label)
+        spacerItem122 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_9.addItem(spacerItem122)
+        self.preview_school_display = QtWidgets.QLineEdit(self.preview_name_widget)
+        self.preview_school_display.setMinimumSize(QtCore.QSize(300, 50))
+        self.preview_school_display.setMaximumSize(QtCore.QSize(300, 50))
+        self.preview_school_display.setText("")
+        self.preview_school_display.setObjectName("preview_school_display")
+        self.horizontalLayout_9.addWidget(self.preview_school_display)
+        spacerItem123 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_9.addItem(spacerItem123)
+        self.gridLayout_10.addLayout(self.horizontalLayout_9, 0, 0, 1, 1)
+        self.input_area_verical_lyt_2.addWidget(self.preview_name_widget)
+        self.preview_gender_widget = QtWidgets.QWidget(self.GE_Preview_Page_widget)
+        self.preview_gender_widget.setMinimumSize(QtCore.QSize(1168, 112))
+        self.preview_gender_widget.setMaximumSize(QtCore.QSize(1168, 112))
+        self.preview_gender_widget.setStyleSheet("")
+        self.preview_gender_widget.setObjectName("preview_gender_widget")
+        self.gridLayout_12 = QtWidgets.QGridLayout(self.preview_gender_widget)
+        self.gridLayout_12.setContentsMargins(5, 5, 5, 5)
+        self.gridLayout_12.setSpacing(5)
+        self.gridLayout_12.setObjectName("gridLayout_12")
+        self.horizontalLayout_11 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_11.setSpacing(10)
+        self.horizontalLayout_11.setObjectName("horizontalLayout_11")
+        spacerItem124 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_11.addItem(spacerItem124)
+        self.preview_gender_label = QtWidgets.QLabel(self.preview_gender_widget)
+        self.preview_gender_label.setMinimumSize(QtCore.QSize(110, 50))
+        self.preview_gender_label.setMaximumSize(QtCore.QSize(110, 50))
         font = QtGui.QFont()
-        font.setFamily("Roboto")
+        font.setFamily("Roboto ")
         font.setPointSize(-1)
-        self.GE_School_Preview_Edit.setFont(font)
-        self.GE_School_Preview_Edit.setStyleSheet("QLineEdit {\n"
-"    /* General styling */\n"
-"    background-color: white; /* Background color of the line edit */\n"
-"    color: black; /* Text color */\n"
-"    border: 3px solid rgb(31, 149, 239); /* Border color and width */\n"
-"    border-radius: 25px; /* Rounded corners */\n"
-"    padding: 5px; /* Space between the text and the border */\n"
-"    font-size: 16px; /* Font size */\n"
-"}\n"
-"\n"
-"QLineEdit:focus {\n"
-"    /* Styling when the line edit has focus */\n"
-"    border-color: rgb(41, 159, 249); /* Change border color */\n"
-"}\n"
-"\n"
-"QLineEdit:disabled {\n"
-"    /* Styling when the line edit is disabled */\n"
-"    background-color: rgb(220, 220, 220); /* Lighter background */\n"
-"    color: rgb(150, 150, 150); /* Lighter text color */\n"
-"}\n"
-"")
-        self.GE_School_Preview_Edit.setObjectName("GE_School_Preview_Edit")
-        self.GE_Preview_Page_widget_gridLayout_2.addWidget(self.GE_School_Preview_Edit, 3, 1, 1, 1)
-        self.GE_Date_Preview = QtWidgets.QLabel(self.GE_Preview_Page_widget)
-        self.GE_Date_Preview.setMinimumSize(QtCore.QSize(240, 60))
-        self.GE_Date_Preview.setMaximumSize(QtCore.QSize(240, 60))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(20)
         font.setBold(True)
         font.setWeight(75)
-        self.GE_Date_Preview.setFont(font)
-        self.GE_Date_Preview.setStyleSheet("QLabel {\n"
-"     color: rgb(31, 149, 239);\n"
-"    qproperty-alignment: AlignCenter;\n"
-"   \n"
-"    border: 3px solid rgb(31, 149, 239); /* This adds a 1px solid white border around the QLabel */\n"
-"    border-radius: 25px; /* Optional: if you want rounded corners */\n"
-"}\n"
-"")
-        self.GE_Date_Preview.setObjectName("GE_Date_Preview")
-        self.GE_Preview_Page_widget_gridLayout_2.addWidget(self.GE_Date_Preview, 4, 0, 1, 1)
-        self.GE_Date_Preview_Edit = QtWidgets.QLineEdit(self.GE_Preview_Page_widget)
-        self.GE_Date_Preview_Edit.setMinimumSize(QtCore.QSize(200, 60))
-        self.GE_Date_Preview_Edit.setMaximumSize(QtCore.QSize(200, 60))
+        self.preview_gender_label.setFont(font)
+        self.preview_gender_label.setStyleSheet("")
+        self.preview_gender_label.setObjectName("preview_gender_label")
+        self.horizontalLayout_11.addWidget(self.preview_gender_label)
+        spacerItem125 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_11.addItem(spacerItem125)
+        self.name_vertical_line_14 = QtWidgets.QFrame(self.preview_gender_widget)
+        self.name_vertical_line_14.setMinimumSize(QtCore.QSize(0, 100))
+        self.name_vertical_line_14.setMaximumSize(QtCore.QSize(16777215, 100))
+        self.name_vertical_line_14.setFrameShape(QtWidgets.QFrame.VLine)
+        self.name_vertical_line_14.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.name_vertical_line_14.setObjectName("name_vertical_line_14")
+        self.horizontalLayout_11.addWidget(self.name_vertical_line_14)
+        spacerItem126 = QtWidgets.QSpacerItem(300, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_11.addItem(spacerItem126)
+        self.preview_gender_display = QtWidgets.QLineEdit(self.preview_gender_widget)
+        self.preview_gender_display.setMinimumSize(QtCore.QSize(150, 50))
+        self.preview_gender_display.setMaximumSize(QtCore.QSize(150, 50))
+        self.preview_gender_display.setText("")
+        self.preview_gender_display.setObjectName("preview_gender_display")
+        self.horizontalLayout_11.addWidget(self.preview_gender_display)
+        spacerItem127 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_11.addItem(spacerItem127)
+        self.gridLayout_12.addLayout(self.horizontalLayout_11, 0, 0, 1, 1)
+        self.input_area_verical_lyt_2.addWidget(self.preview_gender_widget)
+        self.preview_date_instructions = QtWidgets.QLabel(self.GE_Preview_Page_widget)
+        self.preview_date_instructions.setMinimumSize(QtCore.QSize(1168, 30))
+        self.preview_date_instructions.setMaximumSize(QtCore.QSize(1168, 30))
+        self.preview_date_instructions.setObjectName("preview_date_instructions")
+        self.input_area_verical_lyt_2.addWidget(self.preview_date_instructions)
+        self.preview_dates_widget = QtWidgets.QWidget(self.GE_Preview_Page_widget)
+        self.preview_dates_widget.setMinimumSize(QtCore.QSize(1168, 112))
+        self.preview_dates_widget.setMaximumSize(QtCore.QSize(1168, 112))
+        self.preview_dates_widget.setStyleSheet("")
+        self.preview_dates_widget.setObjectName("preview_dates_widget")
+        self.gridLayout_13 = QtWidgets.QGridLayout(self.preview_dates_widget)
+        self.gridLayout_13.setContentsMargins(5, 5, 5, 5)
+        self.gridLayout_13.setSpacing(5)
+        self.gridLayout_13.setObjectName("gridLayout_13")
+        self.horizontalLayout_12 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_12.setSpacing(20)
+        self.horizontalLayout_12.setObjectName("horizontalLayout_12")
+        self.preview_dateofBirth_label_2 = QtWidgets.QLabel(self.preview_dates_widget)
+        self.preview_dateofBirth_label_2.setMinimumSize(QtCore.QSize(175, 50))
+        self.preview_dateofBirth_label_2.setMaximumSize(QtCore.QSize(175, 50))
         font = QtGui.QFont()
-        font.setFamily("Roboto")
+        font.setFamily("Roboto ")
         font.setPointSize(-1)
-        self.GE_Date_Preview_Edit.setFont(font)
-        self.GE_Date_Preview_Edit.setStyleSheet("QLineEdit {\n"
-"    /* General styling */\n"
-"    background-color: white; /* Background color of the line edit */\n"
-"    color: black; /* Text color */\n"
-"    border: 3px solid rgb(31, 149, 239); /* Border color and width */\n"
-"    border-radius: 25px; /* Rounded corners */\n"
-"    padding: 5px; /* Space between the text and the border */\n"
-"    font-size: 16px; /* Font size */\n"
-"}\n"
-"\n"
-"QLineEdit:focus {\n"
-"    /* Styling when the line edit has focus */\n"
-"    border-color: rgb(41, 159, 249); /* Change border color */\n"
-"}\n"
-"\n"
-"QLineEdit:disabled {\n"
-"    /* Styling when the line edit is disabled */\n"
-"    background-color: rgb(220, 220, 220); /* Lighter background */\n"
-"    color: rgb(150, 150, 150); /* Lighter text color */\n"
-"}\n"
-"")
-        self.GE_Date_Preview_Edit.setObjectName("GE_Date_Preview_Edit")
-        self.GE_Preview_Page_widget_gridLayout_2.addWidget(self.GE_Date_Preview_Edit, 4, 1, 1, 1)
-        self.GE_StressTest_Preview = QtWidgets.QLabel(self.GE_Preview_Page_widget)
-        self.GE_StressTest_Preview.setMinimumSize(QtCore.QSize(240, 80))
-        self.GE_StressTest_Preview.setMaximumSize(QtCore.QSize(240, 70))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(20)
         font.setBold(True)
         font.setWeight(75)
-        self.GE_StressTest_Preview.setFont(font)
-        self.GE_StressTest_Preview.setStyleSheet("QLabel {\n"
-"     color: rgb(31, 149, 239);\n"
-"    qproperty-alignment: AlignCenter;\n"
-"   \n"
-"    border: 3px solid rgb(31, 149, 239); /* This adds a 1px solid white border around the QLabel */\n"
-"    border-radius: 25px; /* Optional: if you want rounded corners */\n"
-"}\n"
-"")
-        self.GE_StressTest_Preview.setObjectName("GE_StressTest_Preview")
-        self.GE_Preview_Page_widget_gridLayout_2.addWidget(self.GE_StressTest_Preview, 5, 0, 1, 1)
-        self.GE_StressTest_Preview_Edit = QtWidgets.QSpinBox(self.GE_Preview_Page_widget)
-        self.GE_StressTest_Preview_Edit.setMinimumSize(QtCore.QSize(90, 60))
-        self.GE_StressTest_Preview_Edit.setMaximumSize(QtCore.QSize(90, 60))
+        self.preview_dateofBirth_label_2.setFont(font)
+        self.preview_dateofBirth_label_2.setStyleSheet("")
+        self.preview_dateofBirth_label_2.setObjectName("preview_dateofBirth_label_2")
+        self.horizontalLayout_12.addWidget(self.preview_dateofBirth_label_2)
+        self.preview_dateofBirth_display = QtWidgets.QLineEdit(self.preview_dates_widget)
+        self.preview_dateofBirth_display.setMinimumSize(QtCore.QSize(150, 50))
+        self.preview_dateofBirth_display.setMaximumSize(QtCore.QSize(150, 50))
+        self.preview_dateofBirth_display.setText("")
+        self.preview_dateofBirth_display.setObjectName("preview_dateofBirth_display")
+        self.horizontalLayout_12.addWidget(self.preview_dateofBirth_display)
+        self.name_vertical_line_16 = QtWidgets.QFrame(self.preview_dates_widget)
+        self.name_vertical_line_16.setMinimumSize(QtCore.QSize(0, 100))
+        self.name_vertical_line_16.setMaximumSize(QtCore.QSize(16777215, 100))
+        self.name_vertical_line_16.setFrameShape(QtWidgets.QFrame.VLine)
+        self.name_vertical_line_16.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.name_vertical_line_16.setObjectName("name_vertical_line_16")
+        self.horizontalLayout_12.addWidget(self.name_vertical_line_16)
+        spacerItem128 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_12.addItem(spacerItem128)
+        self.preview_todaysdate_label = QtWidgets.QLabel(self.preview_dates_widget)
+        self.preview_todaysdate_label.setMinimumSize(QtCore.QSize(177, 50))
+        self.preview_todaysdate_label.setMaximumSize(QtCore.QSize(177, 50))
         font = QtGui.QFont()
-        font.setFamily("Roboto Bk")
-        font.setPointSize(20)
-        self.GE_StressTest_Preview_Edit.setFont(font)
-        self.GE_StressTest_Preview_Edit.setStyleSheet("QSpinBox {\n"
-"    background-color: white;\n"
-"    color: black;\n"
-"    border: 2px solid black;\n"
-"    border-radius: 5px;\n"
-"\n"
-"    padding-left: 20px; /* Adjust left padding to center text */\n"
-"  \n"
-"    margin: 2px;\n"
-"}\n"
-"\n"
-"QSpinBox::up-button {\n"
-"    /* Styling for the up-button */\n"
-"    subcontrol-origin: border; /* Position within the border */\n"
-"    subcontrol-position: top right; /* Position at the top right */\n"
-"    width: 15px; /* Width of the up-button */\n"
-"    border-left: 1px solid black; /* Border between the up-button and the spin box */\n"
-"}\n"
-"\n"
-"QSpinBox::down-button {\n"
-"    /* Styling for the down-button */\n"
-"    subcontrol-origin: border;\n"
-"    subcontrol-position: bottom right;\n"
-"    width: 15px;\n"
-"    border-left: 1px solid black;\n"
-"}\n"
-"\n"
-"QSpinBox::up-arrow {\n"
-"    /* Arrow styling within the up-button */\n"
-"    width: 7px; /* Width of the arrow */\n"
-"    height: 7px; /* Height of the arrow */\n"
-"    image: url(:/icon/icon/menu-4-32.ico);\n"
-"}\n"
-"\n"
-"QSpinBox::down-arrow {\n"
-"    /* Arrow styling within the down-button */\n"
-"    width: 7px;\n"
-"    height: 7px;\n"
-"    image: url(:/icon/icon/menu-4-32.ico);\n"
-"}\n"
-"\n"
-"\n"
-"QSpinBox::up-button {\n"
-"    subcontrol-origin: border;\n"
-"    subcontrol-position: top right;\n"
-"    width: 15px;\n"
-"    border-bottom: 1px solid black; /* Add border between the up-button and down-button */\n"
-"}\n"
-"\n"
-"QSpinBox::down-button {\n"
-"    subcontrol-origin: border;\n"
-"    subcontrol-position: bottom right;\n"
-"    width: 15px;\n"
-"}\n"
-"\n"
-"\n"
-"QSpinBox::up-button:pressed {\n"
-"    /* Styling for the up-button when pressed */\n"
-"    background-color: lightgray;\n"
-"}\n"
-"\n"
-"QSpinBox::down-button:pressed {\n"
-"    /* Styling for the down-button when pressed */\n"
-"    background-color: lightgray;\n"
-"}\n"
-"\n"
-"QSpinBox::up-button:hover, QSpinBox::down-button:hover {\n"
-"    /* Styling for the buttons when hovered */\n"
-"    background-color: #e0e0e0;\n"
-"}")
-        self.GE_StressTest_Preview_Edit.setButtonSymbols(QtWidgets.QAbstractSpinBox.UpDownArrows)
-        self.GE_StressTest_Preview_Edit.setMaximum(20)
-        self.GE_StressTest_Preview_Edit.setObjectName("GE_StressTest_Preview_Edit")
-        self.GE_Preview_Page_widget_gridLayout_2.addWidget(self.GE_StressTest_Preview_Edit, 5, 1, 1, 1)
-        self.GE_DepressionTest_Preview = QtWidgets.QLabel(self.GE_Preview_Page_widget)
-        self.GE_DepressionTest_Preview.setMinimumSize(QtCore.QSize(240, 80))
-        self.GE_DepressionTest_Preview.setMaximumSize(QtCore.QSize(240, 70))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(17)
+        font.setFamily("Roboto ")
+        font.setPointSize(-1)
         font.setBold(True)
         font.setWeight(75)
-        self.GE_DepressionTest_Preview.setFont(font)
-        self.GE_DepressionTest_Preview.setStyleSheet("QLabel {\n"
-"     color: rgb(31, 149, 239);\n"
-"    qproperty-alignment: AlignCenter;\n"
-"   \n"
-"    border: 3px solid rgb(31, 149, 239); /* This adds a 1px solid white border around the QLabel */\n"
-"    border-radius: 25px; /* Optional: if you want rounded corners */\n"
-"}\n"
-"")
-        self.GE_DepressionTest_Preview.setObjectName("GE_DepressionTest_Preview")
-        self.GE_Preview_Page_widget_gridLayout_2.addWidget(self.GE_DepressionTest_Preview, 6, 0, 1, 1)
-        self.GE_DepressionTest_Preview_Edit = QtWidgets.QSpinBox(self.GE_Preview_Page_widget)
-        self.GE_DepressionTest_Preview_Edit.setMinimumSize(QtCore.QSize(90, 60))
-        self.GE_DepressionTest_Preview_Edit.setMaximumSize(QtCore.QSize(90, 60))
+        self.preview_todaysdate_label.setFont(font)
+        self.preview_todaysdate_label.setStyleSheet("")
+        self.preview_todaysdate_label.setObjectName("preview_todaysdate_label")
+        self.horizontalLayout_12.addWidget(self.preview_todaysdate_label)
+        self.preview_todaysdate_display = QtWidgets.QLineEdit(self.preview_dates_widget)
+        self.preview_todaysdate_display.setMinimumSize(QtCore.QSize(150, 50))
+        self.preview_todaysdate_display.setMaximumSize(QtCore.QSize(150, 50))
+        self.preview_todaysdate_display.setText("")
+        self.preview_todaysdate_display.setObjectName("preview_todaysdate_display")
+        self.horizontalLayout_12.addWidget(self.preview_todaysdate_display)
+        self.gridLayout_13.addLayout(self.horizontalLayout_12, 0, 0, 1, 1)
+        self.input_area_verical_lyt_2.addWidget(self.preview_dates_widget)
+        self.preview_school_widget = QtWidgets.QWidget(self.GE_Preview_Page_widget)
+        self.preview_school_widget.setMinimumSize(QtCore.QSize(1168, 112))
+        self.preview_school_widget.setMaximumSize(QtCore.QSize(1168, 112))
+        self.preview_school_widget.setStyleSheet("")
+        self.preview_school_widget.setObjectName("preview_school_widget")
+        self.gridLayout_11 = QtWidgets.QGridLayout(self.preview_school_widget)
+        self.gridLayout_11.setContentsMargins(5, 5, 5, 5)
+        self.gridLayout_11.setSpacing(5)
+        self.gridLayout_11.setObjectName("gridLayout_11")
+        self.horizontalLayout_10 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_10.setSpacing(3)
+        self.horizontalLayout_10.setObjectName("horizontalLayout_10")
+        spacerItem129 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_10.addItem(spacerItem129)
+        self.preview_stress_label = QtWidgets.QLabel(self.preview_school_widget)
+        self.preview_stress_label.setMinimumSize(QtCore.QSize(100, 50))
+        self.preview_stress_label.setMaximumSize(QtCore.QSize(100, 50))
         font = QtGui.QFont()
-        font.setFamily("Roboto Bk")
-        font.setPointSize(20)
-        self.GE_DepressionTest_Preview_Edit.setFont(font)
-        self.GE_DepressionTest_Preview_Edit.setStyleSheet("QSpinBox {\n"
-"    background-color: white;\n"
-"    color: black;\n"
-"    border: 2px solid black;\n"
-"    border-radius: 5px;\n"
-"\n"
-"    padding-left: 20px; /* Adjust left padding to center text */\n"
-"  \n"
-"    margin: 2px;\n"
-"}\n"
-"\n"
-"QSpinBox::up-button {\n"
-"    /* Styling for the up-button */\n"
-"    subcontrol-origin: border; /* Position within the border */\n"
-"    subcontrol-position: top right; /* Position at the top right */\n"
-"    width: 15px; /* Width of the up-button */\n"
-"    border-left: 1px solid black; /* Border between the up-button and the spin box */\n"
-"}\n"
-"\n"
-"QSpinBox::down-button {\n"
-"    /* Styling for the down-button */\n"
-"    subcontrol-origin: border;\n"
-"    subcontrol-position: bottom right;\n"
-"    width: 15px;\n"
-"    border-left: 1px solid black;\n"
-"}\n"
-"\n"
-"QSpinBox::up-arrow {\n"
-"    /* Arrow styling within the up-button */\n"
-"    width: 7px; /* Width of the arrow */\n"
-"    height: 7px; /* Height of the arrow */\n"
-"    image: url(:/icon/icon/menu-4-32.ico);\n"
-"}\n"
-"\n"
-"QSpinBox::down-arrow {\n"
-"    /* Arrow styling within the down-button */\n"
-"    width: 7px;\n"
-"    height: 7px;\n"
-"    image: url(:/icon/icon/menu-4-32.ico);\n"
-"}\n"
-"\n"
-"\n"
-"QSpinBox::up-button {\n"
-"    subcontrol-origin: border;\n"
-"    subcontrol-position: top right;\n"
-"    width: 15px;\n"
-"    border-bottom: 1px solid black; /* Add border between the up-button and down-button */\n"
-"}\n"
-"\n"
-"QSpinBox::down-button {\n"
-"    subcontrol-origin: border;\n"
-"    subcontrol-position: bottom right;\n"
-"    width: 15px;\n"
-"}\n"
-"\n"
-"\n"
-"QSpinBox::up-button:pressed {\n"
-"    /* Styling for the up-button when pressed */\n"
-"    background-color: lightgray;\n"
-"}\n"
-"\n"
-"QSpinBox::down-button:pressed {\n"
-"    /* Styling for the down-button when pressed */\n"
-"    background-color: lightgray;\n"
-"}\n"
-"\n"
-"QSpinBox::up-button:hover, QSpinBox::down-button:hover {\n"
-"    /* Styling for the buttons when hovered */\n"
-"    background-color: #e0e0e0;\n"
-"}")
-        self.GE_DepressionTest_Preview_Edit.setButtonSymbols(QtWidgets.QAbstractSpinBox.UpDownArrows)
-        self.GE_DepressionTest_Preview_Edit.setMaximum(20)
-        self.GE_DepressionTest_Preview_Edit.setObjectName("GE_DepressionTest_Preview_Edit")
-        self.GE_Preview_Page_widget_gridLayout_2.addWidget(self.GE_DepressionTest_Preview_Edit, 6, 1, 1, 1)
-        self.GE_SelfEsteemTest_Preview = QtWidgets.QLabel(self.GE_Preview_Page_widget)
-        self.GE_SelfEsteemTest_Preview.setMinimumSize(QtCore.QSize(240, 80))
-        self.GE_SelfEsteemTest_Preview.setMaximumSize(QtCore.QSize(240, 70))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(16)
+        font.setFamily("Roboto ")
+        font.setPointSize(-1)
         font.setBold(True)
         font.setWeight(75)
-        self.GE_SelfEsteemTest_Preview.setFont(font)
-        self.GE_SelfEsteemTest_Preview.setStyleSheet("QLabel {\n"
-"     color: rgb(31, 149, 239);\n"
-"    qproperty-alignment: AlignCenter;\n"
-"   \n"
-"    border: 3px solid rgb(31, 149, 239); /* This adds a 1px solid white border around the QLabel */\n"
-"    border-radius: 25px; /* Optional: if you want rounded corners */\n"
-"}\n"
-"")
-        self.GE_SelfEsteemTest_Preview.setObjectName("GE_SelfEsteemTest_Preview")
-        self.GE_Preview_Page_widget_gridLayout_2.addWidget(self.GE_SelfEsteemTest_Preview, 7, 0, 1, 1)
-        self.GE_SelfEsteemTest_Preview_Edit = QtWidgets.QSpinBox(self.GE_Preview_Page_widget)
-        self.GE_SelfEsteemTest_Preview_Edit.setMinimumSize(QtCore.QSize(90, 60))
-        self.GE_SelfEsteemTest_Preview_Edit.setMaximumSize(QtCore.QSize(90, 60))
+        self.preview_stress_label.setFont(font)
+        self.preview_stress_label.setStyleSheet("")
+        self.preview_stress_label.setObjectName("preview_stress_label")
+        self.horizontalLayout_10.addWidget(self.preview_stress_label)
+        spacerItem130 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_10.addItem(spacerItem130)
+        self.preview_stress_display = QtWidgets.QLineEdit(self.preview_school_widget)
+        self.preview_stress_display.setMinimumSize(QtCore.QSize(65, 50))
+        self.preview_stress_display.setMaximumSize(QtCore.QSize(150, 50))
+        self.preview_stress_display.setText("")
+        self.preview_stress_display.setObjectName("preview_stress_display")
+        self.horizontalLayout_10.addWidget(self.preview_stress_display)
+        spacerItem131 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_10.addItem(spacerItem131)
+        self.name_vertical_line_18 = QtWidgets.QFrame(self.preview_school_widget)
+        self.name_vertical_line_18.setMinimumSize(QtCore.QSize(0, 100))
+        self.name_vertical_line_18.setMaximumSize(QtCore.QSize(16777215, 100))
+        self.name_vertical_line_18.setFrameShape(QtWidgets.QFrame.VLine)
+        self.name_vertical_line_18.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.name_vertical_line_18.setObjectName("name_vertical_line_18")
+        self.horizontalLayout_10.addWidget(self.name_vertical_line_18)
+        spacerItem132 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_10.addItem(spacerItem132)
+        self.preview_depression_label = QtWidgets.QLabel(self.preview_school_widget)
+        self.preview_depression_label.setMinimumSize(QtCore.QSize(165, 50))
+        self.preview_depression_label.setMaximumSize(QtCore.QSize(165, 50))
         font = QtGui.QFont()
-        font.setFamily("Roboto Bk")
-        font.setPointSize(20)
-        self.GE_SelfEsteemTest_Preview_Edit.setFont(font)
-        self.GE_SelfEsteemTest_Preview_Edit.setStyleSheet("QSpinBox {\n"
-"    background-color: white;\n"
-"    color: black;\n"
-"    border: 2px solid black;\n"
-"    border-radius: 5px;\n"
-"\n"
-"    padding-left: 20px; /* Adjust left padding to center text */\n"
-"  \n"
-"    margin: 2px;\n"
-"}\n"
-"\n"
-"QSpinBox::up-button {\n"
-"    /* Styling for the up-button */\n"
-"    subcontrol-origin: border; /* Position within the border */\n"
-"    subcontrol-position: top right; /* Position at the top right */\n"
-"    width: 15px; /* Width of the up-button */\n"
-"    border-left: 1px solid black; /* Border between the up-button and the spin box */\n"
-"}\n"
-"\n"
-"QSpinBox::down-button {\n"
-"    /* Styling for the down-button */\n"
-"    subcontrol-origin: border;\n"
-"    subcontrol-position: bottom right;\n"
-"    width: 15px;\n"
-"    border-left: 1px solid black;\n"
-"}\n"
-"\n"
-"QSpinBox::up-arrow {\n"
-"    /* Arrow styling within the up-button */\n"
-"    width: 7px; /* Width of the arrow */\n"
-"    height: 7px; /* Height of the arrow */\n"
-"    image: url(:/icon/icon/menu-4-32.ico);\n"
-"}\n"
-"\n"
-"QSpinBox::down-arrow {\n"
-"    /* Arrow styling within the down-button */\n"
-"    width: 7px;\n"
-"    height: 7px;\n"
-"    image: url(:/icon/icon/menu-4-32.ico);\n"
-"}\n"
-"\n"
-"\n"
-"QSpinBox::up-button {\n"
-"    subcontrol-origin: border;\n"
-"    subcontrol-position: top right;\n"
-"    width: 15px;\n"
-"    border-bottom: 1px solid black; /* Add border between the up-button and down-button */\n"
-"}\n"
-"\n"
-"QSpinBox::down-button {\n"
-"    subcontrol-origin: border;\n"
-"    subcontrol-position: bottom right;\n"
-"    width: 15px;\n"
-"}\n"
-"\n"
-"\n"
-"QSpinBox::up-button:pressed {\n"
-"    /* Styling for the up-button when pressed */\n"
-"    background-color: lightgray;\n"
-"}\n"
-"\n"
-"QSpinBox::down-button:pressed {\n"
-"    /* Styling for the down-button when pressed */\n"
-"    background-color: lightgray;\n"
-"}\n"
-"\n"
-"QSpinBox::up-button:hover, QSpinBox::down-button:hover {\n"
-"    /* Styling for the buttons when hovered */\n"
-"    background-color: #e0e0e0;\n"
-"}")
-        self.GE_SelfEsteemTest_Preview_Edit.setButtonSymbols(QtWidgets.QAbstractSpinBox.UpDownArrows)
-        self.GE_SelfEsteemTest_Preview_Edit.setMaximum(20)
-        self.GE_SelfEsteemTest_Preview_Edit.setObjectName("GE_SelfEsteemTest_Preview_Edit")
-        self.GE_Preview_Page_widget_gridLayout_2.addWidget(self.GE_SelfEsteemTest_Preview_Edit, 7, 1, 1, 1)
+        font.setFamily("Roboto ")
+        font.setPointSize(-1)
+        font.setBold(True)
+        font.setWeight(75)
+        self.preview_depression_label.setFont(font)
+        self.preview_depression_label.setStyleSheet("")
+        self.preview_depression_label.setObjectName("preview_depression_label")
+        self.horizontalLayout_10.addWidget(self.preview_depression_label)
+        spacerItem133 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_10.addItem(spacerItem133)
+        self.preview_depression_display = QtWidgets.QLineEdit(self.preview_school_widget)
+        self.preview_depression_display.setMinimumSize(QtCore.QSize(65, 50))
+        self.preview_depression_display.setMaximumSize(QtCore.QSize(150, 50))
+        self.preview_depression_display.setText("")
+        self.preview_depression_display.setObjectName("preview_depression_display")
+        self.horizontalLayout_10.addWidget(self.preview_depression_display)
+        spacerItem134 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_10.addItem(spacerItem134)
+        self.name_vertical_line_13 = QtWidgets.QFrame(self.preview_school_widget)
+        self.name_vertical_line_13.setMinimumSize(QtCore.QSize(0, 100))
+        self.name_vertical_line_13.setMaximumSize(QtCore.QSize(16777215, 100))
+        self.name_vertical_line_13.setFrameShape(QtWidgets.QFrame.VLine)
+        self.name_vertical_line_13.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.name_vertical_line_13.setObjectName("name_vertical_line_13")
+        self.horizontalLayout_10.addWidget(self.name_vertical_line_13)
+        spacerItem135 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_10.addItem(spacerItem135)
+        self.preview_selfEsteem_label = QtWidgets.QLabel(self.preview_school_widget)
+        self.preview_selfEsteem_label.setMinimumSize(QtCore.QSize(165, 50))
+        self.preview_selfEsteem_label.setMaximumSize(QtCore.QSize(165, 50))
+        font = QtGui.QFont()
+        font.setFamily("Roboto ")
+        font.setPointSize(-1)
+        font.setBold(True)
+        font.setWeight(75)
+        self.preview_selfEsteem_label.setFont(font)
+        self.preview_selfEsteem_label.setStyleSheet("")
+        self.preview_selfEsteem_label.setObjectName("preview_selfEsteem_label")
+        self.horizontalLayout_10.addWidget(self.preview_selfEsteem_label)
+        spacerItem136 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_10.addItem(spacerItem136)
+        self.preview_selfEsteem_display = QtWidgets.QLineEdit(self.preview_school_widget)
+        self.preview_selfEsteem_display.setMinimumSize(QtCore.QSize(65, 50))
+        self.preview_selfEsteem_display.setMaximumSize(QtCore.QSize(150, 50))
+        self.preview_selfEsteem_display.setText("")
+        self.preview_selfEsteem_display.setObjectName("preview_selfEsteem_display")
+        self.horizontalLayout_10.addWidget(self.preview_selfEsteem_display)
+        spacerItem137 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_10.addItem(spacerItem137)
+        self.gridLayout_11.addLayout(self.horizontalLayout_10, 0, 0, 1, 1)
+        self.input_area_verical_lyt_2.addWidget(self.preview_school_widget)
+        self.gridLayout_14.addLayout(self.input_area_verical_lyt_2, 2, 0, 1, 1)
+        self.preview_savebutton = QtWidgets.QCheckBox(self.GE_Preview_Page_widget)
+        self.preview_savebutton.setMinimumSize(QtCore.QSize(150, 80))
+        self.preview_savebutton.setMaximumSize(QtCore.QSize(150, 80))
+        self.preview_savebutton.setText("")
+        self.preview_savebutton.setIconSize(QtCore.QSize(100, 100))
+        self.preview_savebutton.setObjectName("preview_savebutton")
+        self.gridLayout_14.addWidget(self.preview_savebutton, 3, 0, 1, 1)
         self.GE_Preview_Page_gridLayout.addWidget(self.GE_Preview_Page_widget, 0, 0, 1, 1)
         self.stackedWidget.addWidget(self.GE_Preview_Page)
+
+
+
+
+
+
+
         self.Database = QtWidgets.QWidget()
+        self.Database.setStyleSheet("#database_toolbar_widget{\n"
+"\n"
+"background-color: rgb(31, 149, 239);\n"
+"}\n"
+"QPushButton {\n"
+"    color: white;\n"
+"    text-align: left;\n"
+"    height:70px;\n"
+"    border: 1px;\n"
+"    padding-left: 10px;\n"
+"    border-radius: 5px; /* Round top left corner */\n"
+"    \n"
+"    background-color: rgb(31, 149, 239); /* Normal background color */\n"
+"    font-size: 15px; /* Set the font size here */\n"
+"    /* Other styles */\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(45, 45, 45); /* Darker background color on hover */\n"
+"    color: rgb(220, 220, 220); /* Slightly lighter text color on hover */\n"
+"}\n"
+"\n"
+"QPushButton:checked {\n"
+" \n"
+"     background-color: rgb(45, 45, 45); /* Darker background color on checked */\n"
+"}\n"
+"\n"
+"#preview_savebutton {\n"
+"    /* General styling for the checkbox */\n"
+"    font-family: \'Roboto\';\n"
+"    color: rgb(24, 45, 83); /* Text color */\n"
+"    font-size: 16px; /* Font size */\n"
+"    spacing: 5px; /* Space between the indicator and the text */\n"
+"    background-color: transparent; /* Make the background transparent */\n"
+"}\n"
+"\n"
+"#database_savebutton::indicator {\n"
+"    /* Styling for the indicator (the square part) */\n"
+"    width: 90px; /* Width of the indicator */\n"
+"    height: 30px; /* Height of the indicator */\n"
+"}\n"
+"\n"
+"#database_savebutton::indicator::unchecked {\n"
+"    /* Styling for the indicator when the checkbox is unchecked */\n"
+"    background-color: transparent; /* Background color */\n"
+"    border: transparent; /* Border color and width */\n"
+"    border-radius: 4px; /* Optional: if you want rounded corners for the square */\n"
+"     image: url(:/icon/icon/notsaved.png); /* Absolute path to the checkmark image */\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"#database_savebutton::indicator::checked {\n"
+"    /* Styling for the indicator when the checkbox is checked */\n"
+"    background-color: transparent; /* Background color */\n"
+"    border: transparent; /* Border color and width */\n"
+"    border-radius: 4px; /* Optional: if you want rounded corners for the square */\n"
+"    image: url(:/icon/icon/saved.png); /* Absolute path to the checkmark image */\n"
+"    \n"
+"}")
         self.Database.setObjectName("Database")
         self.Database_gridLayout = QtWidgets.QGridLayout(self.Database)
         self.Database_gridLayout.setObjectName("Database_gridLayout")
@@ -6877,6 +7095,7 @@ class Ui_PsycheEval_MainWindow(object):
 "    border: 1px solid #D6D6D6; /* Border for header cells */\n"
 "    font-size: 18px; /* Larger font size for header text */\n"
 "    font-weight: bold; /* Bold font weight for header text */\n"
+"    color: white; /* Text color */\n"
 "}\n"
 "\n"
 "/* Hover effect for headers */\n"
@@ -6923,7 +7142,8 @@ class Ui_PsycheEval_MainWindow(object):
 "}\n"
 "")
         self.DatabaseTab.setObjectName("DatabaseTab")
-        self.DatabaseTab.setColumnCount(7)
+        self.DatabaseTab.setColumnCount(8)
+
         self.DatabaseTab.setRowCount(5)
         item = QtWidgets.QTableWidgetItem()
         self.DatabaseTab.setVerticalHeaderItem(0, item)
@@ -6949,64 +7169,170 @@ class Ui_PsycheEval_MainWindow(object):
         self.DatabaseTab.setHorizontalHeaderItem(5, item)
         item = QtWidgets.QTableWidgetItem()
         self.DatabaseTab.setHorizontalHeaderItem(6, item)
-        self.Database_gridLayout.addWidget(self.DatabaseTab, 0, 0, 1, 1)
+
+        self.Database_gridLayout.addWidget(self.DatabaseTab, 1, 0, 1, 1)
+
+        self.databasebutton_widget = QtWidgets.QWidget(self.Database)
+        self.databasebutton_widget.setMinimumSize(QtCore.QSize(1550, 50))
+        self.databasebutton_widget.setMaximumSize(QtCore.QSize(1200, 50))
+        self.databasebutton_widget.setObjectName("databasebutton_widget")
+        self.horizontalLayout_18 = QtWidgets.QHBoxLayout(self.databasebutton_widget)
+        self.horizontalLayout_18.setObjectName("horizontalLayout_18")
+        self.horizontalLayout_17 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_17.setObjectName("horizontalLayout_17")
+        self.horizontalLayout_15 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_15.setObjectName("horizontalLayout_15")
+        self.database_refresh_button = QtWidgets.QPushButton(self.databasebutton_widget)
+        self.database_refresh_button.setMinimumSize(QtCore.QSize(90, 30))
+        self.database_refresh_button.setMaximumSize(QtCore.QSize(90, 30))
+        self.database_refresh_button.setObjectName("database_refresh_button")
+        self.horizontalLayout_15.addWidget(self.database_refresh_button)
+        spacerItem138 = QtWidgets.QSpacerItem(90, 30, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_15.addItem(spacerItem138)
+        self.database_edit_button = QtWidgets.QPushButton(self.databasebutton_widget)
+        self.database_edit_button.setMinimumSize(QtCore.QSize(90, 30))
+        self.database_edit_button.setMaximumSize(QtCore.QSize(90, 30))
+        self.database_edit_button.setObjectName("database_edit_button")
+        self.horizontalLayout_15.addWidget(self.database_edit_button)
+        self.database_undo_button = QtWidgets.QPushButton(self.databasebutton_widget)
+        self.database_undo_button.setMinimumSize(QtCore.QSize(90, 30))
+        self.database_undo_button.setMaximumSize(QtCore.QSize(90, 30))
+        self.database_undo_button.setObjectName("database_undo_button")
+        self.horizontalLayout_15.addWidget(self.database_undo_button)
+        self.database_reset_button = QtWidgets.QPushButton(self.databasebutton_widget)
+        self.database_reset_button.setMinimumSize(QtCore.QSize(90, 30))
+        self.database_reset_button.setMaximumSize(QtCore.QSize(90, 30))
+        self.database_reset_button.setObjectName("database_reset_button")
+        self.horizontalLayout_15.addWidget(self.database_reset_button)
+        self.database_savebutton = QtWidgets.QCheckBox(self.databasebutton_widget)
+        self.database_savebutton.setMinimumSize(QtCore.QSize(90, 30))
+        self.database_savebutton.setMaximumSize(QtCore.QSize(90, 30))
+        self.database_savebutton.setText("")
+        self.database_savebutton.setObjectName("database_savebutton")
+        self.horizontalLayout_15.addWidget(self.database_savebutton)
+        self.horizontalLayout_17.addLayout(self.horizontalLayout_15)
+        spacerItem139 = QtWidgets.QSpacerItem(90, 30, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_17.addItem(spacerItem139)
+        self.horizontalLayout_18.addLayout(self.horizontalLayout_17)
+        self.Database_gridLayout.addWidget(self.databasebutton_widget, 0, 0, 1, 1)
+
         self.stackedWidget.addWidget(self.Database)
+
+
+
+
+
+
+
+
+
         self.Active_widget_vertical_lyt.addWidget(self.stackedWidget)
         self.MainWindow_2_verticalLayout.addWidget(self.Active_widget)
         self.MainWindow_gridLayout.addWidget(self.MainWindow_2, 0, 2, 1, 1)
-        self.verticalScrollBar = QtWidgets.QScrollBar(self.MainWindow_grid_lyt)
-        self.verticalScrollBar.setMinimumSize(QtCore.QSize(21, 1001))
-        self.verticalScrollBar.setMaximumSize(QtCore.QSize(21, 1001))
-        self.verticalScrollBar.setStyleSheet("QScrollBar:vertical {\n"
+        self.small_icon_widget = QtWidgets.QWidget(self.MainWindow_grid_lyt)
+        self.small_icon_widget.setMinimumSize(QtCore.QSize(131, 0))
+        self.small_icon_widget.setMaximumSize(QtCore.QSize(131, 16777215))
+        self.small_icon_widget.setStyleSheet("QWidget{\n"
+"\n"
+"background-color: rgb(31, 149, 239);\n"
+"}\n"
+"\n"
+"QPushButton {\n"
+"    color: white;\n"
+"    text-align: centre;\n"
+"    height: 100px;\n"
 "    border: none;\n"
-"    background: white; /* Inverted scrollbar background to white */\n"
-"    width: 10px; /* Width of the scrollbar */\n"
-"    margin: 0px 0px 0px 0px; /* Margins around the scrollbar */\n"
+"    \n"
+"    border-radius: 10px; \n"
+"    \n"
+"    background-color: rgb(31, 149, 239); /* Normal background color */\n"
+"    font-size: 14px; /* Set the font size here */\n"
+"    /* Other styles */\n"
 "}\n"
 "\n"
-"QScrollBar::handle:vertical {\n"
-"    background: rgb(31, 149, 239); /* Inverted handle color to blue */\n"
-"    min-height: 20px; /* Minimum handle height */\n"
-"    border-radius: 5px; /* Handle border radius */\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(45, 45, 45); /* Darker background color on hover */\n"
+"    color: rgb(220, 220, 220); /* Slightly lighter text color on hover */\n"
 "}\n"
 "\n"
-"QScrollBar::handle:vertical:hover {\n"
-"    background: rgb(45, 45, 45); /* Darker color for hover, can be adjusted */\n"
+"\n"
+"QPushButton:checked {\n"
+" \n"
+"    \n"
+"     background-color: rgb(45, 45, 45); /* Darker background color on checked */\n"
 "}\n"
 "\n"
-"QScrollBar::add-line:vertical {\n"
-"    border: none;\n"
-"    background: white; /* Inverted button background to white */\n"
-"    height: 0px; /* Hide the button */\n"
-"    subcontrol-position: bottom;\n"
-"    subcontrol-origin: margin;\n"
+"\n"
+"QLabel {\n"
+"    color: white;\n"
+"    qproperty-alignment: AlignCenter; /* This will center the text */\n"
 "}\n"
 "\n"
-"QScrollBar::sub-line:vertical {\n"
-"    border: none;\n"
-"    background: white; /* Inverted button background to white */\n"
-"    height: 0px; /* Hide the button */\n"
-"    subcontrol-position: top;\n"
-"    subcontrol-origin: margin;\n"
-"}\n"
 "\n"
-"QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {\n"
-"    background: none; /* Arrow background */\n"
-"    color: none; /* Arrow color */\n"
-"    width: 0px; /* Arrow width */\n"
-"    height: 0px; /* Arrow height */\n"
-"}\n"
-"\n"
-"QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {\n"
-"    background: none; /* Page background when clicking above/below the handle */\n"
-"}\n"
 "")
-        self.verticalScrollBar.setOrientation(QtCore.Qt.Vertical)
-        self.verticalScrollBar.setObjectName("verticalScrollBar")
-        self.MainWindow_gridLayout.addWidget(self.verticalScrollBar, 0, 3, 1, 1)
+        self.small_icon_widget.setObjectName("small_icon_widget")
+        self.small_icon_widget_verticalLayout = QtWidgets.QVBoxLayout(self.small_icon_widget)
+        self.small_icon_widget_verticalLayout.setObjectName("small_icon_widget_verticalLayout")
+        spacerItem140 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.small_icon_widget_verticalLayout.addItem(spacerItem140)
+        self.General_pushButton = QtWidgets.QPushButton(self.small_icon_widget)
+        self.General_pushButton.setText("")
+        self.General_pushButton.setIcon(icon)
+        self.General_pushButton.setIconSize(QtCore.QSize(100, 100))
+        self.General_pushButton.setCheckable(True)
+        self.General_pushButton.setAutoExclusive(True)
+        self.General_pushButton.setObjectName("General_pushButton")
+        self.small_icon_widget_verticalLayout.addWidget(self.General_pushButton)
+        self.Stress_pushButton = QtWidgets.QPushButton(self.small_icon_widget)
+        self.Stress_pushButton.setText("")
+        self.Stress_pushButton.setIcon(icon1)
+        self.Stress_pushButton.setIconSize(QtCore.QSize(100, 100))
+        self.Stress_pushButton.setCheckable(True)
+        self.Stress_pushButton.setAutoExclusive(True)
+        self.Stress_pushButton.setObjectName("Stress_pushButton")
+        self.small_icon_widget_verticalLayout.addWidget(self.Stress_pushButton)
+        self.Depression_pushButton = QtWidgets.QPushButton(self.small_icon_widget)
+        self.Depression_pushButton.setText("")
+        self.Depression_pushButton.setIcon(icon2)
+        self.Depression_pushButton.setIconSize(QtCore.QSize(100, 100))
+        self.Depression_pushButton.setCheckable(True)
+        self.Depression_pushButton.setAutoExclusive(True)
+        self.Depression_pushButton.setObjectName("Depression_pushButton")
+        self.small_icon_widget_verticalLayout.addWidget(self.Depression_pushButton)
+        self.SelfEsteem_pushButton = QtWidgets.QPushButton(self.small_icon_widget)
+        self.SelfEsteem_pushButton.setText("")
+        self.SelfEsteem_pushButton.setIcon(icon3)
+        self.SelfEsteem_pushButton.setIconSize(QtCore.QSize(100, 100))
+        self.SelfEsteem_pushButton.setCheckable(True)
+        self.SelfEsteem_pushButton.setAutoExclusive(True)
+        self.SelfEsteem_pushButton.setObjectName("SelfEsteem_pushButton")
+        self.small_icon_widget_verticalLayout.addWidget(self.SelfEsteem_pushButton)
+        self.Preview_pushButton = QtWidgets.QPushButton(self.small_icon_widget)
+        self.Preview_pushButton.setText("")
+        self.Preview_pushButton.setIcon(icon4)
+        self.Preview_pushButton.setIconSize(QtCore.QSize(100, 100))
+        self.Preview_pushButton.setCheckable(True)
+        self.Preview_pushButton.setAutoExclusive(True)
+        self.Preview_pushButton.setObjectName("Preview_pushButton")
+        self.small_icon_widget_verticalLayout.addWidget(self.Preview_pushButton)
+        self.Database_pushButton = QtWidgets.QPushButton(self.small_icon_widget)
+        self.Database_pushButton.setText("")
+        self.Database_pushButton.setIcon(icon5)
+        self.Database_pushButton.setIconSize(QtCore.QSize(100, 100))
+        self.Database_pushButton.setCheckable(True)
+        self.Database_pushButton.setAutoExclusive(True)
+        self.Database_pushButton.setObjectName("Database_pushButton")
+        self.small_icon_widget_verticalLayout.addWidget(self.Database_pushButton)
+        self.Exit_pushButton = QtWidgets.QPushButton(self.small_icon_widget)
+        self.Exit_pushButton.setText("")
+        self.Exit_pushButton.setIcon(icon6)
+        self.Exit_pushButton.setIconSize(QtCore.QSize(100, 100))
+        self.Exit_pushButton.setObjectName("Exit_pushButton")
+        self.small_icon_widget_verticalLayout.addWidget(self.Exit_pushButton)
+        self.MainWindow_gridLayout.addWidget(self.small_icon_widget, 0, 0, 1, 1)
         PsycheEval_MainWindow.setCentralWidget(self.MainWindow_grid_lyt)
         self.menubar = QtWidgets.QMenuBar(PsycheEval_MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 2059, 26))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 2038, 26))
         self.menubar.setObjectName("menubar")
         self.menuFile = QtWidgets.QMenu(self.menubar)
         self.menuFile.setObjectName("menuFile")
@@ -7020,9 +7346,9 @@ class Ui_PsycheEval_MainWindow(object):
         self.menubar.addAction(self.menuFile.menuAction())
 
         self.retranslateUi(PsycheEval_MainWindow)
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(5)
         self.SelfEsteem_tabWidget.setCurrentIndex(0)
-        self.Depression_Page_tabWidget.setCurrentIndex(1)
+        self.Depression_Page_tabWidget.setCurrentIndex(0)
         self.Stress_tabWidget.setCurrentIndex(0)
         self.topbar_menu_button.toggled['bool'].connect(self.small_icon_widget.setHidden) # type: ignore
         self.topbar_menu_button.toggled['bool'].connect(self.expanded_icon_widget.setVisible) # type: ignore
@@ -7059,6 +7385,7 @@ class Ui_PsycheEval_MainWindow(object):
         self.expanded_icon_Preview_pushButton.setText(_translate("PsycheEval_MainWindow", "   Preview"))
         self.expanded_icon_Database_pushButton.setText(_translate("PsycheEval_MainWindow", "   Database"))
         self.expanded_icon_Exit_pushButton.setText(_translate("PsycheEval_MainWindow", "   Exit"))
+        self.selfEsteem_instructions.setText(_translate("PsycheEval_MainWindow", "Rate how much you believe each statement from 1 to 5:"))
         self.SE_Q1_no_Label.setText(_translate("PsycheEval_MainWindow", "1"))
         self.SE_Q1_question.setText(_translate("PsycheEval_MainWindow", "I am a good and worthwhile person."))
         self.SE_Q2_no_Label.setText(_translate("PsycheEval_MainWindow", "2"))
@@ -7101,6 +7428,7 @@ class Ui_PsycheEval_MainWindow(object):
         self.SE_Q20_no_Label.setText(_translate("PsycheEval_MainWindow", "20"))
         self.SE_Q20_question.setText(_translate("PsycheEval_MainWindow", "I am a good friend and people like to be with me."))
         self.SelfEsteem_tabWidget.setTabText(self.SelfEsteem_tabWidget.indexOf(self.SE_Tab_Page_2), _translate("PsycheEval_MainWindow", "Page 2"))
+        self.depression_instructions.setText(_translate("PsycheEval_MainWindow", "Click the number that best describes you:"))
         self.DT_Q1.setText(_translate("PsycheEval_MainWindow", "1"))
         self.DT_Q1_A1_Label.setText(_translate("PsycheEval_MainWindow", "Low energy"))
         self.DT_1_pushButton_1.setText(_translate("PsycheEval_MainWindow", "1"))
@@ -7227,6 +7555,12 @@ class Ui_PsycheEval_MainWindow(object):
         self.DT_Q15_A2_Label.setText(_translate("PsycheEval_MainWindow", "Self-preserving (I’m glad "))
         self.DT_Q15_A2_Label_2.setText(_translate("PsycheEval_MainWindow", "I’m here)"))
         self.Depression_Page_tabWidget.setTabText(self.Depression_Page_tabWidget.indexOf(self.DT_page_2), _translate("PsycheEval_MainWindow", "Page 2"))
+        self.stress_instructions.setText(_translate("PsycheEval_MainWindow", "In the last month, how often have you:"))
+        self.Never_Label.setText(_translate("PsycheEval_MainWindow", "Never"))
+        self.AlmostNever_label.setText(_translate("PsycheEval_MainWindow", "Almost Never"))
+        self.Someyimes_label.setText(_translate("PsycheEval_MainWindow", "Sometimes"))
+        self.FairlyOften_label.setText(_translate("PsycheEval_MainWindow", "Fairly Often"))
+        self.VeryOften_label.setText(_translate("PsycheEval_MainWindow", "Very Often"))
         self.ST_Q1.setText(_translate("PsycheEval_MainWindow", "1"))
         self.ST_Q1_Label.setText(_translate("PsycheEval_MainWindow", "Been upset because of something that happened unexpectedly?"))
         self.ST_1_pushButton_1.setText(_translate("PsycheEval_MainWindow", "1"))
@@ -7298,21 +7632,27 @@ class Ui_PsycheEval_MainWindow(object):
         self.ST_10_pushButton_4.setText(_translate("PsycheEval_MainWindow", "4"))
         self.ST_10_pushButton_5.setText(_translate("PsycheEval_MainWindow", "5"))
         self.Stress_tabWidget.setTabText(self.Stress_tabWidget.indexOf(self.ST_Tab), _translate("PsycheEval_MainWindow", "Page 1"))
-        self.GE_Student_Label.setText(_translate("PsycheEval_MainWindow", "Student Name:"))
-        self.GE_Age_Label.setText(_translate("PsycheEval_MainWindow", " Age:"))
-        self.GE_Sex_Label.setText(_translate("PsycheEval_MainWindow", "Sex:"))
-        self.GE_Sex_Male.setText(_translate("PsycheEval_MainWindow", "Male"))
-        self.GE_Female_Edit.setText(_translate("PsycheEval_MainWindow", "Female"))
-        self.GE_School_Label.setText(_translate("PsycheEval_MainWindow", "School:"))
-        self.GE_Date_Label.setText(_translate("PsycheEval_MainWindow", "Date:"))
-        self.GE_StudentName_Preview.setText(_translate("PsycheEval_MainWindow", "Student Name:"))
-        self.GE_Age_Preview.setText(_translate("PsycheEval_MainWindow", " Age:"))
-        self.GE_Sex_Preview.setText(_translate("PsycheEval_MainWindow", "Sex:"))
-        self.GE_School_Preview.setText(_translate("PsycheEval_MainWindow", "School:"))
-        self.GE_Date_Preview.setText(_translate("PsycheEval_MainWindow", "Date:"))
-        self.GE_StressTest_Preview.setText(_translate("PsycheEval_MainWindow", "Stress Test"))
-        self.GE_DepressionTest_Preview.setText(_translate("PsycheEval_MainWindow", "Depression Test"))
-        self.GE_SelfEsteemTest_Preview.setText(_translate("PsycheEval_MainWindow", "Self-Esteem Test"))
+        self.GeneralTabTitle_label.setText(_translate("PsycheEval_MainWindow", "General Information"))
+        self.general_name_label.setText(_translate("PsycheEval_MainWindow", "Full Student Name:"))
+        self.general_school_label.setText(_translate("PsycheEval_MainWindow", "School:"))
+        self.general_gender_label.setText(_translate("PsycheEval_MainWindow", "Gender :"))
+        self.general_male_label.setText(_translate("PsycheEval_MainWindow", "Male"))
+        self.general_female_label.setText(_translate("PsycheEval_MainWindow", "Female"))
+        self.general_date_instructions.setText(_translate("PsycheEval_MainWindow", "(month/day/year)"))
+        self.general_dateofBirth_label.setText(_translate("PsycheEval_MainWindow", "Date of Birth:"))
+        self.general_todaysdate_label.setText(_translate("PsycheEval_MainWindow", "Today\'s Date:"))
+        self.general_instructions.setText(_translate("PsycheEval_MainWindow", "Fill out the information below then tick:"))
+        self.PreviewTabTitle_label.setText(_translate("PsycheEval_MainWindow", "Preview Information"))
+        self.preview_instructions.setText(_translate("PsycheEval_MainWindow", "Click the \"Not Saved\" button when you ensure that the information is correct:"))
+        self.preview_name_label.setText(_translate("PsycheEval_MainWindow", "Full Student Name:"))
+        self.preview_school_label.setText(_translate("PsycheEval_MainWindow", "School:"))
+        self.preview_gender_label.setText(_translate("PsycheEval_MainWindow", "Gender :"))
+        self.preview_date_instructions.setText(_translate("PsycheEval_MainWindow", "(month/day/year)"))
+        self.preview_dateofBirth_label_2.setText(_translate("PsycheEval_MainWindow", "Date of Birth:"))
+        self.preview_todaysdate_label.setText(_translate("PsycheEval_MainWindow", "Today\'s Date:"))
+        self.preview_stress_label.setText(_translate("PsycheEval_MainWindow", "Stress:"))
+        self.preview_depression_label.setText(_translate("PsycheEval_MainWindow", "Depression:"))
+        self.preview_selfEsteem_label.setText(_translate("PsycheEval_MainWindow", "SelfEsteem:"))
         item = self.DatabaseTab.verticalHeaderItem(0)
         item.setText(_translate("PsycheEval_MainWindow", "1"))
         item = self.DatabaseTab.verticalHeaderItem(1)
@@ -7337,6 +7677,10 @@ class Ui_PsycheEval_MainWindow(object):
         item.setText(_translate("PsycheEval_MainWindow", "Stress Test"))
         item = self.DatabaseTab.horizontalHeaderItem(6)
         item.setText(_translate("PsycheEval_MainWindow", "Self Esteem Test"))
+        self.database_refresh_button.setText(_translate("PsycheEval_MainWindow", "Refresh"))
+        self.database_edit_button.setText(_translate("PsycheEval_MainWindow", "Edit"))
+        self.database_undo_button.setText(_translate("PsycheEval_MainWindow", "Undo"))
+        self.database_reset_button.setText(_translate("PsycheEval_MainWindow", "Reset"))
         self.menuFile.setTitle(_translate("PsycheEval_MainWindow", "File"))
         self.actionPrint.setText(_translate("PsycheEval_MainWindow", "Print"))
 import resource_rc

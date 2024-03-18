@@ -20,6 +20,10 @@
     <file>icon/close-window-64-white.ico</file>
     <file>icon/user-48.ico</file>
     <file>icon/user-48-white.ico</file>
-    
+    <file>icon/generalui.png</file>
+    <file>icon/tickmark.png</file>
+    <file>icon/tickhere.png</file>
+    <file>icon/notsaved.png</file>
+    <file>icon/saved.png</file>
   </qresource>
 </RCC>

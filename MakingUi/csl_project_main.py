@@ -66,10 +66,13 @@ class Ui_PsycheEval_MainWindow(object):
         self.MainWindow.expanded_icon_General_pushButton.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(3))
         self.MainWindow.expanded_icon_Stress_pushButton.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(2))
         self.MainWindow.expanded_icon_Depression_pushButton.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(1))
+        self.MainWindow.expanded_icon_Depression_pushButton.clicked.connect(lambda: self.DepressionTab.Depression_Page_tabWidget.setCurrentIndex(0))
+
         self.MainWindow.expanded_icon_SelfEsteem_pushButton.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
         self.MainWindow.expanded_icon_Preview_pushButton.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(4))
         self.MainWindow.expanded_icon_Database_pushButton.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(5))
 
+                
 
 
 
@@ -98,7 +101,7 @@ class Ui_PsycheEval_MainWindow(object):
 
 
         self.DepressionTab = DepressionTab(PsycheEval_MainWindow, self.stackedWidget)
-
+        
 
 #StressPage             #StressPage             #StressPage             #StressPage             #StressPage
 #StressPage             #StressPage             #StressPage             #StressPage             #StressPage
@@ -126,7 +129,8 @@ class Ui_PsycheEval_MainWindow(object):
 #Preview                #Preview                #Preview                #Preview                #Preview
 #Preview                #Preview                #Preview                #Preview                #Preview
 
-        self.PreviewTab = PreviewTab(PsycheEval_MainWindow, self.stackedWidget)
+         ## Assuming self.GeneralTab is an instance of GeneralTab
+        self.PreviewTab = PreviewTab(PsycheEval_MainWindow, self.stackedWidget, self.GeneralTab)
 
 
 #DatabasePage           #DatabasePage           #DatabasePage           #DatabasePage           #DatabasePage 
@@ -153,70 +157,13 @@ class Ui_PsycheEval_MainWindow(object):
         self.Active_widget_vertical_lyt.addWidget(self.stackedWidget)
         self.MainWindow2.MainWindow_2_verticalLayout.addWidget(self.Active_widget)
         self.MainWindow.MainWindow_gridLayout.addWidget(self.MainWindow2.MainWindow_2, 0, 2, 1, 1)
-        self.verticalScrollBar = QtWidgets.QScrollBar(self.MainWindow.MainWindow_grid_lyt)
-        self.verticalScrollBar.setMinimumSize(QtCore.QSize(21, 1001))
-        self.verticalScrollBar.setMaximumSize(QtCore.QSize(21, 1001))
-        self.verticalScrollBar.setStyleSheet("QScrollBar:vertical {\n"
-"    border: none;\n"
-"    background: white; /* Inverted scrollbar background to white */\n"
-"    width: 10px; /* Width of the scrollbar */\n"
-"    margin: 0px 0px 0px 0px; /* Margins around the scrollbar */\n"
-"}\n"
-"\n"
-"QScrollBar::handle:vertical {\n"
-"    background: rgb(31, 149, 239); /* Inverted handle color to blue */\n"
-"    min-height: 20px; /* Minimum handle height */\n"
-"    border-radius: 5px; /* Handle border radius */\n"
-"}\n"
-"\n"
-"QScrollBar::handle:vertical:hover {\n"
-"    background: rgb(45, 45, 45); /* Darker color for hover, can be adjusted */\n"
-"}\n"
-"\n"
-"QScrollBar::add-line:vertical {\n"
-"    border: none;\n"
-"    background: white; /* Inverted button background to white */\n"
-"    height: 0px; /* Hide the button */\n"
-"    subcontrol-position: bottom;\n"
-"    subcontrol-origin: margin;\n"
-"}\n"
-"\n"
-"QScrollBar::sub-line:vertical {\n"
-"    border: none;\n"
-"    background: white; /* Inverted button background to white */\n"
-"    height: 0px; /* Hide the button */\n"
-"    subcontrol-position: top;\n"
-"    subcontrol-origin: margin;\n"
-"}\n"
-"\n"
-"QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {\n"
-"    background: none; /* Arrow background */\n"
-"    color: none; /* Arrow color */\n"
-"    width: 0px; /* Arrow width */\n"
-"    height: 0px; /* Arrow height */\n"
-"}\n"
-"\n"
-"QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {\n"
-"    background: none; /* Page background when clicking above/below the handle */\n"
-"}\n"
-"")
-        self.verticalScrollBar.setOrientation(QtCore.Qt.Vertical)
-        self.verticalScrollBar.setObjectName("verticalScrollBar")
-        self.MainWindow.MainWindow_gridLayout.addWidget(self.verticalScrollBar, 0, 3, 1, 1)
+        
+       
+                
         PsycheEval_MainWindow.setCentralWidget(self.MainWindow.MainWindow_grid_lyt)
-        self.menubar = QtWidgets.QMenuBar(PsycheEval_MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1920, 26))
-        self.menubar.setObjectName("menubar")
-        self.menuFile = QtWidgets.QMenu(self.menubar)
-        self.menuFile.setObjectName("menuFile")
-        PsycheEval_MainWindow.setMenuBar(self.menubar)
-        self.statusbar = QtWidgets.QStatusBar(PsycheEval_MainWindow)
-        self.statusbar.setObjectName("statusbar")
-        PsycheEval_MainWindow.setStatusBar(self.statusbar)
-        self.actionPrint = QtWidgets.QAction(PsycheEval_MainWindow)
-        self.actionPrint.setObjectName("actionPrint")
-        self.menuFile.addAction(self.actionPrint)
-        self.menubar.addAction(self.menuFile.menuAction())
+        
+        # Simulate a click on the GeneralTab button
+       # self.MainWindow.expanded_icon_General_pushButton.setChecked(True)
 
         self.retranslateUi(PsycheEval_MainWindow)
         self.stackedWidget.setCurrentIndex(5)
@@ -248,19 +195,14 @@ class Ui_PsycheEval_MainWindow(object):
         self.MainWindow.expanded_icon_Database_pushButton.toggled['bool'].connect(self.MainWindow.Database_pushButton.setChecked) # type: ignore
         self.MainWindow.Exit_pushButton.toggled['bool'].connect(self.MainWindow.expanded_icon_Exit_pushButton.setChecked) # type: ignore
         self.MainWindow.expanded_icon_Exit_pushButton.toggled['bool'].connect(self.MainWindow.Exit_pushButton.setChecked) # type: ignore
-        # Connect sliders and spin boxes dynamically
-        for question_num in range(1, len(SelfEsteemTab.questions) + 1):
-                slider = getattr(self.selfEsteemTab, f"SE_Q{question_num}_horizontalSlider")
-                spin_box = getattr(self.selfEsteemTab, f"SE_Q{question_num}_spinBox")
-
-                slider.sliderMoved.connect(spin_box.setValue)
-                spin_box.valueChanged.connect(slider.setValue)
-                slider.valueChanged.connect(spin_box.setValue)
-        QtCore.QMetaObject.connectSlotsByName(PsycheEval_MainWindow)
+        
+                # Set the initial state of the GeneralTab button and show the corresponding page
+        self.MainWindow.expanded_icon_General_pushButton.setChecked(True)
+        self.stackedWidget.setCurrentIndex(3)  # Set the stackedWidget to show the GeneralTab page
 
     def retranslateUi(self, PsycheEval_MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        PsycheEval_MainWindow.setWindowTitle(_translate("PsycheEval_MainWindow", "MainWindow"))
+        PsycheEval_MainWindow.setWindowTitle(_translate("PsycheEval_MainWindow", "PsycheEval"))
         self.MainWindow.logo_mainlabel.setText(_translate("PsycheEval_MainWindow", "PsycheEval"))
         self.MainWindow.expanded_icon_General_pushButton.setText(_translate("PsycheEval_MainWindow", "   General"))
         self.MainWindow.expanded_icon_Stress_pushButton.setText(_translate("PsycheEval_MainWindow", "   Stress "))
@@ -271,6 +213,7 @@ class Ui_PsycheEval_MainWindow(object):
         self.MainWindow.expanded_icon_Exit_pushButton.setText(_translate("PsycheEval_MainWindow", "   Exit"))
         
         # Set text for self-esteem questions
+        self.selfEsteemTab.selfEsteem_instructions.setText(_translate("PsycheEval_MainWindow", "Rate how much you believe each statement from 1 to 5:"))
         for question_num, question_text in enumerate(SelfEsteemTab.questions, start=1):
                 no_label = self.selfEsteemTab.question_widgets[f"SE_Q{question_num}_no_Label"]
                 question_label = self.selfEsteemTab.question_widgets[f"SE_Q{question_num}_question"]
@@ -278,6 +221,7 @@ class Ui_PsycheEval_MainWindow(object):
                 question_label.setText(_translate("PsycheEval_MainWindow", question_text))
 
                 # Set text for depression questions
+        self.DepressionTab.depression_instructions.setText(_translate("PsycheEval_MainWindow", "Click the number that best describes you:"))
         for question_num, (a1_text, a2_text) in enumerate(self.DepressionTab.questions, start=1):
                 no_label = self.DepressionTab.question_labels[f"DT_Q{question_num}"]
                 a1_label = self.DepressionTab.a1_labels[f"DT_Q{question_num}_A1_Label"]
@@ -306,6 +250,15 @@ class Ui_PsycheEval_MainWindow(object):
 
 
         # Update the stress questions
+        self.StressTab.stress_instructions.setText(_translate("PsycheEval_MainWindow", "In the last month, how often have you:"))                
+        self.StressTab.Never_Label.setText(_translate("PsycheEval_MainWindow", "Never"))
+        self.StressTab.AlmostNever_label.setText(_translate("PsycheEval_MainWindow", "Almost Never"))
+        self.StressTab.Sometimes_label.setText(_translate("PsycheEval_MainWindow", "Sometimes"))
+        self.StressTab.FairlyOften_label.setText(_translate("PsycheEval_MainWindow", "Fairly Often"))
+        self.StressTab.VeryOften_label.setText(_translate("PsycheEval_MainWindow", "Very Often"))
+
+
+
         for question_num, question_text in enumerate(self.StressTab.questions, start=1):
             q_num_label = self.StressTab.question_widgets[f"ST_Q{question_num}_no_Label"]
             q_text_label = self.StressTab.question_widgets[f"ST_Q{question_num}_question"]
@@ -313,23 +266,32 @@ class Ui_PsycheEval_MainWindow(object):
             q_text_label.setText(_translate("PsycheEval_MainWindow", question_text))
 
 
-        self.GeneralTab.GE_Student_Label.setText(_translate("PsycheEval_MainWindow", "Student Name:"))
-        self.GeneralTab.GE_Age_Label.setText(_translate("PsycheEval_MainWindow", " Age:"))
-        self.GeneralTab.GE_Sex_Label.setText(_translate("PsycheEval_MainWindow", "Sex:"))
-        self.GeneralTab.GE_Sex_Male.setText(_translate("PsycheEval_MainWindow", "Male"))
-        self.GeneralTab.GE_Female_Edit.setText(_translate("PsycheEval_MainWindow", "Female"))
-        self.GeneralTab.GE_School_Label.setText(_translate("PsycheEval_MainWindow", "School:"))
-        self.GeneralTab.GE_Date_Label.setText(_translate("PsycheEval_MainWindow", "Date:"))
-        self.PreviewTab.GE_StudentName_Preview.setText(_translate("PsycheEval_MainWindow", "Student Name:"))
-        self.PreviewTab.GE_Age_Preview.setText(_translate("PsycheEval_MainWindow", " Age:"))
-        self.PreviewTab.GE_Sex_Preview.setText(_translate("PsycheEval_MainWindow", "Sex:"))
-        self.PreviewTab.GE_School_Preview.setText(_translate("PsycheEval_MainWindow", "School:"))
-        self.PreviewTab.GE_Date_Preview.setText(_translate("PsycheEval_MainWindow", "Date:"))
-        self.PreviewTab.GE_StressTest_Preview.setText(_translate("PsycheEval_MainWindow", "Stress Test"))
-        self.PreviewTab.GE_DepressionTest_Preview.setText(_translate("PsycheEval_MainWindow", "Depression Test"))
-        self.PreviewTab.GE_SelfEsteemTest_Preview.setText(_translate("PsycheEval_MainWindow", "Self-Esteem Test"))
-        self.menuFile.setTitle(_translate("PsycheEval_MainWindow", "File"))
-        self.actionPrint.setText(_translate("PsycheEval_MainWindow", "Print"))
+        self.GeneralTab.GeneralTabTitle_label.setText(_translate("PsycheEval_MainWindow", "General Information"))
+        self.GeneralTab.general_name_label.setText(_translate("PsycheEval_MainWindow", "Full Student Name:"))
+        self.GeneralTab.general_school_label.setText(_translate("PsycheEval_MainWindow", "School:"))
+        self.GeneralTab.general_gender_label.setText(_translate("PsycheEval_MainWindow", "Gender :"))
+        self.GeneralTab.general_male_label.setText(_translate("PsycheEval_MainWindow", "Male"))
+        self.GeneralTab.general_female_label.setText(_translate("PsycheEval_MainWindow", "Female"))
+        self.GeneralTab.general_date_instructions.setText(_translate("PsycheEval_MainWindow", "(month/day/year)"))
+        self.GeneralTab.general_dateofBirth_label.setText(_translate("PsycheEval_MainWindow", "Date of Birth:"))
+        self.GeneralTab.general_todaysdate_label.setText(_translate("PsycheEval_MainWindow", "Today\'s Date:"))
+        self.GeneralTab.general_instructions.setText(_translate("PsycheEval_MainWindow", "Fill out the information below then tick:"))
+        self.PreviewTab.PreviewTabTitle_label.setText(_translate("PsycheEval_MainWindow", "Preview Information"))
+        self.PreviewTab.preview_instructions.setText(_translate("PsycheEval_MainWindow", "Click the \"Not Saved\" button when you ensure that the information is correct:"))
+        self.PreviewTab.preview_name_label.setText(_translate("PsycheEval_MainWindow", "Full Student Name:"))
+        self.PreviewTab.preview_school_label.setText(_translate("PsycheEval_MainWindow", "School:"))
+        self.PreviewTab.preview_gender_label.setText(_translate("PsycheEval_MainWindow", "Gender :"))
+        self.PreviewTab.preview_date_instructions.setText(_translate("PsycheEval_MainWindow", "(month/day/year)"))
+        self.PreviewTab.preview_dateofBirth_label_2.setText(_translate("PsycheEval_MainWindow", "Date of Birth:"))
+        self.PreviewTab.preview_todaysdate_label.setText(_translate("PsycheEval_MainWindow", "Today\'s Date:"))
+        self.PreviewTab.preview_stress_label.setText(_translate("PsycheEval_MainWindow", "Stress:"))
+        self.PreviewTab.preview_depression_label.setText(_translate("PsycheEval_MainWindow", "Depression:"))
+        self.PreviewTab.preview_selfEsteem_label.setText(_translate("PsycheEval_MainWindow", "SelfEsteem:"))
+        self.DataBaseTab.database_refresh_button.setText(_translate("PsycheEval_MainWindow", "Refresh"))
+        self.DataBaseTab.database_edit_button.setText(_translate("PsycheEval_MainWindow", "Edit"))
+        self.DataBaseTab.database_undo_button.setText(_translate("PsycheEval_MainWindow", "Undo"))
+        self.DataBaseTab.database_reset_button.setText(_translate("PsycheEval_MainWindow", "Reset"))
+        
 import resource_rc
 
 

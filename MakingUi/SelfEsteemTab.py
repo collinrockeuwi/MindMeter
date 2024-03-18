@@ -1,4 +1,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QButtonGroup
+
 
 class SelfEsteemTab:
     questions = [
@@ -32,6 +34,49 @@ class SelfEsteemTab:
     def setupSelfEsteemPage(self, parent):
         self.SelfEsteem_Page = QtWidgets.QWidget()
         self.SelfEsteem_Page.setObjectName("SelfEsteem_Page")
+        self.SelfEsteem_Page.setStyleSheet("#selfEsteem_instructions {\n"
+"    font-family: \'Roboto \';\n"
+"    font-size: 20px;\n"
+"    font-weight: bold;\n"
+"    color: rgb(24, 45, 83 ); /* Set the font color to white */\n"
+"    background-color: transparent; /* Make the background transparent */\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"#selfEsteem_savebutton {\n"
+"    /* General styling for the checkbox */\n"
+"    font-family: \'Roboto\';\n"
+"    color: rgb(24, 45, 83); /* Text color */\n"
+"    font-size: 16px; /* Font size */\n"
+"    spacing: 5px; /* Space between the indicator and the text */\n"
+"    background-color: transparent; /* Make the background transparent */\n"
+"}\n"
+"\n"
+"#selfEsteem_savebutton::indicator {\n"
+"    /* Styling for the indicator (the square part) */\n"
+"    width: 150px; /* Width of the indicator */\n"
+"    height: 150px; /* Height of the indicator */\n"
+"}\n"
+"\n"
+"#selfEsteem_savebutton::indicator::unchecked {\n"
+"    /* Styling for the indicator when the checkbox is unchecked */\n"
+"    background-color: transparent; /* Background color */\n"
+"    border: transparent; /* Border color and width */\n"
+"    border-radius: 4px; /* Optional: if you want rounded corners for the square */\n"
+"     image: url(C:/Users/colli/Downloads/MakingUi/icon/notsaved.png); /* Absolute path to the checkmark image */\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"#selfEsteem_savebutton::indicator::checked {\n"
+"    /* Styling for the indicator when the checkbox is checked */\n"
+"    background-color: transparent; /* Background color */\n"
+"    border: transparent; /* Border color and width */\n"
+"    border-radius: 4px; /* Optional: if you want rounded corners for the square */\n"
+"    image: url(C:/Users/colli/Downloads/MakingUi/icon/saved.png); /* Absolute path to the checkmark image */\n"
+"    \n"
+"}")
         self._gridLayout = QtWidgets.QGridLayout(self.SelfEsteem_Page)
         self._gridLayout.setObjectName("_gridLayout")
         self.SelfEsteem_tabWidget = QtWidgets.QTabWidget(self.SelfEsteem_Page)
@@ -67,17 +112,41 @@ class SelfEsteemTab:
                                                 "    background-color: rgb(51, 169, 259);\n"
                                                 "}")
 
-        # Create two pages
+                # Create two pages
         for page_num in range(1, 3):  # Pages 1 and 2
             page = QtWidgets.QWidget()
             page.setObjectName(f"SE_Tab_Page_{page_num}")
             page_layout = QtWidgets.QVBoxLayout(page)
             page_layout.setObjectName(f"SE_Tab_Page_{page_num}_verticalLayout")
 
+            # Add the instructions label to the top of the first page
+            if page_num == 1:
+                self.selfEsteem_instructions = QtWidgets.QLabel(page)
+                self.selfEsteem_instructions.setMinimumSize(QtCore.QSize(500, 50))
+                self.selfEsteem_instructions.setMaximumSize(QtCore.QSize(500, 50))
+                font = QtGui.QFont()
+                font.setFamily("Roboto ")
+                font.setPointSize(-1)
+                font.setBold(True)
+                font.setWeight(75)
+                self.selfEsteem_instructions.setFont(font)
+                self.selfEsteem_instructions.setObjectName("selfEsteem_instructions")
+                self.selfEsteem_instructions.setText("Rate how much you believe each statement from 1 to 5:")
+                page_layout.addWidget(self.selfEsteem_instructions)
+
             # Create 10 questions per page
             for question_num in range(1, 11):
                 total_question_num = (page_num - 1) * 10 + question_num
                 self.createQuestion(page, page_layout, total_question_num)
+
+            # Add the save button to the bottom of the second page
+            if page_num == 2:
+                self.selfEsteem_savebutton = QtWidgets.QCheckBox(page)
+                self.selfEsteem_savebutton.setMinimumSize(QtCore.QSize(1168, 50))
+                self.selfEsteem_savebutton.setMaximumSize(QtCore.QSize(1168, 50))
+                self.selfEsteem_savebutton.setText("")
+                self.selfEsteem_savebutton.setObjectName("selfEsteem_savebutton")
+                page_layout.addWidget(self.selfEsteem_savebutton)
 
             self.SelfEsteem_tabWidget.addTab(page, f"Page {page_num}")
 
@@ -132,98 +201,39 @@ class SelfEsteemTab:
        # question_layout.addWidget(no_label)
        # question_layout.addWidget(question_label)
 
+        # Answer buttons layout
+        buttons_layout = QtWidgets.QHBoxLayout()
+        buttons_layout.setSpacing(20)  # This sets the spacing between the buttons
 
-        # Slider
-        slider = QtWidgets.QSlider(parent)
-        slider.setMinimumSize(QtCore.QSize(351, 71))
-        slider.setMaximumSize(QtCore.QSize(351, 71))
-        slider.setMaximum(20)
-        slider.setPageStep(5)
-        slider.setOrientation(QtCore.Qt.Horizontal)
-        slider.setStyleSheet("QSlider::groove:horizontal {\n"
-                            "    border: 1px solid #999999;\n"
-                            "    height: 30px;\n"
-                            "    background: white;\n"
-                            "    margin: 2px 0;\n"
-                            "    border-radius: 4px;\n"
-                            "}\n"
-                            "QSlider::handle:horizontal {\n"
-                            "    background: rgb(31, 149, 239);\n"
-                            "    border: none;\n"
-                            "    width: 60px;\n"
-                            "    margin: -2px 0;\n"
-                            "    border-radius: 5px;\n"
-                            "    position: absolute;\n"
-                            "}\n"
-                            "QSlider::handle:horizontal:hover {\n"
-                            "    background: rgb(45, 45, 45);\n"
-                            "}\n"
-                            "QSlider::handle:horizontal:pressed {\n"
-                            "    background: rgb(31, 149, 239);\n"
-                            "}\n"
-                            "QSlider::sub-page:horizontal {\n"
-                            "    background: rgb(31, 149, 239);\n"
-                            "    border-radius: 4px;\n"
-                            "}\n"
-                            "QSlider::add-page:horizontal {\n"
-                            "    background: white;\n"
-                            "    border-radius: 4px;\n"
-                            "}")
-        slider.setObjectName(f"SE_Q{question_num}_horizontalSlider")
-        setattr(self, f"SE_Q{question_num}_horizontalSlider", slider)
-        question_layout.addWidget(slider)
+        # Create a button group for this question
+        button_group = QButtonGroup(parent)
 
-        # SpinBox
-        spin_box = QtWidgets.QSpinBox(parent)
-        spin_box.setMinimumSize(QtCore.QSize(90, 60))
-        spin_box.setMaximumSize(QtCore.QSize(90, 60))
-        spin_box.setMaximum(20)
-        font = QtGui.QFont()
-        font.setFamily("Roboto Bk")
-        font.setPointSize(20)
-        spin_box.setFont(font)
-        spin_box.setStyleSheet("QSpinBox {\n"
-                            "    background-color: white;\n"
-                            "    color: black;\n"
-                            "    border: 2px solid black;\n"
-                            "    border-radius: 5px;\n"
-                            "    padding-left: 20px;\n"
-                            "    margin: 2px;\n"
-                            "}\n"
-                            "QSpinBox::up-button {\n"
-                            "    subcontrol-origin: border;\n"
-                            "    subcontrol-position: top right;\n"
-                            "    width: 15px;\n"
-                                                       "    border-left: 1px solid black;\n"
-                           "}\n"
-                           "QSpinBox::down-button {\n"
-                           "    subcontrol-origin: border;\n"
-                           "    subcontrol-position: bottom right;\n"
-                           "    width: 15px;\n"
-                           "    border-left: 1px solid black;\n"
-                           "}\n"
-                           "QSpinBox::up-arrow {\n"
-                           "    width: 7px;\n"
-                           "    height: 7px;\n"
-                           "    image: url(:/icon/icon/menu-4-32.ico);\n"
-                           "}\n"
-                           "QSpinBox::down-arrow {\n"
-                           "    width: 7px;\n"
-                           "    height: 7px;\n"
-                           "    image: url(:/icon/icon/menu-4-32.ico);\n"
-                           "}\n"
-                           "QSpinBox::up-button:pressed {\n"
-                           "    background-color: lightgray;\n"
-                           "}\n"
-                           "QSpinBox::down-button:pressed {\n"
-                           "    background-color: lightgray;\n"
-                           "}\n"
-                           "QSpinBox::up-button:hover, QSpinBox::down-button:hover {\n"
-                           "    background-color: #e0e0e0;\n"
-                           "}")
-        spin_box.setObjectName(f"SE_Q{question_num}_spinBox")
-        setattr(self, f"SE_Q{question_num}_spinBox", spin_box)
-        question_layout.addWidget(spin_box)
+        # Answer buttons
+        for i in range(5):  # Assuming 5 answer options
+            button = QtWidgets.QPushButton(parent)
+            button.setMinimumSize(QtCore.QSize(60, 55))
+            button.setMaximumSize(QtCore.QSize(60, 55))
+            button.setCheckable(True)
+            button.setAutoExclusive(True)
+            button.setObjectName(f"ST_{question_num}_pushButton_{i+1}")
+            button.setText(str(i + 1))
+            button.setStyleSheet("QPushButton {\n"
+                                 "    color: white;\n"
+                                 "    background-color: #1F95EF;\n"
+                                 "    font-size: 35px;\n"
+                                 "    border-radius: 8px;\n"
+                                 "}\n"
+                                 "QPushButton:hover {\n"
+                                 "    background-color: #2D2D2D;\n"
+                                 "    color: #DCDCDC;\n"
+                                 "}\n"
+                                 "QPushButton:checked {\n"
+                                 "    background-color: #2D2D2D;\n"
+                                 "}\n")
+            buttons_layout.addWidget(button)
+            button_group.addButton(button)  # Add the button to the button group
+        
+        question_layout.addLayout(buttons_layout)
 
         self._gridLayout.addWidget(self.SelfEsteem_tabWidget, 0, 0, 1, 1)
 

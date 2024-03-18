@@ -23,6 +23,7 @@ class DatabaseManager:
             c.execute('''CREATE TABLE IF NOT EXISTS Students (
                             StudentID INTEGER PRIMARY KEY AUTOINCREMENT,
                             Name TEXT NOT NULL,
+                            DateOfBirth TEXT,
                             Age INTEGER,
                             School TEXT,
                             Sex TEXT,
@@ -33,16 +34,16 @@ class DatabaseManager:
             c.execute('''CREATE TABLE IF NOT EXISTS StressTests (
                             TestID INTEGER PRIMARY KEY AUTOINCREMENT,
                             StudentID INTEGER,
-                            Question1 INTEGER CHECK (Question1 BETWEEN 1 AND 5),
-                            Question2 INTEGER CHECK (Question2 BETWEEN 1 AND 5),
-                            Question3 INTEGER CHECK (Question3 BETWEEN 1 AND 5),
-                            Question4 INTEGER CHECK (Question4 BETWEEN 1 AND 5),
-                            Question5 INTEGER CHECK (Question5 BETWEEN 1 AND 5),
-                            Question6 INTEGER CHECK (Question6 BETWEEN 1 AND 5),
-                            Question7 INTEGER CHECK (Question7 BETWEEN 1 AND 5),
-                            Question8 INTEGER CHECK (Question8 BETWEEN 1 AND 5),
-                            Question9 INTEGER CHECK (Question9 BETWEEN 1 AND 5),
-                            Question10 INTEGER CHECK (Question10 BETWEEN 1 AND 5),
+                            Question1 INTEGER CHECK (Question1 BETWEEN 0 AND 4),
+                            Question2 INTEGER CHECK (Question2 BETWEEN 0 AND 4),
+                            Question3 INTEGER CHECK (Question3 BETWEEN 0 AND 4),
+                            Question4 INTEGER CHECK (Question4 BETWEEN 0 AND 4),
+                            Question5 INTEGER CHECK (Question5 BETWEEN 0 AND 4),
+                            Question6 INTEGER CHECK (Question6 BETWEEN 0 AND 4),
+                            Question7 INTEGER CHECK (Question7 BETWEEN 0 AND 4),
+                            Question8 INTEGER CHECK (Question8 BETWEEN 0 AND 4),
+                            Question9 INTEGER CHECK (Question9 BETWEEN 0 AND 4),
+                            Question10 INTEGER CHECK (Question10 BETWEEN 0 AND 4),
                             TotalScore INTEGER,
                             DateTaken TEXT,
                             FOREIGN KEY (StudentID) REFERENCES Students(StudentID)
@@ -105,15 +106,17 @@ class DatabaseManager:
    
 
 #for different test insertions
-    def insert_student(self, name, age, school, sex, date_registered):
-            try:
-                c = self.conn.cursor()
-                c.execute('INSERT INTO Students (Name, Age, School, Sex, DateRegistered) VALUES (?, ?, ?, ?, ?)', (name, age, school, sex, date_registered))
-                self.conn.commit()
-                return c.lastrowid
-            except sqlite3.Error as e:
-                print(f"Error inserting student: {e}")
-                return None
+    def insert_student(self, name, date_of_birth, age, school, sex, date_registered):
+        try:
+            c = self.conn.cursor()
+            c.execute('INSERT INTO Students (Name, DateOfBirth, Age, School, Sex, DateRegistered) VALUES (?, ?, ?, ?, ?, ?)', 
+                    (name, date_of_birth, age, school, sex, date_registered))
+            self.conn.commit()
+            return c.lastrowid
+        except sqlite3.Error as e:
+            print(f"Error inserting student: {e}")
+            return None
+
 
     
     def insert_self_esteem_test(self, student_id, scores, total_score, date_taken):
@@ -220,27 +223,64 @@ class DatabaseManager:
    
    #sample datra
     def insert_sample_data(self):
-        # Insert sample students
+        # Insert sample students with Date of Birth
         students = [
-            ("Alice", 20, "School A", "Female", "2023-01-01"),
-            ("Bob", 21, "School B", "Male", "2023-01-02"),
-            ("Charlie", 22, "School C", "Male", "2023-01-03"),
-            ("Diana", 23, "School D", "Female", "2023-01-04"),
-            ("Ethan", 24, "School E", "Male", "2023-01-05"),
-            ("Fiona", 25, "School F", "Female", "2023-01-06"),
-            ("George", 26, "School G", "Male", "2023-01-07"),
-            ("Hannah", 27, "School H", "Female", "2023-01-08"),
-            ("Ian", 28, "School I", "Male", "2023-01-09"),
-            ("Julia", 29, "School J", "Female", "2023-01-10")
+            ("Alice George", "2003-01-01", 20, "School A", "Female", "2023-01-01"),
+            ("Bob Jones", "2002-02-02", 21, "School B", "Male", "2023-01-02"),
+            ("Charlie Jackson", "2001-03-03", 22, "School C", "Male", "2023-01-03"),
+            ("Diana Leslie", "2000-04-04", 23, "School D", "Female", "2023-01-04"),
+            ("Ethan James", "1999-05-05", 24, "School E", "Male", "2023-01-05"),
+            ("Fiona Singh", "1998-06-06", 25, "School F", "Female", "2023-01-06"),
+            ("George Rione", "1997-07-07", 26, "School G", "Male", "2023-01-07"),
+            ("Hannah Montana", "1996-08-08", 27, "School H", "Female", "2023-01-08"),
+            ("Ian Jakes", "1995-09-09", 28, "School I", "Male", "2023-01-09"),
+            ("Julia Mohammed", "1994-10-10", 29, "School J", "Female", "2023-01-10")
         ]
         for student in students:
             self.insert_student(*student)
 
-        # Insert sample test scores for each student
-        for i in range(1, 11):
-            stress_scores = [3, 4, 2, 5, 3, 4, 2, 5, 3, 4]
-            self_esteem_scores = [4, 4, 3, 5, 4, 4, 3, 5, 4, 4, 3, 5, 4, 4, 3, 5, 4, 4, 3, 5]  # Ensure this list has 20 elements
-            depression_scores = [2, 3, 2, 4, 3, 3, 2, 4, 3, 3, 2, 4, 3, 3, 2]  # Ensure this list has 15 elements
+        # Insert sample test scores for each student with different scores
+        stress_scores_list = [
+    [3, 2, 4, 3, 2, 4, 3, 2, 4, 3],  # Scores for Alice
+    [2, 3, 4, 2, 3, 4, 2, 3, 4, 2],  # Scores for Bob
+    [1, 3, 2, 4, 1, 3, 2, 4, 1, 3],  # Scores for Charlie
+    [4, 2, 3, 1, 4, 2, 3, 1, 4, 2],  # Scores for Diana
+    [3, 4, 1, 3, 4, 1, 3, 4, 1, 3],  # Scores for Ethan
+    [2, 1, 4, 2, 1, 4, 2, 1, 4, 2],  # Scores for Fiona
+    [1, 4, 3, 1, 4, 3, 1, 4, 3, 1],  # Scores for George
+    [3, 1, 2, 4, 3, 1, 2, 4, 3, 1],  # Scores for Hannah
+    [4, 3, 1, 2, 4, 3, 1, 2, 4, 3],  # Scores for Ian
+    [2, 4, 3, 1, 2, 4, 3, 1, 2, 4],  # Scores for Julia
+]
+        self_esteem_scores_list = [
+    [4, 3, 4, 5, 4, 3, 4, 5, 4, 3, 4, 5, 4, 3, 4, 5, 4, 3, 4, 5],  # Scores for Alice
+    [3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4],  # Scores for Bob
+    [4, 5, 4, 3, 4, 5, 4, 3, 4, 5, 4, 3, 4, 5, 4, 3, 4, 5, 4, 3],  # Scores for Charlie
+    [3, 4, 5, 3, 4, 5, 3, 4, 5, 3, 4, 5, 3, 4, 5, 3, 4, 5, 3, 4],  # Scores for Diana
+    [5, 4, 3, 4, 5, 4, 3, 4, 5, 4, 3, 4, 5, 4, 3, 4, 5, 4, 3, 4],  # Scores for Ethan
+    [4, 3, 5, 4, 3, 5, 4, 3, 5, 4, 3, 5, 4, 3, 5, 4, 3, 5, 4, 3],  # Scores for Fiona
+    [3, 5, 4, 3, 5, 4, 3, 5, 4, 3, 5, 4, 3, 5, 4, 3, 5, 4, 3, 5],  # Scores for George
+    [5, 3, 4, 5, 3, 4, 5, 3, 4, 5, 3, 4, 5, 3, 4, 5, 3, 4, 5, 3],  # Scores for Hannah
+    [4, 5, 3, 5, 4, 3, 5, 4, 3, 5, 4, 3, 5, 4, 3, 5, 4, 3, 5, 4],  # Scores for Ian
+    [3, 4, 5, 4, 3, 5, 4, 3, 5, 4, 3, 5, 4, 3, 5, 4, 3, 5, 4, 3],  # Scores for Julia
+]
+        depression_scores_list = [
+    [2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2],  # Scores for Alice
+    [3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3],  # Scores for Bob
+    [2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2],  # Scores for Charlie
+    [3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3],  # Scores for Diana
+    [2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2],  # Scores for Ethan
+    [3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3],  # Scores for Fiona
+    [2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2],  # Scores for George
+    [3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3],  # Scores for Hannah
+    [2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2],  # Scores for Ian
+    [3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3],  # Scores for Julia
+]
+
+        for i in range(1, 11):  # Assuming there are 10 students
+            stress_scores = stress_scores_list[i - 1]
+            self_esteem_scores = self_esteem_scores_list[i - 1]
+            depression_scores = depression_scores_list[i - 1]
 
             stress_total_score = sum(stress_scores)
             self_esteem_total_score = sum(self_esteem_scores)
@@ -252,12 +292,13 @@ class DatabaseManager:
             self.insert_self_esteem_test(i, self_esteem_scores, self_esteem_total_score, date_taken)
             self.insert_depression_test(i, depression_scores, depression_total_score, date_taken)
 
+
 #Database Tab query
     def fetch_student_test_summary(self):
         try:
             c = self.conn.cursor()
             c.execute('''SELECT 
-                            s.Name, s.Age, s.Sex, s.School, 
+                            s.Name,s.DateOfBirth, s.Age, s.Sex, s.School, 
                             MAX(st.TotalScore) AS MaxStressScore, 
                             MAX(dt.TotalScore) AS MaxDepressionScore, 
                             MAX(se_tests.TotalScore) AS MaxSelfEsteemScore
