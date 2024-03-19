@@ -2,13 +2,15 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 
-class GeneralTab(QtCore.QObject):
-    generalInfoSaved = QtCore.pyqtSignal(dict)  # Define the signal
+class GeneralTab:
+    
 
-    def __init__(self, parent, stackedWidget):
-        super().__init__(parent)  # Call the __init__ method of the superclass
+    
+    def __init__(self, shared_data, stackedWidget, previewTab):
         self.stackedWidget = stackedWidget
-        self.setupGeneralPage(parent)
+        self.shared_data = shared_data
+        self.previewTab = previewTab  # Store the PreviewTab instance
+        self.setupGeneralPage()
         
          # Set all checkboxes to unchecked
         self.name_checkBox.setChecked(False)
@@ -19,22 +21,17 @@ class GeneralTab(QtCore.QObject):
         self.todaysDate_checkBox.setChecked(False)
         self.general_savebutton.setChecked(False)
 
-        # Connect the checkbox stateChanged signal to the saveGeneralInfo method
-        self.general_savebutton.stateChanged.connect(self.saveGeneralInfo)
-
-
-# Set all checkboxes to unchecked
-        self.name_checkBox.setChecked(False)
-        self.school_checkBox.setChecked(False)
-        self.male_checkBox.setChecked(False)
-        self.female_checkBox.setChecked(False)
-        self.dateofBirth_checkBox.setChecked(False)
-        self.todaysDate_checkBox.setChecked(False)
-        self.general_savebutton.setChecked(False)
+        
 
         # Connect the stateChanged signal of the gender checkboxes to the handler
         self.male_checkBox.stateChanged.connect(lambda state: self.handleGenderCheckboxStateChange(state, self.male_checkBox))
         self.female_checkBox.stateChanged.connect(lambda state: self.handleGenderCheckboxStateChange(state, self.female_checkBox))
+
+#not ui
+        # Connect the save button to a new method
+        self.general_savebutton.clicked.connect(self.save_data)
+
+
 
     # Add the handler method for the gender checkboxes
     def handleGenderCheckboxStateChange(self, state, checkbox):
@@ -47,7 +44,7 @@ class GeneralTab(QtCore.QObject):
                 self.male_checkBox.show()
                 self.female_checkBox.show()
 
-    def setupGeneralPage(self, parent):
+    def setupGeneralPage(self):
                 
         self.General_Page = QtWidgets.QWidget()
         self.General_Page.setObjectName("General_Page")
@@ -488,6 +485,7 @@ class GeneralTab(QtCore.QObject):
         self.general_dateofBrith_Edit.setStyleSheet("\n"
 "")
         self.general_dateofBrith_Edit.setDate(QtCore.QDate(2008, 1, 1))
+        self.general_dateofBrith_Edit.setDisplayFormat("dd/MM/yyyy")  # Set the display format to day month year
         self.general_dateofBrith_Edit.setObjectName("general_dateofBrith_Edit")
         self.horizontalLayout_4.addWidget(self.general_dateofBrith_Edit)
         self.dateofBirth_checkBox = QtWidgets.QCheckBox(self.dates_widget)
@@ -524,6 +522,7 @@ class GeneralTab(QtCore.QObject):
         self.general_todaysDate_Edit.setStyleSheet("\n"
 "")
         self.general_todaysDate_Edit.setDate(QtCore.QDate(2024, 2, 3))
+        self.general_todaysDate_Edit.setDisplayFormat("dd/MM/yyyy")  # Set the display format to day month year
         self.general_todaysDate_Edit.setObjectName("general_todaysDate_Edit")
         self.horizontalLayout_4.addWidget(self.general_todaysDate_Edit)
         self.todaysDate_checkBox = QtWidgets.QCheckBox(self.dates_widget)
@@ -549,32 +548,33 @@ class GeneralTab(QtCore.QObject):
         self.general_instructions.setObjectName("general_instructions")
         self.gridLayout_9.addWidget(self.general_instructions, 1, 0, 1, 1)
         self.General_Page_gridLayout.addWidget(self.GE_widget, 0, 1, 1, 1)
-        self.stackedWidget.addWidget(self.General_Page)
+        
+
+        # Add the SelfEsteem_Page to the stackedWidget at a specific index
+        index = 3  # Change this index to where you want to add the page in the stackedWidget
+        self.stackedWidget.insertWidget(index, self.General_Page)
+
+
                
         
-    def saveGeneralInfo(self, state):
-                if state == QtCore.Qt.Checked:
-                        # Check if all questions are answered
-                        if not all([self.name_checkBox.isChecked(), self.school_checkBox.isChecked(),
-                                        self.male_checkBox.isChecked() or self.female_checkBox.isChecked(),
-                                        self.dateofBirth_checkBox.isChecked(), self.todaysDate_checkBox.isChecked()]):
-                                # Display warning dialog
-                                QtWidgets.QMessageBox.warning(self.General_Page, "Incomplete Information",
+    def save_data(self):
+        if self.general_savebutton.isChecked():
+                # Check if all questions are answered
+                if not all([self.name_checkBox.isChecked(), self.school_checkBox.isChecked(),
+                                self.male_checkBox.isChecked() or self.female_checkBox.isChecked(),
+                                self.dateofBirth_checkBox.isChecked(), self.todaysDate_checkBox.isChecked()]):
+                        # Display warning dialog
+                        QtWidgets.QMessageBox.warning(self.General_Page, "Incomplete Information",
                                                         "Please ensure all questions are answered before saving.")
-                                self.general_savebutton.setChecked(False)  # Uncheck the save button
-                                return
-                        
-                        # Collect the general information
-                        general_info = {
-                                'name': self.name_Insert.text(),
-                                'school': self.school_Insert.text(),
-                                'gender': 'Male' if self.male_checkBox.isChecked() else 'Female',
-                                'date_of_birth': self.general_dateofBrith_Edit.date().toString(QtCore.Qt.ISODate),
-                                'todays_date': self.general_todaysDate_Edit.date().toString(QtCore.Qt.ISODate)
-                        }
-                        print("General Info:", general_info)  # Print the general information
-        
-                        
-                        # Emit the signal with the general information
-                        self.generalInfoSaved.emit(general_info)
-                        
+                        self.general_savebutton.setChecked(False)  # Uncheck the save button
+                        return
+
+                # Save the data from the form into the shared_data dictionary
+                self.shared_data['name'] = self.name_Insert.text()
+                self.shared_data['school'] = self.school_Insert.text()
+                self.shared_data['gender'] = 'Male' if self.male_checkBox.isChecked() else 'Female'
+                self.shared_data['dateOfBirth'] = self.general_dateofBrith_Edit.date().toString("dd/MM/yyyy")
+                self.shared_data['todaysDate'] = self.general_todaysDate_Edit.date().toString("dd/MM/yyyy")
+
+                # Update the preview tab with the new data
+                self.previewTab.updatePreview()                

@@ -20,9 +20,15 @@ from MainWindow import MainWindow # Import the class
 from MainWindow2 import MainWindow2 # Import the class
 
 
+
 class Ui_PsycheEval_MainWindow(object):
     def setupUi(self, PsycheEval_MainWindow):
        
+        #shared data initialisation         
+        self.shared_data = {}  # Add this line to initialize the shared data
+
+
+        PsycheEval_MainWindow.setWindowIcon(QtGui.QIcon(":/icon/icon/group-48.ico"))
 
         self.MainWindow = MainWindow(PsycheEval_MainWindow)
         self.MainWindow2 = MainWindow2(PsycheEval_MainWindow, self.MainWindow)
@@ -60,8 +66,8 @@ class Ui_PsycheEval_MainWindow(object):
         self.MainWindow.Stress_pushButton.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(2))
         self.MainWindow.Depression_pushButton.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(1))
         self.MainWindow.SelfEsteem_pushButton.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
-        self.MainWindow.Preview_pushButton.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(4))
-        self.MainWindow.Database_pushButton.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(5))
+        self.MainWindow.Preview_pushButton.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(5))
+        self.MainWindow.Database_pushButton.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(4))
 
         self.MainWindow.expanded_icon_General_pushButton.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(3))
         self.MainWindow.expanded_icon_Stress_pushButton.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(2))
@@ -69,10 +75,37 @@ class Ui_PsycheEval_MainWindow(object):
         self.MainWindow.expanded_icon_Depression_pushButton.clicked.connect(lambda: self.DepressionTab.Depression_Page_tabWidget.setCurrentIndex(0))
 
         self.MainWindow.expanded_icon_SelfEsteem_pushButton.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
-        self.MainWindow.expanded_icon_Preview_pushButton.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(4))
-        self.MainWindow.expanded_icon_Database_pushButton.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(5))
+        self.MainWindow.expanded_icon_Preview_pushButton.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(5))
+        self.MainWindow.expanded_icon_Database_pushButton.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(4))
 
-                
+# Fetch student test summary and update the table
+        db = DatabaseManager('student_tests.db')
+
+
+#DatabasePage           #DatabasePage           #DatabasePage           #DatabasePage           #DatabasePage 
+#DatabasePage           #DatabasePage           #DatabasePage           #DatabasePage           #DatabasePage
+#DatabasePage           #DatabasePage           #DatabasePage           #DatabasePage           #DatabasePage 
+#DatabasePage           #DatabasePage           #DatabasePage           #DatabasePage           #DatabasePage 
+#DatabasePage           #DatabasePage           #DatabasePage           #DatabasePage           #DatabasePage  
+
+        self.DataBaseTab = DataBaseTab(PsycheEval_MainWindow, self.stackedWidget, db)
+        
+        student_test_summary = db.fetch_student_test_summary()
+        #print("Student Test Summary:", student_test_summary)  # Data Fetching Check
+        self.DataBaseTab.updateTable(student_test_summary)
+
+
+#Preview                #Preview                #Preview                #Preview                #Preview
+#Preview                #Preview                #Preview                #Preview                #Preview
+#Preview                #Preview                #Preview                #Preview                #Preview
+#Preview                #Preview                #Preview                #Preview                #Preview
+#Preview                #Preview                #Preview                #Preview                #Preview
+
+        
+        
+         ## Assuming self.GeneralTab is an instance of GeneralTab
+        self.PreviewTab = PreviewTab(self.shared_data, self.stackedWidget, db, self.DataBaseTab)
+
 
 
 
@@ -85,7 +118,7 @@ class Ui_PsycheEval_MainWindow(object):
 #SelfEsteem Page                #SelfEsteem Page                #SelfEsteem Page                #SelfEsteem Page 
 
         # Create an instance of the SelfEsteemTab class
-        self.selfEsteemTab = SelfEsteemTab(PsycheEval_MainWindow, self.stackedWidget)
+        self.selfEsteemTab = SelfEsteemTab(PsycheEval_MainWindow, self.stackedWidget, self.PreviewTab)
 
          # Connect the SelfEsteem_pushButton to switch to the SelfEsteemTab in the stackedWidget
         self.MainWindow.SelfEsteem_pushButton.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
@@ -100,7 +133,7 @@ class Ui_PsycheEval_MainWindow(object):
 #DepressionPage         #DepressionPage         #DepressionPage         #DepressionPage         #DepressionPage
 
 
-        self.DepressionTab = DepressionTab(PsycheEval_MainWindow, self.stackedWidget)
+        self.DepressionTab = DepressionTab(PsycheEval_MainWindow, self.stackedWidget, self.PreviewTab)
         
 
 #StressPage             #StressPage             #StressPage             #StressPage             #StressPage
@@ -111,7 +144,12 @@ class Ui_PsycheEval_MainWindow(object):
 #StressPage             #StressPage             #StressPage             #StressPage             #StressPage
 #StressPage             #StressPage             #StressPage             #StressPage             #StressPage
 
-        self.StressTab = StressTab(PsycheEval_MainWindow, self.stackedWidget)
+        self.StressTab = StressTab(PsycheEval_MainWindow, self.stackedWidget, self.PreviewTab)
+
+
+
+
+
 
 #General Page           #General Page           #General Page           #General Page
 #General Page           #General Page           #General Page           #General Page     
@@ -120,31 +158,11 @@ class Ui_PsycheEval_MainWindow(object):
 #General Page           #General Page           #General Page           #General Page        
 
 
-        self.GeneralTab = GeneralTab(PsycheEval_MainWindow, self.stackedWidget)
+       # Pass the PreviewTab instance to the GeneralTab constructor
+        self.GeneralTab = GeneralTab(self.shared_data, self.stackedWidget, self.PreviewTab)
 
 
-#Preview                #Preview                #Preview                #Preview                #Preview
-#Preview                #Preview                #Preview                #Preview                #Preview
-#Preview                #Preview                #Preview                #Preview                #Preview
-#Preview                #Preview                #Preview                #Preview                #Preview
-#Preview                #Preview                #Preview                #Preview                #Preview
 
-         ## Assuming self.GeneralTab is an instance of GeneralTab
-        self.PreviewTab = PreviewTab(PsycheEval_MainWindow, self.stackedWidget, self.GeneralTab)
-
-
-#DatabasePage           #DatabasePage           #DatabasePage           #DatabasePage           #DatabasePage 
-#DatabasePage           #DatabasePage           #DatabasePage           #DatabasePage           #DatabasePage
-#DatabasePage           #DatabasePage           #DatabasePage           #DatabasePage           #DatabasePage 
-#DatabasePage           #DatabasePage           #DatabasePage           #DatabasePage           #DatabasePage 
-#DatabasePage           #DatabasePage           #DatabasePage           #DatabasePage           #DatabasePage  
-
-        self.DataBaseTab = DataBaseTab(PsycheEval_MainWindow, self.stackedWidget)
-        # Fetch student test summary and update the table
-        db = DatabaseManager('student_tests.db')
-        student_test_summary = db.fetch_student_test_summary()
-        #print("Student Test Summary:", student_test_summary)  # Data Fetching Check
-        self.DataBaseTab.updateTable(student_test_summary)
 
 #Other          #Other          #Other          #Other
 #Other          #Other          #Other          #Other
@@ -153,6 +171,10 @@ class Ui_PsycheEval_MainWindow(object):
 #Other          #Other          #Other          #Other
 #Other          #Other          #Other          #Other
 
+
+
+#Profile dialouge
+        
 
         self.Active_widget_vertical_lyt.addWidget(self.stackedWidget)
         self.MainWindow2.MainWindow_2_verticalLayout.addWidget(self.Active_widget)
@@ -272,7 +294,7 @@ class Ui_PsycheEval_MainWindow(object):
         self.GeneralTab.general_gender_label.setText(_translate("PsycheEval_MainWindow", "Gender :"))
         self.GeneralTab.general_male_label.setText(_translate("PsycheEval_MainWindow", "Male"))
         self.GeneralTab.general_female_label.setText(_translate("PsycheEval_MainWindow", "Female"))
-        self.GeneralTab.general_date_instructions.setText(_translate("PsycheEval_MainWindow", "(month/day/year)"))
+        self.GeneralTab.general_date_instructions.setText(_translate("PsycheEval_MainWindow", "(day/month/year)"))
         self.GeneralTab.general_dateofBirth_label.setText(_translate("PsycheEval_MainWindow", "Date of Birth:"))
         self.GeneralTab.general_todaysdate_label.setText(_translate("PsycheEval_MainWindow", "Today\'s Date:"))
         self.GeneralTab.general_instructions.setText(_translate("PsycheEval_MainWindow", "Fill out the information below then tick:"))
@@ -281,7 +303,7 @@ class Ui_PsycheEval_MainWindow(object):
         self.PreviewTab.preview_name_label.setText(_translate("PsycheEval_MainWindow", "Full Student Name:"))
         self.PreviewTab.preview_school_label.setText(_translate("PsycheEval_MainWindow", "School:"))
         self.PreviewTab.preview_gender_label.setText(_translate("PsycheEval_MainWindow", "Gender :"))
-        self.PreviewTab.preview_date_instructions.setText(_translate("PsycheEval_MainWindow", "(month/day/year)"))
+        self.PreviewTab.preview_date_instructions.setText(_translate("PsycheEval_MainWindow", "(day/month/year)"))
         self.PreviewTab.preview_dateofBirth_label_2.setText(_translate("PsycheEval_MainWindow", "Date of Birth:"))
         self.PreviewTab.preview_todaysdate_label.setText(_translate("PsycheEval_MainWindow", "Today\'s Date:"))
         self.PreviewTab.preview_stress_label.setText(_translate("PsycheEval_MainWindow", "Stress:"))
@@ -291,6 +313,8 @@ class Ui_PsycheEval_MainWindow(object):
         self.DataBaseTab.database_edit_button.setText(_translate("PsycheEval_MainWindow", "Edit"))
         self.DataBaseTab.database_undo_button.setText(_translate("PsycheEval_MainWindow", "Undo"))
         self.DataBaseTab.database_reset_button.setText(_translate("PsycheEval_MainWindow", "Reset"))
+
+        
         
 import resource_rc
 

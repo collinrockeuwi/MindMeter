@@ -26,10 +26,15 @@ class SelfEsteemTab:
         "I am a good friend and people like to be with me."
     ]
 
-    def __init__(self, parent, stackedWidget):
+    def __init__(self, parent, stackedWidget, previewTab):
         self.stackedWidget = stackedWidget
         self.question_widgets = {}  # Dictionary to store question widgets
+        self.button_groups = {}  # Dictionary to store button groups
+        self.responses = [None] * 20  # List to store responses for each question
         self.setupSelfEsteemPage(parent)
+        self.previewTab = previewTab  # Store the PreviewTab instance
+        self.selfEsteem_savebutton.clicked.connect(self.save_data)
+
 
     def setupSelfEsteemPage(self, parent):
         self.SelfEsteem_Page = QtWidgets.QWidget()
@@ -232,7 +237,8 @@ class SelfEsteemTab:
                                  "}\n")
             buttons_layout.addWidget(button)
             button_group.addButton(button)  # Add the button to the button group
-        
+        self.button_groups[question_num] = button_group  # Store the button group
+
         question_layout.addLayout(buttons_layout)
 
         self._gridLayout.addWidget(self.SelfEsteem_tabWidget, 0, 0, 1, 1)
@@ -243,3 +249,32 @@ class SelfEsteemTab:
 
 
         layout.addLayout(question_layout)
+
+        
+        button_group.buttonClicked.connect(lambda btn, q_num=question_num: self.updateResponse(q_num, btn.text()))
+
+
+    def updateResponse(self, question_num, response):
+        self.responses[question_num - 1] = response
+
+
+    def save_data(self):
+        if self.selfEsteem_savebutton.isChecked():
+            responses = []
+            for question_num in range(1, 21):  # Assuming 20 questions
+                button_group = self.button_groups[question_num]
+                checked_button = button_group.checkedButton()
+                if checked_button:
+                    responses.append(checked_button.text())
+                else:
+                    responses.append(None)
+
+            if None in responses:
+                QtWidgets.QMessageBox.warning(self.SelfEsteem_Page, "Incomplete Information",
+                                              "Please answer all questions before saving.")
+                self.selfEsteem_savebutton.setChecked(False)
+                return
+
+            # Update the preview tab with the new data
+            self.previewTab.shared_data['selfEsteemResponses'] = responses
+            self.previewTab.updatePreview()

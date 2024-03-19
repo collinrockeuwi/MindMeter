@@ -6,6 +6,9 @@ class DatabaseManager:
         self.conn = self.create_connection()
         self.create_tables()
         #self.insert_sample_data()
+
+        # Call the function to print scores and information for a specific name during setup
+        self.print_student_scores_by_name("Collin Rocke")
     
  
     def create_connection(self):
@@ -32,22 +35,22 @@ class DatabaseManager:
 
             # Create separate tables for each test type with constraints
             c.execute('''CREATE TABLE IF NOT EXISTS StressTests (
-                            TestID INTEGER PRIMARY KEY AUTOINCREMENT,
-                            StudentID INTEGER,
-                            Question1 INTEGER CHECK (Question1 BETWEEN 0 AND 4),
-                            Question2 INTEGER CHECK (Question2 BETWEEN 0 AND 4),
-                            Question3 INTEGER CHECK (Question3 BETWEEN 0 AND 4),
-                            Question4 INTEGER CHECK (Question4 BETWEEN 0 AND 4),
-                            Question5 INTEGER CHECK (Question5 BETWEEN 0 AND 4),
-                            Question6 INTEGER CHECK (Question6 BETWEEN 0 AND 4),
-                            Question7 INTEGER CHECK (Question7 BETWEEN 0 AND 4),
-                            Question8 INTEGER CHECK (Question8 BETWEEN 0 AND 4),
-                            Question9 INTEGER CHECK (Question9 BETWEEN 0 AND 4),
-                            Question10 INTEGER CHECK (Question10 BETWEEN 0 AND 4),
-                            TotalScore INTEGER,
-                            DateTaken TEXT,
-                            FOREIGN KEY (StudentID) REFERENCES Students(StudentID)
-                        )''')
+                TestID INTEGER PRIMARY KEY AUTOINCREMENT,
+                StudentID INTEGER,
+                Question1 INTEGER CHECK (Question1 BETWEEN 1 AND 5),
+                Question2 INTEGER CHECK (Question2 BETWEEN 1 AND 5),
+                Question3 INTEGER CHECK (Question3 BETWEEN 1 AND 5),
+                Question4 INTEGER CHECK (Question4 BETWEEN 1 AND 5),
+                Question5 INTEGER CHECK (Question5 BETWEEN 1 AND 5),
+                Question6 INTEGER CHECK (Question6 BETWEEN 1 AND 5),
+                Question7 INTEGER CHECK (Question7 BETWEEN 1 AND 5),
+                Question8 INTEGER CHECK (Question8 BETWEEN 1 AND 5),
+                Question9 INTEGER CHECK (Question9 BETWEEN 1 AND 5),
+                Question10 INTEGER CHECK (Question10 BETWEEN 1 AND 5),
+                TotalScore INTEGER,
+                DateTaken TEXT,
+                FOREIGN KEY (StudentID) REFERENCES Students(StudentID)
+            )''')
 
             c.execute('''CREATE TABLE IF NOT EXISTS SelfEsteemTests (
                             TestID INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -312,6 +315,57 @@ class DatabaseManager:
             print(f"Error fetching student test summary: {e}")
             return []
 
+
+    def print_student_scores_by_name(self, name):
+        try:
+            c = self.conn.cursor()
+            # Fetch student information
+            c.execute('''SELECT Name, DateOfBirth, Age, School, Sex, DateRegistered
+                         FROM Students
+                         WHERE Name = ?''', (name,))
+            student_info = c.fetchone()
+            if student_info:
+                print(f"Student Information for {name}:")
+                print(f"Name: {student_info[0]}")
+                print(f"Date of Birth: {student_info[1]}")
+                print(f"Age: {student_info[2]}")
+                print(f"School: {student_info[3]}")
+                print(f"Sex: {student_info[4]}")
+                print(f"Date Registered: {student_info[5]}")
+                print("\nScores:")
+            else:
+                print(f"No information found for {name}")
+                return
+
+            # Fetch and print stress scores
+            c.execute('''SELECT DateTaken, TotalScore, Question1, Question2, Question3, Question4, Question5
+                         FROM StressTests
+                         JOIN Students ON StressTests.StudentID = Students.StudentID
+                         WHERE Students.Name = ?''', (name,))
+            print("Stress Scores:")
+            for score in c.fetchall():
+                print(f"Date Taken: {score[0]}, Total Score: {score[1]}, Q1: {score[2]}, Q2: {score[3]}, Q3: {score[4]}, Q4: {score[5]}, Q5: {score[6]}")
+
+            # Fetch and print depression scores
+            c.execute('''SELECT DateTaken, TotalScore, Question1, Question2, Question3, Question4, Question5
+                         FROM DepressionTests
+                         JOIN Students ON DepressionTests.StudentID = Students.StudentID
+                         WHERE Students.Name = ?''', (name,))
+            print("Depression Scores:")
+            for score in c.fetchall():
+                print(f"Date Taken: {score[0]}, Total Score: {score[1]}, Q1: {score[2]}, Q2: {score[3]}, Q3: {score[4]}, Q4: {score[5]}, Q5: {score[6]}")
+
+            # Fetch and print self-esteem scores
+            c.execute('''SELECT DateTaken, TotalScore, Question1, Question2, Question3, Question4, Question5
+                         FROM SelfEsteemTests
+                         JOIN Students ON SelfEsteemTests.StudentID = Students.StudentID
+                         WHERE Students.Name = ?''', (name,))
+            print("Self-Esteem Scores:")
+            for score in c.fetchall():
+                print(f"Date Taken: {score[0]}, Total Score: {score[1]}, Q1: {score[2]}, Q2: {score[3]}, Q3: {score[4]}, Q4: {score[5]}, Q5: {score[6]}")
+
+        except sqlite3.Error as e:
+            print(f"Error querying scores: {e}")
 
 
 

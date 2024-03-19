@@ -16,10 +16,14 @@ class StressTab:
         "Felt difficulties were piling up so high that you could not overcome them?"
     ]
 
-    def __init__(self, parent, stackedWidget):
+    def __init__(self, parent, stackedWidget, previewTab):
         self.stackedWidget = stackedWidget
         self.question_widgets = {}  # Dictionary to store question widgets
+        self.button_groups = {}  # Dictionary to store button groups
+        self.responses = [None] * 10  # List to store responses for each question
         self.setupStressPage(parent)
+        self.previewTab = previewTab  # Store the PreviewTab instance
+        self.stress_savebutton.clicked.connect(self.save_data)
 
     def setupStressPage(self, parent):
         self.Stress_Page = QtWidgets.QWidget()
@@ -328,3 +332,31 @@ class StressTab:
         # Store widgets in the dictionary for access when translating UI
         self.question_widgets[f"ST_Q{question_num}_no_Label"] = q_num_label
         self.question_widgets[f"ST_Q{question_num}_question"] = q_text_label
+
+        # Connect the button group to update responses
+        self.button_groups[question_num].buttonClicked.connect(lambda btn, q_num=question_num: self.updateResponse(q_num, btn.text()))
+
+    def updateResponse(self, question_num, response):
+            self.responses[question_num - 1] = response
+
+
+    def save_data(self):
+            if self.stress_savebutton.isChecked():
+                responses = []
+                for question_num in range(1, 11):  # Assuming 10 questions
+                    button_group = self.button_groups[question_num]
+                    checked_button = button_group.checkedButton()
+                    if checked_button:
+                        responses.append(checked_button.text())
+                    else:
+                        responses.append(None)
+
+                if None in responses:
+                    QtWidgets.QMessageBox.warning(self.Stress_Page, "Incomplete Information",
+                                                "Please answer all questions before saving.")
+                    self.stress_savebutton.setChecked(False)
+                    return
+
+                # Update the preview tab with the new data
+                self.previewTab.shared_data['stressResponses'] = responses
+                self.previewTab.updatePreview()

@@ -22,15 +22,15 @@ class DepressionTab:
         ("Self-destructive (I and others would", "Self-preserving (I’m glad")
     ]
 
-    def __init__(self, parent, stackedWidget):
+    def __init__(self, parent, stackedWidget, previewTab):
         self.stackedWidget = stackedWidget
-        self.stackedWidget.setMinimumSize(QtCore.QSize(1643, 868))
-        self.stackedWidget.setMaximumSize(QtCore.QSize(1643, 868))
         self.question_labels = {}
-        self.a1_labels = {}  # Add this line
-        self.a2_labels = {}  # Add this line
-        self.buttons = {}    # Initialize the buttons dictionary
+        self.a1_labels = {}
+        self.a2_labels = {}
+        self.buttons = {}
+        self.responses = [None] * 15  # List to store responses for each question
         self.setupDepressionPage(parent)
+        self.previewTab = previewTab  # Store the PreviewTab instance
 
         
                 
@@ -160,6 +160,7 @@ class DepressionTab:
             self.Depression_Page_tabWidget.addTab(page, f"Page {page_num}")
 
             # Set the current index to the first page
+
         
 
          
@@ -172,6 +173,9 @@ class DepressionTab:
         index = 1  # Change this index to where you want to add the page in the stackedWidget
         
         self.stackedWidget.insertWidget(index, self.Depression_Page)
+
+        # Connect the save button to the save_data method
+        self.depression_savebutton.clicked.connect(self.save_data)
 
         
 
@@ -258,6 +262,10 @@ class DepressionTab:
                         """)
                         selection_layout.addWidget(button)
                         button_group.addButton(button)  # Add the button to the button group
+
+                        # Connect the button group to update responses
+                        button_group.buttonClicked.connect(lambda btn, q_num=question_num: self.updateResponse(q_num, btn.text()))
+
 
                         # Add the button to the dictionary
                         self.buttons[f"DT_{question_num}_pushButton_{i}"] = button
@@ -402,6 +410,11 @@ class DepressionTab:
                 # Add the button to the dictionary
                 self.buttons[f"DT_{question_num}_pushButton_{i}"] = button
 
+
+        # Connect the button group to update responses
+        button_group.buttonClicked.connect(lambda btn, q_num=question_num: self.updateResponse(q_num, btn.text()))
+
+
         question_layout.addLayout(selection_layout)
 
         # Spacer
@@ -450,6 +463,29 @@ class DepressionTab:
         self.a1_labels[f"DT_Q{question_num}_A1_Label_2"] = question_label_2
         self.a2_labels[f"DT_Q{question_num}_A2_Label_2"] = opposite_question_label_2
 
-            # Refresh the layout
-        layout.update()
-        layout.activate()
+           
+
+    def updateResponse(self, question_num, response):
+        self.responses[question_num - 1] = response
+
+
+    def save_data(self):
+        if self.depression_savebutton.isChecked():
+            responses = []
+            for question_num in range(1, 16):  # Assuming 15 questions
+                button_group = self.buttons[f"DT_{question_num}_pushButton_1"].group()  # Get the button group
+                checked_button = button_group.checkedButton()
+                if checked_button:
+                    responses.append(checked_button.text())
+                else:
+                    responses.append(None)
+
+            if None in responses:
+                QtWidgets.QMessageBox.warning(self.Depression_Page, "Incomplete Information",
+                                              "Please answer all questions before saving.")
+                self.depression_savebutton.setChecked(False)
+                return
+
+            # Update the preview tab with the new data
+            self.previewTab.shared_data['depressionResponses'] = responses
+            self.previewTab.updatePreview()        

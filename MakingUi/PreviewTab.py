@@ -1,16 +1,20 @@
-from PyQt5 import QtCore, QtGui, QtWidgets        
-from GeneralTab import GeneralTab  # Import the GeneralTab class
+from PyQt5 import QtCore, QtGui, QtWidgets 
+from PyQt5.QtWidgets import QMessageBox       
+from datetime import datetime
 
 
-class PreviewTab(QtCore.QObject):
-    def __init__(self, parent, stackedWidget, generalTabInstance):
+class PreviewTab:
+    def __init__(self, shared_data, stackedWidget, db_manager, dataBaseTab):
+        self.db_manager = db_manager
         self.stackedWidget = stackedWidget
-        self.setupPreviewPage(parent)
-        # Connect the GeneralTab signal to the updatePreview method
-        generalTabInstance.generalInfoSaved.connect(self.updatePreview)
-        print("Signal connected to updatePreview")
+        self.shared_data = shared_data
+        self.dataBaseTab = dataBaseTab  # Store the DataBaseTab instance
+        self.setupPreviewPage()
+        self.preview_savebutton.clicked.connect(self.save_data)
+        
+       
 
-    def setupPreviewPage(self, parent):
+    def setupPreviewPage(self):
 
         self.GE_Preview_Page = QtWidgets.QWidget()
         self.GE_Preview_Page.setObjectName("GE_Preview_Page")
@@ -31,6 +35,14 @@ class PreviewTab(QtCore.QObject):
 "    font-weight: bold;\n"
 "    color: rgb(24, 45, 83 ); /* Set the font color to white */\n"
 "    background-color: transparent; /* Make the background transparent */\n"
+"}\n"
+"\n"
+"QMessageBox {\n"
+"    font-family: \'Roboto \';\n"
+"    font-size: 20px;\n"
+"    font-weight: bold;\n"
+"    color: black; /* Set the font color to white */\n"
+   
 "}\n"
 "\n"
 "#PreviewTabTitle_label {\n"
@@ -499,16 +511,148 @@ class PreviewTab(QtCore.QObject):
         self.preview_savebutton.setObjectName("preview_savebutton")
         self.gridLayout_14.addWidget(self.preview_savebutton, 3, 0, 1, 1)
         self.GE_Preview_Page_gridLayout.addWidget(self.GE_Preview_Page_widget, 0, 0, 1, 1)
-        self.stackedWidget.addWidget(self.GE_Preview_Page)
+        # Add the SelfEsteem_Page to the stackedWidget at a specific index
+        
 
-    def updatePreview(self, general_info):
-            print("Received General Info:", general_info)  # Print the received general information
-            # Update the preview displays with the received information
-            # Update the preview displays with the received information
-            self.preview_name_display.setText(general_info['name'])
-            self.preview_school_display.setText(general_info['school'])
-            self.preview_gender_display.setText(general_info['gender'])
-            self.preview_dateofBirth_display.setText(general_info['date_of_birth'])
-            self.preview_todaysdate_display.setText(general_info['todays_date'])
+        index = 4  # Change this index to where you want to add the page in the stackedWidget
+        
+        self.stackedWidget.insertWidget(index, self.GE_Preview_Page)
 
-   
+    def updatePreview(self): 
+        
+        # Access the shared data directly
+        general_info = self.shared_data
+        self.preview_name_display.setText(general_info.get('name', ''))
+        self.preview_school_display.setText(general_info.get('school', ''))
+        self.preview_gender_display.setText(general_info.get('gender', ''))
+        self.preview_dateofBirth_display.setText(general_info.get('dateOfBirth', ''))
+        self.preview_todaysdate_display.setText(general_info.get('todaysDate', ''))
+        
+
+#Self Esteem update
+        selfEsteemResponses = self.shared_data.get('selfEsteemResponses', [])
+        # Calculate the sum of the self-esteem scores
+        selfEsteemScoreSum = sum(int(score) for score in selfEsteemResponses if score is not None)
+        #Update the display with the sum of the self-esteem scores
+        self.preview_selfEsteem_display.setText(str(selfEsteemScoreSum))
+
+
+#Stress update
+        stressResponses = self.shared_data.get('stressResponses', [])
+        # Calculate the sum of the stress scores
+        stressScoreSum = sum(int(score) for score in stressResponses if score is not None)
+        #Update the display with the sum of the stress scores
+        self.preview_stress_display.setText(str(stressScoreSum))
+
+
+#Stress update
+        depressionResponses = self.shared_data.get('depressionResponses', [])
+        # Calculate the sum of the depression scores
+        depressionScoreSum = sum(int(score) for score in depressionResponses if score is not None)
+        #Update the display with the sum of the depression scores
+        self.preview_depression_display.setText(str(depressionScoreSum))
+
+
+
+    def calculate_age(self, birthdate):
+        today = datetime.today()
+        birthdate = datetime.strptime(birthdate, "%d/%m/%Y")  # Change the format to match the input
+        age = today.year - birthdate.year - ((today.month, today.day) < (birthdate.month, birthdate.day))
+        return age
+
+    def save_data(self):
+        # Apply black text color to QMessageBox instances
+        msg_box_style = "Qlabel { color : black; }"
+        
+        # Check if all required fields are filled
+        if not all([self.preview_name_display.text(), self.preview_dateofBirth_display.text(),
+                    self.preview_gender_display.text(), self.preview_school_display.text()]):
+            msg = ()
+            msg.setStyleSheet(msg_box_style)
+            msg.warning(self.GE_Preview_Page_widget, "Incomplete Information", "Please complete all general information fields.")
+            return
+
+        # Check if at least one test array and final score are available
+        if not any([self.preview_stress_display.text(), self.preview_depression_display.text(), self.preview_selfEsteem_display.text()]):
+            msg = QMessageBox()
+            msg.setStyleSheet(msg_box_style)
+            msg.warning(self.GE_Preview_Page_widget, "Incomplete Tests", "Please complete at least one test before saving.")
+            return
+
+        # Confirmation dialog
+        msg = QMessageBox()
+        msg.setStyleSheet(msg_box_style)
+        reply = msg.question(self.GE_Preview_Page_widget, "Confirm Save", "Are you sure you want to save this data?",
+                            QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+
+        if reply == QMessageBox.Yes:
+            # Calculate age
+            age = self.calculate_age(self.preview_dateofBirth_display.text())
+
+            # Insert student data
+            student_id = self.db_manager.insert_student(self.preview_name_display.text(),
+                                                        self.preview_dateofBirth_display.text(),
+                                                        age,
+                                                        self.preview_school_display.text(),
+                                                        self.preview_gender_display.text(),
+                                                        self.preview_todaysdate_display.text())
+
+            # Print general information
+            print("General Information:")
+            print(f"Name: {self.preview_name_display.text()}")
+            print(f"Date of Birth: {self.preview_dateofBirth_display.text()}")
+            print(f"Age: {age}")
+            print(f"School: {self.preview_school_display.text()}")
+            print(f"Gender: {self.preview_gender_display.text()}")
+            print(f"Today's Date: {self.preview_todaysdate_display.text()}")
+            print()
+
+            # Insert and print test data
+            if self.preview_stress_display.text():
+                stress_scores = self.shared_data.get('stressResponses', [])
+                # Replace None values with a default score of 1
+                stress_scores = [score if score is not None else 1 for score in stress_scores]
+                # Ensure stress_scores has exactly 10 items
+                stress_scores.extend([1] * (10 - len(stress_scores)))
+                self.db_manager.insert_stress_test(student_id, stress_scores,
+                                                    int(self.preview_stress_display.text()),
+                                                    self.preview_todaysdate_display.text())
+
+                print("Stress Test:")
+                print(f"Scores: {stress_scores}")
+                print(f"Total: {self.preview_stress_display.text()}")
+                print()
+
+            if self.preview_depression_display.text():
+                depression_scores = self.shared_data.get('depressionResponses', [])
+                # Ensure depression_scores has exactly 15 items
+                depression_scores.extend([None] * (15 - len(depression_scores)))
+                self.db_manager.insert_depression_test(student_id, depression_scores,
+                                                    int(self.preview_depression_display.text()),
+                                                    self.preview_todaysdate_display.text())
+
+                print("Depression Test:")
+                print(f"Scores: {depression_scores}")
+                print(f"Total: {self.preview_depression_display.text()}")
+                print()
+
+            if self.preview_selfEsteem_display.text():
+                self_esteem_scores = self.shared_data.get('selfEsteemResponses', [])
+                # Ensure self_esteem_scores has exactly 20 items
+                self_esteem_scores.extend([None] * (20 - len(self_esteem_scores)))
+                self.db_manager.insert_self_esteem_test(student_id, self_esteem_scores,
+                                                        int(self.preview_selfEsteem_display.text()),
+                                                        self.preview_todaysdate_display.text())
+
+                print("Self Esteem Test:")
+                print(f"Scores: {self_esteem_scores}")
+                print(f"Total: {self.preview_selfEsteem_display.text()}")
+
+            # Refresh the DatabaseTab table
+            self.dataBaseTab.refreshTable()
+            
+            
+            # Data saved confirmation
+            msg = QMessageBox()
+            msg.setStyleSheet(msg_box_style)
+            msg.information(self.GE_Preview_Page_widget, "Data Saved", "The data has been successfully saved to the database.")

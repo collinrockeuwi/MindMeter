@@ -1,10 +1,11 @@
 from PyQt5 import QtCore, QtGui, QtWidgets        
-
+from profile_print_dialouge import Ui_Form  # Import the Ui_Form class
 
 
 class DataBaseTab:
-    def __init__(self, parent, stackedWidget):
+    def __init__(self, parent, stackedWidget, db_manager):
         self.stackedWidget = stackedWidget
+        self.db_manager = db_manager  # Store the DatabaseManager instance
         self.setupDataBasePage(parent)
         
 
@@ -245,8 +246,10 @@ class DataBaseTab:
 
 
 
-        self.stackedWidget.addWidget(self.Database)
-
+        
+        
+        self.stackedWidget.insertWidget(5, self.Database)
+        self.DatabaseTab.cellClicked.connect(self.openProfilePrintDialogue)
 
 
 
@@ -274,4 +277,16 @@ class DataBaseTab:
                 item = QtWidgets.QTableWidgetItem(str(value))
                 self.DatabaseTab.setItem(row, col, item)
 
+    def refreshTable(self):
+        student_test_summary = self.db_manager.fetch_student_test_summary()
+        self.updateTable(student_test_summary)
 
+    
+    def openProfilePrintDialogue(self, row, column):
+        if column == 0:  # Check if the first column is clicked
+            student_name = self.DatabaseTab.item(row, 0).text()  # Retrieve the student's name from the first column
+            self.profilePrintDialog = QtWidgets.QWidget()
+            self.ui = Ui_Form()
+            self.ui.setupUi(self.profilePrintDialog)
+            self.profilePrintDialog.setWindowTitle(f"{student_name} Assessment Profile")  # Set the window title with the student's name
+            self.profilePrintDialog.show()
