@@ -234,8 +234,9 @@ class Ui_Form(object):
     def populateComboBox(self, comboBox, student_id, test_table):
         test_dates = self.db_manager.get_test_dates_by_student_id(student_id, test_table)
         comboBox.clear()
-        for i, date in enumerate(test_dates):
-            comboBox.addItem(f"Test {i + 1}: {date}", date)
+        for i, (test_id, date) in enumerate(test_dates):
+            comboBox.addItem(f"Test {i + 1}: {date}", test_id)  # Set TestID as item data
+
 
 
     def create_showPopup(self, original_showPopup, comboBox, test_table):
@@ -255,22 +256,21 @@ class Ui_Form(object):
 
         if general_info:
             student_id = general_info['StudentID']
-            selected_date = self.stress_comboBox.currentData()  # Corrected this line
-            test_details = self.db_manager.get_test_details_by_date(student_id, selected_date, 'StressTests')
+            selected_test_id = self.stress_comboBox.currentData()  # Get the selected TestID
+            selected_test_date = self.stress_comboBox.currentText().split(": ")[-1]  # Extract the date from the combo box text
+            test_details = self.db_manager.get_test_details_by_test_id(student_id, selected_test_id, 'StressTests')  # Use a new method to get details by TestID
 
             if test_details:
                 if hasattr(self, 'stressTestWindow') and self.stressTestWindow:
-                    self.stressTestWindow.setTestDetails(general_info, test_details['scores'])
+                    self.stressTestWindow.setTestDetails(general_info, test_details['scores'], selected_test_id, selected_test_date)
+                    self.stressTestWindow.show()  # Ensure the window is shown even if it was previously closed
                 else:
-                    self.stressTestWindow = PrintingStressTestWindow(general_info, test_details['scores'])
+                    self.stressTestWindow = PrintingStressTestWindow(general_info, test_details['scores'], selected_test_id, selected_test_date)
                     self.stressTestWindow.show()
             else:
-                QtWidgets.QMessageBox.information(self.Form, "No Test Details", "No test details available for the selected date.")  # Corrected this line
+                QtWidgets.QMessageBox.information(self.Form, "No Test Details", "No test details available for the selected test.")
         else:
-            QtWidgets.QMessageBox.warning(self.Form, "Missing Information", "General information or selected date is missing.")  # Corrected this line
-
-
-
+            QtWidgets.QMessageBox.warning(self.Form, "Missing Information", "General information or selected test is missing.")
 
 
 if __name__ == "__main__":

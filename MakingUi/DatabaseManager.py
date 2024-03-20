@@ -382,12 +382,11 @@ class DatabaseManager:
     def get_test_dates_by_student_id(self, student_id, test_table):
         try:
             c = self.conn.cursor()
-            # Exclude tests where all scores are None
-            c.execute(f'''SELECT DateTaken FROM {test_table} 
+            c.execute(f'''SELECT TestID, DateTaken FROM {test_table} 
                         WHERE StudentID = ? 
                         AND (Question1 IS NOT NULL OR Question2 IS NOT NULL OR Question3 IS NOT NULL OR Question4 IS NOT NULL OR Question5 IS NOT NULL)
                         ORDER BY DateTaken''', (student_id,))
-            return [row[0] for row in c.fetchall()]
+            return [(row[0], row[1]) for row in c.fetchall()]  # Return a list of (TestID, DateTaken) tuples
         except sqlite3.Error as e:
             print(f"Error fetching test dates: {e}")
             return []
@@ -408,6 +407,23 @@ class DatabaseManager:
                 return None
         except sqlite3.Error as e:
             print(f"Error fetching test details by date: {e}")
+            return None
+
+
+    def get_test_details_by_test_id(self, student_id, test_id, test_table):
+        try:
+            c = self.conn.cursor()
+            query = f'SELECT * FROM {test_table} WHERE StudentID = ? AND TestID = ?'
+            c.execute(query, (student_id, test_id))
+            test_details = c.fetchone()
+            if test_details:
+                test_scores = test_details[2:-2]  # Excluding TestID, StudentID, TotalScore, DateTaken
+                total_score = test_details[-2]  # Assuming the second to last column is TotalScore
+                return {'scores': test_scores, 'total_score': total_score}
+            else:
+                return None
+        except sqlite3.Error as e:
+            print(f"Error fetching test details by test ID: {e}")
             return None
 
 

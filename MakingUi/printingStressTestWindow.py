@@ -15,10 +15,12 @@ class StressTab:
     ]
 
 class PrintingStressTestWindow(QtWidgets.QMainWindow):
-    def __init__(self, general_info, test_details, parent=None):
+    def __init__(self, general_info, test_scores, test_id, test_date, parent=None):
         super().__init__(parent)
         self.general_info = general_info
-        self.test_details = test_details
+        self.test_scores = test_scores
+        self.test_id = test_id
+        self.test_date = test_date
         self.setupUi(self)
 
 
@@ -55,7 +57,8 @@ class PrintingStressTestWindow(QtWidgets.QMainWindow):
         # Connect the print action to the printTest method
         self.actionPrint.triggered.connect(self.printTest)
            
-        self.setTestDetails(self.general_info, self.test_details)
+        self.setTestDetails(self.general_info, self.test_scores, self.test_id, self.test_date)
+
 
     def retranslateUi(self, PsycheEval_MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -71,7 +74,7 @@ class PrintingStressTestWindow(QtWidgets.QMainWindow):
         if dialog.exec_() == QtWidgets.QDialog.Accepted:
             self.textEdit.print_(printer)
 
-    def setTestDetails(self, general_info, test_scores):
+    def setTestDetails(self, general_info, test_scores, test_id, test_date):
         # Clear the existing content
         self.textEdit.clear()
 
@@ -79,13 +82,20 @@ class PrintingStressTestWindow(QtWidgets.QMainWindow):
         for key, value in general_info.items():
             self.textEdit.append(f"{key}: {value}")
 
+        # Add the test date
+        self.textEdit.append(f"Test Date: {test_date}")
+
         # Assuming test_scores is a list of responses for the questions
         for i, response in enumerate(test_scores):
             question = StressTab.questions[i]
             self.textEdit.append(f"{i + 1}. {question}")
             self.textEdit.append(f"Response: {response}")
 
+        # Add the test ID at the bottom
+        self.textEdit.append(f"Test ID: {test_id}")
+
         self.textEdit.moveCursor(QtGui.QTextCursor.Start)
+
 '''
 if __name__ == "__main__":
     import sys
