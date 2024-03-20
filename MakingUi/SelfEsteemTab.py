@@ -258,6 +258,14 @@ class SelfEsteemTab:
         self.responses[question_num - 1] = response
 
 
+    def clearAnswers(self):
+        for button_group in self.button_groups.values():
+            button_group.setExclusive(False)  # Temporarily allow no buttons to be checked
+            for button in button_group.buttons():
+                button.setChecked(False)
+            button_group.setExclusive(True)  # Restore exclusive behavior
+
+
     def save_data(self):
         if self.selfEsteem_savebutton.isChecked():
             responses = []

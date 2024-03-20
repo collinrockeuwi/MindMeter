@@ -468,6 +468,14 @@ class DepressionTab:
     def updateResponse(self, question_num, response):
         self.responses[question_num - 1] = response
 
+    def clearAnswers(self):
+        for button in self.buttons.values():
+            button_group = button.group()
+            button_group.setExclusive(False)  # Temporarily allow no buttons to be checked
+            button.setChecked(False)
+            button_group.setExclusive(True)  # Restore exclusive behavior
+
+
 
     def save_data(self):
         if self.depression_savebutton.isChecked():

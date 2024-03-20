@@ -1,5 +1,5 @@
 from PyQt5 import QtCore, QtGui, QtWidgets        
-
+from PyQt5.QtCore import QDate
 
 
 class GeneralTab:
@@ -63,7 +63,7 @@ class GeneralTab:
 "    background-color: transparent; /* Make the background transparent */\n"
 "}\n"
 "\n"
-"#general_instructions, #general_date_instructions {\n"
+"#general_instructions, #general_date_instructions, #user_instructions {\n"
 "    font-family: \'Roboto \';\n"
 "    font-size: 20px;\n"
 "    font-weight: bold;\n"
@@ -542,11 +542,28 @@ class GeneralTab:
         self.general_savebutton.setIconSize(QtCore.QSize(100, 100))
         self.general_savebutton.setObjectName("general_savebutton")
         self.gridLayout_9.addWidget(self.general_savebutton, 3, 0, 1, 1)
+
+        self.top_instructions_lyt = QtWidgets.QHBoxLayout()
+
         self.general_instructions = QtWidgets.QLabel(self.GE_widget)
-        self.general_instructions.setMinimumSize(QtCore.QSize(1168, 60))
-        self.general_instructions.setMaximumSize(QtCore.QSize(1168, 60))
+        self.general_instructions.setMinimumSize(QtCore.QSize(400, 60))
+        self.general_instructions.setMaximumSize(QtCore.QSize(400, 60))
         self.general_instructions.setObjectName("general_instructions")
-        self.gridLayout_9.addWidget(self.general_instructions, 1, 0, 1, 1)
+        self.top_instructions_lyt.addWidget(self.general_instructions)
+
+        spacerItem_instructions = QtWidgets.QSpacerItem(300, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.top_instructions_lyt.addItem(spacerItem_instructions)
+
+
+        self.user_instructions = QtWidgets.QLabel(self.GE_widget)
+        self.user_instructions.setMinimumSize(QtCore.QSize(150, 60))
+        self.user_instructions.setMaximumSize(QtCore.QSize(150, 60))
+        self.user_instructions.setObjectName("user_instructions")
+        self.top_instructions_lyt.addWidget(self.user_instructions)
+
+        self.gridLayout_9.addLayout(self.top_instructions_lyt, 1, 0, 1, 1)
+
+
         self.General_Page_gridLayout.addWidget(self.GE_widget, 0, 1, 1, 1)
         
 
@@ -555,8 +572,62 @@ class GeneralTab:
         self.stackedWidget.insertWidget(index, self.General_Page)
 
 
-               
         
+
+    def populateWithGeneralInfo(self, general_info, returning_user=False):
+        # Set the user mode visually
+        self.user_instructions.setText("Returning User" if returning_user else "New User")
+
+        # Make fields uneditable and checkboxes checked if it's a returning user
+        if returning_user:
+                self.name_Insert.setReadOnly(True)
+                self.name_Insert.setText(general_info.get('Name', ''))
+                self.name_checkBox.setChecked(True)
+
+                self.school_Insert.setReadOnly(True)
+                self.school_Insert.setText(general_info.get('School', ''))
+                self.school_checkBox.setChecked(True)
+
+                self.general_dateofBrith_Edit.setReadOnly(True)
+                dob = QtCore.QDate.fromString(general_info.get('DateOfBirth', ''), "dd/MM/yyyy")
+                self.general_dateofBrith_Edit.setDate(dob)
+                self.dateofBirth_checkBox.setChecked(True)
+                self.general_savebutton.setChecked(False)
+
+                gender = general_info.get('Sex', '')
+                if gender == 'Male':
+                        self.male_checkBox.setChecked(True)
+                        self.female_checkBox.setChecked(False)
+                elif gender == 'Female':
+                        self.female_checkBox.setChecked(True)
+                        self.male_checkBox.setChecked(False)
+
+                # Set the student ID in shared_data
+                self.shared_data['StudentID'] = general_info.get('StudentID')
+
+                self.male_checkBox.setDisabled(True)
+                self.female_checkBox.setDisabled(True)
+                self.todaysDate_checkBox.setChecked(False)
+        else:
+                self.name_Insert.setReadOnly(False)
+                self.school_Insert.setReadOnly(False)
+                self.general_dateofBrith_Edit.setReadOnly(False)
+                self.male_checkBox.setDisabled(False)
+                self.female_checkBox.setDisabled(False)
+
+                self.name_checkBox.setChecked(False)
+                self.school_checkBox.setChecked(False)
+                self.dateofBirth_checkBox.setChecked(False)
+                self.todaysDate_checkBox.setChecked(False)
+
+        # Update the date to current regardless of user mode
+        self.setDateToCurrent()
+               
+    def setDateToCurrent(self):
+        current_date = QDate.currentDate()
+        self.general_todaysDate_Edit.setDate(current_date)
+
+
     def save_data(self):
         if self.general_savebutton.isChecked():
                 # Check if all questions are answered

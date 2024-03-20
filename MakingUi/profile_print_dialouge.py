@@ -9,10 +9,18 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtCore import pyqtSignal
+from printingStressTestWindow import PrintingStressTestWindow
+
 
 
 class Ui_Form(object):
+    def __init__(self, dataBaseTab=None, db_manager=None):
+        self.dataBaseTab = dataBaseTab
+        self.db_manager = db_manager
+
     def setupUi(self, Form):
+        self.Form = Form
         Form.setObjectName("Form")
         Form.setWindowIcon(QtGui.QIcon(":/icon/icon/group-48.ico"))
         Form.resize(790, 326)
@@ -93,8 +101,8 @@ class Ui_Form(object):
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
         self.stress_comboBox = QtWidgets.QComboBox(Form)
-        self.stress_comboBox.setMinimumSize(QtCore.QSize(100, 30))
-        self.stress_comboBox.setMaximumSize(QtCore.QSize(100, 30))
+        self.stress_comboBox.setMinimumSize(QtCore.QSize(200, 30))
+        self.stress_comboBox.setMaximumSize(QtCore.QSize(200, 30))
         self.stress_comboBox.setObjectName("stress_comboBox")
         self.horizontalLayout_3.addWidget(self.stress_comboBox)
         self.stress_viewscore = QtWidgets.QPushButton(Form)
@@ -123,8 +131,8 @@ class Ui_Form(object):
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.depression_comboBox = QtWidgets.QComboBox(Form)
-        self.depression_comboBox.setMinimumSize(QtCore.QSize(100, 30))
-        self.depression_comboBox.setMaximumSize(QtCore.QSize(100, 30))
+        self.depression_comboBox.setMinimumSize(QtCore.QSize(200, 30))
+        self.depression_comboBox.setMaximumSize(QtCore.QSize(200, 30))
         self.depression_comboBox.setObjectName("depression_comboBox")
         self.horizontalLayout_2.addWidget(self.depression_comboBox)
         self.depression_viewscore = QtWidgets.QPushButton(Form)
@@ -153,8 +161,8 @@ class Ui_Form(object):
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.selfesteem_comboBox = QtWidgets.QComboBox(Form)
-        self.selfesteem_comboBox.setMinimumSize(QtCore.QSize(100, 30))
-        self.selfesteem_comboBox.setMaximumSize(QtCore.QSize(100, 30))
+        self.selfesteem_comboBox.setMinimumSize(QtCore.QSize(200, 30))
+        self.selfesteem_comboBox.setMaximumSize(QtCore.QSize(200, 30))
         self.selfesteem_comboBox.setObjectName("selfesteem_comboBox")
         self.horizontalLayout.addWidget(self.selfesteem_comboBox)
         self.selfesteem_viewscore = QtWidgets.QPushButton(Form)
@@ -172,9 +180,24 @@ class Ui_Form(object):
         self.horizontalLayout_6.addWidget(self.selfesteem_compare)
         self.verticalLayout.addLayout(self.horizontalLayout_6)
         self.gridLayout.addLayout(self.verticalLayout, 0, 0, 1, 1)
+    
+    
+         # Connect the showPopup signal of each comboBox to the populateTestDateComboBoxes method
+        self.stress_comboBox.showPopup = self.create_showPopup(self.stress_comboBox.showPopup, self.stress_comboBox, 'StressTests')
+        self.depression_comboBox.showPopup = self.create_showPopup(self.depression_comboBox.showPopup, self.depression_comboBox, 'DepressionTests')
+        self.selfesteem_comboBox.showPopup = self.create_showPopup(self.selfesteem_comboBox.showPopup, self.selfesteem_comboBox, 'SelfEsteemTests')
+
+
+         # Connect the button click to the viewStressScore method
+        self.stress_viewscore.clicked.connect(self.viewStressScore)
+        
+
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
+
+        # Your existing setup code...
+        self.addNewTest.clicked.connect(self.createNewTest)
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
@@ -190,6 +213,64 @@ class Ui_Form(object):
         self.self_esteem_label.setText(_translate("Form", "Self Esteem Test Scores"))
         self.selfesteem_viewscore.setText(_translate("Form", "View Score"))
         self.selfesteem_compare.setText(_translate("Form", "Compare"))
+
+    def createNewTest(self):
+        student_name = self.Form.windowTitle().replace(" Assessment Profile", "")
+        # Fetch general information based on the student's name
+        general_info = self.db_manager.fetch_general_info_by_name(student_name)
+        # Emit the signal with the general information
+        self.dataBaseTab.newTestRequested.emit(general_info)
+
+
+    def populateTestDateComboBoxes(self):
+        student_name = self.Form.windowTitle().replace(" Assessment Profile", "")
+        general_info = self.db_manager.fetch_general_info_by_name(student_name)
+        if general_info:
+            student_id = general_info['StudentID']
+            self.populateComboBox(self.stress_comboBox, student_id, 'StressTests')
+            self.populateComboBox(self.depression_comboBox, student_id, 'DepressionTests')
+            self.populateComboBox(self.selfesteem_comboBox, student_id, 'SelfEsteemTests')
+
+    def populateComboBox(self, comboBox, student_id, test_table):
+        test_dates = self.db_manager.get_test_dates_by_student_id(student_id, test_table)
+        comboBox.clear()
+        for i, date in enumerate(test_dates):
+            comboBox.addItem(f"Test {i + 1}: {date}", date)
+
+
+    def create_showPopup(self, original_showPopup, comboBox, test_table):
+        def showPopup():
+            student_name = self.Form.windowTitle().replace(" Assessment Profile", "")
+            general_info = self.db_manager.fetch_general_info_by_name(student_name)
+            if general_info:
+                student_id = general_info['StudentID']
+                self.populateComboBox(comboBox, student_id, test_table)
+            original_showPopup()
+        return showPopup
+
+
+    def viewStressScore(self):
+        student_name = self.Form.windowTitle().replace(" Assessment Profile", "")
+        general_info = self.db_manager.fetch_general_info_by_name(student_name)
+
+        if general_info:
+            student_id = general_info['StudentID']
+            selected_date = self.stress_comboBox.currentData()  # Corrected this line
+            test_details = self.db_manager.get_test_details_by_date(student_id, selected_date, 'StressTests')
+
+            if test_details:
+                if hasattr(self, 'stressTestWindow') and self.stressTestWindow:
+                    self.stressTestWindow.setTestDetails(general_info, test_details['scores'])
+                else:
+                    self.stressTestWindow = PrintingStressTestWindow(general_info, test_details['scores'])
+                    self.stressTestWindow.show()
+            else:
+                QtWidgets.QMessageBox.information(self.Form, "No Test Details", "No test details available for the selected date.")  # Corrected this line
+        else:
+            QtWidgets.QMessageBox.warning(self.Form, "Missing Information", "General information or selected date is missing.")  # Corrected this line
+
+
+
 
 
 if __name__ == "__main__":

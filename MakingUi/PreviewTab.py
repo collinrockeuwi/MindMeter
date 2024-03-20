@@ -562,12 +562,12 @@ class PreviewTab:
 
     def save_data(self):
         # Apply black text color to QMessageBox instances
-        msg_box_style = "Qlabel { color : black; }"
+        msg_box_style = "QLabel { color : black; }"
         
         # Check if all required fields are filled
         if not all([self.preview_name_display.text(), self.preview_dateofBirth_display.text(),
                     self.preview_gender_display.text(), self.preview_school_display.text()]):
-            msg = ()
+            msg = QMessageBox()
             msg.setStyleSheet(msg_box_style)
             msg.warning(self.GE_Preview_Page_widget, "Incomplete Information", "Please complete all general information fields.")
             return
@@ -589,68 +589,69 @@ class PreviewTab:
             # Calculate age
             age = self.calculate_age(self.preview_dateofBirth_display.text())
 
-            # Insert student data
-            student_id = self.db_manager.insert_student(self.preview_name_display.text(),
-                                                        self.preview_dateofBirth_display.text(),
-                                                        age,
-                                                        self.preview_school_display.text(),
-                                                        self.preview_gender_display.text(),
-                                                        self.preview_todaysdate_display.text())
+            # Check if we're updating an existing record or creating a new one
+            student_id = self.shared_data.get('StudentID')
+            if student_id is not None:
+                # Update existing student record
+                self.db_manager.update_student(student_id, self.preview_name_display.text(),
+                                            self.preview_dateofBirth_display.text(), age,
+                                            self.preview_school_display.text(), self.preview_gender_display.text(),
+                                            self.preview_todaysdate_display.text())
+            else:
+                # Insert new student record
+                student_id = self.db_manager.insert_student(self.preview_name_display.text(),
+                                                            self.preview_dateofBirth_display.text(), age,
+                                                            self.preview_school_display.text(), self.preview_gender_display.text(),
+                                                            self.preview_todaysdate_display.text())
+                # Save the new student ID in shared_data
+                self.shared_data['StudentID'] = student_id
 
-            # Print general information
-            print("General Information:")
-            print(f"Name: {self.preview_name_display.text()}")
-            print(f"Date of Birth: {self.preview_dateofBirth_display.text()}")
-            print(f"Age: {age}")
-            print(f"School: {self.preview_school_display.text()}")
-            print(f"Gender: {self.preview_gender_display.text()}")
-            print(f"Today's Date: {self.preview_todaysdate_display.text()}")
-            print()
+            # Insert or update test scores for stress, depression, and self-esteem
+            # [Your existing logic for handling test scores]
+# Print and save stress test scores
+        if self.preview_stress_display.text():
+            stress_scores = self.shared_data.get('stressResponses', [])
+            # Replace None values with a default score of 1
+            stress_scores = [score if score is not None else 1 for score in stress_scores]
+            # Ensure stress_scores has exactly 10 items
+            stress_scores.extend([1] * (10 - len(stress_scores)))
+            
+            print("Stress Test Scores:", stress_scores)  # Print statement for debugging
+            
+            self.db_manager.insert_stress_test(student_id, stress_scores,
+                                               int(self.preview_stress_display.text()),
+                                               self.preview_todaysdate_display.text())
 
-            # Insert and print test data
-            if self.preview_stress_display.text():
-                stress_scores = self.shared_data.get('stressResponses', [])
-                # Replace None values with a default score of 1
-                stress_scores = [score if score is not None else 1 for score in stress_scores]
-                # Ensure stress_scores has exactly 10 items
-                stress_scores.extend([1] * (10 - len(stress_scores)))
-                self.db_manager.insert_stress_test(student_id, stress_scores,
-                                                    int(self.preview_stress_display.text()),
+        # Print and save depression test scores
+        if self.preview_depression_display.text():
+            depression_scores = self.shared_data.get('depressionResponses', [])
+            # Ensure depression_scores has exactly 15 items
+            depression_scores.extend([None] * (15 - len(depression_scores)))
+            
+            print("Depression Test Scores:", depression_scores)  # Print statement for debugging
+            
+            self.db_manager.insert_depression_test(student_id, depression_scores,
+                                                   int(self.preview_depression_display.text()),
+                                                   self.preview_todaysdate_display.text())
+
+        # Print and save self-esteem test scores
+        if self.preview_selfEsteem_display.text():
+            self_esteem_scores = self.shared_data.get('selfEsteemResponses', [])
+            # Ensure self_esteem_scores has exactly 20 items
+            self_esteem_scores.extend([None] * (20 - len(self_esteem_scores)))
+            
+            print("Self-Esteem Test Scores:", self_esteem_scores)  # Print statement for debugging
+            
+            self.db_manager.insert_self_esteem_test(student_id, self_esteem_scores,
+                                                    int(self.preview_selfEsteem_display.text()),
                                                     self.preview_todaysdate_display.text())
 
-                print("Stress Test:")
-                print(f"Scores: {stress_scores}")
-                print(f"Total: {self.preview_stress_display.text()}")
-                print()
 
-            if self.preview_depression_display.text():
-                depression_scores = self.shared_data.get('depressionResponses', [])
-                # Ensure depression_scores has exactly 15 items
-                depression_scores.extend([None] * (15 - len(depression_scores)))
-                self.db_manager.insert_depression_test(student_id, depression_scores,
-                                                    int(self.preview_depression_display.text()),
-                                                    self.preview_todaysdate_display.text())
 
-                print("Depression Test:")
-                print(f"Scores: {depression_scores}")
-                print(f"Total: {self.preview_depression_display.text()}")
-                print()
 
-            if self.preview_selfEsteem_display.text():
-                self_esteem_scores = self.shared_data.get('selfEsteemResponses', [])
-                # Ensure self_esteem_scores has exactly 20 items
-                self_esteem_scores.extend([None] * (20 - len(self_esteem_scores)))
-                self.db_manager.insert_self_esteem_test(student_id, self_esteem_scores,
-                                                        int(self.preview_selfEsteem_display.text()),
-                                                        self.preview_todaysdate_display.text())
-
-                print("Self Esteem Test:")
-                print(f"Scores: {self_esteem_scores}")
-                print(f"Total: {self.preview_selfEsteem_display.text()}")
 
             # Refresh the DatabaseTab table
             self.dataBaseTab.refreshTable()
-            
             
             # Data saved confirmation
             msg = QMessageBox()

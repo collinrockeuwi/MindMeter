@@ -360,3 +360,10 @@ class StressTab:
                 # Update the preview tab with the new data
                 self.previewTab.shared_data['stressResponses'] = responses
                 self.previewTab.updatePreview()
+
+    def clearAnswers(self):
+        for button_group in self.button_groups.values():
+            button_group.setExclusive(False)  # Temporarily allow no buttons to be checked
+            for button in button_group.buttons():
+                button.setChecked(False)
+            button_group.setExclusive(True)  # Restore exclusive behavior

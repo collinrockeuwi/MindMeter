@@ -8,7 +8,7 @@ class DatabaseManager:
         #self.insert_sample_data()
 
         # Call the function to print scores and information for a specific name during setup
-        self.print_student_scores_by_name("Collin Rocke")
+        self.print_student_scores_by_name("Jenet Jack")
     
  
     def create_connection(self):
@@ -321,8 +321,8 @@ class DatabaseManager:
             c = self.conn.cursor()
             # Fetch student information
             c.execute('''SELECT Name, DateOfBirth, Age, School, Sex, DateRegistered
-                         FROM Students
-                         WHERE Name = ?''', (name,))
+                        FROM Students
+                        WHERE Name = ?''', (name,))
             student_info = c.fetchone()
             if student_info:
                 print(f"Student Information for {name}:")
@@ -338,34 +338,107 @@ class DatabaseManager:
                 return
 
             # Fetch and print stress scores
-            c.execute('''SELECT DateTaken, TotalScore, Question1, Question2, Question3, Question4, Question5
-                         FROM StressTests
-                         JOIN Students ON StressTests.StudentID = Students.StudentID
-                         WHERE Students.Name = ?''', (name,))
+            c.execute('''SELECT DateTaken, TotalScore, Question1, Question2, Question3, Question4, Question5, Question6, Question7, Question8, Question9, Question10
+                        FROM StressTests
+                        JOIN Students ON StressTests.StudentID = Students.StudentID
+                        WHERE Students.Name = ?''', (name,))
             print("Stress Scores:")
             for score in c.fetchall():
-                print(f"Date Taken: {score[0]}, Total Score: {score[1]}, Q1: {score[2]}, Q2: {score[3]}, Q3: {score[4]}, Q4: {score[5]}, Q5: {score[6]}")
+                print(f"Date Taken: {score[0]}, Total Score: {score[1]}, Scores: {score[2:]}")
 
             # Fetch and print depression scores
-            c.execute('''SELECT DateTaken, TotalScore, Question1, Question2, Question3, Question4, Question5
-                         FROM DepressionTests
-                         JOIN Students ON DepressionTests.StudentID = Students.StudentID
-                         WHERE Students.Name = ?''', (name,))
+            c.execute('''SELECT DateTaken, TotalScore, Question1, Question2, Question3, Question4, Question5, Question6, Question7, Question8, Question9, Question10, Question11, Question12, Question13, Question14, Question15
+                        FROM DepressionTests
+                        JOIN Students ON DepressionTests.StudentID = Students.StudentID
+                        WHERE Students.Name = ?''', (name,))
             print("Depression Scores:")
             for score in c.fetchall():
-                print(f"Date Taken: {score[0]}, Total Score: {score[1]}, Q1: {score[2]}, Q2: {score[3]}, Q3: {score[4]}, Q4: {score[5]}, Q5: {score[6]}")
+                print(f"Date Taken: {score[0]}, Total Score: {score[1]}, Scores: {score[2:]}")
 
             # Fetch and print self-esteem scores
-            c.execute('''SELECT DateTaken, TotalScore, Question1, Question2, Question3, Question4, Question5
-                         FROM SelfEsteemTests
-                         JOIN Students ON SelfEsteemTests.StudentID = Students.StudentID
-                         WHERE Students.Name = ?''', (name,))
+            c.execute('''SELECT DateTaken, TotalScore, Question1, Question2, Question3, Question4, Question5, Question6, Question7, Question8, Question9, Question10, Question11, Question12, Question13, Question14, Question15, Question16, Question17, Question18, Question19, Question20
+                        FROM SelfEsteemTests
+                        JOIN Students ON SelfEsteemTests.StudentID = Students.StudentID
+                        WHERE Students.Name = ?''', (name,))
             print("Self-Esteem Scores:")
             for score in c.fetchall():
-                print(f"Date Taken: {score[0]}, Total Score: {score[1]}, Q1: {score[2]}, Q2: {score[3]}, Q3: {score[4]}, Q4: {score[5]}, Q5: {score[6]}")
+                print(f"Date Taken: {score[0]}, Total Score: {score[1]}, Scores: {score[2:]}")
 
         except sqlite3.Error as e:
             print(f"Error querying scores: {e}")
+
+
+
+    def update_student(self, student_id, name, date_of_birth, age, school, sex, date_registered):
+        try:
+            c = self.conn.cursor()
+            c.execute('''UPDATE Students SET Name=?, DateOfBirth=?, Age=?, School=?, Sex=?, DateRegistered=? WHERE StudentID=?''',
+                    (name, date_of_birth, age, school, sex, date_registered, student_id))
+            self.conn.commit()
+        except sqlite3.Error as e:
+            print(f"Error updating student: {e}")
+
+
+    def get_test_dates_by_student_id(self, student_id, test_table):
+        try:
+            c = self.conn.cursor()
+            # Exclude tests where all scores are None
+            c.execute(f'''SELECT DateTaken FROM {test_table} 
+                        WHERE StudentID = ? 
+                        AND (Question1 IS NOT NULL OR Question2 IS NOT NULL OR Question3 IS NOT NULL OR Question4 IS NOT NULL OR Question5 IS NOT NULL)
+                        ORDER BY DateTaken''', (student_id,))
+            return [row[0] for row in c.fetchall()]
+        except sqlite3.Error as e:
+            print(f"Error fetching test dates: {e}")
+            return []
+
+
+    def get_test_details_by_date(self, student_id, date_taken, test_table):
+        try:
+            c = self.conn.cursor()
+            query = f'SELECT * FROM {test_table} WHERE StudentID = ? AND DateTaken = ?'
+            c.execute(query, (student_id, date_taken))
+            test_details = c.fetchone()
+            if test_details:
+                # Assuming the first two columns are TestID and StudentID
+                test_scores = test_details[2:-2]  # Excluding TestID, StudentID, TotalScore, DateTaken
+                total_score = test_details[-2]  # Assuming the second to last column is TotalScore
+                return {'scores': test_scores, 'total_score': total_score}
+            else:
+                return None
+        except sqlite3.Error as e:
+            print(f"Error fetching test details by date: {e}")
+            return None
+
+
+
+    def fetch_general_info_by_name(self, student_name):
+        # Connect to the database
+        conn = sqlite3.connect(self.db_file)
+        cursor = conn.cursor()
+
+        # Query to fetch general information for the given student name, including the StudentID
+        query = '''SELECT StudentID, Name, DateOfBirth, Age, School, Sex, DateRegistered
+                FROM Students
+                WHERE Name = ?'''
+        cursor.execute(query, (student_name,))
+
+        # Fetch the result
+        result = cursor.fetchone()
+
+        # Close the database connection
+        conn.close()
+
+        # Debug print the raw result
+        print("Raw fetched data:", result)
+
+        # Return the result as a dictionary or None if no record is found
+        if result:
+            # Use the column names as they appear in the SELECT statement
+            columns = ["StudentID", "Name", "DateOfBirth", "Age", "School", "Sex", "DateRegistered"]
+            return dict(zip(columns, result))
+        else:
+            return None
 
 
 

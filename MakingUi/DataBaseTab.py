@@ -1,11 +1,14 @@
 from PyQt5 import QtCore, QtGui, QtWidgets        
 from profile_print_dialouge import Ui_Form  # Import the Ui_Form class
+from PyQt5.QtCore import QObject, pyqtSignal
 
+class DataBaseTab(QObject):
+    newTestRequested = pyqtSignal(dict)  # Signal to emit general information as a dictionary
 
-class DataBaseTab:
     def __init__(self, parent, stackedWidget, db_manager):
+        super().__init__(parent)  # Initialize the QObject
         self.stackedWidget = stackedWidget
-        self.db_manager = db_manager  # Store the DatabaseManager instance
+        self.db_manager = db_manager
         self.setupDataBasePage(parent)
         
 
@@ -286,7 +289,7 @@ class DataBaseTab:
         if column == 0:  # Check if the first column is clicked
             student_name = self.DatabaseTab.item(row, 0).text()  # Retrieve the student's name from the first column
             self.profilePrintDialog = QtWidgets.QWidget()
-            self.ui = Ui_Form()
+            self.ui = Ui_Form(dataBaseTab=self, db_manager=self.db_manager)  # Pass the DataBaseTab and db_manager instances
             self.ui.setupUi(self.profilePrintDialog)
             self.profilePrintDialog.setWindowTitle(f"{student_name} Assessment Profile")  # Set the window title with the student's name
             self.profilePrintDialog.show()

@@ -26,7 +26,9 @@ class Ui_PsycheEval_MainWindow(object):
        
         #shared data initialisation         
         self.shared_data = {}  # Add this line to initialize the shared data
-
+        
+        # Add this line to store the new GeneralTab instance
+        self.newGeneralTab = None
 
         PsycheEval_MainWindow.setWindowIcon(QtGui.QIcon(":/icon/icon/group-48.ico"))
 
@@ -89,6 +91,7 @@ class Ui_PsycheEval_MainWindow(object):
 #DatabasePage           #DatabasePage           #DatabasePage           #DatabasePage           #DatabasePage  
 
         self.DataBaseTab = DataBaseTab(PsycheEval_MainWindow, self.stackedWidget, db)
+        self.DataBaseTab.newTestRequested.connect(self.handleNewTestRequest)
         
         student_test_summary = db.fetch_student_test_summary()
         #print("Student Test Summary:", student_test_summary)  # Data Fetching Check
@@ -298,6 +301,7 @@ class Ui_PsycheEval_MainWindow(object):
         self.GeneralTab.general_dateofBirth_label.setText(_translate("PsycheEval_MainWindow", "Date of Birth:"))
         self.GeneralTab.general_todaysdate_label.setText(_translate("PsycheEval_MainWindow", "Today\'s Date:"))
         self.GeneralTab.general_instructions.setText(_translate("PsycheEval_MainWindow", "Fill out the information below then tick:"))
+        self.GeneralTab.user_instructions.setText(_translate("PsycheEval_MainWindow", "(New User)"))
         self.PreviewTab.PreviewTabTitle_label.setText(_translate("PsycheEval_MainWindow", "Preview Information"))
         self.PreviewTab.preview_instructions.setText(_translate("PsycheEval_MainWindow", "Click the \"Not Saved\" button when you ensure that the information is correct:"))
         self.PreviewTab.preview_name_label.setText(_translate("PsycheEval_MainWindow", "Full Student Name:"))
@@ -314,7 +318,30 @@ class Ui_PsycheEval_MainWindow(object):
         self.DataBaseTab.database_undo_button.setText(_translate("PsycheEval_MainWindow", "Undo"))
         self.DataBaseTab.database_reset_button.setText(_translate("PsycheEval_MainWindow", "Reset"))
 
+           
         
+    def handleNewTestRequest(self, general_info):
+        # Print the received general_info
+        print("Received general_info:", general_info)
+
+        # Switch to the GeneralTab
+        self.stackedWidget.setCurrentIndex(3)  # Assuming index 3 is the GeneralTab
+
+        # Populate the GeneralTab with the fetched general information
+        self.GeneralTab.populateWithGeneralInfo(general_info, returning_user=True)
+
+        # Clear the current answers in the test tabs
+        self.selfEsteemTab.clearAnswers()
+        self.DepressionTab.clearAnswers()
+        self.StressTab.clearAnswers()
+
+        # Set the current date in the GeneralTab (if needed)
+        self.GeneralTab.setDateToCurrent()
+
+        # Check the generalTab_expanded button
+        self.MainWindow.expanded_icon_General_pushButton.setChecked(True)
+
+
         
 import resource_rc
 
