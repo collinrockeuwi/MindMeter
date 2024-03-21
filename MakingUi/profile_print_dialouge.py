@@ -11,6 +11,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import pyqtSignal
 from printingStressTestWindow import PrintingStressTestWindow
+from compare_dialog import CompareDialog
 
 
 
@@ -190,6 +191,7 @@ class Ui_Form(object):
 
          # Connect the button click to the viewStressScore method
         self.stress_viewscore.clicked.connect(self.viewStressScore)
+        self.stress_compare.clicked.connect(self.compareStressTests)
         
 
 
@@ -233,9 +235,13 @@ class Ui_Form(object):
 
     def populateComboBox(self, comboBox, student_id, test_table):
         test_dates = self.db_manager.get_test_dates_by_student_id(student_id, test_table)
+        print(f"Populating combo box with test dates: {test_dates}")  # Print the test_dates list
         comboBox.clear()
         for i, (test_id, date) in enumerate(test_dates):
+            print(f"Adding TestID {test_id} with date {date}")  # Print the TestID and date being added
             comboBox.addItem(f"Test {i + 1}: {date}", test_id)  # Set TestID as item data
+
+
 
 
 
@@ -271,6 +277,55 @@ class Ui_Form(object):
                 QtWidgets.QMessageBox.information(self.Form, "No Test Details", "No test details available for the selected test.")
         else:
             QtWidgets.QMessageBox.warning(self.Form, "Missing Information", "General information or selected test is missing.")
+
+
+    
+        
+
+    def compareStressTests(self):
+        student_name = self.Form.windowTitle().replace(" Assessment Profile", "")
+        general_info = self.db_manager.fetch_general_info_by_name(student_name)
+
+        if general_info:
+            student_id = general_info['StudentID']
+            dialog = CompareDialog(self.Form, self.db_manager)
+            dialog.setComboBoxItems(student_id, 'StressTests')  # Pass student_id and test table name
+
+            if dialog.exec_() == QtWidgets.QDialog.Accepted:
+                test_id1, test_id2 = dialog.getSelectedTestIds()
+                print(f"Retrieved Test IDs: {test_id1}, {test_id2}")
+                if test_id1 and test_id2:
+                    test_details1 = self.db_manager.get_test_details_by_test_id(student_id, test_id1, 'StressTests')
+                    test_details2 = self.db_manager.get_test_details_by_test_id(student_id, test_id2, 'StressTests')
+                    if test_details1 and test_details2:
+                        if hasattr(self, 'stressTestWindow') and self.stressTestWindow:
+                            self.stressTestWindow.setTestDetails(general_info, test_details1['scores'], compare_scores=test_details2['scores'])
+                            self.stressTestWindow.show()
+                        else:
+                            self.stressTestWindow = PrintingStressTestWindow(general_info, test_details1['scores'], compare_scores=test_details2['scores'])
+                            self.stressTestWindow.show()
+                    else:
+                        QtWidgets.QMessageBox.information(self.Form, "No Test Details", "No test details available for one or both of the selected tests.")
+                else:
+                    QtWidgets.QMessageBox.warning(self.Form, "Invalid Selection", "Please select two valid test dates.")
+        else:
+            QtWidgets.QMessageBox.warning(self.Form, "Missing Information", "General information is missing.")
+
+
+
+
+    def handleTestComparison(self, test_id1, test_id2):
+        # Fetch test details for the selected test IDs
+        print(f"Handling comparison for Test IDs: {test_id1}, {test_id2}")
+        test_details1 = self.db_manager.get_test_details_by_test_id(self.general_info['StudentID'], test_id1, 'StressTests')
+        test_details2 = self.db_manager.get_test_details_by_test_id(self.general_info['StudentID'], test_id2, 'StressTests')
+
+        # Show the comparison in the PrintingStressTestWindow
+        if test_details1 and test_details2:
+            window = PrintingStressTestWindow(self.general_info, test_details1['scores'], test_details2['scores'])
+            window.show()
+        else:
+            QtWidgets.QMessageBox.information(self.Form, "No Test Details", "No test details available for one or both of the selected tests.")
 
 
 if __name__ == "__main__":

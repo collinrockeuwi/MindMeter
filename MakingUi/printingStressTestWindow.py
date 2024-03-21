@@ -15,12 +15,13 @@ class StressTab:
     ]
 
 class PrintingStressTestWindow(QtWidgets.QMainWindow):
-    def __init__(self, general_info, test_scores, test_id, test_date, parent=None):
+    def __init__(self, general_info, test_scores, test_id=None, test_date=None, compare_scores=None, parent=None):
         super().__init__(parent)
         self.general_info = general_info
         self.test_scores = test_scores
         self.test_id = test_id
         self.test_date = test_date
+        self.compare_scores = compare_scores
         self.setupUi(self)
 
 
@@ -57,7 +58,8 @@ class PrintingStressTestWindow(QtWidgets.QMainWindow):
         # Connect the print action to the printTest method
         self.actionPrint.triggered.connect(self.printTest)
            
-        self.setTestDetails(self.general_info, self.test_scores, self.test_id, self.test_date)
+        # Set test details
+        self.setTestDetails(self.general_info, self.test_scores, self.test_id, self.test_date, self.compare_scores)
 
 
     def retranslateUi(self, PsycheEval_MainWindow):
@@ -74,7 +76,7 @@ class PrintingStressTestWindow(QtWidgets.QMainWindow):
         if dialog.exec_() == QtWidgets.QDialog.Accepted:
             self.textEdit.print_(printer)
 
-    def setTestDetails(self, general_info, test_scores, test_id, test_date):
+    def setTestDetails(self, general_info, test_scores, test_id=None, test_date=None, compare_scores=None):
         # Clear the existing content
         self.textEdit.clear()
 
@@ -82,17 +84,25 @@ class PrintingStressTestWindow(QtWidgets.QMainWindow):
         for key, value in general_info.items():
             self.textEdit.append(f"{key}: {value}")
 
-        # Add the test date
-        self.textEdit.append(f"Test Date: {test_date}")
+        # Add the test date and ID if provided
+        if test_date and test_id:
+            self.textEdit.append(f"Test Date: {test_date}")
+            self.textEdit.append(f"Test ID: {test_id}")
 
-        # Assuming test_scores is a list of responses for the questions
+        # Add test scores
+        self.textEdit.append("Test Scores:")
         for i, response in enumerate(test_scores):
             question = StressTab.questions[i]
             self.textEdit.append(f"{i + 1}. {question}")
             self.textEdit.append(f"Response: {response}")
 
-        # Add the test ID at the bottom
-        self.textEdit.append(f"Test ID: {test_id}")
+        # Add comparison scores if provided
+        if compare_scores:
+            self.textEdit.append("\nComparison Scores:")
+            for i, response in enumerate(compare_scores):
+                question = StressTab.questions[i]
+                self.textEdit.append(f"{i + 1}. {question}")
+                self.textEdit.append(f"Response: {response}")
 
         self.textEdit.moveCursor(QtGui.QTextCursor.Start)
 
